@@ -1,5 +1,14 @@
 /*Navbar*/
 
+#dropdownMenu {
+    display: inline-block;
+}
+
+#dropdownMenu li a{
+    text-decoration: none;
+    color: white;
+}
+
 .vl {
     border-left: 2px solid lightgray;
     height: 100%;
