@@ -10,6 +10,9 @@
     <!-- Titulo -->
     <title>page title</title>
 
+    <!-- Core CSS -->
+    <link href="css/core.css" rel="stylesheet">
+
     <!-- Custom CSS -->
     <link href="css/header.css" rel="stylesheet">
 
@@ -21,18 +24,134 @@
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
 </head>
 
 <body>
-    <nav class="navbar bg-light navbar-light fixed-top p-4">
+    <nav class="navbar bg-light navbar-light fixed-top p-4 shadow">
         <button class="navbar-toggler" role="button" type="button">
             <i class="fas fa-bars"></i>
         </button>
         <div class="justify-content-end">
             <ul class="nav">
-                <img src="" alt="" srcset="" width="40" height="40" class="d-inline-block align-top">
-                <li class="nav-item dropdown">
+                <li class="nav-item mx-1 dropdown d-none d-md-inline-block">
+                    <a class="nav-link text-dark" href="#" id="navbarNotifications" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-bell fa-fw fa-lg"></i> <span
+                            class="badge badge-danger ml-n3 align-top rounded-circle">4</span>
+                    </a>
+                    <ul class="list-unstyled dropdown-menu dropdown-menu-right overflow-auto"
+                        aria-labelledby="navbarNotifications">
+                        <a class="dropdown-header" href="#">Ver todas as notificações</a>
+                        <li class="dropdown-item media">
+                            <img src="avatar/42087367_983983231785555_8792497069429358592_o.jpg"
+                                class="align-self-center mr-3" alt="" srcset="" width="40" height="40">
+                            <div class="media-body text-wrap">
+                                <h5 class="m-0">this is title</h5>
+                                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint, mollitia?</span>
+                            </div>
+                        </li>
+                        <li class="dropdown-item media">
+                            <img src="avatar/42087367_983983231785555_8792497069429358592_o.jpg"
+                                class="align-self-center mr-3" alt="" srcset="" width="40" height="40">
+                            <div class="media-body text-wrap">
+                                <h5 class="m-0">this is title</h5>
+                                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint, mollitia?</span>
+                            </div>
+                        </li>
+                        <li class="dropdown-item media">
+                            <img src="avatar/42087367_983983231785555_8792497069429358592_o.jpg"
+                                class="align-self-center mr-3" alt="" srcset="" width="40" height="40">
+                            <div class="media-body text-wrap">
+                                <h5 class="m-0">this is title</h5>
+                                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint, mollitia?</span>
+                            </div>
+                        </li>
+                        <li class="dropdown-item media">
+                            <img src="avatar/42087367_983983231785555_8792497069429358592_o.jpg"
+                                class="align-self-center mr-3" alt="" srcset="" width="40" height="40">
+                            <div class="media-body text-wrap">
+                                <h5 class="m-0">this is title</h5>
+                                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint, mollitia?</span>
+                            </div>
+                        </li>
+                        <li class="dropdown-item media">
+                            <img src="avatar/42087367_983983231785555_8792497069429358592_o.jpg"
+                                class="align-self-center mr-3" alt="" srcset="" width="40" height="40">
+                            <div class="media-body text-wrap">
+                                <h5 class="m-0">this is title</h5>
+                                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint, mollitia?</span>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item mx-1 dropdown d-none d-md-inline-block">
+                    <a class="nav-link text-dark" href="#" id="navbarMessages" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-envelope fa-fw fa-lg"></i> <span
+                            class="badge badge-danger ml-n3 align-top rounded-circle">4</span>
+                    </a>
+                    <ul class="list-unstyled dropdown-menu dropdown-menu-right overflow-auto"
+                        aria-labelledby="navbarMessages">
+                        <a class="dropdown-header" href="#">Ver todas as mensagens</a>
+                        <li class="dropdown-item media">
+                            <img src="avatar/920983_516047081776703_299333251_o.jpg" class="align-self-center mr-3"
+                                alt="" srcset="" width="40" height="40">
+                            <div class="media-body text-wrap">
+                                <h5 class="m-0">this is title</h5>
+                                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint,
+                                    mollitia?</span>
+                            </div>
+                        </li>
+                        <li class="dropdown-item media">
+                            <img src="avatar/920983_516047081776703_299333251_o.jpg" class="align-self-center mr-3"
+                                alt="" srcset="" width="40" height="40">
+                            <div class="media-body text-wrap">
+                                <h5 class="m-0">this is title</h5>
+                                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint,
+                                    mollitia?</span>
+                            </div>
+                        </li>
+                        <li class="dropdown-item media">
+                            <img src="avatar/920983_516047081776703_299333251_o.jpg" class="align-self-center mr-3"
+                                alt="" srcset="" width="40" height="40">
+                            <div class="media-body text-wrap">
+                                <h5 class="m-0">this is title</h5>
+                                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint,
+                                    mollitia?</span>
+                            </div>
+                        </li>
+                        <li class="dropdown-item media">
+                            <img src="avatar/920983_516047081776703_299333251_o.jpg" class="align-self-center mr-3"
+                                alt="" srcset="" width="40" height="40">
+                            <div class="media-body text-wrap">
+                                <h5 class="m-0">this is title</h5>
+                                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint,
+                                    mollitia?</span>
+                            </div>
+                        </li>
+                        <li class="dropdown-item media">
+                            <img src="avatar/920983_516047081776703_299333251_o.jpg" class="align-self-center mr-3"
+                                alt="" srcset="" width="40" height="40">
+                            <div class="media-body text-wrap">
+                                <h5 class="m-0">this is title</h5>
+                                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint,
+                                    mollitia?</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarMessages">
+                        <a class="dropdown-item" href="#"><i class="fas fa-user"></i> Profile</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-cog"></i> Settings</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#"><i class="fas fa-power-off"></i> Logout</a>
+                    </div>
+                </li>
+                <li class="nav-item vertical-line bg-dark ml-1 mr-3 d-none d-md-inline-block"></li>
+                <li class="nav-item ml-1">
+                    <img src="avatar/18700412_1549755958375924_1739793708868521246_o.jpg" alt="" srcset="" width="40"
+                        height="40" class="d-inline-block align-top rounded-circle">
+                </li>
+                <li class="nav-item mr-1 dropdown">
                     <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         John Doe
@@ -48,33 +167,57 @@
         </div>
     </nav>
 
-    <div class="h-100 position-fixed bg-primary" id="ourNavbar" style="width: 0px; margin-left: -300px;">
+    <div class="h-100 position-fixed text-light bg-blue" id="ourNavbar" style="width: 0px; margin-left: -250px;">
         <ul class="list-group">
-            <a class="d-block p-3" role="button" data-toggle="collapse" data-target="#first">
-                Cras justo odio
+            <a class="list-group-item bg-transparent rounded-0 border-top-0 border-bottom-0 p-3 text-light text-decoration-none active"
+                href="#">
+                <i class="fas fa-chart-area"></i> Dashboard
+            </a>
+            <a class="list-group-item bg-transparent rounded-0 border-top-0 border-bottom-0 p-3" role="button"
+                data-toggle="collapse" data-target="#first">
+                <i class="fas fa-building"></i> Empresa
                 <i class="fas fa-chevron-down float-right"></i>
             </a>
-            <div class="collapse px-3" id="first">
-                <a class="d-block text-light text-decoration-none" href="#">
+            <div class="collapse bg-primary" id="first">
+                <a class="d-block text-light text-decoration-none p-3" href="#">
                     first_link
                 </a>
-                <a class="d-block text-light text-decoration-none" href="#">
+                <a class="d-block text-light text-decoration-none p-3" href="#">
                     second_link
                 </a>
             </div>
-            <a class="d-block p-3" role="button" data-toggle="collapse" data-target="#second">
-                Cras justo odio
+            <a class="list-group-item bg-transparent rounded-0 border-top-0 border-bottom-0 p-3 text-light text-decoration-none"
+                href="#">
+                <i class="fas fa-users"></i> Clientes
+            </a>
+            <a class="list-group-item bg-transparent rounded-0 border-top-0 border-bottom-0 p-3" role="button"
+                data-toggle="collapse" data-target="#second">
+                <i class="fas fa-bullhorn"></i> Campanhas
                 <i class="fas fa-chevron-down float-right"></i>
             </a>
-            <div class="collapse px-3" id="second">
-                <a class="d-block text-light text-decoration-none" href="#">
+            <div class="collapse bg-primary" id="second">
+                <a class="d-block text-light text-decoration-none p-3" href="#">
                     first_link
                 </a>
-                <a class="d-block text-light text-decoration-none" href="#">
+                <a class="d-block text-light text-decoration-none p-3" href="#">
                     second_link
                 </a>
             </div>
         </ul>
+        <div class="container d-md-none position-absolute my-4">
+            <div class="row align-items-end">
+                <div class="col-6 text-center">
+                    <button type="button" class="btn btn-primary">
+                        <i class="fas fa-bell"></i> <span class="badge badge-light">4</span>
+                    </button>
+                </div>
+                <div class="col-6 text-center">
+                    <button type="button" class="btn btn-primary">
+                        <i class="fas fa-envelope"></i> <span class="badge badge-light">4</span>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Boostrap JavaScript -->
