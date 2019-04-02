@@ -24,7 +24,7 @@
 }
 
 nav .list-unstyled {
-    height: 20rem;
+    max-height: 20rem;
 }
 
 nav .list-unstyled .media-body {
