@@ -1,0 +1,46 @@
+.switchDataCupoes {
+    display: none;
+}
+
+.switchDataRaspadinha {
+    display: none;
+}
+
+.switchDataCarimbo {
+    display: none;
+}
+
+.previewCupoes {
+    display: none;
+    background: #063057;
+}
+
+.previewRaspadinhaCover {
+    display: none;
+    background: #063057;
+}
+
+.previewRaspadinhaUnCover {
+    display: none;
+    background: #063057;
+}
+
+.previewCarimbos {
+    display: none;
+    background: #063057;
+}
+
+#menuFilters {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    #cardElements {
+        display: block !important;
+    }
+
+    #cardsFilters{
+        margin-top:5%;
+        margin-left: -1% !important; 
+    }
+}
