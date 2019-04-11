@@ -8,12 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Titulo -->
-    <title>Clientes</title>
+    <title>Criar Campanhas</title>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('Web-Pint\assets\css\Campanhas\CriarCampanhas.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('PINT-Web/assets/css/Campanhas/CriarCampanhas.css'); ?>">
 
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('Web-Pint\assets\css\Template\Template.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('PINT-Web/assets/css/Template/Template.css'); ?>">
 
     <!-- Boostrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -165,7 +165,7 @@
 
                         <!-- Begining List-Element DashBoard -->
                         <li>
-                            <a href="<?php echo base_url('WEB-PINT/Index.php/controller_CarregarViews/viewDashboard') ?>">
+                            <a href="<?php echo base_url('PINT-Web/controller_CarregarViews/viewDashboard') ?>">
                                 <i class="fa fa-chart-area fa-lg"></i> Dashboard
                             </a>
                         </li>
@@ -176,14 +176,14 @@
                             <a href="#"><i class="fa fa-building fa-lg"></i> Empresa <span class="arrow"></span></a>
                         </li>
                         <ul class="sub-menu collapse" id="empresa">
-                            <li class="active"><a href="<?php echo base_url('WEB-PINT/Index.php/controller_CarregarViews/viewEmpresa_DefinicoesEmpresa') ?>">Definições Empresariais</a></li>
-                            <li><a href="<?php echo base_url('WEB-PINT/Index.php/controller_CarregarViews/viewEmpresa_RatingEmpresa') ?>">Rating Empresarial</a></li>
+                            <li class="active"><a href="<?php echo base_url('PINT-Web/Index.php/controller_CarregarViews/viewEmpresa_DefinicoesEmpresa') ?>">Definições Empresariais</a></li>
+                            <li><a href="<?php echo base_url('PINT-Web/Index.php/controller_CarregarViews/viewEmpresa_RatingEmpresa') ?>">Rating Empresarial</a></li>
                         </ul>
                         <!-- Ending List-Element Empresa -->
 
                         <!-- Begining List-Element Clientes -->
                         <li>
-                            <a href="<?php echo base_url('WEB-PINT/Index.php/controller_CarregarViews/viewCliente') ?>">
+                            <a href="<?php echo base_url('PINT-Web/Index.php/controller_CarregarViews/viewCliente') ?>">
                                 <i class="fa fa-users fa-lg"></i> Clientes
                             </a>
                         </li>
@@ -194,15 +194,15 @@
                             <a href="#"><i class="fa fa-file-contract fa-lg"></i> Campanhas <span class="arrow"></span></a>
                         </li>
                         <ul class="sub-menu collapse" id="campanhas">
-                            <li><a href="<?php echo base_url('WEB-PINT/Index.php/controller_CarregarViews/viewCampanhas_CriarCampanhas') ?>">Criar Campanhas</a></li>
-                            <li><a href="<?php echo base_url('WEB-PINT/Index.php/controller_CarregarViews/viewCampanhas_ListarCampanhas') ?>">Listar Campanhas</a></li>
-                            <li><a href="<?php echo base_url('WEB-PINT/Index.php/controller_CarregarViews/viewCampanhas_AtivarCampanhas') ?>">Ativar Campanha</a></li>
+                            <li><a href="<?php echo base_url('PINT-Web/Index.php/controller_CarregarViews/viewCampanhas_CriarCampanhas') ?>">Criar Campanhas</a></li>
+                            <li><a href="<?php echo base_url('PINT-Web/Index.php/controller_CarregarViews/viewCampanhas_ListarCampanhas') ?>">Listar Campanhas</a></li>
+                            <li><a href="<?php echo base_url('PINT-Web/Index.php/ontroller_CarregarViews/viewCampanhas_AtivarCampanhas') ?>">Ativar Campanha</a></li>
                         </ul>
                         <!-- Ending List-Element Campanhas -->
 
                         <!-- Begining List-Element Reportings -->
                         <li>
-                            <a href="<?php echo base_url('WEB-PINT/Index.php/controller_CarregarViews/viewReportingsDados') ?>">
+                            <a href="<?php echo base_url('PINT-Web/controller_CarregarViews/viewReportingsDados') ?>">
                                 <i class="fa fa-users fa-lg"></i> Reportings
                             </a>
                         </li>
@@ -213,8 +213,8 @@
                             <a href=""><i class="fa fa-file-contract fa-lg"></i> Profile <span class="arrow"></span></a>
                         </li>
                         <ul class="sub-menu collapse" id="profile">
-                            <li><a href="<?php echo base_url('WEB-PINT/Index.php/controller_CarregarViews/viewProfile_DefinicoesPerfil') ?>">Definições de Perfil</a></li>
-                            <li><a href="<?php echo base_url('WEB-PINT/Index.php/controller_CarregarViews/viewProfile_PlanoComercial') ?>">Plano Comerical</a></li>
+                            <li><a href="<?php echo base_url('PINT-Web/Index.php/controller_CarregarViews/viewProfile_DefinicoesPerfil') ?>">Definições de Perfil</a></li>
+                            <li><a href="<?php echo base_url('PINT-Web/Index.php/controller_CarregarViews/viewProfile_PlanoComercial') ?>">Plano Comerical</a></li>
                         </ul>
                         <!-- Ending List-Element Profile -->
 
@@ -505,15 +505,13 @@
                                             </div>
                                         </div>
                                         <hr>
-                                        <div class="d-flex justify-content-center mt-2">
-                                            <div class="card shadow col-md-12">
+                                        <div class="d-flex mt-2">
+                                            <div class="card shadow ">
                                                 <div class="card-header">
-                                                    Seleciona a Idade:
-                                                    <br>
-                                                    <label for="tip" class="font-weight-light">Escolha a que idade se aplica a campanha!</label>
+                                                    <label for="TipoDesconto" class="font-weight-bold mt-3 mb-1">Selecione Idade Alvo</label>
                                                 </div>
                                                 <div class="card-body">
-                                                    
+
                                                 </div>
                                             </div>
                                         </div>
@@ -542,7 +540,7 @@
                                             <div class="previewRaspadinhaCover">
                                                 <h3 for="Designação" class="d-flex flex justify-content-center mb-4 text-white">Designação</h3>
                                                 <div id="imgClickCover" class="d-flex flex justify-content-center mb-4" data-toggle="tooltip" data-placement="bottom" title="Clique para ver a versão Revelada">
-                                                    <img src="<?php echo base_url('Web-Pint\assets\Imagens\Campanhas\Raspadinha_Cover.png'); ?>" alt="">
+                                                    <img src="<?php echo base_url('PINT-Web\assets\Imagens\Campanhas\Raspadinha_Cover.png'); ?>" alt="">
                                                 </div>
                                                 <h3 for="Condição" class="d-flex flex justify-content-center text-white">Condição</h3>
                                             </div>
@@ -592,7 +590,9 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
-    <script src="<?php echo base_url('Web-Pint\assets\JS\criarCampanhas.js') ?>"></script>
+    <script src="<?php echo base_url('PINT-Web/assets/JS/main.js') ?>"></script>
+
+    <script src="<?php echo base_url('PINT-Web/assets/JS/criarCampanhas.js') ?>"></script>
 
 </body>
 

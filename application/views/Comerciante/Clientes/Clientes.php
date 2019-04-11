@@ -11,8 +11,8 @@
     <title>Clientes</title>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('Web-Pint\assets\css\Clientes\Clientes.css'); ?>">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('Web-Pint\assets\css\Template\Template.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('PINT-Web/assets/css/Clientes/Clientes.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('PINT-Web/assets/css/Template/Template.css'); ?>">
 
     <!-- Boostrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -164,7 +164,7 @@
 
                         <!-- Begining List-Element DashBoard -->
                         <li>
-                            <a href="<?php echo base_url('WEB-PINT/Index.php/controller_CarregarViews/viewDashboard') ?>">
+                            <a href="<?php echo base_url('PINT-Web/controller_CarregarViews/viewDashboard') ?>">
                                 <i class="fa fa-chart-area fa-lg"></i> Dashboard
                             </a>
                         </li>
@@ -175,14 +175,14 @@
                             <a href="#"><i class="fa fa-building fa-lg"></i> Empresa <span class="arrow"></span></a>
                         </li>
                         <ul class="sub-menu collapse" id="empresa">
-                            <li class="active"><a href="<?php echo base_url('WEB-PINT/Index.php/controller_CarregarViews/viewEmpresa_DefinicoesEmpresa') ?>">Definições Empresariais</a></li>
-                            <li><a href="<?php echo base_url('WEB-PINT/Index.php/controller_CarregarViews/viewEmpresa_RatingEmpresa') ?>">Rating Empresarial</a></li>
+                            <li class="active"><a href="<?php echo base_url('PINT-Web/controller_CarregarViews/viewEmpresa_DefinicoesEmpresa') ?>">Definições Empresariais</a></li>
+                            <li><a href="<?php echo base_url('PINT-Web/controller_CarregarViews/viewEmpresa_RatingEmpresa') ?>">Rating Empresarial</a></li>
                         </ul>
                         <!-- Ending List-Element Empresa -->
 
                         <!-- Begining List-Element Clientes -->
                         <li>
-                            <a href="<?php echo base_url('WEB-PINT/Index.php/controller_CarregarViews/viewCliente') ?>">
+                            <a href="<?php echo base_url('PINT-Web/controller_CarregarViews/viewCliente') ?>">
                                 <i class="fa fa-users fa-lg"></i> Clientes
                             </a>
                         </li>
@@ -193,15 +193,15 @@
                             <a href="#"><i class="fa fa-file-contract fa-lg"></i> Campanhas <span class="arrow"></span></a>
                         </li>
                         <ul class="sub-menu collapse" id="campanhas">
-                            <li><a href="<?php echo base_url('WEB-PINT/Index.php/controller_CarregarViews/viewCampanhas_CriarCampanhas') ?>">Criar Campanhas</a></li>
-                            <li><a href="<?php echo base_url('WEB-PINT/Index.php/controller_CarregarViews/viewCampanhas_ListarCampanhas') ?>">Listar Campanhas</a></li>
-                            <li><a href="<?php echo base_url('WEB-PINT/Index.php/controller_CarregarViews/viewCampanhas_AtivarCampanhas') ?>">Ativar Campanha</a></li>
+                            <li><a href="<?php echo base_url('PINT-Web/controller_CarregarViews/viewCampanhas_CriarCampanhas') ?>">Criar Campanhas</a></li>
+                            <li><a href="<?php echo base_url('PINT-Web/controller_CarregarViews/viewCampanhas_ListarCampanhas') ?>">Listar Campanhas</a></li>
+                            <li><a href="<?php echo base_url('PINT-Web/controller_CarregarViews/viewCampanhas_AtivarCampanhas') ?>">Ativar Campanha</a></li>
                         </ul>
                         <!-- Ending List-Element Campanhas -->
 
                         <!-- Begining List-Element Reportings -->
                         <li>
-                            <a href="<?php echo base_url('WEB-PINT/Index.php/controller_CarregarViews/viewReportingsDados') ?>">
+                            <a href="<?php echo base_url('PINT-Web/controller_CarregarViews/viewReportingsDados') ?>">
                                 <i class="fa fa-users fa-lg"></i> Reportings
                             </a>
                         </li>
@@ -212,8 +212,8 @@
                             <a href=""><i class="fa fa-file-contract fa-lg"></i> Profile <span class="arrow"></span></a>
                         </li>
                         <ul class="sub-menu collapse" id="profile">
-                            <li><a href="<?php echo base_url('WEB-PINT/Index.php/controller_CarregarViews/viewProfile_DefinicoesPerfil') ?>">Definições de Perfil</a></li>
-                            <li><a href="<?php echo base_url('WEB-PINT/Index.php/controller_CarregarViews/viewProfile_PlanoComercial') ?>">Plano Comerical</a></li>
+                            <li><a href="<?php echo base_url('PINT-Web/controller_CarregarViews/viewProfile_DefinicoesPerfil') ?>">Definições de Perfil</a></li>
+                            <li><a href="<?php echo base_url('PINT-Web/controller_CarregarViews/viewProfile_PlanoComercial') ?>">Plano Comerical</a></li>
                         </ul>
                         <!-- Ending List-Element Profile -->
 
@@ -256,7 +256,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-    <script src="<?php echo base_url('Web-Pint\assets\JS\main.js') ?>">
+    <script src="<?php echo base_url('PINT-Web/assets/JS/main.js') ?>">
     </script>
 </body>
 

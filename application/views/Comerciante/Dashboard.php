@@ -11,7 +11,7 @@
     <title>Nav/Side-Bar</title>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('Web-Pint\assets\css\Template\Template.css') ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('PINT-Web/assets/css/Template/Template.css') ?>">
 
     <!-- Boostrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -257,7 +257,7 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
-    <script src="<?php echo base_url('Web-Pint\assets\JS\main.js') ?>">
+    <script src="<?php echo base_url('PINT-Web/assets/JS/main.js') ?>">
     </script>
 </body>
 
