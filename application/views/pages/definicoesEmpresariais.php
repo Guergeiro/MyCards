@@ -1,10 +1,13 @@
 <div class="container-fluid">
 
-    <div class="row">
+    <label for="infoTag" class="mt-4 text-primary"><h1>Informação Geral</h1></label>   
+    <hr>
+
+    <div class="row mt-3">
 
         <div class="col-md-4">
 
-            <div class="card mt-3">
+            <div class="card">
 
                 <div class="card-body">
 
@@ -48,7 +51,7 @@
 
         <div class="col-md-4">
 
-            <div class="card mt-3">
+            <div class="card">
 
                 <div class="card-body">
 
@@ -92,7 +95,7 @@
 
         <div class="col-md-4">
 
-            <div class="card mt-3">
+            <div class="card">
 
                 <div class="card-body">
 
@@ -135,11 +138,30 @@
         </div>
 
     </div>
+    
+    <label for="infoTag" class="mt-4 text-primary"><h1>Cartão Empresarial</h1></label>   
+    <hr>
 
-    <div class="row">
+    <div class="row mt-4">
 
-        <div class="col-md-6">
-            <img src="" alt="Ola">
+        <div class="col-md-12">
+
+            <!-- Card -->
+            <div class="card card-image w-100 mb-2">
+
+                <img id="imgSRC" src="" alt="your image" />
+
+                <div class="input-default-wrapper mt-3 ml-2 mr-2">
+
+                    <input type="file" id="file-with-current" class="input-default-js" onchange="readURLLogo(this);">
+
+                    <label class="label-for-default-js rounded-right mb-3" for="file-with-current"><span class="span-choose-file text-primary">Cartão Empresarial</span></label>
+
+                </div>
+
+            </div>
+            <!-- Card -->
+
         </div>
 
     </div>
