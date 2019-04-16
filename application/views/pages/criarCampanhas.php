@@ -273,14 +273,7 @@
                         <hr>
 
                         <div class="d-flex flex-row justify-content-center">
-                            <div class="card col-md-4 mr-2">
-                                <div class="card-body">
-                                    <h5 class="text-primary">Idade</h5>
-                                    <label for="" class="font-weight-light">Escolha a que alcance de idade se destina esta Campanha</label>
-                                    <hr>
-                                </div>
-                            </div>
-                            <div class="card col-md-8 mr-2">
+                            <div class="card col-md-12 mr-2">
                                 <div class="card-body">
                                     <h5 class="text-primary">Idade</h5>
                                     <label for="" class="font-weight-light">Escolha a que idade se destina esta Campanha</label>
@@ -320,67 +313,64 @@
                     </div>
 
                 </div>
-
             </div>
         </div>
-    </div>
 
-    <div class="col-md-4">
 
-        <div class="card">
+        <div class="col-md-4">
 
-            <div class="card-header text-center">
-                Preview
-            </div>
-            <div class="card-body bg-primary">
+            <div class="card">
 
-                <div class="previewCupao d-none">
-                    <h5 class="text-white text-center mt-3">Designação</h5>
-                    <h3 class="text-white text-center mt-5">Valor % do Cupão</h3>
-                    <h5 class="text-white text-center mt-5">Descrição Cupão</h5>
-                    <div class="qrCode">
-                        <h1 class="text-center text-white mt-5">QRCODE</h1>
-                    </div>
-                    <h5 class="text-white text-center mt-5">Cupão Data Inicial</h5>
-                    <h5 class="text-white text-center mt-3">Até</h5>
-                    <h5 class="text-white text-center mt-3">Cupão Data Final</h5>
+                <div class="card-header text-center">
+                    Preview
                 </div>
+                <div class="card-body bg-primary">
 
-                <div class="previewCarimbo d-none">
-                    <h5 class="text-white text-center mt-3">Designação</h5>
-                    <div class="awardIcon  text-center mt-5">
-                        <i class="fas fa-award fa-lg text-white"></i>
+                    <div class="previewCupao d-none">
+                        <h5 class="text-white text-center mt-3">Designação</h5>
+                        <h3 class="text-white text-center mt-5">Valor % do Cupão</h3>
+                        <h5 class="text-white text-center mt-5">Descrição Cupão</h5>
+                        <div class="qrCode">
+                            <h1 class="text-center text-white mt-5">QRCODE</h1>
+                        </div>
+                        <h5 class="text-white text-center mt-5">Cupão Data Inicial</h5>
+                        <h5 class="text-white text-center mt-3">Até</h5>
+                        <h5 class="text-white text-center mt-3">Cupão Data Final</h5>
                     </div>
-                    <h5 class="text-white text-center mt-5">0/1</h5>
-                    <h5 class="text-white text-center mt-3">Data Carimbo Inicial</h5>
-                    <h5 class="text-white text-center mt-3">Até</h5>
-                    <h5 class="text-white text-center mt-3">Data Carimbo Final</h5>
-                </div>
 
-                <div class="previewRaspadinhaCover d-none">
-                    <h5 class="text-white text-center mt-3">Designação</h5>
-                    <div class="coverPreview text-center mt-5">
-                        <img src="assets\imagens\raspadinhaCover.png" alt="">
+                    <div class="previewCarimbo d-none">
+                        <h5 class="text-white text-center mt-3">Designação</h5>
+                        <div class="awardIcon  text-center mt-5">
+                            <i class="fas fa-award fa-lg text-white"></i>
+                        </div>
+                        <h5 class="text-white text-center mt-5">0/1</h5>
+                        <h5 class="text-white text-center mt-3">Data Carimbo Inicial</h5>
+                        <h5 class="text-white text-center mt-3">Até</h5>
+                        <h5 class="text-white text-center mt-3">Data Carimbo Final</h5>
                     </div>
-                    <h5 class="text-white text-center mt-3">Raspe para ganhar</h5>
-                </div>
 
-                <div class="previewRaspadinhaUnCover d-none">
-                    <h5 class="text-white text-center mt-3">Designação</h5>
-                    <div class="coverPreview text-center mt-5">
-                        <h4 class="text-white text-center mb-3">Parabéns! <br>
-                            Ganhou uma Viagem!
-                        </h4>
+                    <div class="previewRaspadinhaCover d-none">
+                        <h5 class="text-white text-center mt-3">Designação</h5>
+                        <div class="coverPreview text-center mt-5">
+                            <img src="assets\imagens\raspadinhaCover.png" alt="">
+                        </div>
+                        <h5 class="text-white text-center mt-3">Raspe para ganhar</h5>
                     </div>
-                    <h5 class="text-white text-center mt-4">Raspe para ganhar</h5>
+
+                    <div class="previewRaspadinhaUnCover d-none">
+                        <h5 class="text-white text-center mt-3">Designação</h5>
+                        <div class="coverPreview text-center mt-5">
+                            <h4 class="text-white text-center mb-3">Parabéns! <br>
+                                Ganhou uma Viagem!
+                            </h4>
+                        </div>
+                        <h5 class="text-white text-center mt-4">Raspe para ganhar</h5>
+                    </div>
+
                 </div>
 
             </div>
 
         </div>
-
     </div>
-
-</div>
-
 </div>
