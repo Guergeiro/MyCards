@@ -1,11 +1,13 @@
 <div class="container-fluid">
 
-    <label for="infoTag" class="mt-4 text-primary"><h1>Informação Geral</h1></label>   
+    <label for="infoTag" class="mt-4 text-primary">
+        <h1>Informação Geral</h1>
+    </label>
     <hr>
 
-    <div class="row mt-3">
+    <div class="row">
 
-        <div class="col-md-4">
+        <div class="col-md-4 mt-2">
 
             <div class="card">
 
@@ -16,23 +18,26 @@
 
                     <hr>
 
-                    <div class="cardContactNumbers">
+                    <div class="cardAreaNegocio">
 
                         <!-- Material input -->
                         <div class="md-form ml-2">
-                            <input type="text" id="form1" class="form-control">
+                            <i class="fas fa-briefcase prefix"></i>
+                            <input type="text" id="inputIconEx7" class="form-control">
                             <label for="form1">Área de Negócio</label>
                         </div>
 
                         <!-- Material input -->
                         <div class="md-form ml-2">
-                            <input type="text" id="form3" class="form-control">
+                            <i class="fas fa-briefcase prefix"></i>
+                            <input type="text" id="inputIconEx8" class="form-control">
                             <label for="form3">Área de Negócio</label>
                         </div>
 
                         <!-- Material input -->
                         <div class="md-form ml-2">
-                            <input type="text" id="form3" class="form-control">
+                            <i class="fas fa-briefcase prefix"></i>
+                            <input type="text" id="inputIconEx9" class="form-control">
                             <label for="form3">Área de Negócio</label>
                         </div>
 
@@ -49,7 +54,7 @@
 
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-4 mt-2">
 
             <div class="card">
 
@@ -64,19 +69,22 @@
 
                         <!-- Material input -->
                         <div class="md-form ml-2">
-                            <input type="text" id="form4" class="form-control">
+                            <i class="fas fa-phone prefix"></i>
+                            <input type="text" id="inputIconEx1" class="form-control">
                             <label for="form4">Telefone</label>
                         </div>
 
                         <!-- Material input -->
                         <div class="md-form ml-2">
-                            <input type="text" id="form5" class="form-control">
+                            <i class="fas fa-mobile prefix"></i>
+                            <input type="text" id="inputIconEx2" class="form-control">
                             <label for="form5">Telemóvel</label>
                         </div>
 
                         <!-- Material input -->
                         <div class="md-form ml-2">
-                            <input type="text" id="form6" class="form-control">
+                            <i class="fas fa-envelope prefix"></i>
+                            <input type="text" id="inputIconEx3" class="form-control">
                             <label for="form6">Email</label>
                         </div>
 
@@ -93,7 +101,7 @@
 
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-4 mt-2">
 
             <div class="card">
 
@@ -108,19 +116,22 @@
 
                         <!-- Material input -->
                         <div class="md-form ml-2">
-                            <input type="text" id="form7" class="form-control">
+                            <i class="fab fa-facebook-f prefix"></i>
+                            <input type="text" id="inputIconEx4" class="form-control">
                             <label for="form7">Facebook</label>
                         </div>
 
                         <!-- Material input -->
                         <div class="md-form ml-2">
-                            <input type="text" id="form8" class="form-control">
+                            <i class="fab fa-twitter prefix"></i>
+                            <input type="text" id="inputIconEx5" class="form-control">
                             <label for="form8">Twitter</label>
                         </div>
 
                         <!-- Material input -->
                         <div class="md-form ml-2">
-                            <input type="text" id="form9" class="form-control">
+                            <i class="fab fa-linkedin-in prefix"></i>
+                            <input type="text" id="inputIconEx6" class="form-control">
                             <label for="form9">Linkedin</label>
                         </div>
 
@@ -138,8 +149,10 @@
         </div>
 
     </div>
-    
-    <label for="infoTag" class="mt-4 text-primary"><h1>Cartão Empresarial</h1></label>   
+
+    <label for="infoTag" class="mt-4 text-primary">
+        <h1>Cartão Empresarial</h1>
+    </label>
     <hr>
 
     <div class="row mt-4">
