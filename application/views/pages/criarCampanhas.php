@@ -1,16 +1,16 @@
 <ul class="nav nav-tabs mt-2" id="myTab" role="tablist">
     <li class="nav-item">
-        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Dados Campanha</a>
+        <a class="nav-link active " id="insertMenu" data-toggle="tab" href="#criarCampanha" role="tab" aria-controls="home" aria-selected="true">Dados Campanha</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Filtros Campanha</a>
+        <a class="nav-link " id="filtersMenu" data-toggle="tab" href="#filtrosCampanha" role="tab" aria-controls="profile" aria-selected="false">Filtros Campanha</a>
     </li>
 </ul>
 <div class="col-md-12 col-sm-12 mt-3">
 
     <div class="form-row">
 
-        <div class="col-md-8 d-none">
+        <div class="col-md-8 insertData" aria-labelledby="home-tab" id="criarCampanha">
 
             <div class="card mb-2">
 
@@ -31,7 +31,8 @@
 
                     <hr>
 
-                    <div class="cardCupao d-none">
+                    <div class="switchDataCupoes d-none">
+
                         <h5 class="card-title text-primary">Dados do Cupão</h5>
                         <h6 class="card-subtitle mb-2 text-muted mt-2 ml-1">Preencha os dados necessários para criar Cupão.</h6>
 
@@ -95,7 +96,7 @@
 
                     </div>
 
-                    <div class="cardRaspadinha d-none">
+                    <div class="switchDataRaspadinha d-none">
                         <h5 class="card-title text-primary">Dados da Raspadinha</h5>
                         <h6 class="card-subtitle mb-2 text-muted mt-2 ml-1">Preencha os dados necessários para criar Raspadinha.</h6>
 
@@ -146,7 +147,7 @@
 
                     </div>
 
-                    <div class="cardCarimbo d-none">
+                    <div class="switchDataCarimbo d-none">
                         <h5 class="card-title text-primary">Dados do Carimbo</h5>
                         <h6 class="card-subtitle mb-2 text-muted mt-2 ml-1">Preencha os dados necessários para criar Carimbo.</h6>
 
@@ -204,7 +205,7 @@
 
         </div>
 
-        <div class="col-md-8 ">
+        <div class="col-md-8 menuFilters d-none" aria-labelledby="profile-tab" id="filtrosCampanha">
             <div class="card">
                 <div class="card-header">
                     Filtros Campanha
@@ -295,7 +296,7 @@
                                     <h6 class="text-primary">Idade Fixa</h6>
                                     <div class="d-flex flex-row justify-content-center">
                                         <select class="custom-select" id="selectDesconto">
-                                            <option selected>Escolha tipo de Pesquisa</option>
+                                            <option selected>Escolha tipo de Idade</option>
                                             <option value="1">Minima</option>
                                             <option value="2">Máxima</option>
                                             <option value="3">Menor Que</option>
@@ -316,61 +317,64 @@
             </div>
         </div>
 
-
-        <div class="col-md-4">
+        <div class="col-md-4 ">
 
             <div class="card">
 
                 <div class="card-header text-center">
                     Preview
                 </div>
-                <div class="card-body bg-primary">
+                <div class="card-body bg-light">
+                    <div class="card">
+                        <div class="card-body previewbody">
+                            <div class="previewCupoes d-none">
+                                <h5 class="text-white text-center mt-3">Designação</h5>
+                                <h3 class="text-white text-center mt-5">Valor % do Cupão</h3>
+                                <h5 class="text-white text-center mt-5">Descrição Cupão</h5>
+                                <div class="qrCode">
+                                    <h1 class="text-center text-white mt-5">QRCODE</h1>
+                                </div>
+                                <h5 class="text-white text-center mt-5">Cupão Data Inicial</h5>
+                                <h5 class="text-white text-center mt-3">Até</h5>
+                                <h5 class="text-white text-center mt-3">Cupão Data Final</h5>
+                            </div>
+                            <div class="previewCarimbos d-none">
+                                <h5 class="text-white text-center mt-3">Designação</h5>
+                                <div class="awardIcon  text-center mt-5">
+                                    <i class="fas fa-award fa-lg text-white"></i>
+                                </div>
+                                <h5 class="text-white text-center mt-5">0/1</h5>
+                                <h5 class="text-white text-center mt-3">Data Carimbo Inicial</h5>
+                                <h5 class="text-white text-center mt-3">Até</h5>
+                                <h5 class="text-white text-center mt-3">Data Carimbo Final</h5>
+                            </div>
 
-                    <div class="previewCupao d-none">
-                        <h5 class="text-white text-center mt-3">Designação</h5>
-                        <h3 class="text-white text-center mt-5">Valor % do Cupão</h3>
-                        <h5 class="text-white text-center mt-5">Descrição Cupão</h5>
-                        <div class="qrCode">
-                            <h1 class="text-center text-white mt-5">QRCODE</h1>
+                            <div class="previewRaspadinhaCover d-none">
+                                <h5 class="text-white text-center mt-3">Designação</h5>
+                                <div class="coverPreview text-center mt-5">
+                                    <img src="assets\imagens\raspadinhaCover.png" alt="" id="imgClickCover">
+                                </div>
+                                <h5 class="text-white text-center mt-3">Raspe para ganhar</h5>
+                            </div>
+
+                            <div class="previewRaspadinhaUnCover d-none">
+                                <h5 class="text-white text-center mt-3">Designação</h5>
+                                <div class="coverPreview text-center mt-5">
+                                    <h4 class="text-white text-center mb-3" id="imgClickUnCover">Parabéns! <br>
+                                        Ganhou uma Viagem!
+                                    </h4>
+                                </div>
+                                <h5 class="text-white text-center mt-3">Reclame o Prémio até <br>
+                                    <h2 class="text-white text-center mt-3">Data Final</h2>
+                                </h5>
+                            </div>
                         </div>
-                        <h5 class="text-white text-center mt-5">Cupão Data Inicial</h5>
-                        <h5 class="text-white text-center mt-3">Até</h5>
-                        <h5 class="text-white text-center mt-3">Cupão Data Final</h5>
                     </div>
-
-                    <div class="previewCarimbo d-none">
-                        <h5 class="text-white text-center mt-3">Designação</h5>
-                        <div class="awardIcon  text-center mt-5">
-                            <i class="fas fa-award fa-lg text-white"></i>
-                        </div>
-                        <h5 class="text-white text-center mt-5">0/1</h5>
-                        <h5 class="text-white text-center mt-3">Data Carimbo Inicial</h5>
-                        <h5 class="text-white text-center mt-3">Até</h5>
-                        <h5 class="text-white text-center mt-3">Data Carimbo Final</h5>
-                    </div>
-
-                    <div class="previewRaspadinhaCover d-none">
-                        <h5 class="text-white text-center mt-3">Designação</h5>
-                        <div class="coverPreview text-center mt-5">
-                            <img src="assets\imagens\raspadinhaCover.png" alt="">
-                        </div>
-                        <h5 class="text-white text-center mt-3">Raspe para ganhar</h5>
-                    </div>
-
-                    <div class="previewRaspadinhaUnCover d-none">
-                        <h5 class="text-white text-center mt-3">Designação</h5>
-                        <div class="coverPreview text-center mt-5">
-                            <h4 class="text-white text-center mb-3">Parabéns! <br>
-                                Ganhou uma Viagem!
-                            </h4>
-                        </div>
-                        <h5 class="text-white text-center mt-4">Raspe para ganhar</h5>
-                    </div>
-
                 </div>
 
             </div>
 
         </div>
+
     </div>
 </div>

@@ -10,8 +10,10 @@
 	<!-- MDB core JavaScript -->
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.6/js/mdb.min.js"></script>
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
 	<script src="<?php echo base_url("assets/js/core.js"); ?>"></script>
 	<script src="<?php echo base_url("assets/js/{$title}.js"); ?>"></script>
-</body>
+	</body>
 
-</html>
+	</html>
