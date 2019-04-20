@@ -1,0 +1,11 @@
+.bgIMG {
+    /* The image used */
+    background-image: url("../imagens/bgImg.jpg") !important;
+    /* Full height */
+    height: 100% !important;
+    /* Center and scale the image nicely */
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    z-index: -1;
+}

@@ -8,7 +8,7 @@
                     <!-- Default form login -->
                     <div id="logform" class="card">
                         <div class="card-header bg-info text-center">
-                            <p class="h4 text-white mt-3">Faça Login</p>
+                            <p class="h4 text-white mt-3">Bem Vindo ao MyCards!</p>
                         </div>
                         <form class="pl-5 pr-5 pb-5">
 
@@ -40,7 +40,6 @@
                                     <a href="">Esqueceu-se da password?</a>
                                 </div>
                             </div>
-
                             <!-- Sign in button -->
                             <button class="btn text-info btn-block my-4 border border-info rounded-pill rounded-lg" type="submit">Entrar</button>
 
