@@ -91,20 +91,41 @@
 
   <div class="border-right sidenav">
     <ul>
-      <a href="#">
+      <a href="#" class="text-decoration-none">
         <li><i class="fa fa-chart-area fa-lg p-4"></i><span class="nav-label font-weight-normal">Dashboard</span></li>
       </a>
-      <a href="#">
-        <li><i class="fa fa-building fa-lg p-4"></i><span class="nav-label font-weight-normal">Empresa</span></li>
+      <a role="button" data-toggle="collapse" data-target="#empresa">
+        <li><i class="fa fa-building fa-lg p-4"></i><span class="nav-label font-weight-normal ">Empresa</span> <i
+            class="fas fa-angle-down fa-lg p-4 pull-right"></i></li>
       </a>
-      <a href="#">
+      <div class="collapse" id="empresa">
+        <a class="d-block text-decoration-none p-3 pl-5" href="#">
+          Visualizar empresa
+        </a>
+        <a class="d-block text-decoration-none p-3 pl-5" href="#">
+          Definições empresa
+        </a>
+      </div>
+      <a href="#" class="text-decoration-none">
         <li><i class="fa fa-users fa-lg p-4"></i><span class="nav-label font-weight-normal">Clientes</span></li>
       </a>
-      <a href="#">
-        <li><i class="fa fa-file-contract fa-lg p-4"></i><span class="nav-label font-weight-normal">Campanhas</span>
+      <a role="button" data-toggle="collapse" data-target="#campanhas">
+        <li><i class="fa fa-file-contract fa-lg p-4"></i><span class="nav-label font-weight-normal">Campanhas</span><i
+            class="fas fa-angle-down fa-lg p-4 pull-right"></i></li>
         </li>
       </a>
-      <a href="#">
+      <div class="collapse" id="campanhas">
+        <a class="d-block text-decoration-none p-3 pl-5" href="#">
+          Criar campanha
+        </a>
+        <a class="d-block text-decoration-none p-3 pl-5" href="#">
+          Listar campanha
+        </a>
+        <a class="d-block text-decoration-none p-3 pl-5" href="#">
+          Ativar campanha
+        </a>
+      </div>
+      <a href="#" class="text-decoration-none">
         <li><i class="fa fa-users fa-lg p-4"></i><span class="nav-label font-weight-normal">Reportings</span></li>
       </a>
     </ul>
