@@ -151,13 +151,13 @@
     </div>
 
     <label for="infoTag" class="mt-4 text-primary">
-        <h1>Cartão Empresarial</h1>
+        <h1>Logo Empresarial</h1>
     </label>
     <hr>
 
     <div class="row mt-4">
 
-        <div class="col-md-12">
+        <div class="col-md-12 col-sm-12">
 
             <!-- Card -->
             <div class="card card-image w-100 mb-2">
@@ -168,7 +168,7 @@
 
                     <input type="file" id="file-with-current" class="input-default-js" onchange="readURLLogo(this);">
 
-                    <label class="label-for-default-js rounded-right mb-3" for="file-with-current"><span class="span-choose-file text-primary">Cartão Empresarial</span></label>
+                    <label class="label-for-default-js rounded-right mb-3" for="file-with-current"><span class="span-choose-file text-primary">Adicionar Imagem</span></label>
 
                 </div>
 
@@ -176,6 +176,7 @@
             <!-- Card -->
 
         </div>
+        
 
     </div>
 

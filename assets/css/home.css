@@ -1,0 +1,9 @@
+#cardData {
+    cursor: pointer;
+}
+
+@media(max-width:1000px){
+    #chartBar {
+        display: none;
+    }
+}
