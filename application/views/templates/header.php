@@ -16,7 +16,7 @@
 
 	<!-- Page CSS -->
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/{$title}.css"); ?>">
-	
+
 	<!-- Core CSS -->
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/core.css"); ?>">
 

@@ -1,0 +1,37 @@
+#arrowA, #arrowB {
+    cursor: pointer;
+}
+
+#selectorCard {
+    cursor: pointer;
+}
+.divSearch {
+    left: 16%;
+}
+
+#elementSorter {
+    cursor: pointer;
+}
+
+#dropdownMenuCenter {
+    left: -50% !important;
+}
+
+.divDropBoxB {
+    left: 10% !important;
+}
+
+@media(max-width: 767px) {
+
+    .divDropBox {
+        left: -11%;
+    }
+
+    #dropdownMenuCenter {
+        left: -45% !important;
+    }
+
+    .divSearch {
+        left: 1%;
+    }
+}

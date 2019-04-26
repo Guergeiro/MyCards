@@ -14,6 +14,7 @@
 
 	<script src="<?php echo base_url("assets/js/core.js"); ?>"></script>
 	<script src="<?php echo base_url("assets/js/{$title}.js"); ?>"></script>
+
 	</body>
 
 	</html>
