@@ -28,42 +28,6 @@
 </head>
 
 <body>
-  <!--<div class="navbar p-3 bg-white border-bottom shadow-sm navbar-fixed-top w-100">
-    <i class="fas fa-bars p-3"></i>
-    <h5 class="my-0 mr-md-auto font-weight-normal">MyCards</h5>
-    <nav class="my-2 my-md-0 mr-md-3">
-      <a class="p-2 text-dark" href="#">Notifications</a>
-      <a class="p-2 text-dark" href="#">Messages</a>
-      <a class="p-2 text-dark font-weight-bold" href="#">Joao Antonio Cepo</a>
-    </nav>
-  </div>
-
-  <div class="border-right sidenav">
-    <ul>
-      <a href="#">
-        <li><i class="fa fa-chart-area fa-lg p-4"></i><span class="nav-label font-weight-normal">Dashboard</span></li>
-      </a>
-      <a href="#">
-        <li><i class="fa fa-building fa-lg p-4"></i><span class="nav-label font-weight-normal">Empresa</span></li>
-      </a>
-      <a href="#">
-        <li><i class="fa fa-users fa-lg p-4"></i><span class="nav-label font-weight-normal">Clientes</span></li>
-      </a>
-      <a href="#">
-        <li><i class="fa fa-file-contract fa-lg p-4"></i><span class="nav-label font-weight-normal">Campanhas</span>
-        </li>
-      </a>
-      <a href="#">
-        <li><i class="fa fa-users fa-lg p-4"></i><span class="nav-label font-weight-normal">Reportings</span></li>
-      </a>
-    </ul>
-  </div>
-
-  dashboard
-  empresa - Definições empresariais; Rating empresarial
-  Clientes
-  Campanhas - Criar, Listar e Ativar Campanhas
-  Reportings -->
   <nav class="navbar navbar-expand-lg navbar-light navbar-fixed-top" id="myNav">
     <i class="fa-lg fas fa-bars p-3"></i>
     <h5 class="my-0 mr-md-auto font-weight-normal">MyCards</h5>
@@ -99,10 +63,10 @@
             class="fas fa-angle-down fa-lg p-4 pull-right"></i></li>
       </a>
       <div class="collapse" id="empresa">
-        <a class="d-block text-decoration-none p-3 pl-5" href="#">
+        <a class="d-block text-decoration-none p-3 pl-5 submenu" href="#">
           Visualizar empresa
         </a>
-        <a class="d-block text-decoration-none p-3 pl-5" href="#">
+        <a class="d-block text-decoration-none p-3 pl-5 submenu" href="#">
           Definições empresa
         </a>
       </div>
@@ -115,13 +79,13 @@
         </li>
       </a>
       <div class="collapse" id="campanhas">
-        <a class="d-block text-decoration-none p-3 pl-5" href="#">
+        <a class="d-block text-decoration-none p-3 pl-5 submenu" href="#">
           Criar campanha
         </a>
-        <a class="d-block text-decoration-none p-3 pl-5" href="#">
+        <a class="d-block text-decoration-none p-3 pl-5 submenu" href="#">
           Listar campanha
         </a>
-        <a class="d-block text-decoration-none p-3 pl-5" href="#">
+        <a class="d-block text-decoration-none p-3 pl-5 submenu" href="#">
           Ativar campanha
         </a>
       </div>

@@ -5,11 +5,12 @@ function showSideMenu() {
 }
 
 $(".fa-bars").click(function(e) {
-	console.log($(".sidenav").width());
-	if ($(".sidenav").width() == 318.75) {
+	if ($(".sidenav").width() > 0) {
+		$(".fa-times").removeClass("fa-times").addClass("fa-bars");
 		$(".sidenav").css("width", "0px");
 	}
-	if ($(".sidenav").width() == -0.25) {
+	else {
+		$(".fa-bars").removeClass("fa-bars").addClass("fa-times");
 		$(".sidenav").css("width", "320px");
 	}
 });
