@@ -1,9 +1,10 @@
-#cardData {
+#arrowOrder {
     cursor: pointer;
 }
 
-@media(max-width:1000px){
-    #chartBar {
-        display: none;
-    }
+#cursorCard {
+    cursor: pointer;
+}
+@media(width:768) {
+
 }

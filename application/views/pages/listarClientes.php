@@ -1,4 +1,5 @@
 <div class="container-fluid">
+
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="row mt-4">
@@ -21,15 +22,14 @@
                             <div class="row">
                                 <!-- Search form -->
                                 <div class="col-md-4 col-xs-4 col-sm-4 mt-4">
-                                    <h6 class="">Mostrar primeiros
-                                        <select class="custom-select w-25" id="selectNumero">
-                                            <option value="1" selected>10</option>
-                                            <option value="2">25</option>
-                                            <option value="3">50</option>
-                                            <option value="4">75</option>
-                                            <option value="5">100</option>
-                                        </select>
-                                        Resultados
+                                    <select class="custom-select w-100" id="selectNumero">
+                                        <option value="1" selected>Mostrar Primeiros Resultados</option>
+                                        <option value="2">10</option>
+                                        <option value="3">25</option>
+                                        <option value="4">50</option>
+                                        <option value="5">75</option>
+                                        <option value="5">100</option>
+                                    </select>
                                     </h6>
                                 </div>
 
@@ -37,20 +37,19 @@
 
                                 </div>
 
-                                <div class="col-md-2 col-xs-2 col-sm-2 ">
-                                    <form class="form-inline md-form form-sm">
-                                        <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search" aria-label="Search" id="myInput">
-                                        <i class="fas fa-search" aria-hidden="true"></i>
+                                <div class="col-md-2 col-xs-2 col-sm-2">
+                                    <form class="form-inline md-form form-sm divSearchBox">
+                                        <input class="form-control form-control-sm w-75" type="text" placeholder="Search" aria-label="Search" id="myInput">
+                                        <i class="fas fa-search text-primary" aria-hidden="true"></i>
                                     </form>
                                 </div>
-
                             </div>
 
                             <div class="row">
                                 <div class="col-md-12 col-xs-12 col-sm-12">
                                     <div class="table-responsive text-nowrap">
                                         <!--Table-->
-                                        <table id="dtBasicExample" class="table table-striped text-center">
+                                        <table id="dtBasicExample" class="table table-striped table-bordered table-sm text-center">
 
                                             <!--Table head-->
                                             <thead>
@@ -96,4 +95,6 @@
             </div>
         </div>
     </div>
+
+    
 </div>
