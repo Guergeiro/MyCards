@@ -33,7 +33,7 @@
 
                                     <div id="cursorCard" class="row">
                                         <div class="col-md-12 col-xs-12 col-sm-12 mt-2">
-                                            <div class="card w-100 h-100">
+                                            <div class="card w-100 h-100 border-0 shadow">
                                                 <div class="card-body">
                                                     <div class="row">
                                                         <div class="col-md-12 col-sm-12 col-xs-12">
@@ -65,7 +65,7 @@
 
                                     <div id="cursorCard" class="row">
                                         <div class="col-md-12 col-xs-12 col-sm-12 mt-2">
-                                            <div class="card w-100 h-100">
+                                            <div class="card w-100 h-100 border-0 shadow">
                                                 <div class="card-body">
                                                     <div class="row">
                                                         <div class="col-md-12 col-sm-12 col-xs-12">
@@ -97,7 +97,7 @@
 
                                     <div id="cursorCard" class="row">
                                         <div class="col-md-12 col-xs-12 col-sm-12 mt-2">
-                                            <div class="card w-100 h-100 ">
+                                            <div class="card w-100 h-100  border-0 shadow">
                                                 <div class="card-body">
                                                     <div class="row">
                                                         <div class="col-md-12 col-sm-12 col-xs-12">
@@ -134,7 +134,7 @@
 
                                     <div id="cursorCard" class="row">
                                         <div class="col-md-12 col-xs-12 col-sm-12 mt-2">
-                                            <div class="card w-100 h-100 ">
+                                            <div class="card w-100 h-100  border-0 shadow">
                                                 <div class="card-body">
                                                     <div class="row">
                                                         <div class="col-md-12 col-sm-12 col-xs-12">
@@ -203,31 +203,31 @@
 
                                     <hr>
                                     <div class="list-group">
-                                        <a href="#!" class="list-group-item list-group-item-action flex-column align-items-start ">
+                                        <a href="#!" class="list-group-item list-group-item-action flex-column align-items-start border-0 shadow mt-1">
                                             <div class="d-flex w-100 justify-content-between">
                                                 <h5 class="mb-2 h5">Nome da Campanha</h5>
                                             </div>
                                             <small>Tempo Restante da Campanha</small>
                                         </a>
-                                        <a href="#!" class="list-group-item list-group-item-action flex-column align-items-start">
+                                        <a href="#!" class="list-group-item list-group-item-action flex-column align-items-start border-0 shadow mt-1">
                                             <div class="d-flex w-100 justify-content-between">
                                                 <h5 class="mb-2 h5">Nome da Campanha</h5>
                                             </div>
                                             <small>Tempo Restante da Campanha</small>
                                         </a>
-                                        <a href="#!" class="list-group-item list-group-item-action flex-column align-items-start">
+                                        <a href="#!" class="list-group-item list-group-item-action flex-column align-items-start border-0 shadow mt-1">
                                             <div class="d-flex w-100 justify-content-between">
                                                 <h5 class="mb-2 h5">Nome da Campanha</h5>
                                             </div>
                                             <small>Tempo Restante da Campanha</small>
                                         </a>
-                                        <a href="#!" class="list-group-item list-group-item-action flex-column align-items-start">
+                                        <a href="#!" class="list-group-item list-group-item-action flex-column align-items-start border-0 shadow mt-1">
                                             <div class="d-flex w-100 justify-content-between">
                                                 <h5 class="mb-2 h5">Nome da Campanha</h5>
                                             </div>
                                             <small>Tempo Restante da Campanha</small>
                                         </a>
-                                        <a href="#!" class="list-group-item list-group-item-action flex-column align-items-start">
+                                        <a href="#!" class="list-group-item list-group-item-action flex-column align-items-start border-0 shadow mt-1">
                                             <div class="d-flex w-100 justify-content-between">
                                                 <h5 class="mb-2 h5">Nome da Campanha</h5>
                                             </div>

@@ -1,380 +1,193 @@
-<ul class="nav nav-tabs mt-2" id="myTab" role="tablist">
-    <li class="nav-item">
-        <a class="nav-link active " id="insertMenu" data-toggle="tab" href="#criarCampanha" role="tab" aria-controls="home" aria-selected="true">Dados Campanha</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link " id="filtersMenu" data-toggle="tab" href="#filtrosCampanha" role="tab" aria-controls="profile" aria-selected="false">Filtros Campanha</a>
-    </li>
-</ul>
-<div class="col-md-12 col-sm-12 mt-3">
+<div class="container-fluid ctnFluid">
+    <div class="row pt-3 pb-3">
+        <div class="col-md-12 col-sm-12 col-xs-12">
 
-    <div class="form-row">
+            <div class="row">
 
-        <div class="col-md-8 insertData" aria-labelledby="home-tab" id="criarCampanha">
+                <div class="cold-md-12 col-xs-12 col-sm-12">
 
-            <div class="card mb-2">
+                    <div class="row">
 
-                <div class="card-header text-center">
-                    Criar Campanha
-                </div>
-
-                <div class="card-body">
-                    <h5 class="card-title text-primary">Tipo de Campanha</h5>
-                    <h6 class="card-subtitle text-muted mt-2 mb-2 ml-1">Selecione o tipo de campanha desejado.</h6>
-
-                    <select class="custom-select" id="selectDesconto">
-                        <option selected>Escolha o Desconto</option>
-                        <option value="1">Cupão</option>
-                        <option value="2">Raspadinhas</option>
-                        <option value="3">Carimbos</option>
-                    </select>
-
-                    <hr>
-
-                    <div class="switchDataCupoes d-none">
-
-                        <h5 class="card-title text-primary">Dados do Cupão</h5>
-                        <h6 class="card-subtitle mb-2 text-muted mt-2 ml-1">Preencha os dados necessários para criar Cupão.</h6>
-
-                        <!-- Material form grid -->
-                        <form>
-                            <!-- Grid row -->
-                            <div class="row mt-4">
-                                <!-- Grid column -->
-                                <div class="col-md-8">
-                                    <!-- Material input -->
-                                    <div class="md-form mt-1 ml-1">
-                                        <input type="text" id="inputIconEx7" class="form-control">
-                                        <label for="form1">Designação do Cupão</label>
-                                    </div>
+                        <div class="col-md-4 col-sm-4 col-xs-4">
+                            <div class="card h-100">
+                                <div class="card-header bg-white">
+                                    <h3 class="text-primary">Tipo de Campanha</h3>
+                                    <small class="ml-2">Selecione um tipo de Campanha</small>
                                 </div>
-                                <!-- Grid column -->
-
-                                <!-- Grid column -->
-                                <div class="col-md-4 text-center mt-2">
-                                    <!-- Material input -->
-                                    <select class="custom-select" id="selectDesconto">
-                                        <option selected>Escolha o Desconto</option>
-                                        <option value="1">Cupão</option>
-                                        <option value="2">Raspadinhas</option>
-                                        <option value="3">Carimbos</option>
-                                    </select>
-
-                                </div>
-                                <!-- Grid column -->
-
-                                <!-- Grid column -->
-                                <div class="col-md-12">
-                                    <!-- Material input -->
-                                    <div class="md-form mt-1 ml-1">
-                                        <textarea id="textarea-char" class="form-control md-textarea" length="120" rows="1"></textarea>
-                                        <label for="textarea-char">Descrição do Cupão</label>
-                                    </div>
-                                </div>
-                                <!-- Grid column -->
-                                <div class="col-md-12 d-flex flex-row">
-                                    <div class="md-form ml-1 col-md-6">
-                                        <input type="date" id="inputMDEx" class="form-control">
-                                        <label for="inputMDExInicioCupao">Data Inicial do Cupão</label>
-                                    </div>
-
-                                    <div class="md-form ml-2 col-md-6">
-                                        <input type="date" id="inputMDEx" class="form-control">
-                                        <label for="inputMDExFinalCupao">Data Final do Cupão</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Grid row -->
-                            <div class="float-right">
-                                <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-                                <button type="button" class="btn btn-primary">Criar Cupão</button>
-                                <!-- Indicates a dangerous or potentially negative action -->
-                                <button type="button" class="btn btn-danger">Cancelar Cupão</button>
-                            </div>
-                        </form>
-                        <!-- Material form grid -->
-
-                    </div>
-
-                    <div class="switchDataRaspadinha d-none">
-                        <h5 class="card-title text-primary">Dados da Raspadinha</h5>
-                        <h6 class="card-subtitle mb-2 text-muted mt-2 ml-1">Preencha os dados necessários para criar Raspadinha.</h6>
-
-                        <!-- Material form grid -->
-                        <form>
-                            <!-- Grid row -->
-                            <div class="row mt-4">
-                                <!-- Grid column -->
-                                <div class="col-md-12">
-                                    <!-- Material input -->
-                                    <div class="md-form mt-1 ml-1">
-                                        <input type="text" id="inputIconEx7" class="form-control">
-                                        <label for="form1">Designação da Raspadinha</label>
-                                    </div>
-                                </div>
-                                <!-- Grid column -->
-
-                                <!-- Grid column -->
-                                <div class="col-md-12">
-                                    <!-- Material input -->
-                                    <div class="md-form mt-1 ml-1">
-                                        <textarea id="textarea-char" class="form-control md-textarea" length="120" rows="1"></textarea>
-                                        <label for="textarea-char">Descrição da Raspadinha</label>
-                                    </div>
-                                </div>
-                                <!-- Grid column -->
-                                <div class="col-md-12 d-flex flex-row">
-                                    <div class="md-form ml-1 col-md-6">
-                                        <input type="date" id="inputMDExBeginRaspadinha" class="form-control">
-                                        <label for="inputMDEx">Data Inicial da Raspadinha</label>
-                                    </div>
-
-                                    <div class="md-form ml-2 col-md-6">
-                                        <input type="date" id="inputMDExFinalRaspadinha" class="form-control">
-                                        <label for="inputMDEx">Data Final da Raspadinha</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Grid row -->
-                            <div class="float-right">
-                                <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-                                <button type="button" class="btn btn-primary">Criar Cupão</button>
-                                <!-- Indicates a dangerous or potentially negative action -->
-                                <button type="button" class="btn btn-danger">Cancelar Cupão</button>
-                            </div>
-                        </form>
-                        <!-- Material form grid -->
-
-                    </div>
-
-                    <div class="switchDataCarimbo d-none">
-                        <h5 class="card-title text-primary">Dados do Carimbo</h5>
-                        <h6 class="card-subtitle mb-2 text-muted mt-2 ml-1">Preencha os dados necessários para criar Carimbo.</h6>
-
-                        <!-- Material form grid -->
-                        <form>
-                            <!-- Grid row -->
-                            <div class="row mt-4">
-                                <!-- Grid column -->
-                                <div class="col-md-8">
-                                    <!-- Material input -->
-                                    <div class="md-form ml-1">
-                                        <input type="text" id="inputIconEx7" class="form-control">
-                                        <label for="form1">Designação do Carimbo</label>
-                                    </div>
-                                </div>
-                                <!-- Grid column -->
-
-                                <!-- Grid column -->
-                                <div class="col-md-4">
-                                    <!-- Material input -->
-                                    <div class="md-form">
-                                        <input type="number" id="numberExample" class="form-control">
-                                        <label for="numberExample">Número de Carimbos</label>
-                                    </div>
-                                </div>
-                                <!-- Grid column -->
-
-                                <div class="col-md-12 d-flex flex-row">
-                                    <div class="md-form ml-1 col-md-6">
-                                        <input type="date" id="inputMDExBeginCarimbo" class="form-control">
-                                        <label for="inputMDEx">Data Inicial do Carimbo</label>
-                                    </div>
-
-                                    <div class="md-form ml-2 col-md-6">
-                                        <input type="date" id="inputMDExFinalCarimbo" class="form-control">
-                                        <label for="inputMDEx">Data Final do Carimbo</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Grid row -->
-                            <div class="float-right">
-                                <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-                                <button type="button" class="btn btn-primary">Criar Raspadinha</button>
-                                <!-- Indicates a dangerous or potentially negative action -->
-                                <button type="button" class="btn btn-danger">Cancelar Raspadinha</button>
-                            </div>
-                        </form>
-                        <!-- Material form grid -->
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="col-md-8 menuFilters d-none" aria-labelledby="profile-tab" id="filtrosCampanha">
-            <div class="card">
-                <div class="card-header">
-                    Filtros Campanha
-                </div>
-                <div class="card-body">
-
-                    <div class="container-fluid col-md-12">
-
-                        <div class="d-flex flex-row justify-content-center">
-                            <div class="card mr-2 col-md-4 shadow">
                                 <div class="card-body">
-                                    <h5 class="text-primary">Sexo</h5>
-                                    <label for="" class="font-weight-light">Escolha a que sexo se destina esta Campanha</label>
-                                    <hr>
-                                    <!-- Default unchecked -->
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="mascCheck">
-                                        <label class="custom-control-label" for="mascCheck">Masculino</label>
-                                    </div>
 
-                                    <!-- Default unchecked -->
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="mascFem">
-                                        <label class="custom-control-label" for="mascFem">Feminino</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card mr-2 col-md-4 shadow">
-                                <div class="card-body">
-                                    <h5 class="text-primary">Cidade</h5>
-                                    <label for="" class="font-weight-light">Escolha a que cidade se destina esta Campanha</label>
-                                    <hr>
-                                    <!-- Default unchecked -->
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="cit1">
-                                        <label class="custom-control-label" for="cit1">Viseu</label>
-                                    </div>
-
-                                    <!-- Default unchecked -->
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="cit2">
-                                        <label class="custom-control-label" for="cit2">Porto</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card mr-2 col-md-4 shadow">
-                                <div class="card-body">
-                                    <h5 class="text-primary">Área de Serviço</h5>
-                                    <label for="" class="font-weight-light">Escolha a que cidade se destina esta Campanha</label>
-                                    <hr>
-                                    <!-- Default unchecked -->
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="area1">
-                                        <label class="custom-control-label" for="area1">Informática</label>
-                                    </div>
-
-                                    <!-- Default unchecked -->
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="area2">
-                                        <label class="custom-control-label" for="area2">Serviços</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <hr>
-
-                        <div class="d-flex flex-row justify-content-center">
-                            <div class="card col-md-12 mr-2">
-                                <div class="card-body">
-                                    <h5 class="text-primary">Idade</h5>
-                                    <label for="" class="font-weight-light">Escolha a que idade se destina esta Campanha</label>
-                                    <hr>
-                                    <h6 class="text-primary">Alcance de idade</h6>
-                                    <div class="d-flex flex-row justify-content-center">
-                                        <!-- Material input -->
-                                        <div class="md-form">
-                                            <input type="number" id="numberExample" class="form-control">
-                                            <label for="numberExample">Idade Minima</label>
-                                        </div>
-                                        <label for="" class="mt-5 ml-5 mr-5">Até</label>
-                                        <!-- Material input -->
-                                        <div class="md-form">
-                                            <input type="number" id="numberExample" class="form-control">
-                                            <label for="numberExample">Idade Máxima</label>
+                                    <div class="card border rounded border-0 shadow rounded">
+                                        <div class="card-body hoverable hoverCard">
+                                            <div class="col-md-12 col-xs-12 col-sm-12">
+                                                <div class="row dBlock">
+                                                    <div class="col-md-4 col-xs-4 col-sm-4">
+                                                        <i class="fas fa-tags fa-5x text-primary dataCardL"></i>
+                                                    </div>
+                                                    <div class="col-md-8 col-sm-8 col-xs-8 mt-3 elementResize">
+                                                        <h6 class="text-primary">Crie um Cupão!</h6>
+                                                        <small class="text-primary">Selecione para criar um Cupão.</small>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <h6 class="text-primary">Idade Fixa</h6>
-                                    <div class="d-flex flex-row justify-content-center">
-                                        <select class="custom-select" id="selectDesconto">
-                                            <option selected>Escolha tipo de Idade</option>
-                                            <option value="1">Minima</option>
-                                            <option value="2">Máxima</option>
-                                            <option value="3">Menor Que</option>
-                                            <option value="3">Maior Que</option>
-                                        </select>
+
+                                    <div class="card border border-0 shadow rounded mb-2 mt-2">
+                                        <div class="card-body hoverable hoverCard">
+                                            <div class="col-md-12 col-xs-12 col-sm-12">
+                                                <div class="row dBlock">
+                                                    <div class="col-md-4 col-xs-4 col-sm-4">
+                                                        <i class="fas fa-award fa-5x text-primary dataCardL"></i>
+                                                    </div>
+                                                    <div class="col-md-8 col-sm-8 col-xs-8 mt-3 elementResize">
+                                                        <h6 class="text-primary">Crie uma Raspadinha!</h6>
+                                                        <small class="text-primary">Selecione para criar uma Raspadinha.</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <!-- Material input -->
-                                    <div class="md-form">
-                                        <input type="number" id="numberExample" class="form-control">
-                                        <label for="numberExample">Idade</label>
+
+                                    <div class="card border rounded border-0 shadow">
+                                        <div class="card-body hoverable hoverCard">
+                                            <div class="col-md-12 col-xs-12 col-sm-12">
+                                                <div class="row dBlock">
+                                                    <div class="col-md-4 col-xs-4 col-sm-4">
+                                                        <i class="fas fa-keyboard fa-5x text-primary dataCardL"></i>
+                                                    </div>
+                                                    <div class="col-md-8 col-sm-8 col-xs-8 mt-3 elementResize">
+                                                        <h6 class="text-primary">Crie um cartão de Carimbos!</h6>
+                                                        <small class="text-primary">Selecione para criar uma Raspadinha.</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4 ">
-
-            <div class="card">
-
-                <div class="card-header text-center">
-                    Preview
-                </div>
-                <div class="card-body bg-light">
-                    <div class="card">
-                        <div class="card-body previewbody">
-                            <div class="previewCupoes d-none">
-                                <h5 class="text-white text-center mt-3">Designação</h5>
-                                <h3 class="text-white text-center mt-5">Valor % do Cupão</h3>
-                                <h5 class="text-white text-center mt-5">Descrição Cupão</h5>
-                                <div class="qrCode">
-                                    <h1 class="text-center text-white mt-5">QRCODE</h1>
+                        <div class="col-md-8 col-sm-8 col-xs-8 cardColTag">
+                            <div class="card">
+                                <div class="card-header bg-white">
+                                    <h3 class="text-primary">Dados da Campanha</h3>
+                                    <small class="ml-2">Complete os dados de Campanha</small>
                                 </div>
-                                <h5 class="text-white text-center mt-5">Cupão Data Inicial</h5>
-                                <h5 class="text-white text-center mt-3">Até</h5>
-                                <h5 class="text-white text-center mt-3">Cupão Data Final</h5>
-                            </div>
-                            <div class="previewCarimbos d-none">
-                                <h5 class="text-white text-center mt-3">Designação</h5>
-                                <div class="awardIcon  text-center mt-5">
-                                    <i class="fas fa-award fa-lg text-white"></i>
-                                </div>
-                                <h5 class="text-white text-center mt-5">0/1</h5>
-                                <h5 class="text-white text-center mt-3">Data Carimbo Inicial</h5>
-                                <h5 class="text-white text-center mt-3">Até</h5>
-                                <h5 class="text-white text-center mt-3">Data Carimbo Final</h5>
-                            </div>
+                                <div class="card-body">
 
-                            <div class="previewRaspadinhaCover d-none">
-                                <h5 class="text-white text-center mt-3">Designação</h5>
-                                <div class="coverPreview text-center mt-5">
-                                    <img src="assets\imagens\raspadinhaCover.png" alt="" id="imgClickCover">
-                                </div>
-                                <h5 class="text-white text-center mt-3">Raspe para ganhar</h5>
-                            </div>
+                                    <div class="col-md-12 col-xs-12 col-sm-12 p-0">
+                                        <div class="row p-0">
+                                            <div class="col-md-12 col-sm-12 col-xs-12 w-100 h-100">
+                                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                                    <li class="nav-item">
+                                                        <a class="nav-link active " id="home-tab" data-toggle="tab" data-placement="top" title="Dados Campanha" href="#home" role="tab" aria-controls="home" aria-selected="true"><i class="fas fa-file-signature fa-lg"></i></a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" id="profile-tab" data-toggle="tab" data-placement="top" title="Filtros Campanha" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><i class="fas fa-palette fa-lg"></i></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="row pt-3 mr-0">
+                                            <div class="col-md-8 col-sm-8 col-xs-8 divDataCampaign">
 
-                            <div class="previewRaspadinhaUnCover d-none">
-                                <h5 class="text-white text-center mt-3">Designação</h5>
-                                <div class="coverPreview text-center mt-5">
-                                    <h4 class="text-white text-center mb-3" id="imgClickUnCover">Parabéns! <br>
-                                        Ganhou uma Viagem!
-                                    </h4>
+                                                <div class="cupaoDiv">
+                                                    <h6 class="text-primary">Designação Cupão</h6>
+                                                    <hr>
+                                                    <div class="infoCupao">
+                                                        <!-- Material outline counter input -->
+                                                        <div class="md-form md-outline">
+                                                            <input id="input-char-counter1" type="text" maxlength="50" class="form-control">
+                                                            <label for="input-char-counter1">Nome de Campanha</label>
+                                                            <small id="passwordHelpBlockMD" class="form-text text-muted">
+                                                                Nome da Campanha (0-50 caracteres).
+                                                            </small>
+                                                        </div>
+
+                                                        <!-- Material outline counter input -->
+                                                        <div class="md-form md-outline">
+                                                            <input id="input-char-counter2" type="text" maxlength="100" class="form-control">
+                                                            <label for="input-char-counter2">Descrição de Campanha</label>
+                                                            <small id="passwordHelpBlockMD" class="form-text text-muted">
+                                                                Descricao da Campanha (0-100 caracteres).
+                                                            </small>
+                                                        </div>
+
+                                                    </div>
+                                                    <h6 class="text-primary">Valor Cupão</h6>
+                                                    <hr>
+                                                    <div class="col-md-12 col-xs-12 col-sm-12">
+                                                        <div class="row">
+                                                            <div class="col-md-12 col-xs-12 col-sm-12">
+                                                                <select class="custom-select custom-select-sm">
+                                                                    <option selected>Percentagem de desconto</option>
+                                                                    <option value="1">10%</option>
+                                                                    <option value="2">20%</option>
+                                                                    <option value="3">30%</option>
+                                                                    <option value="4">40%</option>
+                                                                    <option value="5">50%</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <h6 class="text-primary mt-4">Data Cupão</h6>
+                                                    <hr>
+                                                    <div class="col-md-12 col-xs-12 col-sm-12">
+                                                        <div class="row">
+                                                            <div class="col-md-6 col-xs-6 col-sm-6">
+                                                                <div class="md-form">
+                                                                    <input type="date" id="inputMDEx" class="form-control">
+                                                                    <label for="inputMDExFinalCupao">Data Inicio:</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 col-xs-6 col-sm-6">
+                                                                <div class="md-form">
+                                                                    <input type="date" id="inputMDEx" class="form-control">
+                                                                    <label for="inputMDExFinalCupao">Data Final:</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="buttons float-right">
+                                                        <button type="button" class="btn btn-primary">Gravar</button>
+                                                        <button type="button" class="btn btn-danger">Sair</button>
+                                                    </div>
+                                                </div>
+
+                                                <div class="raspadinhaDiv">
+
+                                                </div>
+
+                                                <div class="carimboDiv">
+
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-4 col-xs-4 col-sm-4 p-0 w-100 shadow h-100 cardPreviewCol ">
+                                                <div class="card cardPreview border-0 shadow h-100 w-100">
+                                                    <div class="card-header bg-white text-primary w-100 h-100">
+                                                        <h6 class="">Pré-Visualização</h6>
+                                                    </div>
+                                                    <div class="card-body">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
                                 </div>
-                                <h5 class="text-white text-center mt-3">Reclame o Prémio até <br>
-                                    <h2 class="text-white text-center mt-3">Data Final</h2>
-                                </h5>
                             </div>
                         </div>
+
                     </div>
+
                 </div>
 
             </div>
 
         </div>
-
     </div>
 </div>

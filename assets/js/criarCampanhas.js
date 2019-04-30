@@ -1,107 +1,28 @@
-var hideAllPreviews = function() {
-    $('div[class^=preview]').hide();
-}
-
-var hideAllSwitchs = function() {
-    $('div[class^=switch]').hide();
-}
-
-$('#selectDesconto').on('change', function () {
-    var category = $(this).val();
-
-    /* Mostra div selecionada */
-    if (category == '1') {
-        //Show Forms
-        $('.switchDataCupoes').show();
-
-        //Hide Forms
-        $('.switchDataRaspadinha').hide();
-        $('.switchDataCarimbo').hide();
-
-        //Show Preview
-        $('.previewCupoes').show();
-
-        //Hide Preview
-        $('.previewRaspadinhaCover').hide();
-        $('.previewRaspadinhaUnCover').hide();
-        $('.previewCarimbos').hide();
-
-        //Remove d-none Class
-        $('.switchDataCupoes').removeClass('d-none');
-        $('.previewCupoes').removeClass('d-none');
-        $('.previewbody').addClass('bg-primary');
-    } else if (category == '2') {
-        //Show Forms
-        $('.switchDataRaspadinha').show();
-
-        //Hide Forms
-        $('.switchDataCarimbo').hide();
-        $('.switchDataCupoes').hide();
-
-        //Show Preview
-        $('.previewRaspadinhaCover').show();
-
-        //Hide Preview
-        $('.previewCupoes').hide();
-        $('.previewRaspadinhaUnCover').hide();
-        $('.previewCarimbos').hide();
-
-        //Remove d-none Class
-        $('.switchDataRaspadinha').removeClass('d-none');
-        $('.previewRaspadinhaCover').removeClass('d-none');
-        $('.previewbody').addClass('bg-primary');
-    } else if (category == '3') {
-        //Show Forms
-        $('.switchDataCarimbo').show();
-
-        //Hide Forms
-        $('.switchDataCupoes').hide();
-        $('.switchDataRaspadinha').hide();
-
-        //Hide Preview
-        $('.previewCupoes').hide();
-        $('.previewRaspadinhaCover').hide();
-        $('.previewRaspadinhaUnCover').hide();
-
-        //Show Preview
-        $('.previewCarimbos').show();
-
-        //Remove d-none Class
-        $('.switchDataCarimbo').removeClass('d-none');
-        $('.previewCarimbos').removeClass('d-none');
-        $('.previewbody').addClass('bg-primary');
-    } else {
-        //Hide all data
-        hideAllSwitchs();
-        hideAllPreviews();
-        $('.previewbody').removeClass('bg-primary');
+$(window).on('load resize', function () {
+    var win = $(this); //this = window
+    if (win.width() <= 1024) {
+        $('.dataCardL').removeClass('fa-5x');
+        $('.dataCardL').addClass('fa-2x');
+        $('.dataCardL').addClass('mt-4');
+        $('.dBlock').addClass('d-block');
+        $('.elementResize').removeClass('col-md-12 col-sm-12 col-xs-12');
+        $('.elementResize').addClass('col-md-12 col-sm-12 col-xs-12');
     }
-
-});
-
-$('#imgClickCover').on('click', function () { 
-
-    $('.previewRaspadinhaCover').hide();
-    $('.previewRaspadinhaUnCover').show();
-    
-    //Remove d-none Class
-    $('.previewRaspadinhaUnCover').removeClass('d-none');
-});
-
-$('#imgClickUnCover').on('click', function () { 
-    $('.previewRaspadinhaCover').show();
-    $('.previewRaspadinhaUnCover').hide();
-});
-
-$('#filtersMenu').on('click', function() {~
-    
-    $('.menuFilters').removeClass('d-none');
-
-    $('.insertData').hide();
-    $('.menuFilters').show();
-});
-
-$('#insertMenu').on('click', function() {
-    $('.insertData').show();
-    $('.menuFilters').hide();
+    if (win.width() <= 900) {
+        $('.dataCardL').removeClass('fa-2x');
+        $('.dataCardL').removeClass('mt-4');
+        $('.dataCardL').addClass('fa-2x');
+        $('.cardColTag').addClass('mt-2');
+        $('.cardPreviewCol').addClass('ml-3');
+    }
+    if (win.width() >= 1025) {
+        $('.dataCardL').removeClass('fa-2x');
+        $('.dataCardL').removeClass('mt-4');
+        $('.dataCardL').addClass('fa-5x');
+        $('.dBlock').removeClass('d-block');
+        $('.elementResize').addClass('col-md-12 col-sm-12 col-xs-12');
+        $('.elementResize').removeClass('col-md-12 col-sm-12 col-xs-12');
+        $('.cardColTag').removeClass('mt-2');
+        $('.cardPreviewCol').removeClass('ml-3');
+    }
 });

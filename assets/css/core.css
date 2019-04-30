@@ -7,6 +7,7 @@ body {
 
 #sidebarMenu.active {
     left: 0;
+    transition: 1s;
 }
 
 /*SideMenu*/
@@ -23,6 +24,7 @@ body {
     width: 300px;
     transition: .4s;
     color: #e1ffff;
+    transition: 1s;
 }
 
 .nav-side-menu ul, .nav-side-menu li {
