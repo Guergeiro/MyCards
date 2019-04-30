@@ -29,7 +29,7 @@
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-light navbar-fixed-top" id="myNav">
-    <i class="fa-lg fas fa-bars p-3"></i>
+    <i class="fa-lg fas fa-angle-right p-3" id="sidenav-button"></i>
     <h5 class="my-0 mr-md-auto font-weight-normal">MyCards</h5>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
       aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,10 +53,11 @@
     </div>
   </nav>
 
-  <div class="border-right sidenav">
-    <ul>
+  <div class="border-right sidenav" style="margin-left: -320px;">
+    <ul class="p-0">
       <a href="#" class="text-decoration-none">
-        <li><i class="fa fa-chart-area fa-lg p-4"></i><span class="nav-label font-weight-normal">Dashboard</span></li>
+        <li class="active"><i class="fa fa-chart-area fa-lg p-4"></i><span
+            class="nav-label font-weight-normal">Dashboard</span></li>
       </a>
       <a role="button" data-toggle="collapse" data-target="#empresa">
         <li><i class="fa fa-building fa-lg p-4"></i><span class="nav-label font-weight-normal ">Empresa</span> <i
