@@ -1,12 +1,12 @@
 <div class="container-fluid ctnFluid">
-    <div class="row pt-3 pb-3">
+    <div class="row pt-3 pb-3 h-100">
         <div class="col-md-12 col-sm-12 col-xs-12">
 
             <div class="row">
 
                 <div class="cold-md-12 col-xs-12 col-sm-12">
 
-                    <div class="row">
+                    <div class="row heightRow">
 
                         <div class="col-md-4 col-sm-4 col-xs-4">
                             <div class="card h-100">
@@ -16,7 +16,7 @@
                                 </div>
                                 <div class="card-body">
 
-                                    <div class="card border rounded border-0 shadow rounded">
+                                    <div class="card border rounded border-0 shadow rounded cuponJS">
                                         <div class="card-body hoverable hoverCard">
                                             <div class="col-md-12 col-xs-12 col-sm-12">
                                                 <div class="row dBlock">
@@ -32,7 +32,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="card border border-0 shadow rounded mb-2 mt-2">
+                                    <div class="card border border-0 shadow rounded mb-2 mt-2 raspadinhaJS ">
                                         <div class="card-body hoverable hoverCard">
                                             <div class="col-md-12 col-xs-12 col-sm-12">
                                                 <div class="row dBlock">
@@ -48,7 +48,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="card border rounded border-0 shadow">
+                                    <div class="card border rounded border-0 shadow carimboJS">
                                         <div class="card-body hoverable hoverCard">
                                             <div class="col-md-12 col-xs-12 col-sm-12">
                                                 <div class="row dBlock">
@@ -68,30 +68,21 @@
                         </div>
 
                         <div class="col-md-8 col-sm-8 col-xs-8 cardColTag">
-                            <div class="card">
+                            <div class="card h-100">
                                 <div class="card-header bg-white">
                                     <h3 class="text-primary">Dados da Campanha</h3>
-                                    <small class="ml-2">Complete os dados de Campanha</small>
+                                    <div class="filtrosPopUp float-right">
+                                        <a href="#"><i class="fas fa-sort-amount-up fa-lg text-primary"></i></a>
+                                    </div> <small class="ml-2">Complete os dados de Campanha</small>
                                 </div>
-                                <div class="card-body">
+                                <div class="card-body ">
 
                                     <div class="col-md-12 col-xs-12 col-sm-12 p-0">
-                                        <div class="row p-0">
-                                            <div class="col-md-12 col-sm-12 col-xs-12 w-100 h-100">
-                                                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                                    <li class="nav-item">
-                                                        <a class="nav-link active " id="home-tab" data-toggle="tab" data-placement="top" title="Dados Campanha" href="#home" role="tab" aria-controls="home" aria-selected="true"><i class="fas fa-file-signature fa-lg"></i></a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" id="profile-tab" data-toggle="tab" data-placement="top" title="Filtros Campanha" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><i class="fas fa-palette fa-lg"></i></a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="row pt-3 mr-0">
+                                        <div class="row mr-0">
+
                                             <div class="col-md-8 col-sm-8 col-xs-8 divDataCampaign">
 
-                                                <div class="cupaoDiv">
+                                                <div class="cupaoDiv d-none">
                                                     <h6 class="text-primary">Designação Cupão</h6>
                                                     <hr>
                                                     <div class="infoCupao">
@@ -119,13 +110,13 @@
                                                     <div class="col-md-12 col-xs-12 col-sm-12">
                                                         <div class="row">
                                                             <div class="col-md-12 col-xs-12 col-sm-12">
-                                                                <select class="custom-select custom-select-sm">
+                                                                <select id="selectValor" class="custom-select custom-select-sm">
                                                                     <option selected>Percentagem de desconto</option>
-                                                                    <option value="1">10%</option>
-                                                                    <option value="2">20%</option>
-                                                                    <option value="3">30%</option>
-                                                                    <option value="4">40%</option>
-                                                                    <option value="5">50%</option>
+                                                                    <option value="10%">10%</option>
+                                                                    <option value="20%">20%</option>
+                                                                    <option value="30%">30%</option>
+                                                                    <option value="40%">40%</option>
+                                                                    <option value="50%">50%</option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -142,35 +133,135 @@
                                                             </div>
                                                             <div class="col-md-6 col-xs-6 col-sm-6">
                                                                 <div class="md-form">
-                                                                    <input type="date" id="inputMDEx" class="form-control">
+                                                                    <input type="date" id="inputMDEx2" class="form-control">
                                                                     <label for="inputMDExFinalCupao">Data Final:</label>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
 
-                                                    <div class="buttons float-right">
+                                                    <div class="buttons float-right btnGravar">
                                                         <button type="button" class="btn btn-primary">Gravar</button>
-                                                        <button type="button" class="btn btn-danger">Sair</button>
                                                     </div>
                                                 </div>
 
-                                                <div class="raspadinhaDiv">
+                                                <div class="raspadinhaDiv d-none">
+                                                    <h6 class="text-primary">Designação Raspadinha</h6>
+                                                    <hr>
+                                                    <div class="infoRaspadinha">
+                                                        <!-- Material outline counter input -->
+                                                        <div class="md-form md-outline">
+                                                            <input id="input-char-counter10" type="text" maxlength="50" class="form-control">
+                                                            <label for="input-char-counter1">Nome de Campanha</label>
+                                                            <small id="passwordHelpBlockMD" class="form-text text-muted">
+                                                                Nome da Campanha (0-50 caracteres).
+                                                            </small>
+                                                        </div>
 
+                                                        <!-- Material outline counter input -->
+                                                        <div class="md-form md-outline">
+                                                            <input id="input-char-counter11" type="text" maxlength="100" class="form-control">
+                                                            <label for="input-char-counter2">Condição de Campanha</label>
+                                                            <small id="passwordHelpBlockMD" class="form-text text-muted">
+                                                                Condição da Campanha (0-100 caracteres).
+                                                            </small>
+                                                        </div>
+
+                                                        <!-- Material outline counter input -->
+                                                        <div class="md-form md-outline">
+                                                            <input id="input-char-counter3" type="text" maxlength="100" class="form-control">
+                                                            <label for="input-char-counter3">Prémio de Campanha</label>
+                                                            <small id="passwordHelpBlockMD" class="form-text text-muted">
+                                                                Prémio da Campanha (0-50 caracteres).
+                                                            </small>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="buttons float-right btnGravar">
+                                                        <button type="button" class="btn btn-primary">Gravar</button>
+                                                    </div>
                                                 </div>
 
-                                                <div class="carimboDiv">
+                                                <div class="carimboDiv d-none">
+                                                    <h6 class="text-primary">Designação Carimbos</h6>
+                                                    <hr>
+                                                    <div class="infoCarimbos">
+                                                        <!-- Material outline counter input -->
+                                                        <div class="md-form md-outline">
+                                                            <input id="input-char-counter30" type="text" maxlength="50" class="form-control">
+                                                            <label for="input-char-counter1">Nome de Campanha</label>
+                                                            <small id="passwordHelpBlockMD" class="form-text text-muted">
+                                                                Nome da Campanha (0-50 caracteres).
+                                                            </small>
+                                                        </div>
 
+                                                        <!-- Material outline counter input -->
+                                                        <div class="md-form md-outline">
+                                                            <input id="input-char-counter31" type="text" maxlength="50" class="form-control">
+                                                            <label for="input-char-counter1">Prémio de Campanha</label>
+                                                            <small id="passwordHelpBlockMD" class="form-text text-muted">
+                                                                Prémio da Campanha (0-50 caracteres).
+                                                            </small>
+                                                        </div>
+
+
+                                                        <!-- Material outline counter input -->
+                                                        <div class="md-form md-outline">
+                                                            <input id="numberExample" type="number" min="0" class="form-control">
+                                                            <label for="numberExample">Número de Carimbos</label>
+                                                            <small id="passwordHelpBlockMD" class="form-text text-muted">
+                                                                Número de Carimbos(0<sup>+</sup>).
+                                                            </small>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="buttons float-right btnGravar">
+                                                        <button type="button" class="btn btn-primary">Gravar</button>
+                                                    </div>
                                                 </div>
 
                                             </div>
+
                                             <div class="col-md-4 col-xs-4 col-sm-4 p-0 w-100 shadow h-100 cardPreviewCol ">
                                                 <div class="card cardPreview border-0 shadow h-100 w-100">
                                                     <div class="card-header bg-white text-primary w-100 h-100">
-                                                        <h6 class="">Pré-Visualização</h6>
+                                                        <div class="col-md-12 col-sm-12 col-xs-12 p-0">
+                                                            <div class="row p-0">
+                                                                <div class="col-md-10 col-sm-10 col-xs-10  w-75">
+                                                                    <h6 id="preTruncate" class="">Amostra</h6>
+                                                                </div>
+                                                                <div id="cleaner" class="col-md-2 col-sm-2 col-xs-2 p-0 w-25">
+                                                                    <a href="#"><i class="fas fa-broom fa-lg text-primary"></i></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div class="card-body">
-
+                                                    <div class="card-body text-center">
+                                                        <div class="previewCupao d-none">
+                                                            <h6 id="desigCupaoPreview" class="text-primary"></h6>
+                                                            <h4 id="desigCupaoPreviewValor" class="text-primary font-weight-bold mt-4"></h4>
+                                                            <h6 id="desigCupaoPreviewDesi" class="text-primary mt-4">
+                                                                </h4>
+                                                                <h6 id="designCupaoDataP" class="text-primary mt-4 mb-2"></h6>
+                                                                <h6 class="text-primary mb-2 mt-2 d-none ateLabel">Até</h6>
+                                                                <h6 id="designCupaoDataF" class="text-primary mt-2"></h6>
+                                                        </div>
+                                                        <div class="previewRaspadinha d-none">
+                                                            <h6 id="desigRaspadinhaPreview" class="text-primary"></h6>
+                                                            <img src="assets\imagens\raspadinhaCover.png" alt="" class="imgResize">
+                                                            <div id="selectPrize" class="d-none mt-4 mb-4 selectPrize">
+                                                                <h3 class="text-primary">Ganhou!</h3>
+                                                                <h4 id="desigRaspadinhaPreviewPremio" class="text-primary"></h4>
+                                                            </div>
+                                                            <h6 id="desigRaspadinhaPreviewCondição" class="text-primary mt-2"></h6>
+                                                        </div>
+                                                        <div class="previewCarimbos d-none">
+                                                            <h6 id="desigCarimboPreviewDesig" class="text-primary"></h6>
+                                                            <h6 id="desigCarimboPreviewPc" class="text-primary mt-4"></h6>
+                                                            <h6 id="desigCarimboPreviewNc" class="text-primary mt-4"></h6>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

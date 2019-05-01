@@ -1,3 +1,17 @@
 .hoverCard {
     cursor: pointer;
 }
+
+.ctnFluid {
+    height: calc(100vh - 90px) !important;
+}
+
+.cleaner {
+    cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    #preTruncate {
+        max-width: 5rem !important;
+    }
+}

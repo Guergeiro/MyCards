@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title><?php echo ucfirst($title); ?></title>
 
@@ -28,13 +28,13 @@
 <body>
 
 	<!-- Begining of Full Page Wrapper -->
-	<div class="wrapper">
+	<div class="wrapper sticky-top">
 
 		<!-- Begining of Header Wrapper -->
 		<div class="wrapper-header">
 
 			<!-- Begining of NavBar -->
-			<nav class="navbar navbar-expand navbar-light bg-white topbar static-top shadow">
+			<nav class="navbar navbar-expand navbar-light bg-white shadow contentWrapper">
 
 				<!-- Begining of Fluid Container -->
 				<div class="container-fluid">
@@ -150,7 +150,7 @@
 		<!-- Ending of Header Wrapper -->
 
 		<!-- Begining of Body Wrapper -->
-		<div class="wrapper-body">
+		<div class="wrapper-body ">
 
 			<!-- Begining of SideMenu -->
 			<div class="nav-side-menu position-absolute" id="sidebarMenu">
