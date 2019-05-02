@@ -10,6 +10,37 @@
     cursor: pointer;
 }
 
+.cardTipoCampanha {
+    min-height: calc(100vh - 90px);
+}
+
+.custom-control-input:checked~.custom-control-label::before {
+background-color:#a6c!important;
+}
+
+.custom-switch .custom-control-input:checked~.custom-control-label::after {
+transform: translateX(2rem) !important;
+}
+
+.custom-control-label::before {
+    background-color:#4285f4!important;
+    border:unset !important;
+    width:3rem !important;
+}
+
+*, ::after, ::before {
+    box-shadow: unset !important;
+}
+
+.custom-switch .custom-control-label::after {
+    background-color: white;
+    top: calc(.27rem + 2.0px) !important;
+}
+
+#selectValor {
+    border-bottom: #4285f4 solid 2px !important;
+}
+
 @media (min-width: 768px) {
     #preTruncate {
         max-width: 5rem !important;

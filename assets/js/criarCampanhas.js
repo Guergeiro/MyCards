@@ -119,3 +119,7 @@ $("#input-char-counter31").on("input", function() {
 $("#numberExample").on("change", function() {
     $("#desigCarimboPreviewNc").html($(this).val());
 });
+
+$("#buttonSwitch").click(function(){
+    $("#customSwitches").toggleClass('color1').toggleClass('color2');
+});

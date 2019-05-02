@@ -6,10 +6,10 @@
 
                 <div class="cold-md-12 col-xs-12 col-sm-12">
 
-                    <div class="row heightRow">
+                    <div class="row heightRow mb-2">
 
-                        <div class="col-md-4 col-sm-4 col-xs-4">
-                            <div class="card h-100">
+                        <div class="col-md-4 col-sm-4 col-xs-4 cardTipoCampanha">
+                            <div class="card h-100 cardTipoCampanha">
                                 <div class="card-header bg-white">
                                     <h3 class="text-primary">Tipo de Campanha</h3>
                                     <small class="ml-2">Selecione um tipo de Campanha</small>
@@ -72,7 +72,7 @@
                                 <div class="card-header bg-white">
                                     <h3 class="text-primary">Dados da Campanha</h3>
                                     <div class="filtrosPopUp float-right">
-                                        <a href="#"><i class="fas fa-sort-amount-up fa-lg text-primary"></i></a>
+                                        <a href="#" data-toggle="modal" data-target="#fullHeightModalRight"><i class="fas fa-sort-amount-up fa-lg text-primary"></i></a>
                                     </div> <small class="ml-2">Complete os dados de Campanha</small>
                                 </div>
                                 <div class="card-body ">
@@ -110,7 +110,7 @@
                                                     <div class="col-md-12 col-xs-12 col-sm-12">
                                                         <div class="row">
                                                             <div class="col-md-12 col-xs-12 col-sm-12">
-                                                                <select id="selectValor" class="custom-select custom-select-sm">
+                                                                <select id="selectValor" class="custom-select custom-select-sm border-0">
                                                                     <option selected>Percentagem de desconto</option>
                                                                     <option value="10%">10%</option>
                                                                     <option value="20%">20%</option>
@@ -282,3 +282,58 @@
         </div>
     </div>
 </div>
+
+<!-- Full Height Modal Right -->
+<div class="modal fade right" id="fullHeightModalRight" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+    <!-- Add class .modal-full-height and then add class .modal-right (or other classes from list above) to set a position to the modal -->
+    <div class="modal-dialog modal-full-height modal-right" role="document">
+
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title w-100 text-primary" id="myModalLabel">Filtros Campanha</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="row d-block">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <big class="text-primary">Selecionar Sexo Alvo:</big>
+                            <hr>
+                            <!-- Default switch -->
+                            <div class="custom-control custom-switch p-0 ml-2">
+                                <label for="" class="mr-4 pr-3 font-weight-bold text-primary"><i class="fas fa-male fa-2x mr-1"></i></label>
+                                <input type="checkbox" class="custom-control-input buttonSwitch bg-primary" id="customSwitches">
+                                <span class="lever"></span>
+                                <label class="custom-control-label font-weight-bold text-secondary " for="customSwitches"><i class="fas fa-female fa-2x ml-4 "></i></label>
+                            </div>
+                            <small class="pl-2">Selecionar apenas em caso de individualidade!</small>
+                        </div>
+                        <hr>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <big class="text-primary">Selecionar Cidade Alvo:</big>
+                            <hr>   
+                            <i class="fas fa-flag fa-2x text-primary"></i>
+                            
+                            <br>
+                            <i class="fas fa-flag fa-2x text-primary mt-2"></i>
+
+                            <br>
+                            <small class="pl-2">Selecionar apenas em caso de individualidade!</small>
+                        </div>
+
+                        <hr>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Full Height Modal Right -->
