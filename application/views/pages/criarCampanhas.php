@@ -1,14 +1,14 @@
 <div class="container-fluid ctnFluid">
     <div class="row pt-3 pb-3 h-100">
-        <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="col-12">
 
             <div class="row">
 
-                <div class="cold-md-12 col-xs-12 col-sm-12">
+                <div class="col-12">
 
                     <div class="row heightRow mb-2">
 
-                        <div class="col-md-4 col-sm-4 col-xs-4 cardTipoCampanha">
+                        <div class="col-sm-4 cardTipoCampanha">
                             <div class="card h-100 cardTipoCampanha">
                                 <div class="card-header bg-white">
                                     <h3 class="text-primary">Tipo de Campanha</h3>
@@ -18,12 +18,12 @@
 
                                     <div class="card border rounded border-0 shadow rounded cuponJS">
                                         <div class="card-body hoverable hoverCard">
-                                            <div class="col-md-12 col-xs-12 col-sm-12">
+                                            <div class="col-12">
                                                 <div class="row dBlock">
-                                                    <div class="col-md-4 col-xs-4 col-sm-4">
+                                                    <div class="col-4">
                                                         <i class="fas fa-tags fa-5x text-primary dataCardL"></i>
                                                     </div>
-                                                    <div class="col-md-8 col-sm-8 col-xs-8 mt-3 elementResize">
+                                                    <div class="col-8 mt-3 elementResize">
                                                         <h6 class="text-primary">Crie um Cupão!</h6>
                                                         <small class="text-primary">Selecione para criar um Cupão.</small>
                                                     </div>
@@ -34,12 +34,12 @@
 
                                     <div class="card border border-0 shadow rounded mb-2 mt-2 raspadinhaJS ">
                                         <div class="card-body hoverable hoverCard">
-                                            <div class="col-md-12 col-xs-12 col-sm-12">
+                                            <div class="col-12">
                                                 <div class="row dBlock">
-                                                    <div class="col-md-4 col-xs-4 col-sm-4">
+                                                    <div class="col-4">
                                                         <i class="fas fa-award fa-5x text-primary dataCardL"></i>
                                                     </div>
-                                                    <div class="col-md-8 col-sm-8 col-xs-8 mt-3 elementResize">
+                                                    <div class="col-8 mt-3 elementResize">
                                                         <h6 class="text-primary">Crie uma Raspadinha!</h6>
                                                         <small class="text-primary">Selecione para criar uma Raspadinha.</small>
                                                     </div>

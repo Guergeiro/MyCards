@@ -196,7 +196,7 @@
                                                     <i id="arrowOrder" class="fas fa-arrow-down text-primary" data-toggle="tooltip" data-placement="top" title="Campanhas Recentes"></i>
                                                     <i id="arrowOrder" class="fas fa-arrow-up text-primary d-none" data-toggle="tooltip" data-placement="top" title="Campanhas Menos Recentes"></i>
                                                 </div>
-                                                <small class="ml-4">Maximo 6 Campanhas</small>
+                                                <small class="ml-4">Maximo 5 Campanhas</small>
                                             </div>
                                         </div>
                                     </div>
