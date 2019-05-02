@@ -57,7 +57,7 @@
 						<span>John Doe</span>
 					</a>
 					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="#"><i class="fas fa-user fa-fw"></i> Perfil</a>
+						<a class="dropdown-item" href="<?php echo base_url("perfil"); ?>"><i class="fas fa-user fa-fw"></i> Perfil</a>
 						<a class="dropdown-item" href="#"><i class="fas fa-cog fa-fw"></i> Definições</a>
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item" href="#"><i class="fas fa-power-off fa-fw"></i> Logout</a>
