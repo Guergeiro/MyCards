@@ -1,16 +1,36 @@
-document.querySelector("nav").querySelector(".navbar-toggler").addEventListener("click", function () {
-	let sidebar = document.querySelector("#ourNavbar");
-	if (sidebar.style.width == "250px") {
-		document.querySelector("nav").querySelector(".navbar-toggler").querySelector("i").classList.remove("fa-times");
-		document.querySelector("nav").querySelector(".navbar-toggler").querySelector("i").classList.add("fa-bars");
-		sidebar.style.width = "0";
-		sidebar.style.marginLeft = "-250px";
+document.querySelector("#ourNavbar").style.paddingTop = document.querySelector("nav").offsetHeight;
+document.querySelector("nav").querySelector("#sidebarToggler").addEventListener("click", function () {
+	if (document.querySelector("#ourNavbar").style.marginLeft == "0px") {
+		document.querySelector("nav").querySelector("#sidebarToggler").querySelector("i").classList.remove("close-effect");
+		document.querySelector("#ourNavbar").style.marginLeft = "-320px";
 	} else {
-		document.querySelector("nav").querySelector(".navbar-toggler").querySelector("i").classList.remove("fa-bars");
-		document.querySelector("nav").querySelector(".navbar-toggler").querySelector("i").classList.add("fa-times");
-		sidebar.style.width = "250px";
-		sidebar.style.marginLeft = "0";
+		document.querySelector("nav").querySelector("#sidebarToggler").querySelector("i").classList.add("close-effect");
+		document.querySelector("#ourNavbar").style.marginLeft = "0px";
 	}
 });
 
-document.querySelector("#ourNavbar").style.paddingTop = document.querySelector("nav").offsetHeight;
+document.querySelector("#ourNavbar").querySelectorAll(".list-group-item").forEach((item) => {
+	item.addEventListener("click", function () {
+		if (this.nextElementSibling.nodeName == "DIV") {
+			if (!this.nextElementSibling.classList.contains("collapsing")) {
+				if (this.nextElementSibling.classList.contains("show")) {
+					this.querySelector(".fa-chevron-down").classList.remove("close-effect");
+				} else {
+					this.querySelector(".fa-chevron-down").classList.add("close-effect");
+				}
+			}
+		}
+	});
+});
+
+document.querySelector("nav").querySelector("#navbarToggler").addEventListener("click", function () {
+	if (!this.nextElementSibling.classList.contains("collapsing")) {
+		if (this.nextElementSibling.classList.contains("show")) {
+			this.querySelector("i").classList.add("fa-bars");
+			this.querySelector("i").classList.remove("fa-times");
+		} else {
+			this.querySelector("i").classList.remove("fa-bars");
+			this.querySelector("i").classList.add("fa-times");
+		}
+	}
+});

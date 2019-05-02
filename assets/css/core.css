@@ -1,5 +1,6 @@
 * {
 	font-family: "Roboto", sans-serif;
+	transition: all 0.25s;
 }
 
 .bg-orange {
@@ -10,12 +11,13 @@
 	background-color: #0056b3 !important;
 }
 
-.vertical-line {
-	width: 2px;
+i.close-effect {
+	transform: rotate(180deg);
 }
 
 #ourNavbar {
 	transition: all 0.5s;
+	width: 320px;
 }
 
 #ourNavbar .active {
@@ -27,10 +29,6 @@
 	bottom: 0;
 }
 
-nav .list-unstyled {
-	max-height: 20rem;
-}
-
-nav .list-unstyled .media-body {
-	width: 20rem;
+#ourNavbar a:hover {
+	background-color: #ff8400 !important;
 }

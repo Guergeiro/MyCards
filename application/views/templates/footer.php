@@ -10,7 +10,7 @@
 </script>
 
 <script src="<?php echo base_url("assets/js/core.js"); ?>"></script>
-<script src=""></script>
+<script src="<?php echo base_url("assets/js/{$page}.js"); ?>"></script>
 </body>
 
 </html>

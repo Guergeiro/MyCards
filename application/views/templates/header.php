@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Titulo -->
-	<title><?php echo $title; ?></title>
+	<title><?php echo ucfirst($page); ?></title>
 
 	<!-- Boostrap CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -23,83 +23,51 @@
 	<link href="<?php echo base_url("assets/css/core.css"); ?>" rel="stylesheet">
 
 	<!-- Page CSS -->
-	<link rel="stylesheet" href="<?php echo base_url("assets/css/{$title}.css"); ?>">
+	<link rel="stylesheet" href="<?php echo base_url("assets/css/{$page}.css"); ?>">
 </head>
 
 <body>
-	<nav class="navbar bg-light navbar-light fixed-top p-3 shadow">
-		<button class="navbar-toggler mx-4" role="button" type="button">
-			<i class="fas fa-bars"></i>
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top py-3">
+		<button class="navbar-toggler d-inline" role="button" type="button" id="sidebarToggler">
+			<i class="fas fa-chevron-right fa-fw"></i>
 		</button>
-		<div class="justify-content-end">
-			<ul class="nav">
-				<li class="nav-item ml-1 d-flex align-items-center dropdown">
-					<a class="nav-link py-0 text-dark d-md-none" href="<?php echo base_url("notificacoes"); ?>">
-						<i class="fas fa-bell fa-fw fa-lg"></i> <span
-							class="badge badge-danger ml-n3 align-top rounded-circle">4</span>
+		<button class="navbar-toggler" role="button" type="button" data-toggle="collapse" data-target="#navbar" id="navbarToggler">
+			<i class="fas fa-bars fa-fw"></i>
+		</button>
+		<div class="collapse navbar-collapse text-center justify-content-end" id="navbar">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" href="<?php echo base_url("notificacoes"); ?>">
+						<i class="fas fa-bell fa-fw fa-lg"></i>
+						<span class="badge badge-danger ml-n3 align-top rounded-circle">4</span>
+						<span class="d-md-none">Notificações</span>
 					</a>
-					<a class="nav-link py-0 text-dark d-none d-md-inline-block" href="#" id="navbarNotifications"
-						role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<i class="fas fa-bell fa-fw fa-lg"></i> <span
-							class="badge badge-danger ml-n3 align-top rounded-circle">4</span>
-					</a>
-					<ul class="list-unstyled dropdown-menu dropdown-menu-right overflow-auto"
-						aria-labelledby="navbarNotifications">
-						<a class="dropdown-header" href="<?php echo base_url("notificacoes"); ?>">Ver todas as notificações</a>
-						<li class="dropdown-item media">
-							<img src="avatar/42087367_983983231785555_8792497069429358592_o.jpg"
-								class="align-self-center mr-3" alt="" srcset="" width="40" height="40">
-							<div class="media-body text-wrap">
-								<h5 class="m-0">this is title</h5>
-								<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint, mollitia?</span>
-							</div>
-						</li>
-					</ul>
 				</li>
-				<li class="nav-item mr-1 d-flex align-items-center dropdown">
-					<a class="nav-link py-0 text-dark d-md-none" href="<?php echo base_url("mensagens"); ?>">
-						<i class="fas fa-envelope fa-fw fa-lg"></i> <span
-							class="badge badge-danger ml-n3 align-top rounded-circle">4</span>
+				<li class="nav-item">
+					<a class="nav-link" href="<?php echo base_url("mensagens"); ?>">
+						<i class="fas fa-envelope fa-fw fa-lg"></i>
+						<span class="badge badge-danger ml-n3 align-top rounded-circle">4</span>
+						<span class="d-md-none">Mensangens</span>
 					</a>
-					<a class="nav-link py-0 text-dark d-none d-md-inline-block" href="#" id="navbarMessages"
-						role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<i class="fas fa-envelope fa-fw fa-lg"></i> <span
-							class="badge badge-danger ml-n3 align-top rounded-circle">4</span>
-					</a>
-					<ul class="list-unstyled dropdown-menu dropdown-menu-right overflow-auto"
-						aria-labelledby="navbarMessages">
-						<a class="dropdown-header" href="<?php echo base_url("mensagens"); ?>">Ver todas as mensagens</a>
-						<li class="dropdown-item media">
-							<img src="avatar/920983_516047081776703_299333251_o.jpg" class="align-self-center mr-3"
-								alt="" srcset="" width="40" height="40">
-							<div class="media-body text-wrap">
-								<h5 class="m-0">this is title</h5>
-								<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint,
-									mollitia?</span>
-							</div>
-						</li>
-					</ul>
 				</li>
-				<li class="nav-item vertical-line bg-dark m-2"></li>
-				<li class="nav-item mx-1 dropdown">
-					<a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button"
+				<li class="nav-item d-inline-block dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
 						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<img src="avatar/18700412_1549755958375924_1739793708868521246_o.jpg" alt="" srcset=""
-							width="40" height="40" class="rounded-circle">
-						<span class="d-md-inline-block d-none">John Doe</span>
+						<img src="<?php echo base_url('assets/avatar/920983_516047081776703_299333251_o.jpg'); ?>" alt="avatar_img" srcset="" width="24" height="24" class="rounded-circle">
+						<span>John Doe</span>
 					</a>
 					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="#"><i class="fas fa-user"></i> Perfil</a>
-						<a class="dropdown-item" href="#"><i class="fas fa-cog"></i> Settings</a>
+						<a class="dropdown-item" href="#"><i class="fas fa-user fa-fw"></i> Perfil</a>
+						<a class="dropdown-item" href="#"><i class="fas fa-cog fa-fw"></i> Definições</a>
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#"><i class="fas fa-power-off"></i> Logout</a>
+						<a class="dropdown-item" href="#"><i class="fas fa-power-off fa-fw"></i> Logout</a>
 					</div>
 				</li>
 			</ul>
 		</div>
 	</nav>
 
-	<div class="h-100 position-fixed text-light bg-blue" id="ourNavbar" style="width: 0px; margin-left: -250px;">
+	<div class="h-100 position-fixed text-light bg-blue" id="ourNavbar" style="margin-left: -320px;">
 		<ul class="list-group">
 			<a class="list-group-item bg-transparent rounded-0 border-top-0 border-bottom-0 p-3 text-light text-decoration-none active"
 				href="#">
