@@ -314,24 +314,40 @@
                         </div>
                         <hr>
                         <div class="col-md-12 col-sm-12 col-xs-12">
-                            <big class="text-primary">Selecionar Cidade Alvo:</big>
-                            <hr>   
-                            <i class="fas fa-flag fa-2x text-primary"></i>
-                            
-                            <br>
-                            <i class="fas fa-flag fa-2x text-primary mt-2"></i>
 
+                            <big class="text-primary">Selecionar Cidade Alvo:</big>
+                            <hr>
+                            <select id="selectValor" class="custom-select custom-select-sm border-0">
+                                <option selected>Localidade Campanha</option>
+                                <option class="" value="10%">Viseu</option>
+                                <option class="" value="20%">Lisboa</option>
+                            </select>
+                            <small class="pl-2">Selecionar apenas em caso de individualidade!</small>
+                        </div>
+                        <hr>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <big class="text-primary">Selecionar Idade Alvo:</big>
+                            <hr>
+                            <label for="customRange2" class="text-primary">Alcance de Idade</label>
+                            <select id="selectValor" class="custom-select custom-select-sm border-0 w-25 float-right">
+                                <option selected>Filtro</option>
+                                <option class="" value="10%">Maior</option>
+                                <option class="" value="20%">Menor</option>
+                            </select>
+                            <br>
+                            <small class="pl-2">Cada salto representa 5 anos!</small>
+                            <input type="range" class="custom-range" min="1" max="20" id="customRange2">
+                            <small class="pl-1">Idade da Campanha:</small>
+                            <small class="" id="idadeGG"></small>
                             <br>
                             <small class="pl-2">Selecionar apenas em caso de individualidade!</small>
                         </div>
-
-                        <hr>
                     </div>
                 </div>
             </div>
             <div class="modal-footer justify-content-center">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary">Gravar Filtros</button>
+
             </div>
         </div>
     </div>

@@ -123,3 +123,7 @@ $("#numberExample").on("change", function() {
 $("#buttonSwitch").click(function(){
     $("#customSwitches").toggleClass('color1').toggleClass('color2');
 });
+
+$("#customRange2").on("input", function() {
+   ($(idadeGG).html($("#customRange2").val() * 5));
+});
