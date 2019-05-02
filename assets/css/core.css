@@ -11,6 +11,10 @@
 	background-color: #0056b3 !important;
 }
 
+.bg-grey {
+	background-color: #d5dbe1 !important;
+}
+
 i.close-effect {
 	transform: rotate(180deg);
 }
@@ -22,7 +26,7 @@ i.close-effect {
 
 #ourNavbar .active {
 	border-left: 3px solid #ff8400 !important;
-	background-color: #003167 !important;
+	background-color: #b3bec9 !important;
 }
 
 #ourNavbar div.container {

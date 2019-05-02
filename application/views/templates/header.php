@@ -67,55 +67,55 @@
 		</div>
 	</nav>
 
-	<div class="h-100 position-fixed text-light bg-blue" id="ourNavbar" style="margin-left: -320px;">
+	<div class="h-100 position-fixed text-dark bg-light" id="ourNavbar" style="margin-left: -320px;">
 		<ul class="list-group">
-			<a class="list-group-item bg-transparent rounded-0 border-top-0 border-bottom-0 p-3 text-light text-decoration-none active"
+			<a class="list-group-item bg-transparent rounded-0 border-0 p-3 text-dark text-decoration-none active"
 				href="#">
-				<i class="fas fa-chart-area"></i> Dashboard
+				<i class="fas fa-chart-area fa-fw"></i> Dashboard
 			</a>
-			<a class="list-group-item bg-transparent rounded-0 border-top-0 border-bottom-0 p-3" role="button"
+			<a class="list-group-item bg-transparent rounded-0 border-0 p-3" role="button"
 				data-toggle="collapse" data-target="#empresa">
-				<i class="fas fa-building"></i> Empresa
-				<i class="fas fa-chevron-down float-right"></i>
+				<i class="fas fa-building fa-fw"></i> Empresa
+				<i class="fas fa-chevron-down float-right fa-fw"></i>
 			</a>
-			<div class="collapse bg-primary" id="empresa">
-				<a class="d-block text-light text-decoration-none p-3" href="#">
+			<div class="collapse bg-grey" id="empresa">
+				<a class="d-block text-dark text-decoration-none p-3" href="#">
 					Visualizar empresa
 				</a>
-				<a class="d-block text-light text-decoration-none p-3" href="#">
+				<a class="d-block text-dark text-decoration-none p-3" href="#">
 					Definições empresa
 				</a>
 			</div>
-			<a class="list-group-item bg-transparent rounded-0 border-top-0 border-bottom-0 p-3" role="button"
+			<a class="list-group-item bg-transparent rounded-0 border-0 p-3" role="button"
 				data-toggle="collapse" data-target="#colaboradores">
-				<i class="fas fa-user-tie"></i> Colaboradores
-				<i class="fas fa-chevron-down float-right"></i>
+				<i class="fas fa-user-tie fa-fw"></i> Colaboradores
+				<i class="fas fa-chevron-down float-right fa-fw"></i>
 			</a>
-			<div class="collapse bg-primary" id="colaboradores">
-				<a class="d-block text-light text-decoration-none p-3" href="#">
+			<div class="collapse bg-grey" id="colaboradores">
+				<a class="d-block text-dark text-decoration-none p-3" href="#">
 					Visualizar colaboradores
 				</a>
-				<a class="d-block text-light text-decoration-none p-3" href="#">
+				<a class="d-block text-dark text-decoration-none p-3" href="#">
 					Definições colaboradores
 				</a>
 			</div>
-			<a class="list-group-item bg-transparent rounded-0 border-top-0 border-bottom-0 p-3 text-light text-decoration-none"
+			<a class="list-group-item bg-transparent rounded-0 border-0 p-3 text-dark text-decoration-none"
 				href="#">
-				<i class="fas fa-users"></i> Clientes
+				<i class="fas fa-users fa-fw"></i> Clientes
 			</a>
-			<a class="list-group-item bg-transparent rounded-0 border-top-0 border-bottom-0 p-3" role="button"
+			<a class="list-group-item bg-transparent rounded-0 border-0 p-3" role="button"
 				data-toggle="collapse" data-target="#campanhas">
-				<i class="fas fa-bullhorn"></i> Campanhas
-				<i class="fas fa-chevron-down float-right"></i>
+				<i class="fas fa-bullhorn fa-fw"></i> Campanhas
+				<i class="fas fa-chevron-down float-right fa-fw"></i>
 			</a>
-			<div class="collapse bg-primary" id="campanhas">
-				<a class="d-block text-light text-decoration-none p-3" href="#">
+			<div class="collapse bg-grey" id="campanhas">
+				<a class="d-block text-dark text-decoration-none p-3" href="#">
 					Criar campanha
 				</a>
-				<a class="d-block text-light text-decoration-none p-3" href="#">
+				<a class="d-block text-dark text-decoration-none p-3" href="#">
 					Listar campanha
 				</a>
-				<a class="d-block text-light text-decoration-none p-3" href="#">
+				<a class="d-block text-dark text-decoration-none p-3" href="#">
 					Ativar campanha
 				</a>
 			</div>
