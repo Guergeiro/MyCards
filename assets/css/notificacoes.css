@@ -1,0 +1,17 @@
+main .list-group .media div {
+	width: 100%;
+	height: 100%;
+	max-width: 40px;
+	max-height: 40px;
+}
+
+main .list-group .media div img {
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
+}
+
+main .list-group .list-group-item:hover {
+	background-color: #b3bec9 !important;
+	cursor: pointer;
+}

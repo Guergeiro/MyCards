@@ -1,4 +1,4 @@
-document.querySelector("#ourNavbar").style.paddingTop = document.querySelector("nav").offsetHeight;
+document.querySelector("body").style.paddingTop = document.querySelector("nav").offsetHeight;
 document.querySelector("nav").querySelector("#sidebarToggler").addEventListener("click", function () {
 	if (document.querySelector("#ourNavbar").style.marginLeft == "0px") {
 		document.querySelector("nav").querySelector("#sidebarToggler").querySelector("i").classList.remove("close-effect");
