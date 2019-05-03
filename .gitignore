@@ -1,31 +1,69 @@
-.DS_Store
 
-application/cache/*
-!application/cache/index.html
+# Created by https://www.gitignore.io/api/sublimetext,codeigniter,visualstudiocode
+# Edit at https://www.gitignore.io/?templates=sublimetext,codeigniter,visualstudiocode
 
-application/logs/*
-!application/logs/index.html
-
-!application/*/.htaccess
-
-composer.lock
+### CodeIgniter ###
+*/config/development
+*/logs/log-*.php
+!*/logs/index.html
+*/cache/*
+!*/cache/index.html
+!*/cache/.htaccess
 
 user_guide_src/build/*
 user_guide_src/cilexer/build/*
 user_guide_src/cilexer/dist/*
 user_guide_src/cilexer/pycilexer.egg-info/*
+
+#codeigniter 3
+application/logs/*
+!application/logs/index.html
+!application/logs/.htaccess
 /vendor/
 
-# IDE Files
-#-------------------------
-/nbproject/
-.idea/*
+### CodeIgniter Patch ###
 
-## Sublime Text cache files
+### SublimeText ###
+# Cache files for Sublime Text
 *.tmlanguage.cache
 *.tmPreferences.cache
 *.stTheme.cache
+
+# Workspace files are user-specific
 *.sublime-workspace
-*.sublime-project
-/tests/tests/
-/tests/results/
+
+# Project files should be checked into the repository, unless a significant
+# proportion of contributors will probably not be using Sublime Text
+# *.sublime-project
+
+# SFTP configuration file
+sftp-config.json
+
+# Package control specific files
+Package Control.last-run
+Package Control.ca-list
+Package Control.ca-bundle
+Package Control.system-ca-bundle
+Package Control.cache/
+Package Control.ca-certs/
+Package Control.merged-ca-bundle
+Package Control.user-ca-bundle
+oscrypto-ca-bundle.crt
+bh_unicode_properties.cache
+
+# Sublime-github package stores a github token in this file
+# https://packagecontrol.io/packages/sublime-github
+GitHub.sublime-settings
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+
+# End of https://www.gitignore.io/api/sublimetext,codeigniter,visualstudiocode
