@@ -33,16 +33,5 @@ function validation(form) {
 		inputs[1].nextElementSibling.innerHTML = "Re-escreva a password corretamente.";
 		return false;
 	}
-
-	inputs[0].classList.add("is-valid");
-	inputs[0].classList.remove("is-invalid");
-	inputs[0].nextElementSibling.classList.remove("invalid-tooltip");
-	inputs[0].nextElementSibling.classList.add("valid-tooltip");
-	inputs[0].nextElementSibling.innerHTML = "Correto!";
-	inputs[1].classList.add("is-valid");
-	inputs[1].classList.remove("is-invalid");
-	inputs[1].nextElementSibling.classList.remove("invalid-tooltip");
-	inputs[1].nextElementSibling.classList.add("valid-tooltip");
-	inputs[1].nextElementSibling.innerHTML = "Correto!";
 	return true;
 }
