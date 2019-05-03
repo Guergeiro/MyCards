@@ -7,8 +7,8 @@
                         <h5 class="text-primary">Tipo de Campanha</h5>
                         <small class="ml-1">Selecione o Tipo de Campanha desejado.</small>
                     </div>
-                    <div class="col-2 text-right mt-3">
-                        <button  class="btn btn-link clickToggle" value=""><i class="fas fa-arrow-down text-primary fa-2x setaOrder"></i></button>
+                    <div class="col-2 mt-3">
+                        <a class="clickToggle" value=""><i class="fas fa-arrow-down text-primary fa-2x setaOrder"></i></a>
                     </div>
                 </div>
             </div>
