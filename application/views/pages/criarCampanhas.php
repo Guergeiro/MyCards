@@ -1,284 +1,346 @@
-<div class="container-fluid ctnFluid">
-    <div class="row pt-3 pb-3 h-100">
-        <div class="col-12">
-
-            <div class="row">
-
-                <div class="col-12">
-
-                    <div class="row heightRow mb-2">
-
-                        <div class="col-sm-4 cardTipoCampanha">
-                            <div class="card h-100 cardTipoCampanha">
-                                <div class="card-header bg-white">
-                                    <h3 class="text-primary">Tipo de Campanha</h3>
-                                    <small class="ml-2">Selecione um tipo de Campanha</small>
+<div id="fluidContainerAcceser" class="container-fluid">
+    <div class="row p-2">
+        <div class="card w-100 h-100 border-0 rounded shadow">
+            <div class="card-header bg-white">
+                <div class="row">
+                    <div class="col-10">
+                        <h5 class="text-primary">Tipo de Campanha</h5>
+                        <small class="ml-1">Selecione o Tipo de Campanha desejado.</small>
+                    </div>
+                    <div class="col-2 text-right mt-3">
+                        <button  class="btn btn-link clickToggle" value=""><i class="fas fa-arrow-down text-primary fa-2x setaOrder"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body" id="collapseTipoCampanha">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row d-xs-block">
+                            <div class="col-12 col-sm-4 mt-2">
+                                <div id="cupaoCartao" class="card border-0 shadow h-100">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-12 col-xl-4 mt-2 text-center">
+                                                <i class="fas fa-tags fa-5x text-primary"></i>
+                                            </div>
+                                            <div class="col-12 col-xl-8 mt-3 text-center text-xl-left">
+                                                <h6 class="text-primary">Campanha de Cupão</h6>
+                                                <div class="smalldiv ml-1">
+                                                    <small class="text-primary text-justify">Tipo de Campanha Cupão, ideal para a atribuição de um desconto sobre um serviço.</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer bg-white">
+                                        <div class="row">
+                                            <div class="col-10">
+                                                <small class="text-primary">Clique no Cupão para criar a campanha!</small>
+                                            </div>
+                                            <div class="col-2">
+                                                <i class="fas fa-arrow-right text-primary fa-sm float-right mt-1"></i>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="card-body">
-
-                                    <div class="card border rounded border-0 shadow rounded cuponJS">
-                                        <div class="card-body hoverable hoverCard">
-                                            <div class="col-12">
-                                                <div class="row dBlock">
-                                                    <div class="col-4">
-                                                        <i class="fas fa-tags fa-5x text-primary dataCardL"></i>
-                                                    </div>
-                                                    <div class="col-8 mt-3 elementResize">
-                                                        <h6 class="text-primary">Crie um Cupão!</h6>
-                                                        <small class="text-primary">Selecione para criar um Cupão.</small>
-                                                    </div>
+                            </div>
+                            <div class="col-12 col-sm-4 mt-2">
+                                <div id="carimboCartao" class="card border-0 shadow h-100">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-12 col-xl-4 mt-2 text-center">
+                                                <i class="fas fa-clipboard-list fa-5x text-primary"></i>
+                                            </div>
+                                            <div class="col-12 col-xl-8 mt-3 text-center text-xl-left">
+                                                <h6 class="text-primary">Campanha de Carimbo</h6>
+                                                <div class="smalldiv ml-1">
+                                                    <small class="text-primary text-justify">Tipo de Campanha Carimbo, ideal para a atribuição de um prémio a longo prazo.</small>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="card border border-0 shadow rounded mb-2 mt-2 raspadinhaJS ">
-                                        <div class="card-body hoverable hoverCard">
-                                            <div class="col-12">
-                                                <div class="row dBlock">
-                                                    <div class="col-4">
-                                                        <i class="fas fa-award fa-5x text-primary dataCardL"></i>
-                                                    </div>
-                                                    <div class="col-8 mt-3 elementResize">
-                                                        <h6 class="text-primary">Crie uma Raspadinha!</h6>
-                                                        <small class="text-primary">Selecione para criar uma Raspadinha.</small>
-                                                    </div>
+                                    <div class="card-footer bg-white">
+                                        <div class="row">
+                                            <div class="col-10">
+                                                <small class="text-primary">Clique no Carimbo para criar a campanha!</small>
+                                            </div>
+                                            <div class="col-2">
+                                                <i class="fas fa-arrow-right text-primary fa-sm float-right mt-1"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-4 mt-2">
+                                <div id="raspadinhaCartao" class="card border-0 shadow h-100">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-12 col-xl-4 mt-2 text-center">
+                                                <i class="fas fa-award fa-5x text-primary"></i>
+                                            </div>
+                                            <div class="col-12 col-xl-8 mt-3 text-center text-xl-left">
+                                                <h6 class="text-primary">Campanha de Raspadinha</h6>
+                                                <div class="smalldiv ml-1">
+                                                    <small class="text-primary text-justify">Tipo de Campanha Raspadinha, ideal para a atribuição de um prémio a curto prazo.</small>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="card border rounded border-0 shadow carimboJS">
-                                        <div class="card-body hoverable hoverCard">
-                                            <div class="col-md-12 col-xs-12 col-sm-12">
-                                                <div class="row dBlock">
-                                                    <div class="col-md-4 col-xs-4 col-sm-4">
-                                                        <i class="fas fa-keyboard fa-5x text-primary dataCardL"></i>
-                                                    </div>
-                                                    <div class="col-md-8 col-sm-8 col-xs-8 mt-3 elementResize">
-                                                        <h6 class="text-primary">Crie um cartão de Carimbos!</h6>
-                                                        <small class="text-primary">Selecione para criar uma Raspadinha.</small>
-                                                    </div>
-                                                </div>
+                                    <div class="card-footer bg-white">
+                                        <div class="row">
+                                            <div class="col-10">
+                                                <small class="text-primary">Clique na Raspadinha para criar a campanha!</small>
+                                            </div>
+                                            <div class="col-2">
+                                                <i class="fas fa-arrow-right text-primary fa-sm float-right mt-1"></i>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row p-2 ">
+        <div class="card h-100 w-100 border-0 shadow">
+            <div class="card-header bg-white">
+                <h5 class="text-primary">Dados de Campanha</h5>
+                <small class="ml-1">Preencha os dados da Campanha Selecionada.</small>
+                <div class="filtrosPopUp float-right">
+                    <a href="#" data-toggle="modal" data-target="#fullHeightModalRight"><i class="fas fa-sort-amount-up fa-lg text-primary"></i></a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-sm-8">
 
-                        <div class="col-md-8 col-sm-8 col-xs-8 cardColTag">
-                            <div class="card h-100">
-                                <div class="card-header bg-white">
-                                    <h3 class="text-primary">Dados da Campanha</h3>
-                                    <div class="filtrosPopUp float-right">
-                                        <a href="#" data-toggle="modal" data-target="#fullHeightModalRight"><i class="fas fa-sort-amount-up fa-lg text-primary"></i></a>
-                                    </div> <small class="ml-2">Complete os dados de Campanha</small>
+                        <div class="cupaoForm ml-2 d-none">
+                            <h6 class="text-primary">Cupão - Dados Informátivos</h6>
+                            <small class="ml-1">Preencha os dados informátivos do Cupão.</small>
+                            <hr class="w-100">
+                            <div class="cupaoFormInfo ml-2 mt-0">
+                                <!-- Material outline input -->
+                                <div class="md-form md-outline w-100">
+                                    <input type="text" id="cupaoDesignacao" class="form-control form-control-sm" maxlength="100">
+                                    <label for="cupaoDesignacao">Designação da Campanha</label>
+                                    <small class="text-primary">Designação da Campanha pode ter (0-100) caracteres.</small>
                                 </div>
-                                <div class="card-body ">
-
-                                    <div class="col-md-12 col-xs-12 col-sm-12 p-0">
-                                        <div class="row mr-0">
-
-                                            <div class="col-md-8 col-sm-8 col-xs-8 divDataCampaign">
-
-                                                <div class="cupaoDiv d-none">
-                                                    <h6 class="text-primary">Designação Cupão</h6>
-                                                    <hr>
-                                                    <div class="infoCupao">
-                                                        <!-- Material outline counter input -->
-                                                        <div class="md-form md-outline">
-                                                            <input id="input-char-counter1" type="text" maxlength="50" class="form-control">
-                                                            <label for="input-char-counter1">Nome de Campanha</label>
-                                                            <small id="passwordHelpBlockMD" class="form-text text-muted">
-                                                                Nome da Campanha (0-50 caracteres).
-                                                            </small>
-                                                        </div>
-
-                                                        <!-- Material outline counter input -->
-                                                        <div class="md-form md-outline">
-                                                            <input id="input-char-counter2" type="text" maxlength="100" class="form-control">
-                                                            <label for="input-char-counter2">Descrição de Campanha</label>
-                                                            <small id="passwordHelpBlockMD" class="form-text text-muted">
-                                                                Descricao da Campanha (0-100 caracteres).
-                                                            </small>
-                                                        </div>
-
-                                                    </div>
-                                                    <h6 class="text-primary">Valor Cupão</h6>
-                                                    <hr>
-                                                    <div class="col-md-12 col-xs-12 col-sm-12">
-                                                        <div class="row">
-                                                            <div class="col-md-12 col-xs-12 col-sm-12">
-                                                                <select id="selectValor" class="custom-select custom-select-sm border-0">
-                                                                    <option selected>Percentagem de desconto</option>
-                                                                    <option value="10%">10%</option>
-                                                                    <option value="20%">20%</option>
-                                                                    <option value="30%">30%</option>
-                                                                    <option value="40%">40%</option>
-                                                                    <option value="50%">50%</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <h6 class="text-primary mt-4">Data Cupão</h6>
-                                                    <hr>
-                                                    <div class="col-md-12 col-xs-12 col-sm-12">
-                                                        <div class="row">
-                                                            <div class="col-md-6 col-xs-6 col-sm-6">
-                                                                <div class="md-form">
-                                                                    <input type="date" id="inputMDEx" class="form-control">
-                                                                    <label for="inputMDExFinalCupao">Data Inicio:</label>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6 col-xs-6 col-sm-6">
-                                                                <div class="md-form">
-                                                                    <input type="date" id="inputMDEx2" class="form-control">
-                                                                    <label for="inputMDExFinalCupao">Data Final:</label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="buttons float-right btnGravar">
-                                                        <button type="button" class="btn btn-primary">Gravar</button>
-                                                    </div>
-                                                </div>
-
-                                                <div class="raspadinhaDiv d-none">
-                                                    <h6 class="text-primary">Designação Raspadinha</h6>
-                                                    <hr>
-                                                    <div class="infoRaspadinha">
-                                                        <!-- Material outline counter input -->
-                                                        <div class="md-form md-outline">
-                                                            <input id="input-char-counter10" type="text" maxlength="50" class="form-control">
-                                                            <label for="input-char-counter1">Nome de Campanha</label>
-                                                            <small id="passwordHelpBlockMD" class="form-text text-muted">
-                                                                Nome da Campanha (0-50 caracteres).
-                                                            </small>
-                                                        </div>
-
-                                                        <!-- Material outline counter input -->
-                                                        <div class="md-form md-outline">
-                                                            <input id="input-char-counter11" type="text" maxlength="100" class="form-control">
-                                                            <label for="input-char-counter2">Condição de Campanha</label>
-                                                            <small id="passwordHelpBlockMD" class="form-text text-muted">
-                                                                Condição da Campanha (0-100 caracteres).
-                                                            </small>
-                                                        </div>
-
-                                                        <!-- Material outline counter input -->
-                                                        <div class="md-form md-outline">
-                                                            <input id="input-char-counter3" type="text" maxlength="100" class="form-control">
-                                                            <label for="input-char-counter3">Prémio de Campanha</label>
-                                                            <small id="passwordHelpBlockMD" class="form-text text-muted">
-                                                                Prémio da Campanha (0-50 caracteres).
-                                                            </small>
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div class="buttons float-right btnGravar">
-                                                        <button type="button" class="btn btn-primary">Gravar</button>
-                                                    </div>
-                                                </div>
-
-                                                <div class="carimboDiv d-none">
-                                                    <h6 class="text-primary">Designação Carimbos</h6>
-                                                    <hr>
-                                                    <div class="infoCarimbos">
-                                                        <!-- Material outline counter input -->
-                                                        <div class="md-form md-outline">
-                                                            <input id="input-char-counter30" type="text" maxlength="50" class="form-control">
-                                                            <label for="input-char-counter1">Nome de Campanha</label>
-                                                            <small id="passwordHelpBlockMD" class="form-text text-muted">
-                                                                Nome da Campanha (0-50 caracteres).
-                                                            </small>
-                                                        </div>
-
-                                                        <!-- Material outline counter input -->
-                                                        <div class="md-form md-outline">
-                                                            <input id="input-char-counter31" type="text" maxlength="50" class="form-control">
-                                                            <label for="input-char-counter1">Prémio de Campanha</label>
-                                                            <small id="passwordHelpBlockMD" class="form-text text-muted">
-                                                                Prémio da Campanha (0-50 caracteres).
-                                                            </small>
-                                                        </div>
-
-
-                                                        <!-- Material outline counter input -->
-                                                        <div class="md-form md-outline">
-                                                            <input id="numberExample" type="number" min="0" class="form-control">
-                                                            <label for="numberExample">Número de Carimbos</label>
-                                                            <small id="passwordHelpBlockMD" class="form-text text-muted">
-                                                                Número de Carimbos(0<sup>+</sup>).
-                                                            </small>
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div class="buttons float-right btnGravar">
-                                                        <button type="button" class="btn btn-primary">Gravar</button>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                            <div class="col-md-4 col-xs-4 col-sm-4 p-0 w-100 shadow h-100 cardPreviewCol ">
-                                                <div class="card cardPreview border-0 shadow h-100 w-100">
-                                                    <div class="card-header bg-white text-primary w-100 h-100">
-                                                        <div class="col-md-12 col-sm-12 col-xs-12 p-0">
-                                                            <div class="row p-0">
-                                                                <div class="col-md-10 col-sm-10 col-xs-10  w-75">
-                                                                    <h6 id="preTruncate" class="">Amostra</h6>
-                                                                </div>
-                                                                <div id="cleaner" class="col-md-2 col-sm-2 col-xs-2 p-0 w-25">
-                                                                    <a href="#"><i class="fas fa-broom fa-lg text-primary"></i></a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="card-body text-center">
-                                                        <div class="previewCupao d-none">
-                                                            <h6 id="desigCupaoPreview" class="text-primary"></h6>
-                                                            <h4 id="desigCupaoPreviewValor" class="text-primary font-weight-bold mt-4"></h4>
-                                                            <h6 id="desigCupaoPreviewDesi" class="text-primary mt-4">
-                                                                </h4>
-                                                                <h6 id="designCupaoDataP" class="text-primary mt-4 mb-2"></h6>
-                                                                <h6 class="text-primary mb-2 mt-2 d-none ateLabel">Até</h6>
-                                                                <h6 id="designCupaoDataF" class="text-primary mt-2"></h6>
-                                                        </div>
-                                                        <div class="previewRaspadinha d-none">
-                                                            <h6 id="desigRaspadinhaPreview" class="text-primary"></h6>
-                                                            <img src="assets\imagens\raspadinhaCover.png" alt="" class="imgResize">
-                                                            <div id="selectPrize" class="d-none mt-4 mb-4 selectPrize">
-                                                                <h3 class="text-primary">Ganhou!</h3>
-                                                                <h4 id="desigRaspadinhaPreviewPremio" class="text-primary"></h4>
-                                                            </div>
-                                                            <h6 id="desigRaspadinhaPreviewCondição" class="text-primary mt-2"></h6>
-                                                        </div>
-                                                        <div class="previewCarimbos d-none">
-                                                            <h6 id="desigCarimboPreviewDesig" class="text-primary"></h6>
-                                                            <h6 id="desigCarimboPreviewPc" class="text-primary mt-4"></h6>
-                                                            <h6 id="desigCarimboPreviewNc" class="text-primary mt-4"></h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
+                                <!-- Material outline input -->
+                                <div class="md-form md-outline w-100">
+                                    <input type="text" id="cupaoDescricao" class="form-control form-control-sm" maxlength="200">
+                                    <label for="cupaoDescricao">Descrição Campanha</label>
+                                    <small class="text-primary">Descrição da Campanha pode ter (0-200) caracteres.</small>
+                                </div>
+                            </div>
+                            <hr>
+                            <h6 class="text-primary">Cupão - Dados Gerais</h6>
+                            <small class="ml-1">Preencha os dados gerais do Cupão.</small>
+                            <hr>
+                            <div class="cupaoFormGeral ml-1 mr-1 mt-0">
+                                <h6 class="text-primary">Valor Cupão</h6>
+                                <small class="ml-1">Selecione a percentagem de desconto do Cupão.</small>
+                                <hr>
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <select id="cupaoDescontoValor" class="custom-select custom-select-sm border-0">
+                                                <option selected>Percentagem de desconto</option>
+                                                <option value="10%">10%</option>
+                                                <option value="20%">20%</option>
+                                                <option value="30%">30%</option>
+                                                <option value="40%">40%</option>
+                                                <option value="50%">50%</option>
+                                            </select>
                                         </div>
                                     </div>
-
                                 </div>
+
+                                <h6 class="text-primary mt-4">Data Cupão</h6>
+                                <small class="ml-1">Preencha a data do Cupão.</small>
+                                <hr>
+                                <div class="col-md-12 col-xs-12 col-sm-12">
+                                    <div class="row">
+                                        <div class="col-md-6 col-xs-6 col-sm-6">
+                                            <div class="md-form">
+                                                <input type="date" id="cupaoDataInicial" class="form-control">
+                                                <label for="cupaoDataInicial">Data Inicio:</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-xs-6 col-sm-6">
+                                            <div class="md-form">
+                                                <input type="date" id="cupaoDataFinal" class="form-control">
+                                                <label for="cupaoDataFinal">Data Final:</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cupaoBtn text-center text-sm-right">
+                                <button type="button" class="btn btn-primary">Criar Campanha</button>
+                            </div>
+                        </div>
+
+                        <div class="carimboForm ml-2 d-none">
+                            <h6 class="text-primary">Carimbo - Dados Informátivos</h6>
+                            <small class="ml-1">Preencha os dados informátivos do Carimbo.</small>
+                            <hr class="w-100">
+                            <div class="cupaoFormInfo ml-2 mt-0">
+                                <!-- Material outline input -->
+                                <div class="md-form md-outline w-100">
+                                    <input type="text" id="carimboDesignacao" class="form-control form-control-sm" maxlength="100">
+                                    <label for="carimboDesignacao">Designação da Campanha</label>
+                                    <small class="text-primary">Designação da Campanha pode ter (0-100) caracteres.</small>
+                                </div>
+                                <!-- Material outline input -->
+                                <div class="md-form md-outline w-100">
+                                    <input type="text" id="carimboPremio" class="form-control form-control-sm" maxlength="50">
+                                    <label for="carimboPremio">Prémio Campanha</label>
+                                    <small class="text-primary">Prémio da Campanha pode ter (0-50) caracteres.</small>
+                                </div>
+                            </div>
+                            <hr>
+                            <h6 class="text-primary">Carimbo - Dados Gerais</h6>
+                            <small class="ml-1">Preencha os dados gerais do Carimbo.</small>
+                            <hr>
+                            <div class="carimboFormGeral ml-1 mr-1 mt-0">
+                                <h6 class="text-primary">Número de Carimbos</h6>
+                                <small class="ml-1">Selecione o número de Carimbos.</small>
+                                <hr>
+
+                                <!-- Material input -->
+                                <div class="md-form">
+                                    <input type="number" id="numberCarimbo" class="form-control" min="0">
+                                    <label for="numberCarimbo">Número de Elementos no Carimbo</label>
+                                    <small class="text-primary">Número de Carimbos têm de ser (0<sup>+</sup>).</small>
+                                </div>
+
+                                <h6 class="text-primary mt-4">Data Carimbo</h6>
+                                <small class="ml-1">Preencha a data do Carimbo.</small>
+                                <hr>
+
+                                <div class="col-md-12 col-xs-12 col-sm-12">
+                                    <div class="row">
+                                        <div class="col-md-6 col-xs-6 col-sm-6">
+                                            <div class="md-form">
+                                                <input type="date" id="carimboDateInicio" class="form-control">
+                                                <label for="carimboDateInicio">Data Inicio:</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-xs-6 col-sm-6">
+                                            <div class="md-form">
+                                                <input type="date" id="carimboDateFinal" class="form-control">
+                                                <label for="carimboDateFinal">Data Final:</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cupaoBtn text-center text-sm-right">
+                                <button type="button" class="btn btn-primary">Criar Campanha</button>
+                            </div>
+                        </div>
+
+                        <div class="raspadinhaForm ml-2 d-none">
+                            <h6 class="text-primary">Raspadinha - Dados Informátivos</h6>
+                            <small class="ml-1">Preencha os dados informátivos da Raspadinha.</small>
+                            <hr class="w-100">
+                            <div class="raspadinhaFormInfo ml-2 mt-0">
+                                <!-- Material outline input -->
+                                <div class="md-form md-outline w-100">
+                                    <input type="text" id="raspadinhaDesignacao" class="form-control form-control-sm" maxlength="100">
+                                    <label for="raspadinhaDesignacao">Designação da Campanha</label>
+                                    <small class="text-primary">Designação da Campanha pode ter (0-100) caracteres.</small>
+                                </div>
+                                <!-- Material outline input -->
+                                <div class="md-form md-outline w-100">
+                                    <input type="text" id="raspadinhaPremio" class="form-control form-control-sm" maxlength="50">
+                                    <label for="raspadinhaPremio">Prémio Campanha</label>
+                                    <small class="text-primary">Prémio da Campanha pode ter (0-50) caracteres.</small>
+                                </div>
+                                <!-- Material outline input -->
+                                <div class="md-form md-outline w-100">
+                                    <input type="text" id="raspadinhaCondicao" class="form-control form-control-sm" maxlength="50">
+                                    <label for="raspadinhaCondicao">Condição Campanha</label>
+                                    <small class="text-primary">Condição da Campanha pode ter (0-50) caracteres.</small>
+                                </div>
+                            </div>
+                            <hr>
+                            <h6 class="text-primary">Raspadinha - Dados Gerais</h6>
+                            <small class="ml-1">Preencha os dados gerais da Raspadinha.</small>
+                            <hr>
+                            <div class="RaspadinhaFormGeral ml-1 mr-1 mt-0">
+
+                                <h6 class="text-primary mt-4">Data Raspadinha</h6>
+                                <small class="ml-1">Preencha a data do Raspadinha.</small>
+                                <hr>
+
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-md-6 col-xs-6 col-sm-6">
+                                            <div class="md-form">
+                                                <input type="date" id="raspadinhaDateInicial" class="form-control">
+                                                <label for="raspadinhaDateInicial">Data Inicio:</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-xs-6 col-sm-6">
+                                            <div class="md-form">
+                                                <input type="date" id="raspadinhaDateFinal" class="form-control">
+                                                <label for="raspadinhaDateFinal">Data Final:</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cupaoBtn text-center text-sm-right">
+                                <button type="button" class="btn btn-primary">Criar Campanha</button>
                             </div>
                         </div>
 
                     </div>
+                    <div class="col-12 col-sm-4">
+                        <div class="card border-0 shadow h-75">
+                            <div class="card-header bg-white">
+                                <h6 class="text-primary text-truncate">Pré-Visualização</h6>
+                            </div>
+                            <div class="card-body text-center mt-5">
+                                <div class="row d-block">
 
+                                    <div class="previewCupao d-none">
+                                        <h3 id="previewDesignaçãoCampanhaCupao" for="previewDesignaçãoCampanha" class="text-primary mb-4"></h3>
+                                        <h1 id="previewDescontoCampanha" for="previewDescontoCampanha" class="text-primary mb-4"></h1>
+                                        <h3 id="previewDescriçãoCampanha" for="previewDescriçãoCampanha" class="text-primary mb-4"></h3>
+                                        <h3 id="previewDataInicioCampanha" for="previewDataInicioCampanha" class="text-primary mb-4"></h3>
+                                        <h3 id="previewDataCampanhaAte" for="previewDataCampanhaAte" class="text-primary mb-4 d-none">Até</h3>
+                                        <h3 id="previewDataFinalCampanha" for="previewDataFinalCampanha" class="text-primary mb-4"></h3>
+                                    </div>
+
+                                    <div class="previewCarimbo d-none">
+                                        <h3 id="previewDesignaçãoCampanhaCarimbo" for="previewDesignaçãoCampanha" class="text-primary mb-4"></h3>
+                                        <h1 id="previewPremioCampanha" for="previewPremioCampanha" class="text-primary mb-4"></h1>
+                                        <h3 id="previewNumeroCampanha" for="previewNumeroCampanha" class="text-primary mb-4"></h3>
+                                        <h3 id="previewDataInicioCampanhaCarimbo" for="previewDataInicioCampanhaCarimbo" class="text-primary mb-4"></h3>
+                                        <h3 id="previewDataCampanhaAteCarimbo" for="previewDataCampanhaAteCarimbo" class="text-primary mb-4 d-none">Até</h3>
+                                        <h3 id="previewDataFinalCampanhaCarimbo" for="previewDataFinalCampanhaCarimbo" class="text-primary mb-4"></h3>
+                                    </div>
+
+                                    <div class="previewRaspadinha d-none">
+                                        <h3 id="previewDesignaçãoCampanhaRaspadinha" for="previewDesignaçãoCampanha" class="text-primary mb-4"></h3>
+                                        <h1 id="previewPremioCampanhaRaspadinha" for="previewPremioCampanhaRaspadinha" class="text-primary mb-4"></h1>
+                                        <h3 id="previewCondiçãoCampanha" for="previewCondiçãoCampanha" class="text-primary mb-4"></h3>
+                                        <h3 id="previewDataInicioCampanhaRaspadinha" for="previewDataInicioCampanhaRaspadinha" class="text-primary mb-4"></h3>
+                                        <h3 id="previewDataCampanhaAteRaspadinha" for="previewDataCampanhaAteRaspadinha" class="text-primary mb-4 d-none">Até</h3>
+                                        <h3 id="previewDataFinalCampanhaRaspadinha" for="previewDataFinalCampanhaRaspadinha" class="text-primary mb-4"></h3>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
             </div>
-
         </div>
     </div>
 </div>

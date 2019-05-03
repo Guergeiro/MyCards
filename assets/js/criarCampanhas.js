@@ -1,129 +1,157 @@
-$(window).on('load resize', function () {
-    var win = $(this); //this = window
-    if (win.width() <= 1024) {
-        $('.dataCardL').removeClass('fa-5x');
-        $('.dataCardL').addClass('fa-2x');
-        $('.dataCardL').addClass('mt-4');
-        $('.dBlock').addClass('d-block');
-        $('.elementResize').removeClass('col-md-12 col-sm-12 col-xs-12');
-        $('.elementResize').addClass('col-md-12 col-sm-12 col-xs-12');
-        $('.imgResize').addClass('w-75');
-        $('.btnGravar').addClass('float-right');
-        $('.btnGravar').removeClass('text-center');
-    }
-    if (win.width() <= 768) {
-        $('.dataCardL').removeClass('mt-4');
-        $('.cardColTag').addClass('mt-2');
-        $('.cardPreviewCol').addClass('ml-3');
-        $('.btnGravar').removeClass('float-right');
-        $('.btnGravar').addClass('text-center');
-    }
-    if (win.width() >= 768) {
-        $('.cardPreviewCol').removeClass('ml-3');
-        $('.btnGravar').addClass('float-right');
-        $('.btnGravar').removeClass('text-center');
-    }
-    if (win.width() >= 1025) {
-        $('.dataCardL').removeClass('fa-2x');
-        $('.dataCardL').removeClass('mt-4');
-        $('.dataCardL').addClass('fa-5x');
-        $('.dBlock').removeClass('d-block');
-        $('.elementResize').addClass('col-md-12 col-sm-12 col-xs-12');
-        $('.elementResize').removeClass('col-md-12 col-sm-12 col-xs-12');
-        $('.cardColTag').removeClass('mt-2');
-        $('.btnGravar').addClass('float-right');
-        $('.btnGravar').removeClass('text-center');
-    }
-});
+$(document).ready(function () {
+    /*
+     *@ Funções para esconder/mostrar os formularios e previews de campanha;
+     */
+    $('#cupaoCartao').on('click', function () {
+        $(".carimboForm").addClass('d-none');
+        $(".raspadinhaForm").addClass('d-none');
+        $(".cupaoForm").removeClass('d-none');
+        $(".previewCupao").removeClass('d-none');
+        $(".previewRaspadinha").addClass('d-none');
+        $(".previewCarimbo").addClass('d-none');
 
+        $('#collapseTipoCampanha').hide('slow');
+            $(this).val('1');
+            $('.setaOrder').removeClass('fa-arrow-down');
+            $('.setaOrder').addClass('fa-arrow-up');    
+    })
 
-$('.cuponJS').on('click', function () {
-    $('.cupaoDiv').removeClass('d-none');
-    $('.carimboDiv').addClass('d-none');
-    $('.raspadinhaDiv').addClass('d-none');
-    $('.previewCupao').removeClass('d-none');
-    $('.previewRaspadinha').addClass('d-none');
-    $('.previewCarimbos').addClass('d-none');
-});
+    $('#carimboCartao').on('click', function () {
+        $(".carimboForm").removeClass('d-none');
+        $(".raspadinhaForm").addClass('d-none');
+        $(".cupaoForm").addClass('d-none');
+        $(".previewCupao").addClass('d-none');
+        $(".previewRaspadinha").addClass('d-none');
+        $(".previewCarimbo").removeClass('d-none');
 
-$('.raspadinhaJS').on('click', function () {
-    $('.raspadinhaDiv').removeClass('d-none');
-    $('.previewCupao').addClass('d-none');
-    $('.carimboDiv').addClass('d-none');
-    $('.cupaoDiv').addClass('d-none');
-    $('.previewRaspadinha').removeClass('d-none');
-    $('.previewCarimbos').addClass('d-none');
-});
+        $('#collapseTipoCampanha').hide('slow');
+            $(this).val('1');
+            $('.setaOrder').removeClass('fa-arrow-down');
+            $('.setaOrder').addClass('fa-arrow-up');    
+    })
 
-$('.carimboJS').on('click', function () {
-    $('.carimboDiv').removeClass('d-none');
-    $('.previewCupao').addClass('d-none');
-    $('.raspadinhaDiv').addClass('d-none');
-    $('.cupaoDiv').addClass('d-none');
-    $('.previewRaspadinha').addClass('d-none');
-    $('.previewCarimbos').removeClass('d-none');
-});
+    $('#raspadinhaCartao').on('click', function () {
+        $(".carimboForm").addClass('d-none');
+        $(".raspadinhaForm").removeClass('d-none');
+        $(".cupaoForm").addClass('d-none');
+        $(".previewCupao").addClass('d-none');
+        $(".previewRaspadinha").removeClass('d-none');
+        $(".previewCarimbo").addClass('d-none');
 
-$('.imgResize').on('click', function () {
-    $('.imgResize').addClass('d-none');
-    $('.selectPrize').removeClass('d-none');
-});
+        $('#collapseTipoCampanha').hide('slow');
+            $(this).val('1');
+            $('.setaOrder').removeClass('fa-arrow-down');
+            $('.setaOrder').addClass('fa-arrow-up');    
+    })
+    /*Fim*/
 
-$('.selectPrize').on('click', function () {
-    $('.imgResize').removeClass('d-none');
-    $('.selectPrize').addClass('d-none');
-});
+    /*
+    *@ Função dos filtros.
+    *@ Apresenta o valor de idade que foi escolhido na progressbar;
+    *@ Multiplica esse valor por 5, devido a idade ser designada de 5 em 5;
+    */
+    $("#customRange2").on("input", function () {
+        ($(idadeGG).html($("#customRange2").val() * 5));
+    });
+    /*Fim*/
 
-/*InputsPreviewFill */
-$("#input-char-counter1").on("input", function() {
-    $("#desigCupaoPreview").html($(this).val());
-});
+    /*
+     *@ As função seguintes recebem o input do valor nas input_box's dos formularios de campanhas.
+     *@ De seguida atribuem esses valores ao preview, criando assim o preview em live time. 
+     */
+    
+     /*
+      * Cupão
+      */
+        $("#cupaoDesignacao").on("input", function () {
+            $("#previewDesignaçãoCampanhaCupao").html($(this).val());
+        });
 
-$("#input-char-counter10").on("input", function() {
-    $("#desigRaspadinhaPreview").html($(this).val());
-});
+        $("#cupaoDescricao").on("input", function() {
+            $("#previewDescriçãoCampanha").html($(this).val());
+        });
 
-$("#input-char-counter11").on("input", function() {
-    $("#desigRaspadinhaPreviewCondição").html($(this).val());
-});
+        $("#cupaoDescontoValor").on("change", function() {
+            $("#previewDescontoCampanha").html($(this).val());
+        });
 
-$("#input-char-counter2").on("input", function() {
-    $("#desigCupaoPreviewDesi").html($(this).val());
-});
+        $("#cupaoDataInicial").on("change", function() {
+            $("#previewDataInicioCampanha").html($(this).val());
+        });
+        
+        $("#cupaoDataFinal").on("change", function() {
+            $('#previewDataCampanhaAte').removeClass('d-none');
+            $("#previewDataFinalCampanha").html($(this).val());
+        });
+    /*Fim*/
 
-$("#input-char-counter3").on("input", function() {
-    $("#desigRaspadinhaPreviewPremio").html($(this).val());
-});
+     /*
+      * Carimbo
+      */
+        $("#carimboDesignacao").on("input", function () {
+            $("#previewDesignaçãoCampanhaCarimbo").html($(this).val());
+        });
 
-$("#selectValor").on("change", function() {
-    $("#desigCupaoPreviewValor").html($(this).val());
-});
+        $("#carimboPremio").on("input", function() {
+            $("#previewPremioCampanha").html($(this).val());
+        });
 
-$("#inputMDEx").on("change", function() {
-    $("#designCupaoDataP").html($(this).val());
-});
+        $("#numberCarimbo").on("input", function() {
+            $("#previewNumeroCampanha").html($(this).val());
+        });
 
-$("#inputMDEx2").on("change", function() {
-    $('.ateLabel').removeClass('d-none');
-    $("#designCupaoDataF").html($(this).val());
-});
+        $("#carimboDateInicio").on("change", function() {
+            $("#previewDataInicioCampanhaCarimbo").html($(this).val());
+        });
+        
+        $("#carimboDateFinal").on("change", function() {
+            $('#previewDataCampanhaAteCarimbo').removeClass('d-none');
+            $("#previewDataFinalCampanhaCarimbo").html($(this).val());
+        });
+    /*Fim*/
 
-$("#input-char-counter30").on("input", function() {
-    $("#desigCarimboPreviewDesig").html($(this).val());
-});
+     /*
+      * Raspadinha
+      */
+        $("#raspadinhaDesignacao").on("input", function () {
+            $("#previewDesignaçãoCampanhaRaspadinha").html($(this).val());
+        });
 
-$("#input-char-counter31").on("input", function() {
-    $("#desigCarimboPreviewPc").html($(this).val());
-});
+        $("#raspadinhaPremio").on("input", function() {
+            $("#previewPremioCampanhaRaspadinha").html($(this).val());
+        });
 
-$("#numberExample").on("change", function() {
-    $("#desigCarimboPreviewNc").html($(this).val());
-});
+        $("#raspadinhaCondicao").on("input", function() {
+            $("#previewCondiçãoCampanha").html($(this).val());
+        });
 
-$("#buttonSwitch").click(function(){
-    $("#customSwitches").toggleClass('color1').toggleClass('color2');
-});
+        $("#raspadinhaDateInicial").on("change", function() {
+            $("#previewDataInicioCampanhaRaspadinha").html($(this).val());
+        });
+        
+        $("#raspadinhaDateFinal").on("change", function() {
+            $('#previewDataCampanhaAteRaspadinha').removeClass('d-none');
+            $("#previewDataFinalCampanhaRaspadinha").html($(this).val());
+        });
+    /*Fim*/
 
-$("#customRange2").on("input", function() {
-   ($(idadeGG).html($("#customRange2").val() * 5));
+    /*
+     *@ Faz o efeito de toggle a div Tipo de Campanhas 
+     */
+    $('.clickToggle').click(function(){
+    
+        if($(this).val() ==='1'){
+            $('#collapseTipoCampanha').show('slow');
+            $(this).val('2');
+            $('.setaOrder').addClass('fa-arrow-down');
+            $('.setaOrder').removeClass('fa-arrow-up');
+        }else{
+            $('#collapseTipoCampanha').hide('slow');
+            $(this).val('1');
+            $('.setaOrder').removeClass('fa-arrow-down');
+            $('.setaOrder').addClass('fa-arrow-up');           
+        }
+       
+    });
+
 });
