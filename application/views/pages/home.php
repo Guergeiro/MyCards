@@ -34,11 +34,11 @@
                                             </div>
                                             <div class="col-12 col-xl-8 mt-3">
                                                 <div class="row">
-                                                    <div class="col-9">
+                                                    <div class="col-8">
                                                         <h6 class="text-primary">Clientes Fidelizados</h6>
                                                         <h4 class="font-weight-bold text-primary">560</h4>
                                                     </div>
-                                                    <div class="col-3 text-center mt-4 pt-2">
+                                                    <div class="col-4 text-center mt-4 pt-2">
                                                         <small class="text-primary">Total</small>
                                                     </div>
                                                 </div>
