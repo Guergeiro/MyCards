@@ -12,7 +12,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card-body" id="collapseTipoCampanha">
+            <div class="card-body"  id="collapseTipoCampanha">
                 <div class="row">
                     <div class="col-12">
                         <div class="row d-xs-block">
@@ -178,6 +178,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <small>Nota: Campanhas agendadas para o dia da criação, estaram inativas até a completação de uma hora do sistema desde a hora atual.</small>
                             <div class="cupaoBtn text-center text-sm-right">
                                 <button type="button" class="btn btn-primary">Criar Campanha</button>
                             </div>
@@ -238,6 +239,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <small>Nota: Campanhas agendadas para o dia da criação, estaram inativas até a completação de uma hora do sistema desde a hora atual.</small>
                             <div class="cupaoBtn text-center text-sm-right">
                                 <button type="button" class="btn btn-primary">Criar Campanha</button>
                             </div>
@@ -293,6 +295,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <small>Nota: Campanhas agendadas para o dia da criação, estaram inativas até a completação de uma hora do sistema desde a hora atual.</small>
                             </div>
                             <div class="cupaoBtn text-center text-sm-right">
                                 <button type="button" class="btn btn-primary">Criar Campanha</button>
