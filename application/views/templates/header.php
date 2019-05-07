@@ -36,20 +36,39 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <div class="dropdown show">
-          <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Diogo
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link py-0" href="<?php echo base_url("notificacoes"); ?>">
+            <i class="fas fa-bell fa-fw fa-lg"></i>
+            <span class="badge badge-danger ml-n3 align-top rounded-circle">4</span>
+            <span class="d-md-none">Notificações</span>
           </a>
-
-          <div class="dropdown-menu dropdown-menu-right">
-            <a class="dropdown-item" href="#">Profile</a>
-            <a class="dropdown-item" href="<?php echo base_url("backoffice"); ?>">Backoffice</a>
-            <a class=" dropdown-item" href="<?php echo base_url("authentication/logout"); ?>">Logout</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link py-0" href="<?php echo base_url("mensagens"); ?>">
+            <i class="fas fa-envelope fa-fw fa-lg"></i>
+            <span class="badge badge-danger ml-n3 align-top rounded-circle">4</span>
+            <span class="d-md-none">Mensagens</span>
+          </a>
+        </li>
+        <li class="nav-item d-inline-block dropdown">
+          <a class="nav-link dropdown-toggle py-0" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <img src="<?php echo base_url('assets/imagens/user.png'); ?>" alt="avatar_img" srcset="" width="24"
+              height="24" class="rounded-circle">
+            <span>John Doe</span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="<?php echo base_url("perfil"); ?>"><i class="fas fa-user fa-fw"></i>
+              Perfil</a>
+            <a class="dropdown-item" href="<?php echo base_url("definicoes"); ?>"><i class="fas fa-cog fa-fw"></i>
+              Definições</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="<?php echo base_url("logout"); ?>"><i class="fas fa-power-off fa-fw"></i>
+              Logout</a>
           </div>
-        </div>
-      </div>
+        </li>
+      </ul>
     </div>
   </nav>
 
