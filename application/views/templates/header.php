@@ -28,7 +28,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light navbar-fixed-top" id="myNav">
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="myNav">
     <i class="fa-lg fas fa-angle-right p-3" id="sidenav-button"></i>
     <h5 class="my-0 mr-md-auto font-weight-normal">MyCards</h5>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
@@ -72,7 +72,7 @@
     </div>
   </nav>
 
-  <div class="border-right sidenav" style="margin-left: -320px;">
+  <div class="border-right sidenav position-fixed" style="margin-left: -320px;">
     <ul class="p-0">
       <a href="#" class="text-decoration-none">
         <li class="active"><i class="fa fa-chart-area fa-lg p-4"></i><span
