@@ -1,5 +1,5 @@
-<main class="container my-3 shadow">
-	<h3 class="py-3">Listar Campanhas</h3>
+<main class="container my-3 py-3 shadow">
+	<h3>Listar Campanhas</h3>
 	<div class="table-responsive text-center">
 		<table class="table table-hover">
 			<thead>
@@ -22,7 +22,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr data-url="{link-url}">
+				<tr data-url="1">
 					<th scope="row">
 						1
 					</th>
@@ -39,25 +39,44 @@
 						bla
 					</td>
 				</tr>
+				<tr data-url="2">
+					<th scope="row">
+						2
+					</th>
+					<td>
+						bla
+					</td>
+					<td>
+						bla
+					</td>
+					<td>
+						bla
+					</td>
+					<td>
+						bla2
+					</td>
+				</tr>
 			</tbody>
 		</table>
 	</div>
 
-	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+					<h5 class="modal-title" id="modalTitle">Descrição</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<i class="fas fa-times"></i>
 					</button>
 				</div>
 				<div class="modal-body">
-					...
+					<div class="chart-container">
+						<canvas id="chart"></canvas>
+					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Save changes</button>
+					<a href="#data-url" class="btn btn-outline-primary">Mais informação</a>
+					<button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
 				</div>
 			</div>
 		</div>

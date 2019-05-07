@@ -1,6 +1,6 @@
-<main class="container">
+<main class="container my-3 py-3 shadow">
 	<h3>Criar Campanha</h3>
-	<?php echo form_open("", "class=\"form-row shadow my-3 p-3\" onsubmit=\"return validation(this);\""); ?>
+	<?php echo form_open("", "class=\"form-row\" onsubmit=\"return validation(this);\""); ?>
 		<div class="custom-control custom-radio custom-control-inline">
 			<input class="custom-control-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked>
 			<label class="custom-control-label" for="inlineRadio1">Cupões</label>
