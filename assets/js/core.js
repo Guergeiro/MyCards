@@ -5,11 +5,12 @@ function showSideMenu() {
 }
 
 document.querySelector("#sidenav-button").addEventListener("click", function() {
-	if (document.querySelector(".sidenav").style.marginLeft == "-320px") {
+	if (document.querySelector(".sidenav").style.marginLeft == "-270px") {
+		// 320px
 		this.classList.add("side-close");
 		document.querySelector(".sidenav").style.marginLeft = "0";
 	} else {
-		document.querySelector(".sidenav").style.marginLeft = "-320px";
+		document.querySelector(".sidenav").style.marginLeft = "-270px"; //320px
 
 		this.classList.remove("side-close");
 	}

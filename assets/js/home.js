@@ -25,3 +25,7 @@ var myChart = new Chart(ctx, {
 		}
 	}
 });
+
+$(".teste").click(function() {
+	console.log($(".teste > small").val());
+});
