@@ -26,7 +26,7 @@
 </head>
 
 <body style="padding-top: 60px;" class="grey lighten-5">
-	<nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top py-3">
+	<nav class="navbar navbar-expand-md bg-blue navbar-dark fixed-top py-3">
 		<button class="navbar-toggler d-inline" role="button" type="button" id="sidebarToggler">
 			<i class="fas fa-chevron-right fa-fw"></i>
 		</button>

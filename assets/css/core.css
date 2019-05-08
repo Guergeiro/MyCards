@@ -25,7 +25,7 @@ i.close-effect {
 }
 
 #ourNavbar .active {
-	border-left: 3px solid #ff8400 !important;
+	border-left: 3px solid #0056b3 !important;
 	background-color: #b3bec9 !important;
 }
 
@@ -34,5 +34,7 @@ i.close-effect {
 }
 
 #ourNavbar a:hover {
-	background-color: #ff8400 !important;
+	background-color: #0056b3 !important;
+	color: #d5dbe1 !important;
+	transition: none;
 }
