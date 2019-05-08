@@ -1,6 +1,6 @@
 var ctx = document.getElementById("myChartBar").getContext("2d");
 var myChart = new Chart(ctx, {
-	type: "bar",
+	type: "line",
 	data: {
 		labels: ["Red", "Green", "Cepo", "Nutz", "Jeff", "To"],
 		datasets: [
@@ -24,8 +24,4 @@ var myChart = new Chart(ctx, {
 			]
 		}
 	}
-});
-
-$(".teste").click(function() {
-	console.log($(".teste > small").val());
 });

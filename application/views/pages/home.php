@@ -1,4 +1,4 @@
-<div class="container pt-5">
+<div class="container pt-3">
   <div class="card">
     <div class="card-header">
       <h3 class="text-primary text-truncate">Estatísticas Gerais</h3>
@@ -6,45 +6,29 @@
     </div>
 
     <div class="card-body">
-      <div class="row pb-2" style="text-align: center">
+      <div class="row" style="text-align: center">
         <!-- Main Block Card -->
-        <div class="col-sm teste hoverable">
-          <i class="fas fa-users fa-5x text-primary"></i><br>
+        <div class="col-sm teste shadow p-2 my-2 hoverable" data-toggle="tooltip" data-placement="top" title="Selecione para visualizar as estatísticas de
+          fidelização de clientes na Empresa.">
+          <i class="fas fa-users fa-fw text-primary" style="font-size: 5vw;"></i><br>
           <small>Clientes Fidelizados</small>
         </div>
-        <!-- Hover effect cards -->
-        <div class="col-sm d-none p-2" id="hover1">
-          <small>Selecione <strong class="text-primary">Clientes Fidelizados</strong> para visualizar as estatísticas de
-            fidelização de clientes na Empresa.</small>
-        </div>
-
-        <div class="col-sm teste">
-          <i class="fas fa-layer-group fa-5x text-primary"></i><br>
+        <div class="col-sm teste shadow p-2 my-2" data-toggle="tooltip" data-placement="top" title="Selecione para visualizar as estatísticas de
+          crescimento da Empresa.">
+          <i class=" fas fa-layer-group fa-fw text-primary" style="font-size: 5vw;"></i><br>
           <small>Crescimento da Empresa</small>
         </div>
-        <div class="col-sm d-none" id="hover2">
-          <small>Selecione <strong class="text-primary">Crescimento da Empresa</strong> para visualizar
-            as estatísticas de fidelização de clientes na Empresa.</small>
-        </div>
 
-        <div class="col-sm teste">
-          <i class="fas fa-star fa-5x text-primary"></i><br>
+        <div class="col-sm teste shadow p-2 my-2" data-toggle="tooltip" data-placement="top" title="Selecione para visualizar as estatísticas de
+          crescimento de rating da Empresa.">
+          <i class=" fas fa-star fa-fw text-primary" style="font-size: 5vw;"></i><br>
           <small>Crescimento de Rating</small>
         </div>
-        <div class="col-sm d-none" id="hover3">
-          <small>Selecione <strong class="text-primary">Crescimento de Rating</strong> para visualizar as estatísticas
-            de
-            fidelização de clientes na Empresa.</small>
-        </div>
 
-        <div class="col-sm teste">
-          <i class="fas fa-money-bill-wave fa-5x text-primary"></i><br>
+        <div class="col-sm teste shadow p-2 my-2" data-toggle="tooltip" data-placement="top" title="Selecione para visualizar as estatísticas de
+          campanhas utilizadas da Empresa.">
+          <i class=" fas fa-money-bill-wave fa-fw text-primary" style="font-size: 5vw;"></i><br>
           <small>Campanhas Utilizadas</small>
-        </div>
-        <div class="col-sm d-none" id="hover4">
-          <small>Selecione <strong class="text-primary">Campanhas Utilizadas</strong> para visualizar as estatísticas
-            de
-            fidelização de clientes na Empresa.</small>
         </div>
       </div>
       <div class="row">
