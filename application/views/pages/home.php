@@ -7,27 +7,27 @@
 
     <div class="card-body">
       <div class="row" style="text-align: center">
-        <!-- Main Block Card -->
-        <div class="col-sm teste shadow p-2 my-2 hoverable" data-toggle="tooltip" data-placement="top" title="Selecione para visualizar as estatísticas de
+        <div class="col-6 col-md-3 teste shadow p-2 my-2 text-muted" data-toggle="tooltip" data-placement="top" title="Selecione para visualizar as estatísticas de
           fidelização de clientes na Empresa.">
-          <i class="fas fa-users fa-fw text-primary" style="font-size: 5vw;"></i><br>
+          <i class="fas fa-users fa-fw" style="font-size: 5vw;"></i><br>
           <small>Clientes Fidelizados</small>
         </div>
-        <div class="col-sm teste shadow p-2 my-2" data-toggle="tooltip" data-placement="top" title="Selecione para visualizar as estatísticas de
+
+        <div class="col-6 col-md-3 teste shadow p-2 my-2 text-muted" data-toggle="tooltip" data-placement="top" title="Selecione para visualizar as estatísticas de
           crescimento da Empresa.">
-          <i class=" fas fa-layer-group fa-fw text-primary" style="font-size: 5vw;"></i><br>
+          <i class=" fas fa-layer-group fa-fw" style="font-size: 5vw;"></i><br>
           <small>Crescimento da Empresa</small>
         </div>
 
-        <div class="col-sm teste shadow p-2 my-2" data-toggle="tooltip" data-placement="top" title="Selecione para visualizar as estatísticas de
+        <div class="col-6 col-md-3 teste shadow p-2 my-2 text-muted" data-toggle="tooltip" data-placement="top" title="Selecione para visualizar as estatísticas de
           crescimento de rating da Empresa.">
-          <i class=" fas fa-star fa-fw text-primary" style="font-size: 5vw;"></i><br>
+          <i class=" fas fa-star fa-fw" style="font-size: 5vw;"></i><br>
           <small>Crescimento de Rating</small>
         </div>
 
-        <div class="col-sm teste shadow p-2 my-2" data-toggle="tooltip" data-placement="top" title="Selecione para visualizar as estatísticas de
+        <div class="col-6 col-md-3 teste shadow p-2 my-2 text-muted" data-toggle="tooltip" data-placement="top" title="Selecione para visualizar as estatísticas de
           campanhas utilizadas da Empresa.">
-          <i class=" fas fa-money-bill-wave fa-fw text-primary" style="font-size: 5vw;"></i><br>
+          <i class=" fas fa-money-bill-wave fa-fw" style="font-size: 5vw;"></i><br>
           <small>Campanhas Utilizadas</small>
         </div>
       </div>
