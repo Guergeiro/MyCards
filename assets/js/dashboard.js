@@ -108,27 +108,8 @@ let campanhas = [
 	"5 - Nome da Campanha",
 	"6 - Nome da Campanha"
 ];
-let index = 0;
 
-document
-	.querySelector("#carouselExampleControls")
-	.querySelectorAll("a")
-	.forEach(a => {
-		a.addEventListener("click", function() {
-			switch (a.getAttribute("data-slide")) {
-				case "prev":
-					index--;
-					if (index < 0) {
-						index = campanhas.length - 1;
-					}
-					break;
-				default:
-					index++;
-					if (index > campanhas.length - 1) {
-						index = 0;
-					}
-			}
-			chartEstatisticasCampanhas.data.datasets.pop();
-			addData(chartEstatisticasCampanhas, campanhas[index]);
-		});
-	});
+$("#carouselExampleControls").on("slid.bs.carousel", function(event) {
+	chartEstatisticasCampanhas.data.datasets.pop();
+	addData(chartEstatisticasCampanhas, campanhas[event.to]);
+});

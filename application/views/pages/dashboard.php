@@ -1,4 +1,4 @@
-<div class="container pt-3">
+<div class="container my-3 py-3 shadow">
   <div class="card">
     <div class="card-header">
       <h3 class="text-primary text-truncate">Estatísticas Gerais</h3>

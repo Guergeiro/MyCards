@@ -1,32 +1,75 @@
-/*main.js, containes in itself the main scripts that allow the components that are similar in every page, in this case the Navbar and SideBar, to perform certain actions*/
-
-function showSideMenu() {
-	document.getElementById("sidebarMenu").classList.toggle("active");
-}
-
-document.querySelector("#sidenav-button").addEventListener("click", function() {
-	if (document.querySelector(".sidenav").style.marginLeft == "-270px") {
-		// 320px
-		this.classList.add("side-close");
-		document.querySelector(".sidenav").style.marginLeft = "0";
-	} else {
-		document.querySelector(".sidenav").style.marginLeft = "-270px"; //320px
-
-		this.classList.remove("side-close");
-	}
-});
+document
+	.querySelector("nav")
+	.querySelector("#sidebarToggler")
+	.addEventListener("click", function() {
+		if (document.querySelector("#ourNavbar").style.marginLeft == "0px") {
+			document
+				.querySelector("nav")
+				.querySelector("#sidebarToggler")
+				.querySelector("i")
+				.classList.remove("close-effect");
+			document.querySelector("#ourNavbar").style.marginLeft = "-320px";
+		} else {
+			document
+				.querySelector("nav")
+				.querySelector("#sidebarToggler")
+				.querySelector("i")
+				.classList.add("close-effect");
+			document.querySelector("#ourNavbar").style.marginLeft = "0px";
+		}
+	});
 
 document
-	.querySelector(".sidenav")
-	.querySelectorAll("li")
-	.forEach(element => {
-		element.addEventListener("click", function() {
-			if (
-				this.querySelector(".fa-angle-down").classList.contains("side-close")
-			) {
-				this.querySelector(".fa-angle-down").classList.remove("side-close");
-			} else {
-				this.querySelector(".fa-angle-down").classList.add("side-close");
+	.querySelector("#ourNavbar")
+	.querySelectorAll(".list-group-item")
+	.forEach(item => {
+		item.addEventListener("click", function() {
+			if (this.nextElementSibling.nodeName == "DIV") {
+				if (!this.nextElementSibling.classList.contains("collapsing")) {
+					if (this.nextElementSibling.classList.contains("show")) {
+						this.querySelector(".fa-chevron-down").classList.remove(
+							"close-effect"
+						);
+					} else {
+						this.querySelector(".fa-chevron-down").classList.add(
+							"close-effect"
+						);
+					}
+				}
 			}
 		});
 	});
+
+document
+	.querySelector("nav")
+	.querySelector("#navbarToggler")
+	.addEventListener("click", function() {
+		if (!this.nextElementSibling.classList.contains("collapsing")) {
+			if (this.nextElementSibling.classList.contains("show")) {
+				this.querySelector("i").classList.add("fa-bars");
+				this.querySelector("i").classList.remove("fa-times");
+			} else {
+				this.querySelector("i").classList.remove("fa-bars");
+				this.querySelector("i").classList.add("fa-times");
+			}
+		}
+	});
+
+function randomColor() {
+	let result = [];
+	result.push(Math.floor(Math.random() * 255));
+	result.push(Math.floor(Math.random() * 255));
+	result.push(Math.floor(Math.random() * 255));
+	return result;
+}
+
+function arrayColors(number) {
+	let pool = [];
+	for (let i = 0; i < number; i++) {
+		let aux = randomColor();
+		if (!pool.includes(aux)) {
+			pool.push(aux);
+		}
+	}
+	return pool;
+}
