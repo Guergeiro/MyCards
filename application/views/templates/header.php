@@ -23,6 +23,10 @@
 
 	<!-- Page CSS -->
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/{$page}.css"); ?>">
+
+	<?php if ($this->uri->segment(1,0) === "listarCampanha"): ?>
+	<link href="<?php echo base_url("assets/css/addons/datatables.min.css"); ?>" rel="stylesheet">
+	<?php endif; ?>
 </head>
 
 <body style="padding-top: 60px;" class="grey lighten-5">

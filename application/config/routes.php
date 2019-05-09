@@ -51,6 +51,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'main/view';
 $route['(:any)'] = 'main/view/$1';
-$route['products/(:num)']['get'] = 'api/test/$1';
+
+$route['api/test/(:num)']['get'] = 'api/test/$1';
+
+/* API GET's */
+$route['api/todas_campanhas/(:num)']['get'] = 'api/todas_campanhas/$1';
+$route['api/notificacao_ativacao_campanha/(:num)']['get'] = 'api/notificacao_ativacao_campanha/$1';
+
+$route['api/todos_colaboradores/(:num)']['get'] = 'api/todos_colaboradores/$1';
+
+/* API POST's */
+$route['api/ativar_campanha/(:num)']['post'] = 'api/ativar_campanha/$1';
+$route['api/criar_campanha/(:num)']['post'] = 'api/criar_campanha/$1';
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
