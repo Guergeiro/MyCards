@@ -34,7 +34,75 @@
       <div class="row">
         <div class="col-12">
           <div id="chart_container">
-            <canvas id="myChartBar"></canvas>
+            <canvas id="myChartEG"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Estatisticas de Campanhas -->
+  <br>
+  <div class="card">
+    <div class="card-header">
+      <h3 class="text-primary text-truncate">Estatísticas Campanhas</h3>
+      <small class="ml-1">Nesta área estão presentes as estatísticas de campanhas da Empresa.</small>
+    </div>
+
+    <div class="card-body pt-1">
+      <div class="row">
+        <div id="carouselExampleControls" class="carousel slide col-12 text-center p-4 shadow" data-interval="false"
+          data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div>
+                <h5 class="mb-2 h5">1 - Nome da Campanha</h5>
+                <small>Tempo restante de campanha</small>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div>
+                <h5 class="mb-2 h5">2 - Nome da Campanha</h5>
+                <small>Tempo restante de campanha</small>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div>
+                <h5 class="mb-2 h5">3 - Nome da Campanha</h5>
+                <small>Tempo restante de campanha</small>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div>
+                <h5 class="mb-2 h5">4 - Nome da Campanha</h5>
+                <small>Tempo restante de campanha</small>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div>
+                <h5 class="mb-2 h5">5 - Nome da Campanha</h5>
+                <small>Tempo restante de campanha</small>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <h5 class="mb-2 h5">6 - Nome da Campanha</h5>
+              <small>Tempo restante de campanha</small>
+            </div>
+          </div>
+          <a class="carousel-control-prev slideArrows" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon bg-dark" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next slideArrows" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon bg-dark" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+      <div class="row pt-2">
+        <div class="col-12">
+          <div id="chart_container">
+            <canvas id="myChartEC"></canvas>
           </div>
         </div>
       </div>

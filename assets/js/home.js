@@ -1,5 +1,37 @@
+var meses = [
+	"Janeiro",
+	"Fevereiro",
+	"Março",
+	"Abril",
+	"Maio",
+	"Junho",
+	"Julho",
+	"Agosto",
+	"Setembro",
+	"Outubro",
+	"Novembro",
+	"Dezembro"
+];
+
 $(document).ready(function() {
-	addData(myChart, "Clientes Fidelizados");
+	addData(chartEstatisticasGerais, "Clientes Fidelizados");
+	addData(chartEstatisticasCampanhas, "1 - Nome da Campanha");
+});
+
+/* Criar Chart Estatisticas Gerais */
+var chartEstatisticasGerais = new Chart($("#myChartEG"), {
+	type: "line",
+	data: {
+		labels: meses
+	}
+});
+
+/* Criar Chart Estatisticas Campanhas */
+var chartEstatisticasCampanhas = new Chart($("#myChartEC"), {
+	type: "bar",
+	data: {
+		labels: meses
+	}
 });
 
 /* Inicio Estatisticas Gerais */
@@ -9,7 +41,7 @@ $(".teste").click(function() {
 			.removeClass("text-muted")
 			.addClass("text-primary");
 		addData(
-			myChart,
+			chartEstatisticasGerais,
 			$(this)
 				.children()
 				.last()
@@ -20,34 +52,12 @@ $(".teste").click(function() {
 			.removeClass("text-primary")
 			.addClass("text-muted");
 		removeData(
-			myChart,
+			chartEstatisticasGerais,
 			$(this)
 				.children()
 				.last()
 				.html()
 		);
-	}
-});
-
-/* Criar Chart */
-var ctx = document.getElementById("myChartBar").getContext("2d");
-var myChart = new Chart(ctx, {
-	type: "line",
-	data: {
-		labels: [
-			"Janeiro",
-			"Fevereiro",
-			"Março",
-			"Abril",
-			"Maio",
-			"Junho",
-			"Julho",
-			"Agosto",
-			"Setembro",
-			"Outubro",
-			"Novembro",
-			"Dezembro"
-		]
 	}
 });
 
@@ -84,7 +94,41 @@ var dynamicColors = function() {
 	var r = Math.floor(Math.random() * 255);
 	var g = Math.floor(Math.random() * 255);
 	var b = Math.floor(Math.random() * 255);
-	return "rgba(" + r + "," + g + "," + b + ",0.2" + ")";
+	return "rgba(" + r + "," + g + "," + b + ",0.6" + ")";
 };
 
 /* FIM Estatisticas Gerais */
+
+/* INICIO Estatisticas Campanhas */
+let campanhas = [
+	"1 - Nome da Campanha",
+	"2 - Nome da Campanha",
+	"3 - Nome da Campanha",
+	"4 - Nome da Campanha",
+	"5 - Nome da Campanha",
+	"6 - Nome da Campanha"
+];
+let index = 0;
+
+document
+	.querySelector("#carouselExampleControls")
+	.querySelectorAll("a")
+	.forEach(a => {
+		a.addEventListener("click", function() {
+			switch (a.getAttribute("data-slide")) {
+				case "prev":
+					index--;
+					if (index < 0) {
+						index = campanhas.length - 1;
+					}
+					break;
+				default:
+					index++;
+					if (index > campanhas.length - 1) {
+						index = 0;
+					}
+			}
+			chartEstatisticasCampanhas.data.datasets.pop();
+			addData(chartEstatisticasCampanhas, campanhas[index]);
+		});
+	});
