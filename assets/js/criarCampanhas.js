@@ -20,7 +20,7 @@ $(document).ready(function () {
         $(".previewCupao").addClass('d-none');
         $(".previewRaspadinha").addClass('d-none');
         $(".previewCarimbo").removeClass('d-none');
-        ola();
+        $('.clickToggle').click(ola);
 
     })
 
@@ -31,7 +31,7 @@ $(document).ready(function () {
         $(".previewCupao").addClass('d-none');
         $(".previewRaspadinha").removeClass('d-none');
         $(".previewCarimbo").addClass('d-none');
-        ola();
+        $('.clickToggle').click(ola);
     })
     /*Fim*/
 
