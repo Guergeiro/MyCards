@@ -7,7 +7,7 @@
 
     <div class="card-body">
       <div class="row" style="text-align: center">
-        <div class="col-6 col-md-3 teste shadow p-2 my-2 text-muted" data-toggle="tooltip" data-placement="top" title="Selecione para visualizar as estatísticas de
+        <div class="col-6 col-md-3 teste shadow p-2 my-2 text-primary" data-toggle="tooltip" data-placement="top" title="Selecione para visualizar as estatísticas de
           fidelização de clientes na Empresa.">
           <i class="fas fa-users fa-fw" style="font-size: 5vw;"></i><br>
           <small>Clientes Fidelizados</small>

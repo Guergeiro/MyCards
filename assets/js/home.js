@@ -1,10 +1,8 @@
+$(document).ready(function() {
+	addData(myChart, "Clientes Fidelizados");
+});
+
 $(".teste").click(function() {
-	/*	console.log(
-		$(this)
-			.children()
-			.last()
-			.html()
-	);*/
 	if ($(this).hasClass("text-muted")) {
 		$(this)
 			.removeClass("text-muted")
@@ -47,15 +45,6 @@ var myChart = new Chart(ctx, {
 			"Outubro",
 			"Novembro",
 			"Dezembro"
-		],
-		datasets: [
-			{
-				label: "# of Votes",
-				data: [12, 19, 3, 5, 2, 3, 0, 1, 3, 25, 2, 3],
-				backgroundColor: ["rgba(66, 133, 244, 0.2)"],
-				borderColor: ["rgba(66, 133, 244, 1)"],
-				borderWidth: 1
-			}
 		]
 	}
 });
