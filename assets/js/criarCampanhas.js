@@ -9,7 +9,7 @@ $(document).ready(function () {
         $(".previewCupao").removeClass('d-none');
         $(".previewRaspadinha").addClass('d-none');
         $(".previewCarimbo").addClass('d-none');
-        ola();
+        changeArrowOrder();
 
     })
 
@@ -20,7 +20,7 @@ $(document).ready(function () {
         $(".previewCupao").addClass('d-none');
         $(".previewRaspadinha").addClass('d-none');
         $(".previewCarimbo").removeClass('d-none');
-        $('.clickToggle').click(ola);
+        changeArrowOrder();
 
     })
 
@@ -31,7 +31,7 @@ $(document).ready(function () {
         $(".previewCupao").addClass('d-none');
         $(".previewRaspadinha").removeClass('d-none');
         $(".previewCarimbo").addClass('d-none');
-        $('.clickToggle').click(ola);
+        changeArrowOrder();
     })
     /*Fim*/
 
@@ -128,14 +128,14 @@ $(document).ready(function () {
     /*
      *@ Faz o efeito de toggle a div Tipo de Campanhas 
      */
-    $('.clickToggle').click(ola);
-    
-    function ola() {
+    $('.clickToggle').click(changeArrowOrder);
+
+    function changeArrowOrder() {
         $('#collapseTipoCampanha').toggle();
-        if (this.firstElementChild.classList.contains("close-effect")) {
-            this.firstElementChild.classList.remove("close-effect");
+        if ($(".setaOrder").hasClass("close-effect")) {
+            $(".setaOrder").removeClass("close-effect");
         } else {
-            this.firstElementChild.classList.add("close-effect");
+            $(".setaOrder").addClass("close-effect");
         }
     }
 });

@@ -151,7 +151,7 @@
         </div>
 
 
-        <div class="col-12 col-md-4 mt-2">
+        <div class="col-12 col-md-4 mt-2 position-sticky">
 
             <div class="row pl-3 pr-3 pb-1">
 

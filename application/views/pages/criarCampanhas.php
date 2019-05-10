@@ -103,7 +103,6 @@
             </div>
         </div>
     </div>
-    <hr>
     <div class="row p-2 ">
         <div class="card h-100 w-100 border-0 shadow">
             <div class="card-header bg-white">
