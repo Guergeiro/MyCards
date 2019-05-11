@@ -203,7 +203,7 @@
                         <div class="col-12">
                             <div class="row p-0">
                                 <div class="col-4 col-sm-4 mt-1 w-25">
-                                    <img src="assets\imagens\bgImg.jpg" alt="" class="w-100 border rounded-circle">
+                                    <img src="assets\imagens\bgImg.jpg" alt="" class="w-100 border-0 rounded">
                                 </div>
                                 <div class="col-8 mt-2 w-50">
                                     <h4 class="font-weight-bold">João Tiago</h4>
@@ -216,7 +216,7 @@
                         <div class="col-12">
                             <div class="row p-0">
                                 <div class="col-4 col-sm-4 mt-1 w-25">
-                                    <img src="assets\imagens\bgImg.jpg" alt="" class="w-100 border rounded-circle">
+                                    <img src="assets\imagens\bgImg.jpg" alt="" class="w-100 border-0 rounded">
                                 </div>
                                 <div class="col-8 mt-2 w-50">
                                     <h4 class="font-weight-bold">João Tiago</h4>
