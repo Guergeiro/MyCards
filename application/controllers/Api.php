@@ -7,9 +7,11 @@ class Api extends CI_Controller {
 		$this->load->model("Api_model");
 	}
 
-	public function todas_campanhas($key) {
+	public function todas_campanhas($key=0) {
 		if ($this->Api_model->check_key($key)) {
 			// echo json com todas as campanhas
+			$this->load->model("Campanhas_model");
+			echo json_encode($this->Campanhas_model->todas_campanhas($key));
 		} else {
 			echo "Wrong key";
 		}

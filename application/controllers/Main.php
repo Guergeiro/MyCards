@@ -2,7 +2,7 @@
 defined("BASEPATH") OR exit("No direct script access allowed");
 
 class Main extends CI_Controller {
-	public function view($page = "dashboard") {
+	public function view($page = "home") {
         
 		if (!file_exists(APPPATH."views/pages/{$page}.php")) {
             show_404();
@@ -16,23 +16,70 @@ class Main extends CI_Controller {
 	}
 	
 	private function loadPage($page) {
-        switch($page) {
-            case "admin":
-				// When user tries to access "admin" page but isn't logged int
-				if (!$this->session->userdata("email")) {
+		$login = $this->session->userdata("Email");	// NULL caso esteja logout
+		switch ($page) {
+			case "admin":
+				if (!$login) {
 					redirect();
+				} else {
+					if ($this->session->userdata("Admin") == 0) {
+						redirect("dashboard");
+					} else {
+						$this->load->view("pages/{$admin}");
+					}
 				}
-            default:
-            $this->load->view("pages/{$page}", $this->getAllUserData());
-        }
-	}
-
-	private function getAllUserData() {
-		/*
-        $this->load->model("Media_model");
-        $media["media"] = $this->Media_model->getAllMedia();
-		return $media;
-		*/
+				break;
+			case "dashboard":
+				if ($login) {
+					redirect();
+				} else {
+					$this->load->view("templates/navbar");
+					$this->load->view("pages/dashboard");
+				}
+				break;
+			case "colaboradores":
+				if (!$login) {
+					redirect();
+				} else {
+					$this->load->view("templates/navbar");
+					$this->load->view("pages/colaboradores");
+				}
+				break;
+			case "clientes":
+				if (!$login) {
+					redirect();
+				} else {
+					$this->load->view("templates/navbar");
+					$this->load->view("pages/clientes");
+				}
+				break;
+			case "criarCampanha":
+				if (!$login) {
+					redirect();
+				} else {
+					$this->load->view("templates/navbar");
+					$this->load->view("pages/criarCampanha");
+				}
+				break;
+			case "listarCampanha":
+				if (!$login) {
+					redirect();
+				} else {
+					$this->load->view("templates/navbar");
+					$this->load->view("pages/listarCampanha");
+				}
+				break;
+			case "ativarCampanha":
+				if (!$login) {
+					redirect();
+				} else {
+					$this->load->view("templates/navbar");
+					$this->load->view("pages/ativarCampanha");
+				}
+				break;
+			default:
+				$this->load->view("pages/home");
+		}
 	}
 }
 ?>

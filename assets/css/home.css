@@ -1,0 +1,13 @@
+section#carousel {
+	height: calc(100vh - 72px);
+}
+
+section#carousel .carousel-item {
+	max-height: calc(100vh - 72px);
+}
+
+img {
+	object-fit: cover;
+	object-position: center center;
+	min-width: 100%;
+}
