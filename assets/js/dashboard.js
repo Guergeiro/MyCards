@@ -30,7 +30,7 @@ var chartEstatisticasCampanhas = new Chart($("#myChartEC"), {
 });
 
 /* Inicio Estatisticas Gerais */
-$(".teste").click(function () {
+$(".teste").click(function() {
 	if ($(this).hasClass("text-muted")) {
 		$(this)
 			.removeClass("text-muted")
@@ -38,9 +38,9 @@ $(".teste").click(function () {
 		addData(
 			chartEstatisticasGerais,
 			$(this)
-			.children()
-			.last()
-			.html()
+				.children()
+				.last()
+				.html()
 		);
 	} else {
 		$(this)
@@ -49,9 +49,9 @@ $(".teste").click(function () {
 		removeData(
 			chartEstatisticasGerais,
 			$(this)
-			.children()
-			.last()
-			.html()
+				.children()
+				.last()
+				.html()
 		);
 	}
 });
@@ -85,31 +85,28 @@ function removeData(chart, label) {
 }
 
 /* Funcao para criar cores dinamicas */
-var dynamicColors = function () {
+var dynamicColors = function() {
 	var r = Math.floor(Math.random() * 255);
 	var g = Math.floor(Math.random() * 255);
 	var b = Math.floor(Math.random() * 255);
 	return "rgba(" + r + "," + g + "," + b + ",0.6" + ")";
 };
-
 /* FIM Estatisticas Gerais */
 
 /* INICIO Estatisticas Campanhas */
-let campanhas = [];
-$(document).ready(function () {
-	$.get("http://[::1]/PINT-Web/api/todas_campanhas/1", function (data) {
+var campanhas = [];
+$(document).ready(function() {
+	$.get("http://127.0.0.1/PINT-Web/api/todas_campanhas/1", function(data) {
 		data = JSON.parse(data);
-		data.forEach((campanha) => {
-			campanhas.push(campanha);
-			campanhas.push(campanha);
+		data.forEach(info => {
+			campanhas.push(info);
 		});
+		addData(chartEstatisticasGerais, "Clientes Fidelizados");
+		addData(chartEstatisticasCampanhas, campanhas[0].Designacao);
 	});
-	console.log(campanhas[0]);
-	addData(chartEstatisticasGerais, "Clientes Fidelizados");
-	addData(chartEstatisticasCampanhas, campanhas[0].Designacao);
 });
 
-$("#carouselExampleControls").on("slid.bs.carousel", function (event) {
+$("#carouselExampleControls").on("slid.bs.carousel", function(event) {
 	chartEstatisticasCampanhas.data.datasets.pop();
-	addData(chartEstatisticasCampanhas, campanhas[event.to]);
+	addData(chartEstatisticasCampanhas, campanhas[event.to].Designacao);
 });
