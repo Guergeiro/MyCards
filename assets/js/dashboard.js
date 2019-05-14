@@ -29,6 +29,11 @@ var chartEstatisticasCampanhas = new Chart($("#myChartEC"), {
 	}
 });
 
+/* Criar Chart para Localizacao de Clientes */
+var chartEstatisticasCampanhas = new Chart($("#myChartLC"), {
+	type: "doughnut"
+});
+
 /* Inicio Estatisticas Gerais */
 $(".teste").click(function() {
 	if ($(this).hasClass("text-muted")) {

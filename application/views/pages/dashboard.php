@@ -2,7 +2,7 @@
   <div class="card">
     <div class="card-header">
       <h3 class="text-primary text-truncate">Estatísticas Gerais</h3>
-      <small class="ml-1">Nesta área estão presentes as estatísticas gerais da Empresa.</small>
+      <small>Nesta área estão presentes as estatísticas gerais da Empresa.</small>
     </div>
 
     <div class="card-body">
@@ -41,12 +41,54 @@
     </div>
   </div>
 
+  <br>
+  <div class="card bg-transparent shadow-none">
+    <div class="card-deck">
+      <!-- Localizacao dos Fidelizados -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="text-primary text-truncate">Localização dos Clientes</h3>
+          <small>Nesta área estão presentes a percentagem de <strong class="text-primary">Localização dos
+              Clientes</strong> na Empresa.</small>
+        </div>
+
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12">
+              <div id="chart_container">
+                <canvas id="myChartLF"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Registo por Referencia -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="text-primary text-truncate">Idade dos Fidelizados</h3>
+          <small>Nesta área estão presentes a percentagem de <strong class="text-primary">Idade dos Fidelizados</strong>
+            na Empresa.</small>
+        </div>
+
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12">
+              <div id="chart_container">
+                <canvas id="myChartEG"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Estatisticas de Campanhas -->
   <br>
   <div class="card">
     <div class="card-header">
       <h3 class="text-primary text-truncate">Estatísticas Campanhas</h3>
-      <small class="ml-1">Nesta área estão presentes as estatísticas de campanhas da Empresa.</small>
+      <small>Nesta área estão presentes as estatísticas de campanhas da Empresa.</small>
     </div>
 
     <div class="card-body pt-1">
