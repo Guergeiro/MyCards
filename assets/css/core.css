@@ -1,0 +1,40 @@
+* {
+	transition: all 0.25s;
+}
+
+.bg-orange {
+	background-color: #ff8400 !important;
+}
+
+.bg-blue {
+	background-color: #0056b3 !important;
+}
+
+.bg-grey {
+	background-color: #d5dbe1 !important;
+}
+
+i.close-effect {
+	transform: rotate(180deg);
+}
+
+#ourNavbar {
+	transition: all 0.5s;
+	width: 320px;
+	z-index: 900;
+}
+
+#ourNavbar .active {
+	border-left: 3px solid #0056b3 !important;
+	background-color: #b3bec9 !important;
+}
+
+#ourNavbar div.container {
+	bottom: 0;
+}
+
+#ourNavbar a:hover {
+	background-color: #0056b3 !important;
+	color: #d5dbe1 !important;
+	transition: none;
+}
