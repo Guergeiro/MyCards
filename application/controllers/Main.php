@@ -30,7 +30,7 @@ class Main extends CI_Controller {
 				}
 				break;
 			case "dashboard":
-				if ($login) {
+				if (!$login) {
 					redirect();
 				} else {
 					$this->load->view("templates/navbar_inside");
