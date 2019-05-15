@@ -34,7 +34,9 @@ class Main extends CI_Controller {
 					redirect();
 				} else {
 					$this->load->view("templates/navbar_inside");
-					$this->load->view("pages/dashboard");
+					$this->load->Model("Campanhas_model");
+					$data["campanhas"] = $this->Campanhas_model->todas_campanhas(1);
+					$this->load->view("pages/dashboard", $data);
 				}
 				break;
 			case "colaboradores":
