@@ -74,7 +74,7 @@
           <div class="row">
             <div class="col-12">
               <div id="chart_container">
-                <canvas id="myChartEG"></canvas>
+                <canvas id="myChartIF"></canvas>
               </div>
             </div>
           </div>

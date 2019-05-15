@@ -30,7 +30,7 @@ var chartEstatisticasCampanhas = new Chart($("#myChartEC"), {
 });
 
 /* Criar Chart para Localizacao de Clientes */
-var chartEstatisticasCampanhas = new Chart($("#myChartLC"), {
+var chartLocalizacaoClientes = new Chart($("#myChartLC"), {
 	type: "doughnut"
 });
 
