@@ -7,7 +7,7 @@ $("main #carousel .carousel-inner a").on("click", function (e) {
 
 		$("html, body")
 			.animate({
-				scrollTop: $(hash).offset().top
+				scrollTop: $(hash).offset().top - 72 - 48
 			}, 800);
 	}
 });

@@ -29,13 +29,8 @@ var chartEstatisticasCampanhas = new Chart($("#myChartEC"), {
 	}
 });
 
-/* Criar Chart para Localizacao de Clientes */
-var chartLocalizacaoClientes = new Chart($("#myChartLC"), {
-	type: "doughnut"
-});
-
 /* Inicio Estatisticas Gerais */
-$(".teste").click(function() {
+$(".teste").click(function () {
 	if ($(this).hasClass("text-muted")) {
 		$(this)
 			.removeClass("text-muted")
@@ -43,9 +38,9 @@ $(".teste").click(function() {
 		addData(
 			chartEstatisticasGerais,
 			$(this)
-				.children()
-				.last()
-				.html()
+			.children()
+			.last()
+			.html()
 		);
 	} else {
 		$(this)
@@ -54,9 +49,9 @@ $(".teste").click(function() {
 		removeData(
 			chartEstatisticasGerais,
 			$(this)
-				.children()
-				.last()
-				.html()
+			.children()
+			.last()
+			.html()
 		);
 	}
 });
@@ -90,7 +85,7 @@ function removeData(chart, label) {
 }
 
 /* Funcao para criar cores dinamicas */
-var dynamicColors = function() {
+var dynamicColors = function () {
 	var r = Math.floor(Math.random() * 255);
 	var g = Math.floor(Math.random() * 255);
 	var b = Math.floor(Math.random() * 255);
@@ -100,8 +95,8 @@ var dynamicColors = function() {
 
 /* INICIO Estatisticas Campanhas */
 var campanhas = [];
-$(document).ready(function() {
-	$.get("http://127.0.0.1/PINT-Web/api/todas_campanhas/1", function(data) {
+$(document).ready(function () {
+	$.get("http://127.0.0.1/PINT-Web/api/todas_campanhas/1", function (data) {
 		data = JSON.parse(data);
 		data.forEach(info => {
 			campanhas.push(info);
@@ -111,7 +106,7 @@ $(document).ready(function() {
 	});
 });
 
-$("#carouselExampleControls").on("slid.bs.carousel", function(event) {
+$("#carouselExampleControls").on("slid.bs.carousel", function (event) {
 	chartEstatisticasCampanhas.data.datasets.pop();
 	addData(chartEstatisticasCampanhas, campanhas[event.to].Designacao);
 });
