@@ -24,9 +24,7 @@ var chartEstatisticasGerais = new Chart($("#myChartEG"), {
 /* Criar Chart Estatisticas Campanhas */
 var chartEstatisticasCampanhas = new Chart($("#myChartEC"), {
   type: "bar",
-  data: {
-    labels: meses
-  }
+  data: {}
 });
 
 /* Criar Chart Localizacao dos Fidelizados */
@@ -63,14 +61,13 @@ $(".teste").click(function() {
 });
 
 /* Adicionar Dataset ao grafico */
-function addData(chart, newLabel) {
-  var newData = [];
-  for (i = 0; i < 12; i++) {
-    newData.push(Math.floor(Math.random() * 50));
+function addDataBar(chart, labels, label) {
+  let newData = [];
+  for (i = 0; i < labels.length; i++) {
+    newData[i] = Math.floor(Math.random() * 25);
   }
-
-  var newDataset = {
-    label: newLabel,
+  let newDataset = {
+    label: label,
     backgroundColor: dynamicColors(),
     borderColor: "rgba(99, 255, 132, 1)",
     borderWidth: 1,
@@ -88,7 +85,6 @@ function addDataPie(chart, labels, obj) {
     colors.push(dynamicColors());
     newData.push(obj[labels[i]]);
   }
-  console.log(labels);
   var newDataset = {
     label: labels,
     backgroundColor: colors,
@@ -124,7 +120,7 @@ var dynamicColors = function() {
 var campanhas = [];
 var clientes = [];
 $(document).ready(function() {
-  addData(chartEstatisticasGerais, "Clientes Fidelizados");
+  //addData(chartEstatisticasGerais, "Clientes Fidelizados");
   $.post(
     "http://127.0.0.1/PINT-Web/api/todas_campanhas_empresa	",
     { key: 1 },
@@ -133,7 +129,12 @@ $(document).ready(function() {
       data.forEach(info => {
         campanhas.push(info);
       });
-      addData(chartEstatisticasCampanhas, campanhas[0].Designacao);
+
+      addDataBar(
+        chartEstatisticasCampanhas,
+        getLabels(campanhas[0]),
+        campanhas[0].Designacao
+      );
     }
   );
   $.post(
@@ -165,5 +166,42 @@ $(document).ready(function() {
 
 $("#carouselExampleControls").on("slid.bs.carousel", function(event) {
   chartEstatisticasCampanhas.data.datasets.pop();
-  addData(chartEstatisticasCampanhas, campanhas[event.to].Designacao);
+  let nlabels = chartEstatisticasCampanhas.data.labels.length;
+  for (i = 0; i < nlabels; i++) {
+    console.log(chartEstatisticasCampanhas.data.labels);
+    chartEstatisticasCampanhas.data.labels.pop();
+  }
+  addDataBar(
+    chartEstatisticasCampanhas,
+    getLabels(campanhas[event.to]),
+    campanhas[event.to].Designacao
+  );
 });
+
+function getDates(startDate, endDate) {
+  let dates = [];
+  startDate = new Date(startDate);
+  endDate = new Date(endDate);
+  let months =
+    endDate.getMonth() -
+    startDate.getMonth() +
+    12 * (endDate.getFullYear() - startDate.getFullYear());
+
+  let current = startDate.getMonth();
+  for (i = 0; i <= months; i++) {
+    if (current == 12) {
+      current = 0;
+    }
+    dates.push(meses[current]);
+    current++;
+  }
+  return dates;
+}
+
+function getLabels(campanha) {
+  let labels = getDates(campanha.DataInicio, campanha.DataFim);
+  labels.forEach(label => {
+    chartEstatisticasCampanhas.data.labels.push(label);
+  });
+  return labels;
+}
