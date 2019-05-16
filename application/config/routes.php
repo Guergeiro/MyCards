@@ -62,6 +62,7 @@ $route['api/notificacao_ativacao_campanha/(:num)']['get'] = 'api/notificacao_ati
 /* API POST's */
 // Campanhas
 $route['api/todas_campanhas_empresas']['post'] = 'api/todas_campanhas_empresas';
+$route['api/todas_campanhas_cartao']['post'] = 'api/todas_campanhas_cartao';
 
 // Colaboradores
 $route['api/todos_colaboradores_empresa']['post'] = 'api/todos_colaboradores_empresa';
@@ -69,6 +70,10 @@ $route['api/novo_colaborador_empresa']['post'] = 'api/novo_colaborador_empresa';
 
 // Clientes
 $route['api/todos_clientes_empresa']['post'] = 'api/todos_clientes_empresa';
+$route['api/todos_clientes']['post'] = 'api/todos_clientes';
+
+// Empresas
+$route['api/todas_empresas']['post'] = 'api/todas_empresas';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

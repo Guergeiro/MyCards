@@ -11,6 +11,11 @@ class Clientes_model extends CI_Model {
 		$query = $this->db->get();
 		return $query->result_array();
 	}
+
+	public function todos_clientes() {
+		$query = $this->db->get("Clientes");
+		return $query->result_array();
+	}
 }
 
 ?>
