@@ -47,8 +47,7 @@
 			<?php if ($this->session->userdata("Email")): ?>
 			<li class="nav-item">
 				<a class="nav-link" href="<?php echo base_url("logout"); ?>">
-					<i class="fas fa-power-off fa-fw fa-lg"></i>
-					<span class="d-md-none">Logout</span>
+					Logout
 				</a>
 			</li>
 			<?php else: ?>
