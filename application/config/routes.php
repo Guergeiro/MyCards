@@ -55,14 +55,20 @@ $route['(:any)'] = 'main/view/$1';
 $route['api/test/(:num)']['get'] = 'api/test/$1';
 
 /* API GET's */
-$route['api/todas_campanhas/(:num)']['get'] = 'api/todas_campanhas/$1';
 $route['api/notificacao_ativacao_campanha/(:num)']['get'] = 'api/notificacao_ativacao_campanha/$1';
 
-$route['api/todos_colaboradores/(:num)']['get'] = 'api/todos_colaboradores/$1';
+
 
 /* API POST's */
-$route['api/ativar_campanha/(:num)']['post'] = 'api/ativar_campanha/$1';
-$route['api/criar_campanha/(:num)']['post'] = 'api/criar_campanha/$1';
+// Campanhas
+$route['api/todas_campanhas_empresas']['post'] = 'api/todas_campanhas_empresas';
+
+// Colaboradores
+$route['api/todos_colaboradores_empresa']['post'] = 'api/todos_colaboradores_empresa';
+$route['api/novo_colaborador_empresa']['post'] = 'api/novo_colaborador_empresa';
+
+// Clientes
+$route['api/todos_clientes_empresa']['post'] = 'api/todos_clientes_empresa';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
