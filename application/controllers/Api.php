@@ -17,9 +17,19 @@ class Api extends CI_Controller {
 	// Campanhas
 	public function todas_campanhas_empresa() {
 		if ($this->Api_model->check_key($this->input->post("key"))) {
-			// echo json com todas as campanhas
+			// echo json com todas as campanhas de uma empresa
 			$this->load->model("Campanhas_model");
 			echo json_encode($this->Campanhas_model->todas_campanhas_empresa($this->input->post("key")));
+		} else {
+			echo "Wrong key";
+		}
+	}
+
+	public function todas_campanhas_cartao() {
+		if ($this->Api_model->check_key($this->input->post("keyCliente")) && $this->Api_model->check_key($this->input->post("keyEmpresa"))) {
+			// echo json com todas as campanhas de um cartao
+			$this->load->model("Campanhas_model");
+			echo json_encode($this->Campanhas_model->todas_campanhas_cartao($this->input->post("keyCliente"), $this->input->post("keyEmpresa")));
 		} else {
 			echo "Wrong key";
 		}
@@ -62,6 +72,29 @@ class Api extends CI_Controller {
 			$this->load->model("Clientes_model");
 			echo json_encode($this->Clientes_model->todos_clientes_empresa($this->input->post("key")));
 		}else {
+			echo "Wrong key";
+		}
+	}
+
+	public function todos_clientes() {
+		// Apenas admins podem usar
+		if ($this->Api_model->check_key($this->input->post("key")) && $this->Api_model->check_admin($this->input->post("key"))) {
+			// echo json com todos os clientes
+			$this->load->model("Clientes_model");
+			echo json_encode($this->Clientes_model->todos_clientes());
+		} else {
+			echo "Wrong key";
+		}
+	}
+
+	// Empresas
+	public function todas_empresas() {
+		// Apenas admins podem usar
+		if ($this->Api_model->check_key($this->input->post("key")) && $this->Api_model->check_admin($this->input->post("key"))) {
+			// echo jsno com todas as empresas
+			$this->load->model("Empresas_model");
+			echo json_encode($this->Empresas_model->todas_empresas());
+		} else {
 			echo "Wrong key";
 		}
 	}
