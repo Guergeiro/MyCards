@@ -33,7 +33,6 @@ class Main extends CI_Controller {
 				if (!$login) {
 					redirect();
 				} else {
-					$this->load->view("templates/navbar_inside");
 					$this->load->Model("Campanhas_model");
 					$data["campanhas"] = $this->Campanhas_model->todas_campanhas(1);
 					$this->load->view("pages/dashboard", $data);
@@ -43,7 +42,6 @@ class Main extends CI_Controller {
 				if (!$login) {
 					redirect();
 				} else {
-					$this->load->view("templates/navbar_inside");
 					$this->load->view("pages/colaboradores");
 				}
 				break;
@@ -51,7 +49,6 @@ class Main extends CI_Controller {
 				if (!$login) {
 					redirect();
 				} else {
-					$this->load->view("templates/navbar_inside");
 					$this->load->view("pages/clientes");
 				}
 				break;
@@ -59,7 +56,6 @@ class Main extends CI_Controller {
 				if (!$login) {
 					redirect();
 				} else {
-					$this->load->view("templates/navbar_inside");
 					$this->load->view("pages/criarCampanha");
 				}
 				break;
@@ -67,7 +63,6 @@ class Main extends CI_Controller {
 				if (!$login) {
 					redirect();
 				} else {
-					$this->load->view("templates/navbar_inside");
 					$this->load->view("pages/listarCampanha");
 				}
 				break;
@@ -75,12 +70,23 @@ class Main extends CI_Controller {
 				if (!$login) {
 					redirect();
 				} else {
-					$this->load->view("templates/navbar_inside");
 					$this->load->view("pages/ativarCampanha");
 				}
 				break;
+			case "login":
+				if ($login) {
+					redirect("dashboard");
+				} else {
+					$this->load->view("pages/login");
+				}
+				break;
+			case "signup":
+				if ($login) {
+					redirect("dashboard");
+				} else {
+					$this->load->view("pages/signup");
+				}
 			default:
-				$this->load->view("templates/navbar_outside");
 				$this->load->view("pages/{$page}");
 		}
 	}
