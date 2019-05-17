@@ -28,5 +28,14 @@ class Authentication_model extends CI_Model
         return array_merge($queryUtilizador, $queryEmpresa);
     }
 
+    public function criarConta_call($data) {
+        $condition = "Email='{$data['email']}'";
+        
+        $query = $this->db->get_where("utilizadores", $condition);
+
+        if ($query->num_rows() == 0) {
+				$this->db->insert("utilizadores", $data);
+		}
+    }
 
 }
