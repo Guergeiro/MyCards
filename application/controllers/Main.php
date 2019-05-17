@@ -73,6 +73,19 @@ class Main extends CI_Controller {
 					$this->load->view("pages/ativarCampanha");
 				}
 				break;
+			case "login":
+				if ($login) {
+					redirect("dashboard");
+				} else {
+					$this->load->view("pages/login");
+				}
+				break;
+			case "signup":
+				if ($login) {
+					redirect("dashboard");
+				} else {
+					$this->load->view("pages/signup");
+				}
 			default:
 				$this->load->view("pages/{$page}");
 		}

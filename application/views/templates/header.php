@@ -46,18 +46,18 @@
 		<ul class="navbar-nav">
 			<?php if ($this->session->userdata("Email")): ?>
 			<li class="nav-item">
-				<a class="nav-link" href="<?php echo base_url("logout"); ?>">
+				<a class="nav-link" href="<?php echo base_url("authentication/logout"); ?>">
 					Logout
 				</a>
 			</li>
 			<?php else: ?>
 			<li class="nav-item">
-				<a class="nav-link" href="<?php echo base_url("login"); ?>">
+				<a class="nav-link" href="<?php echo base_url("signin"); ?>">
 					Iniciar Sessão
 				</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="<?php echo base_url("signin"); ?>">
+				<a class="nav-link" href="<?php echo base_url("signup"); ?>">
 					Criar Conta
 				</a>
 			</li>

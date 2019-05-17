@@ -9,7 +9,7 @@ class Authentication extends CI_Controller
 		$this->load->model("Authentication_model");
 	}
 
-	public function login()
+	public function signin()
 	{
 		if ($this->session->userdata("Email")) {
 			if ($this->session->userdata("Admin") == 1) {
@@ -35,20 +35,20 @@ class Authentication extends CI_Controller
 		$this->form_validation->set_rules($config);
 
 		if (!$this->form_validation->run()) {
-			$this->session->set_flashdata('missingLoginData', 'Por Favor, preencha todos os campos.');
-			redirect('login');
+			$this->session->set_flashdata("missingLoginData", "Por Favor, preencha todos os campos.");
+			redirect("signin");
 		} else {
 			$data = array(
 				"email" => $this->input->post("email"),
 				"password" => $this->input->post("password")
 			);
 
-			$result = $this->Authentication_model->login_call($data);
+			$result = $this->Authentication_model->login($data);
 
 			if (!$result) {
-				$this->session->set_flashdata('errorLoginData', 'Email ou Password Errados');
-				redirect("login");
-			} else if ($result[0]['Admin'] == 1) {
+				$this->session->set_flashdata("errorLoginData", "Email ou Password Errados");
+				redirect("signin");
+			} else if ($result[0]["Admin"] == 1) {
 				$this->session->set_userdata($result[0]);
 				redirect("admin");
 			} else {
@@ -58,7 +58,7 @@ class Authentication extends CI_Controller
 		}
 	}
 
-	public function signin()
+	public function signup()
 	{
 		if ($this->session->userdata("Email")) {
 			if ($this->session->userdata("Admin") == 1) {
@@ -72,7 +72,7 @@ class Authentication extends CI_Controller
 			array(
 				"field" => "email",
 				"label" => "email",
-				"rules" => "required|trim|is_unique[utilizadores.Email]",
+				"rules" => "required|trim|is_unique[Utilizadores.Email]",
 			),
 			array(
 				"field" => "password",
@@ -89,8 +89,7 @@ class Authentication extends CI_Controller
 		$this->form_validation->set_rules($config);
 
 		if (!($this->form_validation->run())) {
-			$this->session->set_flashdata('wrongEmail','O Email desejado não se encontra disponível.');
-			redirect('signin');
+			$this->session->set_flashdata("wrongEmail","O Email desejado não se encontra disponível.");
 		} else {
 
 			$data = array(
@@ -98,10 +97,15 @@ class Authentication extends CI_Controller
 				"password" => $this->input->post("password")
 			);
 
-			$this->Authentication_model->criarConta_call($data);
+			$this->Authentication_model->signup($data);
 
-			$this->session->set_flashdata('accountCreated', 'Conta Criada Com Sucesso');
-			redirect('login');
+			$this->session->set_flashdata("accountCreated", "Conta criada com sucesso.");
 		};
+		redirect("signup");
+	}
+
+	public function logout() {
+		$this->session->sess_destroy();
+		redirect();
 	}
 }

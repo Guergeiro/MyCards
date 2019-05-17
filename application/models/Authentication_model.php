@@ -4,12 +4,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Authentication_model extends CI_Model
 {
 
-    public function login_call($data)
+    public function login($data)
     {
 
         $condition = "Email = '{$data['email']}' AND Password='{$data['password']}'";
 
-        $queryUtilizador = $this->db->get_where("utilizadores", $condition);
+        $queryUtilizador = $this->db->get_where("Utilizadores", $condition);
 
         if($queryUtilizador->num_rows() == 0) {
             return FALSE;
@@ -22,19 +22,19 @@ class Authentication_model extends CI_Model
         }
 
         $condition =  "ID_Empresa = '{$queryUtilizador[0]['ID_Utilizador']}'";
-        $queryEmpresa = $this->db->get_where("empresas", $condition);
+        $queryEmpresa = $this->db->get_where("Empresas", $condition);
         $queryEmpresa = $queryEmpresa->result_array();
         
         return array_merge($queryUtilizador, $queryEmpresa);
     }
 
-    public function criarConta_call($data) {
+    public function signup($data) {
         $condition = "Email='{$data['email']}'";
         
-        $query = $this->db->get_where("utilizadores", $condition);
+        $query = $this->db->get_where("Utilizadores", $condition);
 
         if ($query->num_rows() == 0) {
-				$this->db->insert("utilizadores", $data);
+				$this->db->insert("Utilizadores", $data);
 		}
     }
 

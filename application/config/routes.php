@@ -57,8 +57,6 @@ $route['api/test/(:num)']['get'] = 'api/test/$1';
 /* API GET's */
 $route['api/notificacao_ativacao_campanha/(:num)']['get'] = 'api/notificacao_ativacao_campanha/$1';
 
-
-
 /* API POST's */
 // Campanhas
 $route['api/todas_campanhas_empresas']['post'] = 'api/todas_campanhas_empresas';
