@@ -1,4 +1,4 @@
-var meses = [
+const meses = [
   "Janeiro",
   "Fevereiro",
   "Março",
@@ -12,6 +12,8 @@ var meses = [
   "Novembro",
   "Dezembro"
 ];
+
+const ageGroups = ["<18", "18-24", "25-50", "51>"];
 
 /* Criar Chart Estatisticas Gerais */
 var chartEstatisticasGerais = new Chart($("#myChartEG"), {
@@ -29,6 +31,12 @@ var chartEstatisticasCampanhas = new Chart($("#myChartEC"), {
 
 /* Criar Chart Localizacao dos Fidelizados */
 var chartLocalizacaoFidelizados = new Chart($("#myChartLF"), {
+  type: "doughnut",
+  data: {}
+});
+
+/* Criar Chart Idade dos Fidelizados */
+var chartIdadeFidelizados = new Chart($("#myChartIF"), {
   type: "doughnut",
   data: {}
 });
@@ -142,24 +150,24 @@ $(document).ready(function() {
     { key: 1 },
     function(data) {
       data = JSON.parse(data);
-      let localizacao = {};
-      data.forEach(info => {
-        if (!('"' + info["Localizacao"] + '"' in localizacao)) {
-          if (localizacao[info["Localizacao"]] == 1) {
-            localizacao[info["Localizacao"]] += 1;
-          } else {
-            localizacao[info["Localizacao"]] = 1;
-          }
-        }
-        clientes.push(info);
-      });
+      // Grafico de Localizacao de Fidelizados
+      let localizacao = getLocalizaoClientes(data);
       let labels = [];
-
       Object.keys(localizacao).forEach(function(key) {
         labels.push(key);
         chartLocalizacaoFidelizados.data.labels.push(key);
       });
       addDataPie(chartLocalizacaoFidelizados, labels, localizacao);
+
+      // Grafico de Idade de Fidelizados
+      labels = [];
+      let idades = getIdadesClientes(data);
+
+      Object.keys(idades).forEach(function(key) {
+        labels.push(key);
+        chartIdadeFidelizados.data.labels.push(key);
+      });
+      addDataPie(chartIdadeFidelizados, labels, idades);
     }
   );
 });
@@ -168,7 +176,6 @@ $("#carouselExampleControls").on("slid.bs.carousel", function(event) {
   chartEstatisticasCampanhas.data.datasets.pop();
   let nlabels = chartEstatisticasCampanhas.data.labels.length;
   for (i = 0; i < nlabels; i++) {
-    console.log(chartEstatisticasCampanhas.data.labels);
     chartEstatisticasCampanhas.data.labels.pop();
   }
   addDataBar(
@@ -204,4 +211,45 @@ function getLabels(campanha) {
     chartEstatisticasCampanhas.data.labels.push(label);
   });
   return labels;
+}
+
+function getLocalizaoClientes(data) {
+  let localizacao = {};
+  data.forEach(info => {
+    if (!('"' + info["Localizacao"] + '"' in localizacao)) {
+      if (localizacao[info["Localizacao"]] == 1) {
+        localizacao[info["Localizacao"]] += 1;
+      } else {
+        localizacao[info["Localizacao"]] = 1;
+      }
+    }
+    clientes.push(info);
+  });
+  return localizacao;
+}
+
+function getIdadesClientes(data) {
+  let idades = {};
+  for (i = 0; i < ageGroups.length; i++) idades[ageGroups[i]] = 0;
+  data.forEach(info => {
+    let idade = calcularIdade(info["DataNascimento"]);
+    if (idade < 18) {
+      idades["<18"] += 1;
+    }
+    if (idade >= 18 && idade <= 24) {
+      idades["18-24"] += 1;
+    }
+    if (idade >= 25 && idade <= 50) {
+      idades["25-50"] += 1;
+    }
+    if (idade > 51) {
+      idades["51>"] += 1;
+    }
+  });
+  return idades;
+}
+
+function calcularIdade(data) {
+  var birthday = +new Date(data);
+  return ~~((Date.now() - birthday) / 31557600000);
 }
