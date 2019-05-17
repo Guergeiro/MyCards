@@ -16,10 +16,10 @@ class Api extends CI_Controller {
 
 	// Campanhas
 	public function todas_campanhas_empresa() {
-		if ($this->Api_model->check_key($this->input->post("key"))) {
+		if ($this->Api_model->check_key($this->input->post("keyEmpresa"))) {
 			// echo json com todas as campanhas de uma empresa
 			$this->load->model("Campanhas_model");
-			echo json_encode($this->Campanhas_model->todas_campanhas_empresa($this->input->post("key")));
+			echo json_encode($this->Campanhas_model->todas_campanhas_empresa($this->input->post("keyEmpresa")));
 		} else {
 			echo "Wrong key";
 		}
@@ -35,25 +35,35 @@ class Api extends CI_Controller {
 		}
 	}
 
+	public function todas_campanhas_cliente() {
+		if ($this->Api_model->check_key($this->input->post("keyCliente"))) {
+			// echo json com todas as campanhas de um cliente
+			$this->load->model("Campanhas_model");
+			echo json_encode($this->Campanhas_model->todas_campanhas_cliente($this->input->post("keyCliente")));
+		} else {
+			echo "Wrong key";
+		}
+	}
+
 	// Colaboradores
 	public function todos_colaboradores_empresa() {
-		if ($this->Api_model->check_key($this->input->post("key"))) {
+		if ($this->Api_model->check_key($this->input->post("keyEmpresa"))) {
 			// echo json com todos os colaboradores 
 			$this->load->model("Colaboradores_model");
-			echo json_encode($this->Colaboradores_model->todos_colaboradores_empresa($this->input->post("key")));
+			echo json_encode($this->Colaboradores_model->todos_colaboradores_empresa($this->input->post("keyEmpresa")));
 		} else {
 			echo "Wrong key";
 		}
 	}
 
 	public function novo_colaborador_empresa() {
-		if ($this->Api_model->check_key($this->input->post("key"))) {
+		if ($this->Api_model->check_key($this->input->post("keyEmpresa"))) {
 			$this->load->model("Colaboradores_model");
 			$data = array(
 				"Nome" => $this->input->post("nome"),
 				"CodigoAcesso" => $this->input->post("codigoAcesso"),
 				"Dono" => $this->input->post("dono"),
-				"ID_Empresa" => $this->input->post("key")
+				"ID_Empresa" => $this->input->post("keyEmpresa")
 			);
 			if ($this->Colaboradores_model->novo_colaborador_empresa($data)) {
 				echo "Colaborador inserido";
@@ -67,10 +77,10 @@ class Api extends CI_Controller {
 
 	// Clientes
 	public function todos_clientes_empresa() {
-		if ($this->Api_model->check_key($this->input->post("key"))) {
+		if ($this->Api_model->check_key($this->input->post("keyEmpresa"))) {
 			// echo json com todos os clientes de uma empresa
 			$this->load->model("Clientes_model");
-			echo json_encode($this->Clientes_model->todos_clientes_empresa($this->input->post("key")));
+			echo json_encode($this->Clientes_model->todos_clientes_empresa($this->input->post("keyEmpresa")));
 		}else {
 			echo "Wrong key";
 		}

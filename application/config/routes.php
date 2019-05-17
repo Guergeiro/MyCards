@@ -61,6 +61,7 @@ $route['api/notificacao_ativacao_campanha/(:num)']['get'] = 'api/notificacao_ati
 // Campanhas
 $route['api/todas_campanhas_empresas']['post'] = 'api/todas_campanhas_empresas';
 $route['api/todas_campanhas_cartao']['post'] = 'api/todas_campanhas_cartao';
+$route['api/todas_campanhas_cliente']['post'] = 'api/todas_campanhas_cliente';
 
 // Colaboradores
 $route['api/todos_colaboradores_empresa']['post'] = 'api/todos_colaboradores_empresa';
