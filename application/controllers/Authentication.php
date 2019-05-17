@@ -11,7 +11,7 @@ class Authentication extends CI_Controller
 
 	public function login()
 	{
-		if($this->session->userdata("Email")) {
+		if ($this->session->userdata("Email")) {
 			if ($this->session->userdata("Admin") == 1) {
 				redirect("admin");
 			} else {
@@ -56,5 +56,52 @@ class Authentication extends CI_Controller
 				redirect("dashboard");
 			}
 		}
+	}
+
+	public function signin()
+	{
+		if ($this->session->userdata("Email")) {
+			if ($this->session->userdata("Admin") == 1) {
+				redirect("admin");
+			} else {
+				redirect("dashboard");
+			}
+		}
+
+		$config = array(
+			array(
+				"field" => "email",
+				"label" => "email",
+				"rules" => "required|trim|is_unique[utilizadores.Email]",
+			),
+			array(
+				"field" => "password",
+				"label" => "password",
+				"rules" => "required|trim"
+			),
+			array(
+				"field" => "repassword",
+				"label" => "repassword",
+				"rules" => "required|trim|matches[password]"
+			)
+		);
+
+		$this->form_validation->set_rules($config);
+
+		if (!($this->form_validation->run())) {
+			$this->session->set_flashdata('wrongEmail','O Email desejado não se encontra disponível.');
+			redirect('signin');
+		} else {
+
+			$data = array(
+				"email" => $this->input->post("email"),
+				"password" => $this->input->post("password")
+			);
+
+			$this->Authentication_model->criarConta_call($data);
+
+			$this->session->set_flashdata('accountCreated', 'Conta Criada Com Sucesso');
+			redirect('login');
+		};
 	}
 }
