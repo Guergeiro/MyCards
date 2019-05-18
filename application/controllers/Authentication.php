@@ -89,7 +89,7 @@ class Authentication extends CI_Controller
 		$this->form_validation->set_rules($config);
 
 		if (!($this->form_validation->run())) {
-			$this->session->set_flashdata("wrongEmail","O Email desejado não se encontra disponível.");
+			$this->session->set_flashdata("wrongEmail", "O Email desejado não se encontra disponível.");
 		} else {
 
 			$data = array(
@@ -104,12 +104,14 @@ class Authentication extends CI_Controller
 		redirect("signup");
 	}
 
-	public function signoff() {
+	public function signoff()
+	{
 		$this->session->sess_destroy();
 		redirect();
 	}
 
-	public function recoverPassword() {
+	public function recoverPassword()
+	{
 		if ($this->session->userdata("Email")) {
 			if ($this->session->userdata("Admin") == 1) {
 				redirect("admin");
@@ -122,9 +124,50 @@ class Authentication extends CI_Controller
 		// Gera uma password aleatória aqui e depois dá update na tabela.
 		// Teoricamente temos de enviar um email com essa password. Depois vemos se conseguimos fazer isso.
 		// Utiliza o que eu tenho em baixo para tratar disto. Apenas não uses valores vindos da sessão (uma vez que não existem)
+
+		$config = array(
+			array(
+				"field" => "email",
+				"label" => "email",
+				"rules" => "required|trim",
+			),
+		);
+
+		$this->form_validation->set_rules($config);
+
+		if (!($this->form_validation->run())) {
+			$this->session->set_flashdata("wrongEmail", "O Email não se encontra na base de dados.");
+			redirect('recoverPassword');
+		} else {
+
+			$alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+			$password = array();
+			$alpha_length = strlen($alphabet) - 1;
+			for ($i = 0; $i < 16; $i++) {
+				$n = rand(0, $alpha_length);
+				$password[] = $alphabet[$n];
+			}
+			// die(implode($password));
+
+			$data = array(
+				"email" => $this->input->post("email")
+			);
+
+			$returnData = $this->Authentication_model->recoverPassword($data, $password);
+			
+			if(!$returnData)
+			{
+				$this->session->set_flashdata("wrongEmail", "O Email não se encontra na base de dados.");
+			} else {
+				$this->session->set_flashdata("passwordSent", "Email Enviado Com Sucesso.");
+			}
+
+			redirect('recoverPassword');
+		}
 	}
 
-	public function updatePassword() {
+	public function updatePassword()
+	{
 		if (!$this->session->userdata("Email")) {
 			// Não está login
 			redirect();
@@ -148,10 +191,10 @@ class Authentication extends CI_Controller
 		);
 		$this->form_validation->set_rules($config);
 		if (!($this->form_validation->run())) {
-			$this->session->set_flashdata("wrongPassword","A password inserida não é correta.");
+			$this->session->set_flashdata("wrongPassword", "A password inserida não é correta.");
 		} else {
 
-			$data = array (
+			$data = array(
 				"ID_Utilizador" => $this->session->userdata("ID_Utilizador"),
 				"Email" => $this->session->userdata("Email"),
 				"Password" => $this->input->post("password"),
@@ -165,7 +208,6 @@ class Authentication extends CI_Controller
 			} else {
 				$this->session->set_flashdata("errorPassword", "Não foi possível alterar a password.");
 			}
-
 		};
 		redirect("updatePassword");
 	}
