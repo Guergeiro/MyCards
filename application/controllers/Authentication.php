@@ -43,7 +43,7 @@ class Authentication extends CI_Controller
 				"password" => $this->input->post("password")
 			);
 
-			$result = $this->Authentication_model->login($data);
+			$result = $this->Authentication_model->signin($data);
 
 			if (!$result) {
 				$this->session->set_flashdata("errorLoginData", "Email ou Password errados");
@@ -119,12 +119,6 @@ class Authentication extends CI_Controller
 				redirect("dashboard");
 			}
 		}
-		// Trabalha Diogo :*
-
-		// Gera uma password aleatória aqui e depois dá update na tabela.
-		// Teoricamente temos de enviar um email com essa password. Depois vemos se conseguimos fazer isso.
-		// Utiliza o que eu tenho em baixo para tratar disto. Apenas não uses valores vindos da sessão (uma vez que não existem)
-
 		$config = array(
 			array(
 				"field" => "email",
@@ -137,33 +131,28 @@ class Authentication extends CI_Controller
 
 		if (!($this->form_validation->run())) {
 			$this->session->set_flashdata("wrongEmail", "O Email não se encontra na base de dados.");
-			redirect('recoverPassword');
 		} else {
 
-			$alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+			$alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 			$password = array();
 			$alpha_length = strlen($alphabet) - 1;
 			for ($i = 0; $i < 16; $i++) {
-				$n = rand(0, $alpha_length);
+				$n = mt_rand(0, $alpha_length);
 				$password[] = $alphabet[$n];
 			}
-			// die(implode($password));
-
 			$data = array(
-				"email" => $this->input->post("email")
+				"Email" => $this->input->post("email"),
+				"Password" => implode($password)
 			);
-
-			$returnData = $this->Authentication_model->recoverPassword($data, $password);
-			
-			if(!$returnData)
+			if(!$this->Authentication_model->recoverPassword($data))
 			{
 				$this->session->set_flashdata("wrongEmail", "O Email não se encontra na base de dados.");
 			} else {
 				$this->session->set_flashdata("passwordSent", "Email Enviado Com Sucesso.");
 			}
 
-			redirect('recoverPassword');
 		}
+		redirect("recoverPassword");
 	}
 
 	public function updatePassword()
@@ -208,7 +197,7 @@ class Authentication extends CI_Controller
 			} else {
 				$this->session->set_flashdata("errorPassword", "Não foi possível alterar a password.");
 			}
-		};
+		}
 		redirect("updatePassword");
 	}
 }

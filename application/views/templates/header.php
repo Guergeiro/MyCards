@@ -30,7 +30,7 @@
 </head>
 
 <body style="padding-top: 72px;" class="grey lighten-5">
-<nav class="navbar navbar-expand bg-blue navbar-dark fixed-top px-md-5 py-3">
+<nav class="navbar navbar-expand-md bg-blue navbar-dark fixed-top px-md-5 py-3">
 	<?php if ($this->session->userdata("Email") && $this->session->userdata("Admin") == 0): ?>
 	<button class="navbar-toggler d-inline" role="button" type="button" id="sidebarToggler">
 		<i class="fas fa-chevron-right fa-fw"></i>

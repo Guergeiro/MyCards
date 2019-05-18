@@ -4,7 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Authentication_model extends CI_Model
 {
 
-    public function login($data)
+    public function signin($data)
     {
 
         $condition = "Email = '{$data['email']}' AND Password='{$data['password']}'";
@@ -39,15 +39,12 @@ class Authentication_model extends CI_Model
         }
     }
 
-    public function recoverPassword($data, $password)
+    public function recoverPassword($data)
     {   
-        $condition = "email='{$data['email']}'";     
-        $passwordString = implode($password);
-
-        // die($data['email']);
-        $this->db->where($condition);
-        $this->db->set("Password",$passwordString);
-        return($this->db->update("utilizadores"));
+		
+        $this->db->where("Email", $data["Email"]);
+        $this->db->set("Password",$data["Password"]);
+        return($this->db->update("Utilizadores"));
     }
 
     public function updatePassword($data)
