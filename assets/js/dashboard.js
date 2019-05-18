@@ -26,19 +26,16 @@ var chartEstatisticasGerais = new Chart($("#myChartEG"), {
 /* Criar Chart Estatisticas Campanhas */
 var chartEstatisticasCampanhas = new Chart($("#myChartEC"), {
   type: "bar",
-  data: {}
 });
 
 /* Criar Chart Localizacao dos Fidelizados */
 var chartLocalizacaoFidelizados = new Chart($("#myChartLF"), {
   type: "doughnut",
-  data: {}
 });
 
 /* Criar Chart Idade dos Fidelizados */
 var chartIdadeFidelizados = new Chart($("#myChartIF"), {
-  type: "doughnut",
-  data: {}
+  type: "pie",
 });
 
 /* Inicio Estatisticas Gerais */
@@ -47,8 +44,8 @@ $(".teste").click(function() {
     $(this)
       .removeClass("text-muted")
       .addClass("text-primary");
-    addData(
-      chartEstatisticasGerais,
+    addDataBar(
+      chartEstatisticasGerais, meses,
       $(this)
         .children()
         .last()
@@ -128,7 +125,7 @@ var dynamicColors = function() {
 var campanhas = [];
 var clientes = [];
 $(document).ready(function() {
-  //addData(chartEstatisticasGerais, "Clientes Fidelizados");
+  addDataBar(chartEstatisticasGerais, meses, "Clientes Fidelizados");
   $.post(
     "http://127.0.0.1/PINT-Web/api/todas_campanhas_empresa	",
     { key: 1 },
