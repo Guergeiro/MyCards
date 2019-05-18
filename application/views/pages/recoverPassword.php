@@ -8,7 +8,7 @@
 			<div class="col-12 col-md-8 offset-md-2">
 				<div class="md-form md-outline">
 					<i class="fas fa-fw fa-envelope prefix"></i>
-					<input type="text" id="email" name="email" class="form-control">
+					<input type="email" id="email" name="email" class="form-control">
 					<label for="email">E-mail</label>
 					<div class="form-text invalid-tooltip"></div>
 				</div>
