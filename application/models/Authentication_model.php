@@ -36,6 +36,14 @@ class Authentication_model extends CI_Model
         if ($query->num_rows() == 0) {
 				$this->db->insert("Utilizadores", $data);
 		}
+	}
+
+	public function recoverPassword($data) {        
+        
+    }
+	
+	public function updatePassword($data) {        
+        return $this->db->replace("Utilizadores", $data);
     }
 
 }

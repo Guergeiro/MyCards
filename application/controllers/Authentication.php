@@ -46,7 +46,7 @@ class Authentication extends CI_Controller
 			$result = $this->Authentication_model->login($data);
 
 			if (!$result) {
-				$this->session->set_flashdata("errorLoginData", "Email ou Password Errados");
+				$this->session->set_flashdata("errorLoginData", "Email ou Password errados");
 				redirect("signin");
 			} else if ($result[0]["Admin"] == 1) {
 				$this->session->set_userdata($result[0]);
@@ -110,9 +110,63 @@ class Authentication extends CI_Controller
 	}
 
 	public function recoverPassword() {
+		if ($this->session->userdata("Email")) {
+			if ($this->session->userdata("Admin") == 1) {
+				redirect("admin");
+			} else {
+				redirect("dashboard");
+			}
+		}
 		// Trabalha Diogo :*
 
 		// Gera uma password aleatória aqui e depois dá update na tabela.
 		// Teoricamente temos de enviar um email com essa password. Depois vemos se conseguimos fazer isso.
+		// Utiliza o que eu tenho em baixo para tratar disto. Apenas não uses valores vindos da sessão (uma vez que não existem)
+	}
+
+	public function updatePassword() {
+		if (!$this->session->userdata("Email")) {
+			// Não está login
+			redirect();
+		}
+		$config = array(
+			array(
+				"field" => "prepassword",
+				"label" => "prepassword",
+				"rules" => "required|trim|differs[password]"
+			),
+			array(
+				"field" => "password",
+				"label" => "password",
+				"rules" => "required|trim"
+			),
+			array(
+				"field" => "repassword",
+				"label" => "repassword",
+				"rules" => "required|trim|matches[password]"
+			)
+		);
+		$this->form_validation->set_rules($config);
+		if (!($this->form_validation->run())) {
+			$this->session->set_flashdata("wrongPassword","A password inserida não é correta.");
+		} else {
+
+			$data = array (
+				"ID_Utilizador" => $this->session->userdata("ID_Utilizador"),
+				"Email" => $this->session->userdata("Email"),
+				"Password" => $this->input->post("password"),
+				"Localizacao" => $this->session->userdata("Localizacao"),
+				"DataRegisto" => $this->session->userdata("DataRegisto"),
+				"Admin" => $this->session->userdata("Admin")
+			);
+
+			if ($this->Authentication_model->updatePassword($data)) {
+				$this->session->set_flashdata("updatedPassword", "Password alterada com sucesso.");
+			} else {
+				$this->session->set_flashdata("errorPassword", "Não foi possível alterar a password.");
+			}
+
+		};
+		redirect("updatePassword");
 	}
 }

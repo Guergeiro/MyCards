@@ -86,6 +86,12 @@ class Main extends CI_Controller {
 				} else {
 					$this->load->view("pages/signup");
 				}
+			case "updatePassword":
+			if (!$login) {
+				redirect();
+			} else {
+				$this->load->view("pages/updatePassword");
+			}
 			default:
 				$this->load->view("pages/{$page}");
 		}
