@@ -25,7 +25,7 @@ class Main extends CI_Controller {
 					if ($this->session->userdata("Admin") == 0) {
 						redirect("dashboard");
 					} else {
-						$this->load->view("pages/{$admin}");
+						$this->load->view("pages/admin");
 					}
 				}
 				break;
@@ -73,11 +73,11 @@ class Main extends CI_Controller {
 					$this->load->view("pages/ativarCampanha");
 				}
 				break;
-			case "login":
+			case "signin":
 				if ($login) {
 					redirect("dashboard");
 				} else {
-					$this->load->view("pages/login");
+					$this->load->view("pages/signin");
 				}
 				break;
 			case "signup":

@@ -104,8 +104,15 @@ class Authentication extends CI_Controller
 		redirect("signup");
 	}
 
-	public function logout() {
+	public function signoff() {
 		$this->session->sess_destroy();
 		redirect();
+	}
+
+	public function recoverPassword() {
+		// Trabalha Diogo :*
+
+		// Gera uma password aleatória aqui e depois dá update na tabela.
+		// Teoricamente temos de enviar um email com essa password. Depois vemos se conseguimos fazer isso.
 	}
 }

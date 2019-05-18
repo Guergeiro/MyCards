@@ -46,7 +46,7 @@
 		<ul class="navbar-nav">
 			<?php if ($this->session->userdata("Email")): ?>
 			<li class="nav-item">
-				<a class="nav-link" href="<?php echo base_url("authentication/logout"); ?>">
+				<a class="nav-link" href="<?php echo base_url("authentication/signoff"); ?>">
 					Logout
 				</a>
 			</li>

@@ -32,7 +32,7 @@
 			</div>
 			<?php endif; ?>
 			<div class="col-12 col-md-8 offset-md-2 text-center">
-				<a href="<?php echo base_url(); ?>">Esqueceu-se da password?</a>
+				<a href="<?php echo base_url("recoverPassword"); ?>">Esqueceu-se da password?</a>
 			</div>
 			<div class="col-12 col-md-8 offset-md-2 text-center my-3">
 				<button type="submit" class="btn btn-outline-primary rounded-pill">Iniciar Sessão</button>
