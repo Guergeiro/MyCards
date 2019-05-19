@@ -1,0 +1,10 @@
+body {
+	background-image: url("../imgs/authentication/barcode.jpg");
+	background-position: center;
+	background-size: cover;
+	min-height: 100vh;
+}
+
+main.container {
+	min-height: calc(100vh - 72px);
+}
