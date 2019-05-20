@@ -62,7 +62,7 @@
           </div>
         </div>
       </div>
-      <!-- Registo por Referencia -->
+      <!-- Idade dos Fidelizados -->
       <div class="card">
         <div class="card-header">
           <h3 class="text-primary text-truncate">Idade dos Fidelizados</h3>
