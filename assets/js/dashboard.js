@@ -67,11 +67,39 @@ $(".teste").click(function() {
 });
 
 /* Adicionar Dataset ao grafico */
-function addDataBar(chart, labels, label) {
+function addDataBar(chart, labels, label, data) {
   let newData = [];
   for (i = 0; i < labels.length; i++) {
-    newData[i] = Math.floor(Math.random() * 25);
+    newData[i] = 0;
   }
+
+  switch (label) {
+    case "Clientes Fidelizados":
+      for (i = 0; i < data.length; i++) {
+        newData[getMonth(data[i].DataFidelizacao)] += 1;
+      }
+      break;
+    case "Crescimento da Empresa":
+      // code block
+      break;
+
+    case "Crescimento de Rating":
+      // Podemos testar com media de rating em vez de numero de rates
+      for (i = 0; i < data.length; i++) {
+        newData[getMonth(data[i].DataRating)] += 1;
+      }
+      break;
+    case "Campanhas Utilizadas":
+      for (i = 0; i < data.length; i++) {
+        newData[getMonth(data[i].DataUtilizacao)] += 1;
+      }
+      break;
+    default:
+      for (i = 0; i < labels.length; i++) {
+        newData[i] = Math.floor(Math.random() * 25);
+      }
+  }
+
   let newDataset = {
     label: label,
     backgroundColor: dynamicColors(),
@@ -125,7 +153,6 @@ var dynamicColors = function() {
 var campanhas = [];
 var clientes = [];
 $(document).ready(function() {
-  addDataBar(chartEstatisticasGerais, meses, "Clientes Fidelizados");
   $.post(
     "http://127.0.0.1/PINT-Web/api/todas_campanhas_empresa	",
     { keyEmpresa: 1 },
@@ -164,6 +191,12 @@ $(document).ready(function() {
         chartIdadeFidelizados.data.labels.push(key);
       });
       addDataPie(chartIdadeFidelizados, labels, idades);
+      addDataBar(
+        chartEstatisticasGerais,
+        meses,
+        "Clientes Fidelizados",
+        clientes
+      );
     }
   );
 });
@@ -248,4 +281,9 @@ function getIdadesClientes(data) {
 function calcularIdade(data) {
   var birthday = +new Date(data);
   return ~~((Date.now() - birthday) / 31557600000);
+}
+
+function getMonth(data) {
+  data = new Date(data);
+  return data.getMonth();
 }
