@@ -25,17 +25,17 @@ var chartEstatisticasGerais = new Chart($("#myChartEG"), {
 
 /* Criar Chart Estatisticas Campanhas */
 var chartEstatisticasCampanhas = new Chart($("#myChartEC"), {
-  type: "bar",
+  type: "bar"
 });
 
 /* Criar Chart Localizacao dos Fidelizados */
 var chartLocalizacaoFidelizados = new Chart($("#myChartLF"), {
-  type: "doughnut",
+  type: "doughnut"
 });
 
 /* Criar Chart Idade dos Fidelizados */
 var chartIdadeFidelizados = new Chart($("#myChartIF"), {
-  type: "pie",
+  type: "pie"
 });
 
 /* Inicio Estatisticas Gerais */
@@ -45,7 +45,8 @@ $(".teste").click(function() {
       .removeClass("text-muted")
       .addClass("text-primary");
     addDataBar(
-      chartEstatisticasGerais, meses,
+      chartEstatisticasGerais,
+      meses,
       $(this)
         .children()
         .last()
@@ -97,7 +98,6 @@ function addDataPie(chart, labels, obj) {
     borderWidth: 1,
     data: newData
   };
-
   chart.data.datasets.push(newDataset);
   chart.update();
 }
@@ -128,13 +128,12 @@ $(document).ready(function() {
   addDataBar(chartEstatisticasGerais, meses, "Clientes Fidelizados");
   $.post(
     "http://127.0.0.1/PINT-Web/api/todas_campanhas_empresa	",
-    { key: 1 },
+    { keyEmpresa: 1 },
     function(data) {
       data = JSON.parse(data);
       data.forEach(info => {
         campanhas.push(info);
       });
-
       addDataBar(
         chartEstatisticasCampanhas,
         getLabels(campanhas[0]),
@@ -143,8 +142,8 @@ $(document).ready(function() {
     }
   );
   $.post(
-    "http://127.0.0.1/PINT-Web/api/todos_clientes_empresa	",
-    { key: 1 },
+    "http://127.0.0.1/PINT-Web/api/todos_clientes_empresa",
+    { keyEmpresa: 1 },
     function(data) {
       data = JSON.parse(data);
       // Grafico de Localizacao de Fidelizados

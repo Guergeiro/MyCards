@@ -30,11 +30,10 @@ class Main extends CI_Controller {
 				}
 				break;
 			case "dashboard":
-				if ($login) {
+				if (!$login) {
 					redirect();
 				} else {
-					$this->load->view("templates/navbar_inside");
-					$data = array('key' => 1);
+					$data = array('keyEmpresa' => 1);
 					$options = array(
 						'http' => array(
 								'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
