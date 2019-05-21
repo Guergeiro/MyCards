@@ -2,3 +2,7 @@ form .col-12>*:not(button) {
 	min-width: 280px;
 	width: 50vw;
 }
+
+#notificationElement {
+	cursor: pointer;
+}
