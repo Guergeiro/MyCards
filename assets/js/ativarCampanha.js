@@ -6,7 +6,11 @@ setInterval(function () {
 	});
 }, 5000);
 
-function getID() {
-	let nodeElement = document.getElementById('#idCampanha').textContent;
-	document.getElementById('#codigo').value = nodeElement;
-}
+$('.toast').toast('show');
+
+document.querySelectorAll(".toast-body").forEach((toast) => {
+	toast.addEventListener("click", function () {
+		document.querySelector("#codigo").value = toast.querySelector(".id-campanha").innerHTML;
+		document.querySelector("#codigo").focus();
+	});
+});

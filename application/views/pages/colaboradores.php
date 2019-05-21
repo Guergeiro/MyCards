@@ -1,4 +1,4 @@
-<main class="container my-3 py-3 shadow">
+<main class="container my-3 py-3 shadow d-flex align-items-center justify-content-center">
 	<div class="card">
 		<div class="card-header">
 			<h3 class="text-primary text-truncate">Colaboradores</h3>
