@@ -5,10 +5,9 @@
 			<small>Esta área serve para ativar as campanhas.</small>
 		</div>
 		<div class="card-body">
-			<?php echo form_open("", "class=\"form-row\" onsubmit=\"return validation(this);\""); ?>
+			<?php echo form_open("api/ativarCampanha", "class=\"form-row\" onsubmit=\"return validation(this);\""); ?>
 				<div class="col-12">
-					<ul class="list-group list-group-flush mx-auto" style="max-height: 196px; overflow-y:scroll;">
-					</ul>	
+					
 				</div>
 				<div class="col-12">
 					<div class="md-form form-lg mx-auto">
