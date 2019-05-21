@@ -33,9 +33,17 @@ class Main extends CI_Controller {
 				if (!$login) {
 					redirect();
 				} else {
-					$this->load->Model("Campanhas_model");
-					$data["campanhas"] = $this->Campanhas_model->todas_campanhas(1);
-					$this->load->view("pages/dashboard", $data);
+					$data = array('keyEmpresa' => 1);
+					$options = array(
+						'http' => array(
+								'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+								'method'  => 'POST',
+								'content' => http_build_query($data)
+						)
+				);
+				$context  = stream_context_create($options);
+				$data["campanhas"] = json_decode(file_get_contents("http://127.0.0.1/PINT-Web/api/todas_campanhas_empresa", false, $context));
+				$this->load->view("pages/dashboard", $data);
 				}
 				break;
 			case "colaboradores":
