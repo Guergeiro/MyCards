@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Campanhas_model extends CI_Model {
+	// SELECT
 	public function todas_campanhas_empresa($keyEmpresa) {
 		$query = $this->db->get_where("Campanhas", "ID_Empresa = {$keyEmpresa}");
 		return $query->result_array();
@@ -23,6 +24,30 @@ class Campanhas_model extends CI_Model {
 		$this->db->where("InstanciaCampanha.ID_Cliente = {$keyCliente}");
 		$query = $this->db->get();
 		return $query->result_array();
+	}
+
+	public function todas_instanciascampanhas_empresa() {
+		$query = $this->db->get_where("InstanciaCampanha", "ID_Empresa = {$keyEmpresa}");
+		return $query->result_array();
+	}
+
+	// UPDATE
+	public function ativar_instanciacampanha_cartao($data) {
+		$this->db->where("InstanciaCampanha.ID_Cliente = {$data['ID_Cliente']} AND InstanciaCampanha.ID_Empresa = {$data['ID_Empresa']} AND InstanciaCampanha.ID_Campanha = {$data['ID_Campanha']}");
+        $this->db->set("Utilizado","1");
+        return($this->db->update("InstanciaCampanha"));
+	}
+
+	public function notificar_instanciacampanha_cartao($data) {
+		$this->db->where("InstanciaCampanha.ID_Cliente = {$data['ID_Cliente']} AND InstanciaCampanha.ID_Empresa = {$data['ID_Empresa']} AND InstanciaCampanha.ID_Campanha = {$data['ID_Campanha']}");
+        $this->db->set("Notificacao","1");
+        return($this->db->update("InstanciaCampanha"));
+	}
+
+	public function desnotificar_instanciacampanha_cartao($data) {
+		$this->db->where("InstanciaCampanha.ID_Cliente = {$data['ID_Cliente']} AND InstanciaCampanha.ID_Empresa = {$data['ID_Empresa']} AND InstanciaCampanha.ID_Campanha = {$data['ID_Campanha']}");
+        $this->db->set("Notificacao","0");
+        return($this->db->update("InstanciaCampanha"));
 	}
 }
 
