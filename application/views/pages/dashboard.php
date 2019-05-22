@@ -91,7 +91,7 @@
       <small>Nesta área estão presentes as estatísticas de campanhas da Empresa.</small>
     </div>
 
-    <div class="card-body pt-1">
+    <div class="card-body d-none pt-1">
       <div class="row">
         <div id="carouselExampleControls" class="carousel slide col-12 text-center p-4 shadow" data-interval="false"
           data-ride="carousel">
