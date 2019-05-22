@@ -38,3 +38,11 @@ i.close-effect {
 	color: #d5dbe1 !important;
 	transition: none;
 }
+
+body {
+	min-height: 100vh;
+}
+
+main.container {
+	min-height: calc(100vh - 72px);
+}
