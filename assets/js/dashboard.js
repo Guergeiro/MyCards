@@ -175,7 +175,12 @@ $(document).ready(function () {
                 getLabels(dbInfo["campanhas"][0]),
                 dbInfo["campanhas"][0].Designacao
               );
-              document.querySelector("#myChartEC").parentElement.parentElement.parentElement.parentElement.classList.remove("d-none");
+              let parent = document.querySelector("#myChartEC").parentElement.parentElement.parentElement.parentElement;
+              parent.classList.remove("d-none");
+              dbInfo["campanhas"].forEach((campanha => {
+                parent.querySelector(".carousel-inner").innerHTML += "<div class=\"carousel-item\"><div><h5 class=\"mb-2 h5\">" + campanha["Designacao"] + "</h5><small>Campanha válida até " + campanha["DataFim"] + "</small></div></div>";
+              }));
+              parent.querySelector(".carousel-inner").firstElementChild.classList.add("active");
 
               // Grafico de Estatisticas Gerais
               addDataBar(
