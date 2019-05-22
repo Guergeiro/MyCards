@@ -26,7 +26,7 @@ class Campanhas_model extends CI_Model {
 		return $query->result_array();
 	}
 
-	public function todas_instanciascampanhas_empresa() {
+	public function todas_instanciascampanhas_empresa($keyEmpresa) {
 		$query = $this->db->get_where("InstanciaCampanha", "ID_Empresa = {$keyEmpresa}");
 		return $query->result_array();
 	}
