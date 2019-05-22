@@ -1,4 +1,4 @@
-let notificacoes = [];
+const notificacoes = new Array();
 
 setInterval(function () {
 	/* Atualiza notificações a cada 5s */
@@ -14,8 +14,6 @@ setInterval(function () {
 
 				let oldinnerHtml = document.querySelector("form").innerHTML;
 
-				console.log(elementParent);
-
 				elementParent.innerHTML =
 					"<div class=\"col-sm-6 col-md-4\"><div class=\"toast mx-auto my-1\" role=\"alert\" aria-live=\"assertive\" aria-atomic=\"true\" data-autohide=\"false\"><div class=\"toast-header\"><strong class=\"mr-auto\">" + element.ID_Cliente + "</strong><button type=\"button\" class=\"ml-2 mb-1 close\" data-dismiss=\"toast\" aria-label=\"Close\"><span aria-hidden=\"true\"><i class=\"fas fa-times\"></i></span></button></div><div class=\"toast-body text-center\"><span class=\"id-cliente\">" + element.ID_Cliente + "</span><hr><span class=\"id-campanha\">" + element.ID_Campanha + "</span></div></div></div>" + oldinnerHtml;
 
@@ -30,6 +28,20 @@ setInterval(function () {
 			}
 		});
 
+		function contains(element) {
+			let estado = false;
+			
+			if (notificacoes.length > 0) {
+				notificacoes.forEach(objElement => {
+					if (objElement["ID_Cliente"] == element["ID_Cliente"] && objElement["ID_Campanha"] == element["ID_Campanha"]) {
+						estado = true;
+					}
+				});
+			}
+
+			return estado;
+		}
+
 	});
 
 	document.querySelectorAll(".toast-body").forEach((toast) => {
@@ -41,22 +53,7 @@ setInterval(function () {
 	console.log(notificacoes);
 }, 5000);
 
-function contains(element) {
-	if (notificacoes.length == 0) {
-		return false;
-	}
 
-	notificacoes.forEach(object => {
-		if (object["ID_Cliente"] != element["ID_Cliente"]) {
-			return false;
-		}
-		if (object["ID_Campanha"] != element["ID_Campanha"]) {
-			return false;
-		}
-	});
-
-	return true;
-}
 
 
 

@@ -7,7 +7,3 @@ form .col-12>*:not(button) {
 	cursor: pointer;
 }
 
-.form-row {
-	max-height: 50px;
-	overflow-y: scroll
-}
