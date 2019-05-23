@@ -15,6 +15,15 @@ class Api extends CI_Controller {
 	}
 
 	// Campanhas
+	public function campanha_empresa() {
+		if ($this->Api_model->check_key($this->input->post("keyEmpresa"))) {
+			// echo json com todas as campanhas de uma empresa
+			$this->load->model("Campanhas_model");
+			echo json_encode($this->Campanhas_model->campanha_empresa($this->input->post("keyCampanha"),$this->input->post("keyEmpresa")));
+		} else {
+			echo "Wrong key";
+		}
+	}
 	public function todas_instanciascampanhas_empresa() {
 		if ($this->Api_model->check_key($this->input->post("keyEmpresa"))) {
 			// echo json com todas as campanhas de uma empresa
