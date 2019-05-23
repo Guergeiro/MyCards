@@ -6,7 +6,7 @@
           <h6 class="h6 pb-1">MyCards</h6>
           <p>MyCards é uma plataforma de fidelização de clientes para PME e pequenos comerciantes</p>
         </div>
-        <div class="col-md-4 my-2 p-2 py-3" id="midFooter">
+        <div class="col-md-4 my-2 p-4 py-3 py-md-4" id="midFooter">
           <h6 class="h6">Começar</h6>
           <ul>
             <li><a href="#">Home</a></li>
