@@ -38,8 +38,7 @@ var chartIdadeFidelizados = new Chart($("#myChartIF"), {
   type: "pie"
 });
 
-/* Inicio Estatisticas Gerais */
-$(".teste").click(function() {
+$(".teste").click(function () {
   if ($(this).hasClass("text-muted")) {
     $(this)
       .removeClass("text-muted")
@@ -48,9 +47,9 @@ $(".teste").click(function() {
       chartEstatisticasGerais,
       meses,
       $(this)
-        .children()
-        .last()
-        .html()
+      .children()
+      .last()
+      .html()
     );
   } else {
     $(this)
@@ -59,24 +58,23 @@ $(".teste").click(function() {
     removeData(
       chartEstatisticasGerais,
       $(this)
-        .children()
-        .last()
-        .html()
+      .children()
+      .last()
+      .html()
     );
   }
 });
 
 /* Adicionar Dataset ao grafico */
-function addDataBar(chart, labels, label, data) {
+function addDataBar(chart, labels, label, data = dbInfo) {
   let newData = [];
   for (i = 0; i < labels.length; i++) {
     newData[i] = 0;
   }
-
   switch (label) {
     case "Clientes Fidelizados":
-      for (i = 0; i < data.length; i++) {
-        newData[getMonth(data[i].DataFidelizacao)] += 1;
+      for (i = 0; i < data["clientes"].length; i++) {
+        newData[getMonth(data["clientes"][i].DataFidelizacao)] += 1;
       }
       break;
     case "Crescimento da Empresa":
@@ -90,8 +88,8 @@ function addDataBar(chart, labels, label, data) {
       }
       break;
     case "Campanhas Utilizadas":
-      for (i = 0; i < data.length; i++) {
-        newData[getMonth(data[i].DataUtilizacao)] += 1;
+      for (i = 0; i < data["instancias"].length; i++) {
+        newData[getMonth(data["instancias"][i].DataUtilizacao)] += 1;
       }
       break;
     default:
@@ -141,67 +139,84 @@ function removeData(chart, label) {
 }
 
 /* Funcao para criar cores dinamicas */
-var dynamicColors = function() {
+var dynamicColors = function () {
   var r = Math.floor(Math.random() * 255);
   var g = Math.floor(Math.random() * 255);
   var b = Math.floor(Math.random() * 255);
   return "rgba(" + r + "," + g + "," + b + ",0.6" + ")";
 };
-/* FIM Estatisticas Gerais */
 
-/* INICIO Estatisticas Campanhas */
-var campanhas = [];
-var clientes = [];
-$(document).ready(function() {
+let dbInfo = {};
+let clientes = [];
+$(document).ready(function () {
   $.post(
-    "http://127.0.0.1/PINT-Web/api/todas_campanhas_empresa	",
-    { keyEmpresa: 1 },
-    function(data) {
-      data = JSON.parse(data);
-      data.forEach(info => {
-        campanhas.push(info);
-      });
-      addDataBar(
-        chartEstatisticasCampanhas,
-        getLabels(campanhas[0]),
-        campanhas[0].Designacao
-      );
-    }
-  );
-  $.post(
-    "http://127.0.0.1/PINT-Web/api/todos_clientes_empresa",
-    { keyEmpresa: 1 },
-    function(data) {
-      data = JSON.parse(data);
-      // Grafico de Localizacao de Fidelizados
-      let localizacao = getLocalizaoClientes(data);
-      let labels = [];
-      Object.keys(localizacao).forEach(function(key) {
-        labels.push(key);
-        chartLocalizacaoFidelizados.data.labels.push(key);
-      });
-      addDataPie(chartLocalizacaoFidelizados, labels, localizacao);
+    "http://127.0.0.1/PINT-Web/api/todas_campanhas_empresa", {
+      keyEmpresa: 1
+    },
+    function (infoCampanhas) {
+      $.post(
+        "http://127.0.0.1/PINT-Web/api/todos_clientes_empresa", {
+          keyEmpresa: 1
+        },
+        function (infoClientes) {
+          $.post(
+            "http://127.0.0.1/PINT-Web/api/todas_instanciascampanhas_empresa", {
+              keyEmpresa: 1
+            },
+            function (infoInstancias) {
+              dbInfo["campanhas"] = JSON.parse(infoCampanhas);
+              dbInfo["clientes"] = JSON.parse(infoClientes);
+              dbInfo["instancias"] = JSON.parse(infoInstancias);
 
-      // Grafico de Idade de Fidelizados
-      labels = [];
-      let idades = getIdadesClientes(data);
 
-      Object.keys(idades).forEach(function(key) {
-        labels.push(key);
-        chartIdadeFidelizados.data.labels.push(key);
-      });
-      addDataPie(chartIdadeFidelizados, labels, idades);
-      addDataBar(
-        chartEstatisticasGerais,
-        meses,
-        "Clientes Fidelizados",
-        clientes
+              // Grafica de Estatisticas de Campanhas
+              addDataBar(
+                chartEstatisticasCampanhas,
+                getLabels(dbInfo["campanhas"][0]),
+                dbInfo["campanhas"][0].Designacao
+              );
+              let parent = document.querySelector("#myChartEC").parentElement.parentElement.parentElement.parentElement;
+              parent.classList.remove("d-none");
+              dbInfo["campanhas"].forEach((campanha => {
+                parent.querySelector(".carousel-inner").innerHTML += "<div class=\"carousel-item\"><div><h5 class=\"mb-2 h5\">" + campanha["Designacao"] + "</h5><small>Campanha válida até " + campanha["DataFim"] + "</small></div></div>";
+              }));
+              parent.querySelector(".carousel-inner").firstElementChild.classList.add("active");
+
+              // Grafico de Estatisticas Gerais
+              addDataBar(
+                chartEstatisticasGerais,
+                meses,
+                "Clientes Fidelizados",
+                dbInfo
+              );
+
+              // Grafico de Localizacao de Fidelizados
+              let localizacao = getLocalizaoClientes(dbInfo["clientes"]);
+              let labels = [];
+              Object.keys(localizacao).forEach(function (key) {
+                labels.push(key);
+                chartLocalizacaoFidelizados.data.labels.push(key);
+              });
+              addDataPie(chartLocalizacaoFidelizados, labels, localizacao);
+
+              // Grafico de Idade de Fidelizados
+              labels = [];
+              let idades = getIdadesClientes(dbInfo["clientes"]);
+
+              Object.keys(idades).forEach(function (key) {
+                labels.push(key);
+                chartIdadeFidelizados.data.labels.push(key);
+              });
+              addDataPie(chartIdadeFidelizados, labels, idades);
+            }
+          );
+        }
       );
     }
   );
 });
 
-$("#carouselExampleControls").on("slid.bs.carousel", function(event) {
+$("#carouselExampleControls").on("slid.bs.carousel", function (event) {
   chartEstatisticasCampanhas.data.datasets.pop();
   let nlabels = chartEstatisticasCampanhas.data.labels.length;
   for (i = 0; i < nlabels; i++) {
@@ -209,8 +224,8 @@ $("#carouselExampleControls").on("slid.bs.carousel", function(event) {
   }
   addDataBar(
     chartEstatisticasCampanhas,
-    getLabels(campanhas[event.to]),
-    campanhas[event.to].Designacao
+    getLabels(dbInfo["campanhas"][event.to]),
+    dbInfo["campanhas"][event.to].Designacao
   );
 });
 

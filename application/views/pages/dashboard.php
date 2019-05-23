@@ -91,28 +91,11 @@
       <small>Nesta área estão presentes as estatísticas de campanhas da Empresa.</small>
     </div>
 
-    <div class="card-body pt-1">
+    <div class="card-body d-none pt-1">
       <div class="row">
         <div id="carouselExampleControls" class="carousel slide col-12 text-center p-4 shadow" data-interval="false"
           data-ride="carousel">
           <div class="carousel-inner">
-            <?php
-            		echo "<div class=\"carousel-item active\">";
-              	echo "<div>";
-                echo "<h5 class=\"mb-2 h5\">" . $campanhas[0]->Designacao. "</h5>";
-                echo "<small>Campanha válida até " . $campanhas[0]->DataFim. "</small>";
-              	echo "</div>";
-								echo "</div>";
-								
-								for($i = 1; $i < count($campanhas); $i++) {
-									echo "<div class=\"carousel-item\">";
-              		echo "<div>";
-									echo "<h5 class=\"mb-2 h5\">" . $campanhas[$i]->Designacao. "</h5>";
-									echo "<small>Campanha válida até " . $campanhas[$i]->DataFim. "</small>";									
-              		echo "</div>";
-									echo "</div>";
-								}
-						?>
           </div>
           <a class="carousel-control-prev slideArrows" href="#carouselExampleControls" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon bg-dark" aria-hidden="true"></span>
