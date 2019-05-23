@@ -48,7 +48,8 @@
         </div>
       </div>
       <div class="modal-footer">
-        <a href="#data-url" class="btn btn-outline-primary">Mais informação</a>
+        <a href="<?php echo base_url("infoCampanha")?>" class="btn btn-outline-primary" id="btnMaisInfo">Mais
+          informação</a>
         <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
       </div>
     </div>

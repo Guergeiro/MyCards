@@ -1,14 +1,14 @@
 		let instanciaCampanhas = [];
-
+		let campanhas = [];
 		$(document).ready(function () {
 			$.post(
 				"http://127.0.0.1/PINT-Web/api/todas_campanhas_empresa", {
 					keyEmpresa: JSON.parse(document.querySelector("head").getAttribute("data-session"))["ID_Utilizador"]
 				},
 				function (data) {
-					data = JSON.parse(data);
+					campanhas = JSON.parse(data);
 
-					data.forEach(campanha => {
+					campanhas.forEach(campanha => {
 						document.querySelector("table tbody").innerHTML += "<tr data-url=\"" + campanha["ID_Campanha"] + "\"><th scope=\"row\">" + campanha["ID_Campanha"] + "</th><td>" + campanha["TipoCampanha"] + "</td><td>" + campanha["DataInicio"] + "</td><td>" + campanha["DataFim"] + "</td><td>" + campanha["Designacao"] + "</td></tr>";
 					});
 					$("table").DataTable({
@@ -49,8 +49,10 @@
 					document.querySelectorAll("tr").forEach((row) => {
 						row.addEventListener("click", function () {
 							document.querySelector("#modal").setAttribute("data-url", this.getAttribute("data-url"));
+							document.querySelector("#modal .modal-footer a").href += "/" + this.getAttribute("data-url");
 							document.querySelector("#modal").querySelector("#modalTitle").innerHTML = this.lastElementChild.innerHTML;
 							$("#modal").modal();
+
 						})
 					})
 				});
@@ -62,7 +64,7 @@
 					instanciaCampanhas = JSON.parse(data);
 				});
 		});
-
+		console.log(window.location.href);
 		$("#modal").on("show.bs.modal", function () {
 			let array = arrayColors(2),
 				backgroundColor = [],
