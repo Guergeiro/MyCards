@@ -64,7 +64,6 @@
 					instanciaCampanhas = JSON.parse(data);
 				});
 		});
-		console.log(window.location.href);
 		$("#modal").on("show.bs.modal", function () {
 			let array = arrayColors(2),
 				backgroundColor = [],

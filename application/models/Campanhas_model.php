@@ -7,7 +7,7 @@ class Campanhas_model extends CI_Model {
 		$this->db->select("Campanhas.Designacao, Campanhas.Descricao, Campanhas.DataInicio, Campanhas.DataFim, Campanhas.Valor, Campanhas.TipoCampanha, InstanciaCampanha.Utilizado, InstanciaCampanha.DataUtilizacao, InstanciaCampanha.Notificacao");
 		$this->db->from("Campanhas");
 		$this->db->join("InstanciaCampanha", "InstanciaCampanha.ID_Empresa = Campanhas.ID_Empresa", "inner");
-		$this->db->where("Campanhas.ID_Empresa = {$keyEmpresa} AND Campanhas.ID_Campanhas = {$keyCampanha}");
+		$this->db->where("Campanhas.ID_Empresa = {$keyEmpresa} AND Campanhas.ID_Campanha = {$keyCampanha}");
 		$query = $this->db->get();
 		return $query->result_array();
 	}
