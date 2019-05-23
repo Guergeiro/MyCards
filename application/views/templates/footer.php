@@ -1,19 +1,38 @@
 <footer>
-	<div class="bg-grey text-light">
-		<div class="container p-5">
-			<div class="col-md-3">
-				<h6 class="h6">Empresa</h6>
-				<a href="<?php echo base_url("faq"); ?>">FAQ</a>
-			</div>
-		</div>
-	</div>
-	<div class="bg-dark text-light">	
-		<div class="container p-3">
-			<div class="text-center mx-auto">
-				&copy; 2019 MyCards - <a href="https://choosealicense.com/licenses/gpl-3.0/" target="_blank" rel="noopener noreferrer">GNU GPLv3</a>
-			</div>
-		</div>
-	</div>
+  <div class="bg-footer-up text-light">
+    <div class="container p-5 text-center">
+      <div class="row">
+        <div class="col-md-4 my-2 p-2">
+          <h6 class="h6 pb-1">MyCards</h6>
+          <p>MyCards é uma plataforma de fidelização de clientes para PME e pequenos comerciantes</p>
+        </div>
+        <div class="col-md-4 my-2 p-2 py-3" id="midFooter">
+          <h6 class="h6">Começar</h6>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Preços</a></li>
+            <li><a href="#">Contactos</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 my-2 p-2">
+          <h6 class="h6">Sobre nós</h6>
+          <ul>
+            <li><a href="#">Equipa</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Termos e Condições</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-footer-down text-light">
+    <div class="container p-3">
+      <div class="text-center mx-auto">
+        &copy; 2019 MyCards - <a href="https://choosealicense.com/licenses/gpl-3.0/" target="_blank"
+          rel="noopener noreferrer">GNU GPLv3</a>
+      </div>
+    </div>
+  </div>
 </footer>
 
 <!-- Boostrap JavaScript -->
