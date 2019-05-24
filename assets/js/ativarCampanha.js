@@ -19,7 +19,6 @@ setInterval(function () {
 
 				$('.toast').toast('show');
 
-
 				let toastBody = document.createElement("div");
 				toastBody.addEventListener("click", function () {
 					document.querySelector("#codigo").value = toastBody.querySelector(".id-campanha").innerHTML;

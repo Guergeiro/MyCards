@@ -1,64 +1,15 @@
 <main class="container my-3 py-3 shadow d-flex align-items-center justify-content-center">
-	<div class="card">
+	<div class="card w-100">
 		<div class="card-header">
 			<h3 class="text-primary text-truncate">Colaboradores</h3>
 			<small class="ml-1">Nesta área estão presentes as definições relacionadas com os colaboradores.</small>
 		</div>
 		<div class="card-body">
 			<div class="row">
-				<div class="col-sm-6 col-md-3 p-3">
-					<div class="card">
-						<img class="card-img-top"
-							src="<?php echo base_url("assets/avatar/920983_516047081776703_299333251_o.jpg"); ?>">
-						<div class="card-body">
-							<h4 class="card-title">Nome</h4>
-							<p class="card-text">Tipo</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-3 p-3">
-					<div class="card">
-						<img class="card-img-top"
-							src="<?php echo base_url("assets/avatar/920983_516047081776703_299333251_o.jpg"); ?>">
-						<div class="card-body">
-							<h4 class="card-title">Nome</h4>
-							<p class="card-text">Tipo</p>
-							<div class="text-right">
-								<a href="#" class="btn btn-danger"><i class="fas fa-trash-alt fa-fw"></i></a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-3 p-3">
-					<div class="card">
-						<img class="card-img-top"
-							src="<?php echo base_url("assets/avatar/920983_516047081776703_299333251_o.jpg"); ?>">
-						<div class="card-body">
-							<h4 class="card-title">Nome</h4>
-							<p class="card-text">Tipo</p>
-							<div class="text-right">
-								<a href="#" class="btn btn-danger"><i class="fas fa-trash-alt fa-fw"></i></a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-3 p-3">
-					<div class="card">
-						<img class="card-img-top"
-							src="<?php echo base_url("assets/avatar/920983_516047081776703_299333251_o.jpg"); ?>">
-						<div class="card-body">
-							<h4 class="card-title">Nome</h4>
-							<p class="card-text">Tipo</p>
-							<div class="text-right">
-								<a href="#" class="btn btn-danger"><i class="fas fa-trash-alt fa-fw"></i></a>
-							</div>
-						</div>
-					</div>
-				</div>
+				
 			</div>
 			<div class="text-center">
-				<button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal"><i
-						class="fas fa-plus fa-fw"></i></button>
+				<button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal"><i class="fas fa-plus fa-fw"></i></button>
 			</div>
 		</div>
 	</div>
@@ -84,7 +35,7 @@
 					<label for="codigoAcesso">Código de Acesso</label>
 				</div>
 				<div class="md-form">
-					<select name="dono" class="custom-select">
+					<select id="colaboradorOption" name="dono" class="custom-select">
 						<option value="0" selected>Colaborador</option>
 						<option value="1">Dono</option>
 					</select>
@@ -92,7 +43,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-outline-primary" data-dismiss="modal">Fechar</button>
-				<button type="submit" class="btn btn-primary">Criar</button>
+				<button type="submit" id="criarColaborador" class="btn btn-primary">Criar</button>
 			</div>
 			</form>
 		</div>

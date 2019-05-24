@@ -10,6 +10,10 @@ class Colaboradores_model extends CI_Model {
 	public function novo_colaborador_empresa ($data) {
 		return $this->db->insert("Colaboradores", $data);
 	}
+
+	public function eliminar_colaborador_empresa ($data) {
+		return $this->db->delete("Colaboradores", $data);
+	}
 }
 
 ?>
