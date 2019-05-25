@@ -1,5 +1,19 @@
-$(document).ready(function () {
+const meses = [
+  "Janeiro",
+  "Fevereiro",
+  "Março",
+  "Abril",
+  "Maio",
+  "Junho",
+  "Julho",
+  "Agosto",
+  "Setembro",
+  "Outubro",
+  "Novembro",
+  "Dezembro"
+];
 
+$(document).ready(function () {
   $.post(
     "http://127.0.0.1/PINT-Web/api/campanha_empresa", {
       keyEmpresa: JSON.parse(document.querySelector("head").getAttribute("data-session"))["ID_Utilizador"],
@@ -7,7 +21,6 @@ $(document).ready(function () {
     },
     function (data) {
       infoCampanhas = JSON.parse(data);
-      console.log(infoCampanhas);
       $(".empresa").html(infoCampanhas[0].Designacao);
       $(".desconto").html(infoCampanhas[0].Valor + "%");
       $(".tipo").html(infoCampanhas[0].TipoCampanha);
@@ -22,7 +35,7 @@ $(document).ready(function () {
         }
       });
 
-      var myChart = new Chart($("#myChart"), {
+      new Chart($("#myChart1"), {
         type: 'doughnut',
         data: {
           labels: ["Utilizado", "Não Utilizado"],
@@ -30,8 +43,8 @@ $(document).ready(function () {
             label: "Utilizações",
             data: newData,
             backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)'
+              'rgba(255, 99, 132, 0.8)',
+              'rgba(54, 162, 235, 0.8)'
             ],
             borderColor: [
               'rgba(255, 99, 132, 1)',
@@ -41,5 +54,63 @@ $(document).ready(function () {
           }]
         },
       });
+
+      let nmeses = getDates(infoCampanhas[0].DataInicio, infoCampanhas[0].DataFim);
+      let labels = [];
+      let obj = {};
+      for (i = 0; i < nmeses.length; i++) {
+        obj[meses[nmeses[i]]] = 0;
+        labels.push(meses[nmeses[i]]); 
+      }
+
+      infoCampanhas.forEach(campanhas => {
+      obj[meses[getMonth(campanhas.DataUtilizacao)]] += 1;
+      });
+
+      newData = [];
+      Object.keys(obj).forEach(function (key) {
+        newData.push(obj[key]);
+      });
+
+      new Chart($("#myChart2"), {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: "Utilizações por mês",
+            data: newData,
+            backgroundColor:'rgba(244, 182, 66, 0.8)',
+            borderColor:'rgba(244, 182, 66, 1)',
+            borderWidth: 1
+          }]
+        },
+      });
     });
 });
+
+
+
+function getDates(startDate, endDate) {
+  let dates = [];
+  startDate = new Date(startDate);
+  endDate = new Date(endDate);
+  let months =
+    endDate.getMonth() -
+    startDate.getMonth() +
+    12 * (endDate.getFullYear() - startDate.getFullYear());
+
+  let current = startDate.getMonth();
+  for (i = 0; i <= months; i++) {
+    if (current == 12) {
+      current = 0;
+    }
+    dates.push(current);
+    current++;
+  }
+  return dates;
+}
+
+function getMonth(data) {
+  data = new Date(data);
+  return data.getMonth();
+}
