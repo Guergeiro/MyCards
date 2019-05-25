@@ -106,5 +106,16 @@ class Main extends CI_Controller {
 				$this->load->view("pages/{$page}");
 		}
 	}
+	public function infoCampanha($campanha) {
+		if (!file_exists(APPPATH."views/pages/infoCampanha.php")) {
+			show_404();
+	}
+
+	$data["page"] = "infoCampanha";
+
+	$this->load->view("templates/header", $data);
+	$this->load->view("pages/infoCampanha");
+	$this->load->view("templates/footer", $data);
+	}
 }
 ?>

@@ -6,8 +6,8 @@ class Campanhas_model extends CI_Model {
 	public function campanha_empresa($keyCampanha, $keyEmpresa) {
 		$this->db->select("Campanhas.Designacao, Campanhas.Descricao, Campanhas.DataInicio, Campanhas.DataFim, Campanhas.Valor, Campanhas.TipoCampanha, InstanciaCampanha.Utilizado, InstanciaCampanha.DataUtilizacao, InstanciaCampanha.Notificacao");
 		$this->db->from("Campanhas");
-		$this->db->join("InstanciaCampanha", "InstanciaCampanha.ID_Empresa = Campanhas.ID_Empresa", "inner");
-		$this->db->where("Campanhas.ID_Empresa = {$keyEmpresa} AND Campanhas.ID_Campanhas = {$keyCampanha}");
+		$this->db->join("InstanciaCampanha", "InstanciaCampanha.ID_Campanha = Campanhas.ID_Campanha", "inner");
+		$this->db->where("Campanhas.ID_Empresa = {$keyEmpresa} AND Campanhas.ID_Campanha = {$keyCampanha}");
 		$query = $this->db->get();
 		return $query->result_array();
 	}
@@ -59,5 +59,4 @@ class Campanhas_model extends CI_Model {
         return($this->db->update("InstanciaCampanha"));
 	}
 }
-
 ?>

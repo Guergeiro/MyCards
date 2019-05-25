@@ -51,6 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'main/view';
 $route['(:any)'] = 'main/view/$1';
+$route['infoCampanha/(:num)'] = 'main/infoCampanha/$1';
 
 $route['api/test/(:num)']['get'] = 'api/test/$1';
 
