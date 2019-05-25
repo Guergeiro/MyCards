@@ -94,6 +94,23 @@ class Api extends CI_Controller {
 		}
 	}
 
+	public function eliminar_colaborador_empresa() {
+		if ($this->Api_model->check_key($this->input->post("keyEmpresa"))) {
+			$this->load->model("Colaboradores_model");
+			$data = array(
+				"Nome" => $this->input->post("nome"),
+				"ID_Empresa" => $this->input->post("keyEmpresa")
+			);
+			if ($this->Colaboradores_model->eliminar_colaborador_empresa($data)) {
+				echo "Colaborador Removido";
+			} else {
+				echo "Erro ao eliminar colaborador";
+			}
+		} else {
+			echo "Wrong key";
+		}
+	}
+
 	// Clientes
 	public function todos_clientes_empresa() {
 		if ($this->Api_model->check_key($this->input->post("keyEmpresa"))) {
