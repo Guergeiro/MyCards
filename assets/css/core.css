@@ -26,6 +26,10 @@ i.close-effect {
 	transform: rotate(180deg);
 }
 
+nav {
+	min-height: 72px;
+}
+
 #ourNavbar {
 	transition: all 0.5s;
 	width: 320px;

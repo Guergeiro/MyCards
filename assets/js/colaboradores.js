@@ -8,12 +8,8 @@ function validation(form) {
 	return returnValue;
 }
 $(document).ready(function () {
-
-	$.post("http://[::1]/PINT-Web/api/todos_colaboradores_empresa", {
-		keyEmpresa: JSON.parse(document.querySelector("head").getAttribute("data-session"))["ID_Utilizador"]
-	}, function (data) {
+	$.get("./api/empresa/" + JSON.parse(document.querySelector("head").getAttribute("data-session"))["ID_Empresa"] + "/colaborador", function (data) {
 		data = JSON.parse(data);
-		console.log(data);
 		data.forEach(dataElement => {
 			let elementParent = document.querySelector(".row");
 			elementParent.innerHTML +=
@@ -24,31 +20,11 @@ $(document).ready(function () {
 				"<h4 class=\"card-title\">" + dataElement.Nome + "</h4>" +
 				"<p class=\"card-text\"> " + (dataElement.Dono == 1 ? "Dono" : "Colaborador") + " </p>" +
 				(dataElement.Dono == 0 ?
-					"<div class=\"text-right\" id=\"elementClear\"><a href=\"#\" class=\"btn btn-danger h-100\"><i class=\"fas fa-trash-alt fa-fw\"></i></a></div>"
-					: "") +
+					"<div class=\"text-right\" id=\"elementClear\"><button class=\"btn btn-danger h-100\"><i class=\"fas fa-trash-alt fa-fw\"></i></button></div>" :
+					"") +
 				"</div>" +
 				"</div>" +
 				"</div>";
-		})
+		});
 	});
-});
-
-document.querySelector("#criarColaborador").addEventListener("submit", function () {
-	$.post(
-		"http://127.0.0.1/PINT-Web/api/novo_colaborador_empresa", {
-			keyEmpresa: JSON.parse(document.querySelector("head").getAttribute("data-session"))["ID_Utilizador"],
-		},
-		function (data) {
-			window.location.href = "<?php echo site_url('Api/novo_colaborador_empresa');?>";
-		});
-});
-
-document.querySelector("#elementClear").addEventListener("click", function () {
-	$.post(
-		"http://127.0.0.1/PINT-Web/api/eliminar_colaborador_empresa", {
-			keyEmpresa: JSON.parse(document.querySelector("head").getAttribute("data-session"))["ID_Utilizador"],
-		},
-		function (data) {
-			
-		});
 });

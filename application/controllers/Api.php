@@ -134,6 +134,114 @@ class Api extends CI_Controller {
 	}
 
 	// Empresas
+	// GET
+	public function informacoesEmpresas() {
+		$this->load->model("Empresas_model");
+		echo json_encode($this->Empresas_model->informacoesEmpresas());
+	}
+
+	public function informacoesEmpresa($idEmpresa) {
+		$this->load->model("Empresas_model");
+		echo json_encode($this->Empresas_model->informacoesEmpresa($idEmpresa));
+	}
+
+	public function campanhasEmpresa($idEmpresa) {
+		$this->load->model("Empresas_model");
+		echo json_encode($this->Empresas_model->campanhasEmpresa($idEmpresa));
+	}
+
+	public function campanhaEmpresa($idEmpresa, $idCampanha) {
+		$this->load->model("Empresas_model");
+		echo json_encode($this->Empresas_model->campanhaEmpresa($idEmpresa, $idCampanha));
+	}
+
+	public function instanciasCampanhaEmpresa($idEmpresa, $idCampanha) {
+		$this->load->model("Empresas_model");
+		echo json_encode($this->Empresas_model->instanciasCampanhaEmpresa($idEmpresa, $idCampanha));
+	}
+
+	public function cartoesEmpresa($idEmpresa) {
+		$this->load->model("Empresas_model");
+		echo json_encode($this->Empresas_model->cartoesEmpresa($idEmpresa));
+	}
+
+	public function colaboradoresEmpresa($idEmpresa) {
+		$this->load->model("Empresas_model");
+		echo json_encode($this->Empresas_model->colaboradoresEmpresa($idEmpresa));
+	}
+
+	// Post
+	public function novaEmpresa() {
+		$this->load->model("Empresas_model");
+
+		$data = array(
+			"Email" => $this->input->post("email")
+		);
+
+	}
+
+	public function alterarInstanciaCampanhaEmpresa($idEmpresa, $idCampanha, $idCartao) {
+		$this->load->model("Empresas_model");
+		$data = $this->input->post(NULL, TRUE);
+		if ($this->Empresas_model->alterarInstanciaCampanhaEmpresa($idEmpresa, $idCampanha, $idCartao, $data)) {
+			echo "Update Successful";
+		} else {
+			echo "Error Updating";
+		}
+		redirect("ativarCampanha");
+	}
+
+	public function alterarColaboradorEmpresa($idEmpresa, $idColaborador) {
+		$this->load->model("Empresas_model");
+		$data = $this->input->post(NULL, TRUE);
+		if ($this->Empresas_model->alterarColaboradorEmpresa($idEmpresa, $idcolaborador, $data)) {
+			echo "Update Successful";
+		} else {
+			echo "Error Updating";
+		}
+		redirect("colaboradores");
+	}
+
+	// Delete
+	public function eliminarColaboradorEmpresa($idEmpresa, $idColaborador) {
+		$this->load->model("Empresas_model");
+		$data = $this->input->input_stream("NULL", TRUE);
+		if ($this->Empresas_model->eliminarColaboradorEmpresa($idEmpresa, $idcolaborador, $data)) {
+			echo "Delete Successful";
+		} else {
+			echo "Error Deleting";
+		}
+		redirect("colaboradores");
+	}
+
+	// Clientes
+	// GET
+	public function informacoesClientes() {
+		$this->load->model("Clientes_model");
+		echo json_encode($this->Clientes_model->informacoesClientes());
+	}
+
+	public function informacoesCliente($idCliente) {
+		$this->load->model("Clientes_model");
+		echo json_encode($this->Clientes_model->informacoesCliente($idCliente));
+	}
+
+	public function cartoesCliente($idCliente) {
+		$this->load->model("Clientes_model");
+		echo json_encode($this->Clientes_model->cartoesCliente($idCliente));
+	}
+
+	public function cartaoCliente($idCliente, $idCartao) {
+		$this->load->model("Clientes_model");
+		echo json_encode($this->Clientes_model->cartaoCliente($idCliente, $idCartao));
+	}
+
+	public function instanciasCampanhaCartaoCliente($idCartao) {
+		$this->load->model("Clientes_model");
+		echo json_encode($this->Clientes_model->instanciasCampanhaCartaoCliente($idCartao));
+	}
+
+
 	public function todas_empresas() {
 		// Apenas admins podem usar
 		if ($this->Api_model->check_key($this->input->post("key")) && $this->Api_model->check_admin($this->input->post("key"))) {

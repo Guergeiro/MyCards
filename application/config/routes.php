@@ -50,32 +50,44 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'main/view';
-$route['(:any)'] = 'main/view/$1';
-$route['infoCampanha/(:num)'] = 'main/infoCampanha/$1';
-
-$route['api/test/(:num)']['get'] = 'api/test/$1';
-
-/* API GET's */
-$route['api/notificacao_ativacao_campanha/(:num)']['get'] = 'api/notificacao_ativacao_campanha/$1';
-
-/* API POST's */
-// Campanhas
-$route['api/campanha_empresa']['post'] = 'api/campanha_empresa';
-$route['api/todas_instanciascampanhas_empresas']['post'] = 'api/todas_instanciascampanhas_empresas';
-$route['api/todas_campanhas_empresas']['post'] = 'api/todas_campanhas_empresas';
-$route['api/todas_campanhas_cartao']['post'] = 'api/todas_campanhas_cartao';
-$route['api/todas_campanhas_cliente']['post'] = 'api/todas_campanhas_cliente';
-
-// Colaboradores
-$route['api/todos_colaboradores_empresa']['post'] = 'api/todos_colaboradores_empresa';
-$route['api/novo_colaborador_empresa']['post'] = 'api/novo_colaborador_empresa';
-
-// Clientes
-$route['api/todos_clientes_empresa']['post'] = 'api/todos_clientes_empresa';
-$route['api/todos_clientes']['post'] = 'api/todos_clientes';
-
-// Empresas
-$route['api/todas_empresas']['post'] = 'api/todas_empresas';
-
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+
+$route['(:any)'] = 'main/view/$1';
+$route['infoCampanha/(:num)'] = 'main/infoCampanha/$1';
+$route['admin'] = 'main/admin';
+$route['admin/(:any)'] = 'main/admin/$1';
+
+/* API GET's */
+// Empresas
+$route['api/empresa']['get'] = 'api/informacoesEmpresas';
+$route['api/empresa/(:num)']['get'] = 'api/informacoesEmpresa/$1';
+
+$route['api/empresa/(:num)/campanha']['get'] = 'api/campanhasEmpresa/$1';
+$route['api/empresa/(:num)/campanha/(:num)']['get'] = 'api/campanhaEmpresa/$1/$2';
+
+$route['api/empresa/(:num)/campanha/(:num)/instanciascampanha']['get'] = 'api/instanciasCampanhaEmpresa/$1/$2';
+
+$route['api/empresa/(:num)/cartao']['get'] = 'api/cartoesEmpresa/$1';
+
+$route['api/empresa/(:num)/colaborador']['get'] = 'api/colaboradoresEmpresa/$1';
+
+// Clientes
+$route['api/cliente']['get'] = 'api/informacoesClientes';
+$route['api/cliente/(:num)']['get'] = 'api/informacoesCliente/$1';
+
+$route['api/cliente/(:num)/cartao']['get'] = 'api/cartoesCliente/$1';
+$route['api/cliente/(:num)/cartao/(:num)']['get'] = 'api/cartaoCliente/$1/$2';
+
+$route['api/cliente/(:num)/cartao/(:num)/instanciacampanha']['get'] = 'api/instanciasCampanhaCartaoCliente/$2';
+$route['api/cliente/(:num)/cartao/(:num)/instanciacampanha/(:num)']['get'] = 'api/instanciaCampanhaCartaoCliente/$1/$2/$3';
+
+/* API POST's */
+// Empresas
+$route['api/empresa']['post'] = 'api/novaEmpresa';
+$route['api/empresa/(:num)/campanha/(:num)/instanciacampanha/(:num)']['post'] = 'api/alterarInstanciaCampanhaEmpresa/$1/$2/$3';
+
+/* API DELETE's */
+// Empresas
+$route['api/empresa/(:num)/colaborador/(:any)']['delete'] = 'api/eliminarColaboradorEmpresa/$1/$2';

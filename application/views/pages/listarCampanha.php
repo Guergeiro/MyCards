@@ -7,7 +7,7 @@
     <div class="card-body table-responsive">
       <table class="table table-hover">
         <thead>
-          <tr>
+          <tr id="head">
             <th scope="col">
               #
             </th>

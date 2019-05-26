@@ -1,7 +1,26 @@
+function randomColor() {
+	let result = [];
+	result.push(Math.floor(Math.random() * 255));
+	result.push(Math.floor(Math.random() * 255));
+	result.push(Math.floor(Math.random() * 255));
+	return result;
+}
+
+function arrayColors(number) {
+	let pool = [];
+	for (let i = 0; i < number; i++) {
+		let aux = randomColor();
+		if (!pool.includes(aux)) {
+			pool.push(aux);
+		}
+	}
+	return pool;
+}
+
 document
 	.querySelector("nav")
 	.querySelector("#sidebarToggler")
-	.addEventListener("click", function() {
+	.addEventListener("click", function () {
 		if (document.querySelector("#ourNavbar").style.marginLeft == "0px") {
 			document
 				.querySelector("nav")
@@ -23,7 +42,7 @@ document
 	.querySelector("#ourNavbar")
 	.querySelectorAll(".list-group-item")
 	.forEach(item => {
-		item.addEventListener("click", function() {
+		item.addEventListener("click", function () {
 			if (this.nextElementSibling.nodeName == "DIV") {
 				if (!this.nextElementSibling.classList.contains("collapsing")) {
 					if (this.nextElementSibling.classList.contains("show")) {
@@ -43,7 +62,7 @@ document
 document
 	.querySelector("nav")
 	.querySelector("#navbarToggler")
-	.addEventListener("click", function() {
+	.addEventListener("click", function () {
 		if (!this.nextElementSibling.classList.contains("collapsing")) {
 			if (this.nextElementSibling.classList.contains("show")) {
 				this.querySelector("i").classList.add("fa-bars");
@@ -54,22 +73,3 @@ document
 			}
 		}
 	});
-
-function randomColor() {
-	let result = [];
-	result.push(Math.floor(Math.random() * 255));
-	result.push(Math.floor(Math.random() * 255));
-	result.push(Math.floor(Math.random() * 255));
-	return result;
-}
-
-function arrayColors(number) {
-	let pool = [];
-	for (let i = 0; i < number; i++) {
-		let aux = randomColor();
-		if (!pool.includes(aux)) {
-			pool.push(aux);
-		}
-	}
-	return pool;
-}

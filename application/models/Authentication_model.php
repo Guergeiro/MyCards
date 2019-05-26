@@ -4,38 +4,27 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Authentication_model extends CI_Model
 {
 
-    public function signin($data)
-    {
+    public function signin($data){
 
         $condition = "Email = '{$data['email']}' AND Password='{$data['password']}'";
 
-        $queryUtilizador = $this->db->get_where("Utilizadores", $condition);
+        $query = $this->db->get_where("Empresas", $condition);
 
-        if ($queryUtilizador->num_rows() == 0) {
+        if ($query->num_rows() == 0) {
             return FALSE;
         }
 
-        $queryUtilizador = $queryUtilizador->result_array();
-
-        if ($queryUtilizador[0]["Admin"] == 1) {
-            return $queryUtilizador[0];
-        }
-
-        $condition =  "ID_Empresa = '{$queryUtilizador[0]['ID_Utilizador']}'";
-        $queryEmpresa = $this->db->get_where("Empresas", $condition);
-        $queryEmpresa = $queryEmpresa->result_array();
-
-        return array_merge($queryUtilizador, $queryEmpresa);
+        return $query->result_array();
     }
 
     public function signup($data)
     {
         $condition = "Email='{$data['email']}'";
 
-        $query = $this->db->get_where("Utilizadores", $condition);
+        $query = $this->db->get_where("Empresas", $condition);
 
         if ($query->num_rows() == 0) {
-            $this->db->insert("Utilizadores", $data);
+            $this->db->insert("Empresas", $data);
         }
     }
 
@@ -44,11 +33,13 @@ class Authentication_model extends CI_Model
 		
         $this->db->where("Email", $data["Email"]);
         $this->db->set("Password",$data["Password"]);
-        return($this->db->update("Utilizadores"));
+        return$this->db->update("Empresas");
     }
 
     public function updatePassword($data)
     {
-        return $this->db->replace("Utilizadores", $data);
+		$this->db->where("Email", $data["Email"]);
+		$this->db->set("Password",$data["Password"]);
+        return $this->db->update("Empresas");
     }
 }

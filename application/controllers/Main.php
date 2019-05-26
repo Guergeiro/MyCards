@@ -18,32 +18,11 @@ class Main extends CI_Controller {
 	private function loadPage($page) {
 		$login = $this->session->userdata("Email");	// NULL caso esteja logout
 		switch ($page) {
-			case "admin":
-				if (!$login) {
-					redirect();
-				} else {
-					if ($this->session->userdata("Admin") == 0) {
-						redirect("dashboard");
-					} else {
-						$this->load->view("pages/admin");
-					}
-				}
-				break;
 			case "dashboard":
 				if (!$login) {
 					redirect();
 				} else {
-					$data = array('keyEmpresa' => 1);
-					$options = array(
-						'http' => array(
-								'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-								'method'  => 'POST',
-								'content' => http_build_query($data)
-						)
-				);
-				$context  = stream_context_create($options);
-				$data["campanhas"] = json_decode(file_get_contents("http://127.0.0.1/PINT-Web/api/todas_campanhas_empresa", false, $context));
-				$this->load->view("pages/dashboard", $data);
+					$this->load->view("pages/dashboard");
 				}
 				break;
 			case "colaboradores":
@@ -109,13 +88,23 @@ class Main extends CI_Controller {
 	public function infoCampanha($campanha) {
 		if (!file_exists(APPPATH."views/pages/infoCampanha.php")) {
 			show_404();
+		}
+
+		$data["page"] = "infoCampanha";
+
+		$this->load->view("templates/header", $data);
+		$this->load->view("pages/infoCampanha");
+		$this->load->view("templates/footer", $data);
 	}
 
-	$data["page"] = "infoCampanha";
-
-	$this->load->view("templates/header", $data);
-	$this->load->view("pages/infoCampanha");
-	$this->load->view("templates/footer", $data);
+	public function admin($page = "admin") {
+		if (!file_exists(APPPATH."views/pages/{$page}.php")) {
+			show_404();
+		}
+		if ($this->session->userdata("Admin") != 1) {
+			redirect();
+		}
+		$this->load->view("pages/{$page}");
 	}
 }
 ?>

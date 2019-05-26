@@ -31,7 +31,7 @@
 
 <body style="padding-top: 72px;" class="grey lighten-5">
 	<nav class="navbar navbar-expand-md bg-blue navbar-dark fixed-top px-md-5 py-3">
-		<?php if ($this->session->userdata("Email") && $this->session->userdata("Admin") == 0) : ?>
+		<?php if ($this->session->userdata("Email")): ?>
 			<button class="navbar-toggler d-inline" role="button" type="button" id="sidebarToggler">
 				<i class="fas fa-chevron-right fa-fw"></i>
 			</button>
@@ -65,7 +65,7 @@
 		</div>
 	</nav>
 
-	<?php if ($this->session->userdata("Email") && $this->session->userdata("Admin") == 0) : ?>
+	<?php if ($this->session->userdata("Email")): ?>
 		<div class="h-100 position-fixed text-dark grey lighten-3" id="ourNavbar" style="margin-left: -320px;">
 			<ul class="list-group">
 				<a class="list-group-item bg-transparent rounded-0 border-0 p-3 text-dark text-decoration-none <?php if ($this->uri->segment(1, 0) === "dashboard") : ?>active<?php endif; ?>" href="<?php echo base_url("dashboard"); ?>">

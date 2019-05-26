@@ -5,16 +5,31 @@
 			<small>Esta área serve para ativar as campanhas.</small>
 		</div>
 		<div class="card-body">
-			<?php echo form_open("api/ativarCampanha", "class=\"form-row\" onsubmit=\"return validation(this);\""); ?>
+			<div class="row">
+			
+			</div>
+			<?php echo form_open("api/empresa/".$this->session->userdata("ID_Empresa"), "class=\"form-row\" onsubmit=\"return validation(this);\""); ?>
 
-			<div class="col-12">
+			<div class="col-md-4">
 				<div class="md-form form-lg mx-auto">
-					<input type="number" name="codigo" id="codigo" class="form-control form-control-lg">
-					<label for="codigo">Código</label>
+					<input type="number" name="id_cartao" id="codigocartao" class="form-control form-control-lg">
+					<label for="codigocartao">Código Cartão</label>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="md-form form-lg mx-auto">
+					<input type="number" name="id_campanha" id="codigocampanha" class="form-control form-control-lg">
+					<label for="codigocampanha">Código Campanha</label>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="md-form form-lg mx-auto">
+					<input type="number" name="utilizado" id="valor" class="form-control form-control-lg">
+					<label for="valor">Valor da Compra</label>
 				</div>
 			</div>
 			<div class="col-12 text-center">
-				<button type="submit" class="btn btn-primary">Utilizar Código</button>
+				<button type="submit" class="btn btn-primary">Ativar Campanha</button>
 			</div>
 			</form>
 		</div>

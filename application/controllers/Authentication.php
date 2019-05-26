@@ -12,11 +12,7 @@ class Authentication extends CI_Controller
 	public function signin()
 	{
 		if ($this->session->userdata("Email")) {
-			if ($this->session->userdata("Admin") == 1) {
-				redirect("admin");
-			} else {
-				redirect("dashboard");
-			}
+			redirect("dashboard");
 		}
 
 		$config = array(
@@ -48,9 +44,6 @@ class Authentication extends CI_Controller
 			if (!$result) {
 				$this->session->set_flashdata("errorLoginData", "Email ou Password errados");
 				redirect("signin");
-			} else if ($result[0]["Admin"] == 1) {
-				$this->session->set_userdata($result[0]);
-				redirect("admin");
 			} else {
 				$this->session->set_userdata($result[0]);
 				redirect("dashboard");
@@ -61,18 +54,14 @@ class Authentication extends CI_Controller
 	public function signup()
 	{
 		if ($this->session->userdata("Email")) {
-			if ($this->session->userdata("Admin") == 1) {
-				redirect("admin");
-			} else {
-				redirect("dashboard");
-			}
+			redirect("dashboard");
 		}
 
 		$config = array(
 			array(
 				"field" => "email",
 				"label" => "email",
-				"rules" => "required|trim|is_unique[Utilizadores.Email]",
+				"rules" => "required|trim|is_unique[Empresas.Email]",
 			),
 			array(
 				"field" => "password",
@@ -83,6 +72,16 @@ class Authentication extends CI_Controller
 				"field" => "repassword",
 				"label" => "repassword",
 				"rules" => "required|trim|matches[password]"
+			),
+			array(
+				"field" => "nome",
+				"label" => "nome",
+				"rules" => "required|trim"
+			),
+			array(
+				"field" => "nif",
+				"label" => "nif",
+				"rules" => "required|trim|numeric"
 			)
 		);
 
@@ -94,7 +93,9 @@ class Authentication extends CI_Controller
 
 			$data = array(
 				"email" => $this->input->post("email"),
-				"password" => $this->input->post("password")
+				"password" => $this->input->post("password"),
+				"nome" => $this->input->post("nome"),
+				"nif" => $this->input->post("nif")
 			);
 
 			$this->Authentication_model->signup($data);
@@ -113,11 +114,7 @@ class Authentication extends CI_Controller
 	public function recoverPassword()
 	{
 		if ($this->session->userdata("Email")) {
-			if ($this->session->userdata("Admin") == 1) {
-				redirect("admin");
-			} else {
-				redirect("dashboard");
-			}
+			redirect("dashboard");
 		}
 		$config = array(
 			array(
@@ -184,12 +181,8 @@ class Authentication extends CI_Controller
 		} else {
 
 			$data = array(
-				"ID_Utilizador" => $this->session->userdata("ID_Utilizador"),
 				"Email" => $this->session->userdata("Email"),
-				"Password" => $this->input->post("password"),
-				"Localizacao" => $this->session->userdata("Localizacao"),
-				"DataRegisto" => $this->session->userdata("DataRegisto"),
-				"Admin" => $this->session->userdata("Admin")
+				"Password" => $this->input->post("password")
 			);
 
 			if ($this->Authentication_model->updatePassword($data)) {
