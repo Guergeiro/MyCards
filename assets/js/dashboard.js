@@ -57,7 +57,7 @@ document.querySelectorAll(".teste").forEach(div => {
 });
 
 /* Adicionar Dataset ao grafico */
-function addDataBar(chart, labels, label, data = 0) {
+function addDataBar(chart, labels, label, data) {
   let newData = [];
   for (i = 0; i < labels.length; i++) {
     newData[i] = 0;
@@ -92,7 +92,7 @@ function addDataBar(chart, labels, label, data = 0) {
         labels.push(meses[nmeses[i]]);
       }
 
-      infoCampanhas.forEach(campanhas => {
+      data["instancias"].forEach(campanhas => {
         obj[meses[getMonth(campanhas.DataUtilizacao)]] += 1;
       });
 
@@ -165,7 +165,7 @@ $("#carouselExampleControls").on("slid.bs.carousel", function(event) {
     chartEstatisticasCampanhas,
     getLabels(campanhas[event.to]),
     campanhas[event.to].Designacao,
-    instanciascampanha[event.to]
+    campanhas[event.to]
   );
 });
 
@@ -192,7 +192,7 @@ function getDates(startDate, endDate) {
 function getLabels(campanha) {
   let labels = getDates(campanha.DataInicio, campanha.DataFim);
   labels.forEach(label => {
-    chartEstatisticasCampanhas.data.labels.push(label);
+    chartEstatisticasCampanhas.data.labels.push(meses[label]);
   });
   return labels;
 }
@@ -297,43 +297,43 @@ $(document).ready(function() {
       data = JSON.parse(data);
       data.forEach(campanha => {
         campanhas.push(campanha);
-        $.get(
-          "./api/empresa/" +
+        $.ajax({
+          url:
+            "./api/empresa/" +
             JSON.parse(
               document.querySelector("head").getAttribute("data-session")
             )["ID_Empresa"] +
             "/campanha/" +
             campanha["ID_Campanha"] +
             "/instanciascampanha",
-          function(instancias) {
-            instancias = JSON.parse(instancias);
-            instancias.forEach(instancia => {
-              instanciascampanha.push(instancia);
-            });
-            campanha["instancias"] = instancias;
+          type: "GET",
+          async: false,
+          success: function(instancias) {
+            campanha["instancias"] = JSON.parse(instancias);
           }
-        );
+        });
       });
-      addDataBar(
-        chartEstatisticasCampanhas,
-        getLabels(campanhas[0]),
-        "Utilizações",
-        instanciascampanha[0]
-      );
-      let parent = document.querySelector("#myChartEC").parentElement
-        .parentElement.parentElement.parentElement;
-      parent.classList.remove("d-none");
-      campanhas.forEach(campanha => {
-        parent.querySelector(".carousel-inner").innerHTML +=
-          '<div class="carousel-item"><div><h5 class="mb-2 h5">' +
-          campanha["Designacao"] +
-          "</h5><small>Campanha válida até " +
-          campanha["DataFim"] +
-          "</small></div></div>";
-      });
-      parent
-        .querySelector(".carousel-inner")
-        .firstElementChild.classList.add("active");
     }
-  );
+  ).done(function() {
+    addDataBar(
+      chartEstatisticasCampanhas,
+      getLabels(campanhas[0]),
+      "Utilizações",
+      campanhas[0]
+    );
+    let parent = document.querySelector("#myChartEC").parentElement
+      .parentElement.parentElement.parentElement;
+    parent.classList.remove("d-none");
+    campanhas.forEach(campanha => {
+      parent.querySelector(".carousel-inner").innerHTML +=
+        '<div class="carousel-item"><div><h5 class="mb-2 h5">' +
+        campanha["Designacao"] +
+        "</h5><small>Campanha válida até " +
+        campanha["DataFim"] +
+        "</small></div></div>";
+    });
+    parent
+      .querySelector(".carousel-inner")
+      .firstElementChild.classList.add("active");
+  });
 });
