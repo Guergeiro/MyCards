@@ -74,13 +74,15 @@ function addDataBar(chart, labels, label, data) {
 
     case "Crescimento de Rating":
       // Podemos testar com media de rating em vez de numero de rates
-      for (i = 0; i < data.length; i++) {
-        newData[getMonth(data[i].DataRating)] += 1;
+      for (i = 0; i < rating.length; i++) {
+        newData[getMonth(rating[i].DataRating)] += 1;
       }
       break;
     case "Campanhas Utilizadas":
-      instanciascampanha.forEach(instancia => {
-        newData[getMonth(instancia["DataUtilizacao"])] += 1;
+      campanhas.forEach(campanha => {
+        campanha.instancias.forEach(instancia => {
+          newData[getMonth(instancia["DataUtilizacao"])] += 1;
+        });
       });
       break;
     default:
@@ -243,6 +245,7 @@ function getMonth(data) {
   return data.getMonth();
 }
 
+let rating = [];
 $(document).ready(function() {
   $.get(
     "./api/empresa/" +
@@ -336,4 +339,14 @@ $(document).ready(function() {
       .querySelector(".carousel-inner")
       .firstElementChild.classList.add("active");
   });
+  $.get(
+    "./api/empresa/" +
+      JSON.parse(document.querySelector("head").getAttribute("data-session"))[
+        "ID_Empresa"
+      ] +
+      "/rating",
+    function(data) {
+      rating = JSON.parse(data);
+    }
+  );
 });
