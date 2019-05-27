@@ -14,125 +14,6 @@ class Api extends CI_Controller {
 		$this->load->model("Api_model");
 	}
 
-	// Campanhas
-	public function campanha_empresa() {
-		if ($this->Api_model->check_key($this->input->post("keyEmpresa"))) {
-			// echo json com todas as campanhas de uma empresa
-			$this->load->model("Campanhas_model");
-			echo json_encode($this->Campanhas_model->campanha_empresa($this->input->post("keyCampanha"),$this->input->post("keyEmpresa")));
-		} else {
-			echo "Wrong key";
-		}
-	}
-	public function todas_instanciascampanhas_empresa() {
-		if ($this->Api_model->check_key($this->input->post("keyEmpresa"))) {
-			// echo json com todas as campanhas de uma empresa
-			$this->load->model("Campanhas_model");
-			echo json_encode($this->Campanhas_model->todas_instanciascampanhas_empresa($this->input->post("keyEmpresa")));
-		} else {
-			echo "Wrong key";
-		}
-	}
-
-	public function todas_campanhas_empresa() {
-		if ($this->Api_model->check_key($this->input->post("keyEmpresa"))) {
-			// echo json com todas as campanhas de uma empresa
-			$this->load->model("Campanhas_model");
-			echo json_encode($this->Campanhas_model->todas_campanhas_empresa($this->input->post("keyEmpresa")));
-		} else {
-			echo "Wrong key";
-		}
-	}
-
-	public function todas_campanhas_cartao() {
-		if ($this->Api_model->check_key($this->input->post("keyCliente")) && $this->Api_model->check_key($this->input->post("keyEmpresa"))) {
-			// echo json com todas as campanhas de um cartao
-			$this->load->model("Campanhas_model");
-			echo json_encode($this->Campanhas_model->todas_campanhas_cartao($this->input->post("keyCliente"), $this->input->post("keyEmpresa")));
-		} else {
-			echo "Wrong key";
-		}
-	}
-
-	public function todas_campanhas_cliente() {
-		if ($this->Api_model->check_key($this->input->post("keyCliente"))) {
-			// echo json com todas as campanhas de um cliente
-			$this->load->model("Campanhas_model");
-			echo json_encode($this->Campanhas_model->todas_campanhas_cliente($this->input->post("keyCliente")));
-		} else {
-			echo "Wrong key";
-		}
-	}
-
-	// Colaboradores
-	public function todos_colaboradores_empresa() {
-		if ($this->Api_model->check_key($this->input->post("keyEmpresa"))) {
-			// echo json com todos os colaboradores 
-			$this->load->model("Colaboradores_model");
-			echo json_encode($this->Colaboradores_model->todos_colaboradores_empresa($this->input->post("keyEmpresa")));
-		} else {
-			echo "Wrong key";
-		}
-	}
-
-	public function novo_colaborador_empresa() {
-		if ($this->Api_model->check_key($this->input->post("keyEmpresa"))) {
-			$this->load->model("Colaboradores_model");
-			$data = array(
-				"Nome" => $this->input->post("nome"),
-				"CodigoAcesso" => $this->input->post("codigoAcesso"),
-				"Dono" => $this->input->post("dono"),
-				"ID_Empresa" => $this->input->post("keyEmpresa")
-			);
-			if ($this->Colaboradores_model->novo_colaborador_empresa($data)) {
-				echo "Colaborador inserido";
-			} else {
-				echo "Erro ao criar colaborador";
-			}
-		} else {
-			echo "Wrong key";
-		}
-	}
-
-	public function eliminar_colaborador_empresa() {
-		if ($this->Api_model->check_key($this->input->post("keyEmpresa"))) {
-			$this->load->model("Colaboradores_model");
-			$data = array(
-				"Nome" => $this->input->post("nome"),
-				"ID_Empresa" => $this->input->post("keyEmpresa")
-			);
-			if ($this->Colaboradores_model->eliminar_colaborador_empresa($data)) {
-				echo "Colaborador Removido";
-			} else {
-				echo "Erro ao eliminar colaborador";
-			}
-		} else {
-			echo "Wrong key";
-		}
-	}
-
-	// Clientes
-	public function todos_clientes_empresa() {
-		if ($this->Api_model->check_key($this->input->post("keyEmpresa"))) {
-			// echo json com todos os clientes de uma empresa
-			$this->load->model("Clientes_model");
-			echo json_encode($this->Clientes_model->todos_clientes_empresa($this->input->post("keyEmpresa")));
-		}else {
-			echo "Wrong key";
-		}
-	}
-
-	public function todos_clientes() {
-		// Apenas admins podem usar
-		if ($this->Api_model->check_key($this->input->post("key")) && $this->Api_model->check_admin($this->input->post("key"))) {
-			// echo json com todos os clientes
-			$this->load->model("Clientes_model");
-			echo json_encode($this->Clientes_model->todos_clientes());
-		} else {
-			echo "Wrong key";
-		}
-	}
-
 	// Empresas
 	// GET
 	public function informacoesEmpresas() {
@@ -143,6 +24,11 @@ class Api extends CI_Controller {
 	public function informacoesEmpresa($idEmpresa) {
 		$this->load->model("Empresas_model");
 		echo json_encode($this->Empresas_model->informacoesEmpresa($idEmpresa));
+	}
+
+	public function ratingEmpresa($idEmpresa) {
+		$this->load->model("Empresas_model");
+		echo json_encode($this->Empresas_model->ratingEmpresa($idEmpresa));
 	}
 
 	public function campanhasEmpresa($idEmpresa) {
@@ -226,6 +112,11 @@ class Api extends CI_Controller {
 		echo json_encode($this->Clientes_model->informacoesCliente($idCliente));
 	}
 
+	public function ratingCliente($idCliente) {
+		$this->load->model("Clientes_model");
+		echo json_encode($this->Clientes_model->ratingCliente($idCliente));
+	}
+
 	public function cartoesCliente($idCliente) {
 		$this->load->model("Clientes_model");
 		echo json_encode($this->Clientes_model->cartoesCliente($idCliente));
@@ -239,18 +130,6 @@ class Api extends CI_Controller {
 	public function instanciasCampanhaCartaoCliente($idCartao) {
 		$this->load->model("Clientes_model");
 		echo json_encode($this->Clientes_model->instanciasCampanhaCartaoCliente($idCartao));
-	}
-
-
-	public function todas_empresas() {
-		// Apenas admins podem usar
-		if ($this->Api_model->check_key($this->input->post("key")) && $this->Api_model->check_admin($this->input->post("key"))) {
-			// echo jsno com todas as empresas
-			$this->load->model("Empresas_model");
-			echo json_encode($this->Empresas_model->todas_empresas());
-		} else {
-			echo "Wrong key";
-		}
 	}
 
 	public function test($key) {

@@ -15,6 +15,11 @@ class Empresas_model extends CI_Model {
 		return $query->result_array();
 	}
 
+	public function ratingEmpresa($idEmpresa) {
+		$query = $this->db->get_where("RatingEmpresa", "RatingEmpresa.ID_Empresa = {$idEmpresa}");
+		return $query->result_array();
+	}
+
 	public function campanhasEmpresa($idEmpresa) {
 		$query = $this->db->get_where("Campanhas", "Campanhas.ID_Empresa = {$idEmpresa}");
 		return $query->result_array();
