@@ -57,7 +57,7 @@ document.querySelectorAll(".teste").forEach(div => {
 });
 
 /* Adicionar Dataset ao grafico */
-function addDataBar(chart, labels, label) {
+function addDataBar(chart, labels, label, data = 0) {
   let newData = [];
   for (i = 0; i < labels.length; i++) {
     newData[i] = 0;
@@ -84,9 +84,22 @@ function addDataBar(chart, labels, label) {
       });
       break;
     default:
-      for (i = 0; i < labels.length; i++) {
-        newData[i] = Math.floor(Math.random() * 25);
+      let nmeses = getDates(data.DataInicio, data.DataFim);
+      let labels = [];
+      let obj = {};
+      for (i = 0; i < nmeses.length; i++) {
+        obj[meses[nmeses[i]]] = 0;
+        labels.push(meses[nmeses[i]]);
       }
+
+      infoCampanhas.forEach(campanhas => {
+        obj[meses[getMonth(campanhas.DataUtilizacao)]] += 1;
+      });
+
+      newData = [];
+      Object.keys(obj).forEach(function(key) {
+        newData.push(obj[key]);
+      });
   }
 
   let newDataset = {
@@ -151,7 +164,8 @@ $("#carouselExampleControls").on("slid.bs.carousel", function(event) {
   addDataBar(
     chartEstatisticasCampanhas,
     getLabels(campanhas[event.to]),
-    campanhas[event.to].Designacao
+    campanhas[event.to].Designacao,
+    instanciascampanha[event.to]
   );
 });
 
@@ -169,7 +183,7 @@ function getDates(startDate, endDate) {
     if (current == 12) {
       current = 0;
     }
-    dates.push(meses[current]);
+    dates.push(current);
     current++;
   }
   return dates;
@@ -256,7 +270,6 @@ $(document).ready(function() {
   ).done(function() {
     addDataBar(chartEstatisticasGerais, meses, "Clientes Fidelizados");
     let localizacao = getLocalizaoClientes(clientes);
-    console.log(localizacao);
     let labels = [];
     Object.keys(localizacao).forEach(function(key) {
       labels.push(key);
@@ -297,13 +310,15 @@ $(document).ready(function() {
             instancias.forEach(instancia => {
               instanciascampanha.push(instancia);
             });
+            campanha["instancias"] = instancias;
           }
         );
       });
       addDataBar(
         chartEstatisticasCampanhas,
         getLabels(campanhas[0]),
-        "Utilizações"
+        "Utilizações",
+        instanciascampanha[0]
       );
       let parent = document.querySelector("#myChartEC").parentElement
         .parentElement.parentElement.parentElement;
@@ -322,5 +337,3 @@ $(document).ready(function() {
     }
   );
 });
-
-console.log(clientes);
