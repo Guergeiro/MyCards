@@ -15,6 +15,11 @@ class Clientes_model extends CI_Model {
 		return $query->result_array();
 	}
 
+	public function ratingCliente($idCliente) {
+		$query = $this->db->get_where("RatingCliente", "RatingCliente.ID_Cliente = {$idCliente}");
+		return $query->result_array();
+	}
+
 	public function cartoesCliente($idCliente) {
 		$query = $this->db->get_where("Cartoes", "Cartoes.ID_Cliente = {$idCliente}");
 		return $query->result_array();
