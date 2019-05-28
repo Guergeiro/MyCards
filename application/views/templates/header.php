@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html>
 
-<head data-session='<?php echo json_encode($this->session->userdata()); ?>'>
+<head data-session='<?php echo json_encode(array(
+	"ID_Empresa" => $this->session->userdata("ID_Empresa"),
+	"Email" => $this->session->userdata("Email"),
+	"Localizacao" => $this->session->userdata("Localizacao"),
+	"DataRegisto" => $this->session->userdata("DataRegisto"),
+	"Nome" => $this->session->userdata("Nome"),
+	"NIF" => $this->session->userdata("NIF")
+)); ?>'>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">

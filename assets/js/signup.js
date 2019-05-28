@@ -31,7 +31,7 @@ function validation(form) {
 		});
 	}
 
-	if (document.querySelector("#nif").value.lenght != 9) {
+	if (document.querySelector("#nif").value.length != 9) {
 		document.querySelector("#nif").parentElement.lastElementChild.classList.add("d-block");
 		document.querySelector("#nif").parentElement.lastElementChild.innerHTML = "O NIF deve conter 9 números."
 		return false;

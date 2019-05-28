@@ -6,24 +6,25 @@ class Authentication_model extends CI_Model
 
     public function signin($data){
 
-        $condition = "Email = '{$data['email']}' AND Password='{$data['password']}'";
-
-        $query = $this->db->get_where("Empresas", $condition);
+        $query = $this->db->get_where("Empresas", "Email = '{$data['email']}'");
 
         if ($query->num_rows() == 0) {
             return FALSE;
         }
+        $query = $query->result_array();
+        if (!password_verify($data["password"], $query[0]["Password"])) {
+            return FALSE;
+        }
 
-        return $query->result_array();
+        return $query;
     }
 
     public function signup($data)
     {
-        $condition = "Email='{$data['email']}'";
-
-        $query = $this->db->get_where("Empresas", $condition);
+        $query = $this->db->get_where("Empresas", "Email='{$data['email']}'");
 
         if ($query->num_rows() == 0) {
+            $data["password"] = password_hash($data["password"], PASSWORD_DEFAULT);
             $this->db->insert("Empresas", $data);
         }
     }
@@ -32,14 +33,14 @@ class Authentication_model extends CI_Model
     {   
 		
         $this->db->where("Email", $data["Email"]);
-        $this->db->set("Password",$data["Password"]);
+        $this->db->set("Password",password_hash($data["Password"], PASSWORD_DEFAULT));
         return$this->db->update("Empresas");
     }
 
     public function updatePassword($data)
     {
 		$this->db->where("Email", $data["Email"]);
-		$this->db->set("Password",$data["Password"]);
+		$this->db->set("Password",password_hash($data["Password"], PASSWORD_DEFAULT));
         return $this->db->update("Empresas");
     }
 }
