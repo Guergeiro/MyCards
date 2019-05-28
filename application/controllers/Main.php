@@ -20,42 +20,42 @@ class Main extends CI_Controller {
 		switch ($page) {
 			case "dashboard":
 				if (!$login) {
-					redirect();
+					redirect("signin");
 				} else {
 					$this->load->view("pages/dashboard");
 				}
 				break;
 			case "colaboradores":
 				if (!$login) {
-					redirect();
+					redirect("signin");
 				} else {
 					$this->load->view("pages/colaboradores");
 				}
 				break;
 			case "clientes":
 				if (!$login) {
-					redirect();
+					redirect("signin");
 				} else {
 					$this->load->view("pages/clientes");
 				}
 				break;
 			case "criarCampanha":
 				if (!$login) {
-					redirect();
+					redirect("signin");
 				} else {
 					$this->load->view("pages/criarCampanha");
 				}
 				break;
 			case "listarCampanha":
 				if (!$login) {
-					redirect();
+					redirect("signin");
 				} else {
 					$this->load->view("pages/listarCampanha");
 				}
 				break;
 			case "ativarCampanha":
 				if (!$login) {
-					redirect();
+					redirect("signin");
 				} else {
 					$this->load->view("pages/ativarCampanha");
 				}
@@ -76,7 +76,7 @@ class Main extends CI_Controller {
 				break;
 			case "updatePassword":
 				if (!$login) {
-					redirect();
+					redirect("signin");
 				} else {
 					$this->load->view("pages/updatePassword");
 				}
@@ -89,6 +89,11 @@ class Main extends CI_Controller {
 		if (!file_exists(APPPATH."views/pages/infoCampanha.php")) {
 			show_404();
 		}
+
+		if (!$this->session->userdata("Email")) {
+			redirect("signin");
+		}
+
 
 		$data["page"] = "infoCampanha";
 

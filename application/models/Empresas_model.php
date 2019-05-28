@@ -46,6 +46,12 @@ class Empresas_model extends CI_Model {
 		return $query->result_array();
 	}
 
+	public function colaboradorEmpresa($idEmpresa, $idColaborador) {
+		$this->db->select("Colaboradores.Nome, Colaboradores.Dono");
+		$query = $this->db->get_where("Colaboradores", "Colaboradores.ID_Empresa = {$idEmpresa} AND Colaboradores.Nome = '{$idColaborador}'");
+		return $query->result_array();
+	}
+
 	// Insert
 
 
@@ -57,14 +63,14 @@ class Empresas_model extends CI_Model {
 	}
 
 	public function alterarColaboradorEmpresa($idEmpresa, $idColaborador, $data) {
-		$this->db->where("Colaboradores.ID_Empresa = {$idEmpresa} AND Colaboradores.Nome = {$idColaborador}");
+		$this->db->where("Colaboradores.ID_Empresa = {$idEmpresa} AND Colaboradores.Nome = '{$idColaborador}'");
 		$this->db->set($data);
 		return $this->db->update("Colaboradores");
 	}
 
 	// Delete
-	public function eliminarColaboradorEmpresa($idEmpresa, $idColaborador, $data) {
-		$this->db->where("Colaboradores.ID_Empresa = {$idEmpresa} AND Colaboradores.Nome = {$idColaborador}");
+	public function eliminarColaboradorEmpresa($idEmpresa, $idColaborador) {
+		$this->db->where("Colaboradores.ID_Empresa = {$idEmpresa} AND Colaboradores.Nome = '{$idColaborador}'");
 		return $this->db->delete("Colaboradores");
 	}
 }

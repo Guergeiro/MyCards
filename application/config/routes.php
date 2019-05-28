@@ -74,6 +74,7 @@ $route['api/empresa/(:num)/campanha/(:num)/instanciascampanha']['get'] = 'api/in
 $route['api/empresa/(:num)/cartao']['get'] = 'api/cartoesEmpresa/$1';
 
 $route['api/empresa/(:num)/colaborador']['get'] = 'api/colaboradoresEmpresa/$1';
+$route['api/empresa/(:num)/colaborador/(:any)']['get'] = 'api/colaboradorEmpresa/$1/$2';
 
 // Clientes
 $route['api/cliente']['get'] = 'api/informacoesClientes';

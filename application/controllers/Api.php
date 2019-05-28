@@ -56,6 +56,11 @@ class Api extends CI_Controller {
 		echo json_encode($this->Empresas_model->colaboradoresEmpresa($idEmpresa));
 	}
 
+	public function colaboradorEmpresa($idEmpresa, $idColaborador) {
+		$this->load->model("Empresas_model");
+		echo json_encode($this->Empresas_model->colaboradorEmpresa($idEmpresa, $idColaborador));
+	}
+
 	// Post
 	public function novaEmpresa() {
 		$this->load->model("Empresas_model");
@@ -91,8 +96,7 @@ class Api extends CI_Controller {
 	// Delete
 	public function eliminarColaboradorEmpresa($idEmpresa, $idColaborador) {
 		$this->load->model("Empresas_model");
-		$data = $this->input->input_stream("NULL", TRUE);
-		if ($this->Empresas_model->eliminarColaboradorEmpresa($idEmpresa, $idcolaborador, $data)) {
+		if ($this->Empresas_model->eliminarColaboradorEmpresa($idEmpresa, $idcolaborador)) {
 			echo "Delete Successful";
 		} else {
 			echo "Error Deleting";
