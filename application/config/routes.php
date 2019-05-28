@@ -92,6 +92,7 @@ $route['api/cliente/(:num)/cartao/(:num)/instanciacampanha/(:num)']['get'] = 'ap
 // Empresas
 $route['api/empresa']['post'] = 'api/novaEmpresa';
 $route['api/empresa/(:num)/campanha/(:num)/instanciacampanha/(:num)']['post'] = 'api/alterarInstanciaCampanhaEmpresa/$1/$2/$3';
+$route['api/empresa/(:num)/colaborador']['post'] = 'api/novoColaboradorEmpresa/$1';
 
 /* API DELETE's */
 // Empresas

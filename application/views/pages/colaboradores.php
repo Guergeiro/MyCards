@@ -24,7 +24,7 @@
 					<i class="fas fa-times"></i>
 				</button>
 			</div>
-			<?php echo form_open("", "onsubmit=\"return validation(this);\""); ?>
+			<form>
 			<div class="modal-body">
 				<div class="md-form">
 					<input type="text" name="nome" id="nome" class="form-control">
@@ -43,7 +43,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-outline-primary" data-dismiss="modal">Fechar</button>
-				<button type="submit" id="criarColaborador" class="btn btn-primary">Criar</button>
+				<button type="button" class="btn btn-primary">Criar</button>
 			</div>
 			</form>
 		</div>

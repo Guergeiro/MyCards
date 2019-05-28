@@ -73,7 +73,7 @@ class Api extends CI_Controller {
 
 	public function alterarInstanciaCampanhaEmpresa($idEmpresa, $idCampanha, $idCartao) {
 		$this->load->model("Empresas_model");
-		$data = $this->input->post(NULL, TRUE);
+		$data = $this->input->post(NULL, FALSE);
 		if ($this->Empresas_model->alterarInstanciaCampanhaEmpresa($idEmpresa, $idCampanha, $idCartao, $data)) {
 			echo "Update Successful";
 		} else {
@@ -82,26 +82,30 @@ class Api extends CI_Controller {
 		redirect("ativarCampanha");
 	}
 
-	public function alterarColaboradorEmpresa($idEmpresa, $idColaborador) {
+	public function novoColaboradorEmpresa($idEmpresa) {
 		$this->load->model("Empresas_model");
-		$data = $this->input->post(NULL, TRUE);
-		if ($this->Empresas_model->alterarColaboradorEmpresa($idEmpresa, $idcolaborador, $data)) {
-			echo "Update Successful";
+		$data = array(
+			"Nome" => $this->input->post("nome"),
+			"CodigoAcesso" => $this->input->post("codigoAcesso"),
+			"Dono" => $this->input->post("dono"),
+			"ID_Empresa" => $idEmpresa,
+			"URL" => mt_rand(1,11)
+		);
+		if ($this->Empresas_model->novoColaboradorEmpresa($idEmpresa, $data)) {
+			echo "Creation Successful";
 		} else {
 			echo "Error Updating";
 		}
-		redirect("colaboradores");
 	}
 
 	// Delete
 	public function eliminarColaboradorEmpresa($idEmpresa, $idColaborador) {
 		$this->load->model("Empresas_model");
-		if ($this->Empresas_model->eliminarColaboradorEmpresa($idEmpresa, $idcolaborador)) {
+		if ($this->Empresas_model->eliminarColaboradorEmpresa($idEmpresa, urldecode($idColaborador))) {
 			echo "Delete Successful";
 		} else {
 			echo "Error Deleting";
 		}
-		redirect("colaboradores");
 	}
 
 	// Clientes
@@ -134,18 +138,6 @@ class Api extends CI_Controller {
 	public function instanciasCampanhaCartaoCliente($idCartao) {
 		$this->load->model("Clientes_model");
 		echo json_encode($this->Clientes_model->instanciasCampanhaCartaoCliente($idCartao));
-	}
-
-	public function test($key) {
-		if ($this->Api_model->check_key($key)) {
-			$object = array(
-				"key" => $key,
-				"img" => base_url("assets/avatar/18700412_1549755958375924_1739793708868521246_o.jpg")
-			);
-			echo json_encode($object);
-		} else {
-			echo "Wrong key";
-		}
 	}
 }
 ?>

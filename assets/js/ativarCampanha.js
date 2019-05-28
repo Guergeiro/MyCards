@@ -10,25 +10,25 @@ if (url.length > 0) {
   document.querySelector("#valor").focus();
 }
 
-setInterval(function() {
+setInterval(function () {
   $.get(
     "./api/empresa/" +
-      JSON.parse(document.querySelector("head").getAttribute("data-session"))[
-        "ID_Empresa"
-      ] +
-      "/campanha",
-    function(data) {
+    JSON.parse(document.querySelector("head").getAttribute("data-session"))[
+      "ID_Empresa"
+    ] +
+    "/campanha",
+    function (data) {
       data = JSON.parse(data);
       data.forEach(campanha => {
         $.get(
           "./api/empresa/" +
-            JSON.parse(
-              document.querySelector("head").getAttribute("data-session")
-            )["ID_Empresa"] +
-            "/campanha/" +
-            campanha["ID_Campanha"] +
-            "/instanciascampanha",
-          function(instancias) {
+          JSON.parse(
+            document.querySelector("head").getAttribute("data-session")
+          )["ID_Empresa"] +
+          "/campanha/" +
+          campanha["ID_Campanha"] +
+          "/instanciascampanha",
+          function (instancias) {
             instancias = JSON.parse(instancias);
             instancias.forEach(element => {
               if (!contains(element)) {
@@ -54,25 +54,24 @@ setInterval(function() {
                   oldinnerHtml;
 
                 $(".toast").toast("show");
-                $(".toast").each(function() {
-                  $(this).on("hidden.bs.toast", function() {
+                $(".toast").each(function () {
+                  $(this).on("hidden.bs.toast", function () {
                     let id = $(this)
                       .find(".toast-body")
                       .attr("data-idcampanha");
                     $.post(
                       "api/empresa/" +
-                        JSON.parse($("head").attr("data-session"))[
-                          "ID_Empresa"
-                        ] +
-                        "/campanha/" +
-                        $(this)
-                          .find(".toast-body")
-                          .attr("data-idcampanha") +
-                        "/instanciacampanha/" +
-                        $(this)
-                          .find(".toast-body")
-                          .attr("data-idcartao"),
-                      {
+                      JSON.parse($("head").attr("data-session"))[
+                        "ID_Empresa"
+                      ] +
+                      "/campanha/" +
+                      $(this)
+                      .find(".toast-body")
+                      .attr("data-idcampanha") +
+                      "/instanciacampanha/" +
+                      $(this)
+                      .find(".toast-body")
+                      .attr("data-idcartao"), {
                         Notificacao: 0
                       }
                     ).then(
@@ -88,7 +87,7 @@ setInterval(function() {
                 });
 
                 document.querySelectorAll(".toast-body").forEach(toast => {
-                  toast.addEventListener("click", function() {
+                  toast.addEventListener("click", function () {
                     document.querySelector(
                       "#codigocartao"
                     ).value = toast.getAttribute("data-idcartao");
@@ -133,7 +132,6 @@ function contains(element) {
 function validation(form) {
   let estado = true;
   form.querySelectorAll("input").forEach(input => {
-    console.log(input);
     if (input.value.trim().length == 0) {
       estado = false;
     }
