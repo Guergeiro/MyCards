@@ -85,6 +85,13 @@ class Main extends CI_Controller {
 					$this->load->view("pages/signup");
 				}
 				break;
+			case "recoverPassword":
+			if ($this->session->userdata("Email")) {
+				redirect("dashboard");
+			} else {
+				$this->load->view("pages/signup");
+			}
+			break;
 			case "updatePassword":
 				if (!$this->session->userdata("Email")) {
 					redirect("signin");

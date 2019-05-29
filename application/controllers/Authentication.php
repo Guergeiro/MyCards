@@ -142,29 +142,19 @@ class Authentication extends CI_Controller
 				"nif" => $this->input->post("nif")
 			);
 
-			$this->Authentication_model->signup($data);
+			if($this->Authentication_model->signup($data)) {
+				$this->session->set_flashdata("correctFlashData", "Conta criada com sucesso. Verifique o seu email.");
 
-			$this->session->set_flashdata("correctFlashData", "Conta criada com sucesso. Verifique o seu email.");
+				$this->sendEmail(array(
+					"Email" => $data["email"],
+					"Subject" => "Bem-vindo ao MyCards",
+					"Message" => "Para ativar a sua conta, clique neste link: "
+				));
+			} else {
+				$this->session->set_flashdata("incorrectFlashData", "Ocorreu um erro ao criar a sua conta.");
+			}
 
-			$email = array(
-				"protocol" => "smtp",
-				"smtp_host" => "mail.dsprojects.pt",
-				"smtp_user" => "pint@dsprojects.pt",
-				"smtp_pass" => "-Pint2019",
-				"smtp_port" => "465",
-				"smtp_crypto" => "ssl",
-				"mailtype" => "text"
-			);
-
-			$this->load->library("email", $email);
-
-			$this->email->from("pint@dsprojects.pt", "Your Name");
-			$this->email->to("breno-salles@hotmail.com");
-
-			$this->email->subject("Email Test");
-			$this->email->message("Testing the email class.");
-
-			$this->email->send();
+			
 		};
 		redirect("signup");
 	}
@@ -205,11 +195,15 @@ class Authentication extends CI_Controller
 				"Email" => $this->input->post("email"),
 				"Password" => implode($password)
 			);
-			if(!$this->Authentication_model->recoverPassword($data))
-			{
+			if(!$this->Authentication_model->recoverPassword($data)) {
 				$this->session->set_flashdata("incorrectFlashData", "O Email não se encontra na base de dados.");
 			} else {
-				$this->session->set_flashdata("correctFlashData", "Email Enviado Com Sucesso.");
+				$this->session->set_flashdata("correctFlashData", "Uma nova password foi enviada para o seu email.");
+				$this->sendEmail(array(
+					"Email" => $data["Email"],
+					"Subject" => "Recuperação de password",
+					"Message" => "No seguimento do seu pedido de recuperação de password, foi gerada uma aleatória. Por favor, altere-a assim que possível.\nPassword: {$data['Password']}"
+				));
 			}
 
 		}
@@ -256,5 +250,27 @@ class Authentication extends CI_Controller
 			}
 		}
 		redirect("updatePassword");
+	}
+
+	private function sendEmail($data) {
+		$email = array(
+			"protocol" => "smtp",
+			"smtp_host" => "mail.dsprojects.pt",
+			"smtp_user" => "pint@dsprojects.pt",
+			"smtp_pass" => "-Pint2019",
+			"smtp_port" => "465",
+			"smtp_crypto" => "ssl",
+			"mailtype" => "text"
+		);
+
+		$this->load->library("email", $email);
+
+		$this->email->from("pint@dsprojects.pt", "My Cards");
+		$this->email->to($data["Email"]);
+
+		$this->email->subject($data["Subject"]);
+		$this->email->message($data["Message"]);
+
+		$this->email->send();
 	}
 }
