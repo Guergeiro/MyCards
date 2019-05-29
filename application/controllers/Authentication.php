@@ -143,13 +143,15 @@ class Authentication extends CI_Controller
 			);
 
 			if($this->Authentication_model->signup($data)) {
-				$this->session->set_flashdata("correctFlashData", "Conta criada com sucesso. Verifique o seu email.");
-
-				$this->sendEmail(array(
+				if($this->sendEmail(array(
 					"Email" => $data["email"],
 					"Subject" => "Bem-vindo ao MyCards",
 					"Message" => "Para ativar a sua conta, clique neste link: "
-				));
+				))) {
+					$this->session->set_flashdata("correctFlashData", "Conta criada com sucesso. Verifique o seu email.");
+				} else {
+					$this->session->set_flashdata("correctFlashData", "Conta criada com sucesso.");
+				}
 			} else {
 				$this->session->set_flashdata("incorrectFlashData", "Ocorreu um erro ao criar a sua conta.");
 			}
@@ -198,12 +200,15 @@ class Authentication extends CI_Controller
 			if(!$this->Authentication_model->recoverPassword($data)) {
 				$this->session->set_flashdata("incorrectFlashData", "O Email não se encontra na base de dados.");
 			} else {
-				$this->session->set_flashdata("correctFlashData", "Uma nova password foi enviada para o seu email.");
-				$this->sendEmail(array(
+				if ($this->sendEmail(array(
 					"Email" => $data["Email"],
 					"Subject" => "Recuperação de password",
 					"Message" => "No seguimento do seu pedido de recuperação de password, foi gerada uma aleatória. Por favor, altere-a assim que possível.\nPassword: {$data['Password']}"
-				));
+				))) {
+					$this->session->set_flashdata("correctFlashData", "Uma nova password foi enviada para o seu email.");
+				} else {
+					$this->session->set_flashdata("incorrectFlashData", "Ocorreu um erro. Tente mais tarde.");
+				}
 			}
 
 		}
@@ -271,6 +276,6 @@ class Authentication extends CI_Controller
 		$this->email->subject($data["Subject"]);
 		$this->email->message($data["Message"]);
 
-		$this->email->send();
+		return $this->email->send();
 	}
 }

@@ -1,4 +1,4 @@
-<main class="container d-flex align-items-center justify-content-center py-4">
+<main class="container my-3 py-3 d-flex align-items-center justify-content-center">
   <div class="card">
     <div class="card-header">
       <h3 class="text-primary text-truncate">Listar Campanha</h3>
