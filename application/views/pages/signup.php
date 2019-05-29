@@ -5,6 +5,17 @@
 		</div>
 		<div class="card-body">
 			<?php echo form_open("authentication/signup", "class=\"form-row\" onsubmit=\"return validation(this);\""); ?>
+			<?php if ($this->session->flashdata("wrongEmail")): ?>
+			<div class="col-12 col-md-8 offset-md-2 text-center my-3">
+				<div class="alert alert-danger"><?= $this->session->flashdata("wrongEmail") ?></div>
+			</div>
+			<?php endif; ?>
+
+			<?php if ($this->session->flashdata("accountCreated")): ?>
+			<div class="col-12 col-md-8 offset-md-2 text-center my-3">
+				<div class="alert alert-success"> <?= $this->session->flashdata("accountCreated") ?></div>
+			</div>
+			<?php endif; ?>
 			<div class="col-12 col-md-8 offset-md-2">
 				<div class="md-form md-outline">
 					<i class="fas fa-fw fa-envelope prefix"></i>
@@ -47,19 +58,6 @@
 					<div class="form-text invalid-tooltip"></div>
 				</div>
 			</div>
-
-			<?php if ($this->session->flashdata("wrongEmail")): ?>
-			<div class="col-12 col-md-8 offset-md-2 text-center my-3">
-				<div class="alert alert-danger"><?= $this->session->flashdata("wrongEmail") ?></div>
-			</div>
-			<?php endif; ?>
-
-			<?php if ($this->session->flashdata("accountCreated")): ?>
-			<div class="col-12 col-md-8 offset-md-2 text-center my-3">
-				<div class="alert alert-success"> <?= $this->session->flashdata("accountCreated") ?></div>
-
-			</div>
-			<?php endif; ?>
 			<div class="col-12 col-md-8 offset-md-2 text-center my-3">
 				<button type="submit" class="btn btn-outline-primary rounded-pill">Criar Conta</button>
 			</div>

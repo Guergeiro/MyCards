@@ -5,17 +5,18 @@ class Authentication_model extends CI_Model
 {
 
     public function signin($data){
-
         $query = $this->db->get_where("Empresas", "Email = '{$data['email']}'");
 
         if ($query->num_rows() == 0) {
-            return FALSE;
+            return "email";
         }
         $query = $query->result_array();
         if (!password_verify($data["password"], $query[0]["Password"])) {
-            return FALSE;
+            return "email";
         }
-
+        if ($query[0]["Ativo"] == 0) {
+            return "ativo";
+        }
         return $query;
     }
 

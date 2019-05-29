@@ -16,67 +16,80 @@ class Main extends CI_Controller {
 	}
 	
 	private function loadPage($page) {
-		$login = $this->session->userdata("Email");	// NULL caso esteja logout
 		switch ($page) {
 			case "dashboard":
-				if (!$login) {
+				if (!$this->session->userdata("Email")) {
 					redirect("signin");
+				} else if ($this->session->userdata("Ativo") == 0) {
+
 				} else {
 					$this->load->view("pages/dashboard");
 				}
 				break;
 			case "colaboradores":
-				if (!$login) {
+				if (!$this->session->userdata("Email")) {
 					redirect("signin");
+				} else if ($this->session->userdata("Ativo") == 0) {
+
 				} else {
 					$this->load->view("pages/colaboradores");
 				}
 				break;
 			case "clientes":
-				if (!$login) {
+				if (!$this->session->userdata("Email")) {
 					redirect("signin");
+				} else if ($this->session->userdata("Ativo") == 0) {
+
 				} else {
 					$this->load->view("pages/clientes");
 				}
 				break;
 			case "criarCampanha":
-				if (!$login) {
+				if (!$this->session->userdata("Email")) {
 					redirect("signin");
-				} else {
+				} else if ($this->session->userdata("Ativo") == 0) {
+
+				}else {
 					$this->load->view("pages/criarCampanha");
 				}
 				break;
 			case "listarCampanha":
-				if (!$login) {
+				if (!$this->session->userdata("Email")) {
 					redirect("signin");
-				} else {
+				} else if ($this->session->userdata("Ativo") == 0) {
+
+				}else {
 					$this->load->view("pages/listarCampanha");
 				}
 				break;
 			case "ativarCampanha":
-				if (!$login) {
+				if (!$this->session->userdata("Email")) {
 					redirect("signin");
-				} else {
+				} else if ($this->session->userdata("Ativo") == 0) {
+
+				}else {
 					$this->load->view("pages/ativarCampanha");
 				}
 				break;
 			case "signin":
-				if ($login) {
+				if ($this->session->userdata("Email")) {
 					redirect("dashboard");
 				} else {
 					$this->load->view("pages/signin");
 				}
 				break;
 			case "signup":
-				if ($login) {
+				if ($this->session->userdata("Email")) {
 					redirect("dashboard");
 				} else {
 					$this->load->view("pages/signup");
 				}
 				break;
 			case "updatePassword":
-				if (!$login) {
+				if (!$this->session->userdata("Email")) {
 					redirect("signin");
+				} else if ($this->session->userdata("Ativo") == 0) {
+
 				} else {
 					$this->load->view("pages/updatePassword");
 				}

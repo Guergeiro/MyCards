@@ -5,10 +5,17 @@
 		</div>
 		<div class="card-body">
 			<?php echo form_open("authentication/signin", "class=\"form-row\" onsubmit=\"return validation(this);\""); ?>
-			<div class="col-12 col-md-8 offset-md-2">
-				<?php if ($this->session->flashdata("missingLoginData")) { ?>
+			<?php if ($this->session->flashdata("missingLoginData")): ?>
+			<div class="col-12 col-md-8 offset-md-2 text-center">
 				<div class="alert alert-danger"> <?= $this->session->flashdata("missingLoginData") ?> </div>
-				<?php } ?>
+			</div>
+			<?php endif; ?>
+			<?php if ($this->session->flashdata("errorLoginData")): ?>
+			<div class="col-12 col-md-8 offset-md-2 text-center">
+				<div class="alert alert-danger"> <?= $this->session->flashdata("errorLoginData") ?> </div>
+			</div>
+			<?php endif; ?>
+			<div class="col-12 col-md-8 offset-md-2">
 				<div class="md-form md-outline">
 					<i class="fas fa-envelope prefix"></i>
 					<input type="email" id="email" name="email" class="form-control">
@@ -25,12 +32,6 @@
 					<label for="password">Password</label>
 				</div>
 			</div>
-			<?php if ($this->session->flashdata("errorLoginData")): ?>
-			<div class="col-12 col-md-8 offset-md-2 text-center">
-				<div class="alert alert-danger"> <?= $this->session->flashdata("errorLoginData") ?> </div>
-
-			</div>
-			<?php endif; ?>
 			<div class="col-12 col-md-8 offset-md-2 text-center">
 				<a href="<?php echo base_url("recoverPassword"); ?>">Esqueceu-se da password?</a>
 			</div>

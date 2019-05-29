@@ -41,10 +41,14 @@ class Authentication extends CI_Controller
 
 			$result = $this->Authentication_model->signin($data);
 
-			if (!$result) {
-				$this->session->set_flashdata("errorLoginData", "Email ou Password errados");
+			if ($result == "email") {
+				$this->session->set_flashdata("errorLoginData", "Email ou Password errados.");
+				redirect("signin");
+			}else if ($result == "ativo") {
+				$this->session->set_flashdata("errorLoginData", "Conta não ativa.");
 				redirect("signin");
 			} else {
+				unset($result[0]["Password"]);
 				$this->session->set_userdata($result[0]);
 				redirect("dashboard");
 			}
@@ -100,7 +104,7 @@ class Authentication extends CI_Controller
 
 			$this->Authentication_model->signup($data);
 
-			$this->session->set_flashdata("accountCreated", "Conta criada com sucesso.");
+			$this->session->set_flashdata("accountCreated", "Conta criada com sucesso. Verifique o seu email.");
 		};
 		redirect("signup");
 	}
