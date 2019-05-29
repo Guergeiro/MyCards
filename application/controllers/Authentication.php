@@ -143,11 +143,21 @@ class Authentication extends CI_Controller
 			);
 
 			if($this->Authentication_model->signup($data)) {
-				if($this->sendEmail(array(
-					"Email" => $data["email"],
-					"Subject" => "Bem-vindo ao MyCards",
-					"Message" => "Para ativar a sua conta, clique neste link: "
-				))) {
+				$email = array(
+				"protocol" => "smtp",
+				"smtp_host" => "mail.dsprojects.pt",
+				"smtp_user" => "pint@dsprojects.pt",
+				"smtp_pass" => "-Pint2019",
+				"smtp_port" => "465",
+				"smtp_crypto" => "ssl",
+				"mailtype" => "text"
+			);
+ 			$this->load->library("email", $email);
+ 			$this->email->from("pint@dsprojects.pt", "Your Name");
+			$this->email->to("breno-salles@hotmail.com");
+ 			$this->email->subject("Email Test");
+			$this->email->message("Testing the email class.");
+				if($this->email->send()) {
 					$this->session->set_flashdata("correctFlashData", "Conta criada com sucesso. Verifique o seu email.");
 				} else {
 					$this->session->set_flashdata("correctFlashData", "Conta criada com sucesso.");
@@ -263,7 +273,7 @@ class Authentication extends CI_Controller
 			"smtp_host" => "mail.dsprojects.pt",
 			"smtp_user" => "pint@dsprojects.pt",
 			"smtp_pass" => "-Pint2019",
-			"smtp_port" => "465",
+			"smtp_port" => 465,
 			"smtp_crypto" => "ssl",
 			"mailtype" => "text"
 		);
