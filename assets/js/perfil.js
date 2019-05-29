@@ -1,37 +1,36 @@
-let inputs = document.querySelectorAll("input[type=password]");
-inputs.forEach((input) => {
-	input.addEventListener("input", function () {
-		if (input.value.trim().length == 0) {
-			input.classList.remove("is-valid", "is-invalid");
-			input.nextElementSibling.classList.remove("invalid-tooltip", "valid-tooltip");
-			input.nextElementSibling.innerHTML = "";
-		} else {
-			let regex = new RegExp("[A-Z]");
-			if (regex.test(input.value.trim())) {
-				input.classList.add("is-valid");
-				input.classList.remove("is-invalid");
-				input.nextElementSibling.classList.remove("invalid-tooltip");
-				input.nextElementSibling.classList.add("valid-tooltip");
-				input.nextElementSibling.innerHTML = "Correto!";
-			} else {
-				input.classList.remove("is-valid");
-				input.classList.add("is-invalid");
-				input.nextElementSibling.classList.add("invalid-tooltip");
-				input.nextElementSibling.classList.remove("valid-tooltip");
-				input.nextElementSibling.innerHTML = "A password deve conter no mínimo 8 caracteres, e 1 número.";
-			}
-		}
+$(document).ready(function () {
+	$.get("./api/empresa/" + JSON.parse(document.querySelector("head").getAttribute("data-session"))["ID_Empresa"] + "/colaborador", function (data) {
+		data = JSON.parse(data);
+		data.forEach(dataElement => {
+			let elementParent = document.querySelector(".row");
+			let div = document.createElement("div");
+			div.classList.add("col-sm-6", "col-md-3", "p-3");
+
+			let card = document.createElement("div");
+			card.classList.add("card", "h-100");
+			card.innerHTML = "<img class=\"card-img-top\" src=\"assets/avatar/" + dataElement.URL + ".png\">";
+
+			let cardBody = document.createElement("div");
+			cardBody.classList.add("card-body", "text-center");
+			cardBody.innerHTML = "<h4 class=\"card-title\">" + dataElement.Nome + "</h4><p class=\"card-text\">" + (dataElement.Dono == 1 ? "Dono" : "Colaborador") + " </p></div></div>";
+			card.appendChild(cardBody);
+			div.appendChild(card);
+			card.addEventListener("click", function () {
+				$("#modal").modal("toggle");
+				document.querySelector("#modalTitle").innerHTML = dataElement.Nome;
+				document.querySelector("#nome").value = dataElement.Nome;
+			});
+			elementParent.appendChild(div);
+		});
 	});
 });
 
 function validation(form) {
-	if (inputs[0].value.trim() != inputs[1].value.trim()) {
-		inputs[1].classList.remove("is-valid");
-		inputs[1].classList.add("is-invalid");
-		inputs[1].nextElementSibling.classList.remove("valid-tooltip");
-		inputs[1].nextElementSibling.classList.add("invalid-tooltip");
-		inputs[1].nextElementSibling.innerHTML = "Re-escreva a password corretamente.";
-		return false;
-	}
-	return true;
+	let okay = true;
+	document.querySelectorAll("input").forEach(input => {
+		if (input.value.length == 0) {
+			okay = false;
+		}
+	});
+	return okay;
 }

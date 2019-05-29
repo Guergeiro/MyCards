@@ -5,6 +5,17 @@
 		</div>
 		<div class="card-body">
 			<?php echo form_open("authentication/recoverPassword", "class=\"form-row\" onsubmit=\"return validation(this);\""); ?>
+			<?php if ($this->session->flashdata("incorrectFlashData")): ?>
+			<div class="col-12 col-md-8 offset-md-2 text-center my-3">
+				<div class="alert alert-danger"><?= $this->session->flashdata("incorrectFlashData") ?></div>
+			</div>
+			<?php endif; ?>
+
+			<?php if ($this->session->flashdata("correctFlashData")): ?>
+			<div class="col-12 col-md-8 offset-md-2 text-center my-3">
+				<div class="alert alert-success"> <?= $this->session->flashdata("correctFlashData") ?></div>
+			</div>
+			<?php endif; ?>
 			<div class="col-12 col-md-8 offset-md-2">
 				<div class="md-form md-outline">
 					<i class="fas fa-fw fa-envelope prefix"></i>
@@ -13,19 +24,6 @@
 					<div class="form-text invalid-tooltip"></div>
 				</div>
 			</div>
-
-			<?php if ($this->session->flashdata("wrongEmail")): ?>
-			<div class="col-12 col-md-8 offset-md-2 text-center my-3">
-				<div class="alert alert-danger"><?= $this->session->flashdata("wrongEmail") ?></div>
-			</div>
-			<?php endif; ?>
-
-			<?php if ($this->session->flashdata("passwordSent")): ?>
-			<div class="col-12 col-md-8 offset-md-2 text-center my-3">
-				<div class="alert alert-success"> <?= $this->session->flashdata("passwordSent") ?></div>
-
-			</div>
-			<?php endif; ?>
 			<div class="col-12 col-md-8 offset-md-2 text-center my-3">
 				<button type="submit" class="btn btn-outline-primary rounded-pill">Recuperar Password</button>
 			</div>

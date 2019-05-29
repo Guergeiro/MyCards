@@ -20,8 +20,8 @@ class Main extends CI_Controller {
 			case "dashboard":
 				if (!$this->session->userdata("Email")) {
 					redirect("signin");
-				} else if ($this->session->userdata("Ativo") == 0) {
-
+				} else if (!($this->session->userdata("Dono") == "0" || $this->session->userdata("Dono") == "1")) {
+					redirect("perfil");
 				} else {
 					$this->load->view("pages/dashboard");
 				}
@@ -29,8 +29,8 @@ class Main extends CI_Controller {
 			case "colaboradores":
 				if (!$this->session->userdata("Email")) {
 					redirect("signin");
-				} else if ($this->session->userdata("Ativo") == 0) {
-
+				} else if ($this->session->userdata("Dono") != "1") {
+					redirect("perfil");
 				} else {
 					$this->load->view("pages/colaboradores");
 				}
@@ -38,8 +38,8 @@ class Main extends CI_Controller {
 			case "clientes":
 				if (!$this->session->userdata("Email")) {
 					redirect("signin");
-				} else if ($this->session->userdata("Ativo") == 0) {
-
+				} else if (!($this->session->userdata("Dono") == "0" || $this->session->userdata("Dono") == "1")) {
+					redirect("perfil");
 				} else {
 					$this->load->view("pages/clientes");
 				}
@@ -47,27 +47,27 @@ class Main extends CI_Controller {
 			case "criarCampanha":
 				if (!$this->session->userdata("Email")) {
 					redirect("signin");
-				} else if ($this->session->userdata("Ativo") == 0) {
-
-				}else {
+				} else if (!($this->session->userdata("Dono") == "0" || $this->session->userdata("Dono") == "1")) {
+					redirect("perfil");
+				} else {
 					$this->load->view("pages/criarCampanha");
 				}
 				break;
 			case "listarCampanha":
 				if (!$this->session->userdata("Email")) {
 					redirect("signin");
-				} else if ($this->session->userdata("Ativo") == 0) {
-
-				}else {
+				} else if (!($this->session->userdata("Dono") == "0" || $this->session->userdata("Dono") == "1")) {
+					redirect("perfil");
+				} else {
 					$this->load->view("pages/listarCampanha");
 				}
 				break;
 			case "ativarCampanha":
 				if (!$this->session->userdata("Email")) {
 					redirect("signin");
-				} else if ($this->session->userdata("Ativo") == 0) {
-
-				}else {
+				} else if (!($this->session->userdata("Dono") == "0" || $this->session->userdata("Dono") == "1")) {
+					redirect("perfil");
+					}else {
 					$this->load->view("pages/ativarCampanha");
 				}
 				break;
@@ -88,14 +88,22 @@ class Main extends CI_Controller {
 			case "updatePassword":
 				if (!$this->session->userdata("Email")) {
 					redirect("signin");
-				} else if ($this->session->userdata("Ativo") == 0) {
-
+				} else if ($this->session->userdata("Dono") != "1") {
+					redirect("perfil");
 				} else {
 					$this->load->view("pages/updatePassword");
 				}
 				break;
-			default:
-				$this->load->view("pages/{$page}");
+			case "perfil":
+				if (!$this->session->userdata("Email")) {
+					redirect("signin");
+				} else {
+					$this->load->view("pages/perfil");
+				}
+				break;
+			case "home":
+				$this->load->view("pages/home");
+				break;
 		}
 	}
 	public function infoCampanha($campanha) {
@@ -105,6 +113,8 @@ class Main extends CI_Controller {
 
 		if (!$this->session->userdata("Email")) {
 			redirect("signin");
+		} else if (!($this->session->userdata("Dono") == "0" || $this->session->userdata("Dono") == "1")) {
+			redirect("perfil");
 		}
 
 
@@ -119,7 +129,7 @@ class Main extends CI_Controller {
 		if (!file_exists(APPPATH."views/pages/{$page}.php")) {
 			show_404();
 		}
-		if ($this->session->userdata("Admin") != 1) {
+		if ($this->session->userdata("Admin") == "1") {
 			redirect();
 		}
 		$this->load->view("pages/{$page}");

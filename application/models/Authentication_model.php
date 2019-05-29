@@ -20,6 +20,15 @@ class Authentication_model extends CI_Model
         return $query;
     }
 
+    public function colaborador($data) {
+        $this->db->select("Colaboradores.Dono");
+        $query = $this->db->get_where("Colaboradores", $data);
+        if ($query->num_rows() == 0) {
+            return FALSE;
+        }
+        return $query->result_array();
+    }
+
     public function signup($data)
     {
         $query = $this->db->get_where("Empresas", "Email='{$data['email']}'");

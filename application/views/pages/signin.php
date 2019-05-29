@@ -5,14 +5,9 @@
 		</div>
 		<div class="card-body">
 			<?php echo form_open("authentication/signin", "class=\"form-row\" onsubmit=\"return validation(this);\""); ?>
-			<?php if ($this->session->flashdata("missingLoginData")): ?>
+			<?php if ($this->session->flashdata("flashData")): ?>
 			<div class="col-12 col-md-8 offset-md-2 text-center">
-				<div class="alert alert-danger"> <?= $this->session->flashdata("missingLoginData") ?> </div>
-			</div>
-			<?php endif; ?>
-			<?php if ($this->session->flashdata("errorLoginData")): ?>
-			<div class="col-12 col-md-8 offset-md-2 text-center">
-				<div class="alert alert-danger"> <?= $this->session->flashdata("errorLoginData") ?> </div>
+				<div class="alert alert-danger"> <?= $this->session->flashdata("flashData") ?> </div>
 			</div>
 			<?php endif; ?>
 			<div class="col-12 col-md-8 offset-md-2">

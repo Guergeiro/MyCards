@@ -1,32 +1,45 @@
-<main class="container my-3 py-3 shadow">
-	<div class="row">
-		<div class="col-12 mx-auto p-0">
-			<img src="<?php echo base_url('assets/avatar/920983_516047081776703_299333251_o.jpg'); ?>" class="border border-dark rounded-circle" alt="" srcset="">
+<main class="container my-3 py-3 d-flex align-items-center justify-content-center">
+	<div class="card w-100">
+		<div class="card-header">
+			<h3 class="text-primary text-truncate">Perfil</h3>
+			<small class="ml-1">Escolha o perfil de utilizador.</small>
 		</div>
-		<div class="col-12">
-			<h5>Nome: </h5>
-			<h5>Email: </h5>
-			<h5>Rating: </h5>
+		<div class="card-body">
+			<div class="row">
+			<?php if ($this->session->flashdata("incorrectFlashData")): ?>
+			<div class="col-12 col-md-8 offset-md-2 text-center">
+				<div class="alert alert-danger"> <?= $this->session->flashdata("incorrectFlashData") ?> </div>
+			</div>
+			<?php endif; ?>
+			</div>
 		</div>
 	</div>
-	<?php echo form_open_multipart("", "class=\"form-row\" onsubmit=\"return validation(this);\""); ?>
-		
-		<div class="form-group col-12">
-			<label for="userfile">Nova imagem</label>
-			<input type="file" name="userfile" id="userfile" class="form-control-file">
-		</div>
-		<div class="md-form md-outline col-md-6">
-			<label for="password">Nova password</label>
-			<input type="password" name="password" id="password" class="form-control">
-			<div></div>
-		</div>
-		<div class="md-form md-outline col-md-6">
-			<label for="re-password">Re-escreva a password</label>
-			<input type="password" name="re-password" id="re-password" class="form-control">
-			<div></div>
-		</div>
-		<div class="form-group col-12 text-center">
-			<button type="submit" class="btn btn-primary">Update Account</button>
-		</div>
-	</form>
 </main>
+
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="modalTitle"></h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<i class="fas fa-times"></i>
+				</button>
+			</div>
+			<?php echo form_open("authentication/colaborador","onsubmit=\"return validation(this);\"") ?>
+			<div class="modal-body">
+				<div class="md-form">
+					<input type="hidden" id="nome" name="nome" class="form-control" readonly>
+				</div>
+				<div class="md-form">
+					<input type="password" name="codigoAcesso" id="codigoAcesso" class="form-control">
+					<label for="codigoAcesso">Código de Acesso</label>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-outline-primary" data-dismiss="modal">Fechar</button>
+				<button type="submit" class="btn btn-primary">Entrar</button>
+			</div>
+			</form>
+		</div>
+	</div>
+</div>

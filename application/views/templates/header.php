@@ -7,7 +7,8 @@
 	"Localizacao" => $this->session->userdata("Localizacao"),
 	"DataRegisto" => $this->session->userdata("DataRegisto"),
 	"Nome" => $this->session->userdata("Nome"),
-	"NIF" => $this->session->userdata("NIF")
+	"NIF" => $this->session->userdata("NIF"),
+	"Dono" => $this->session->userdata("Dono")
 )); ?>'>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -38,7 +39,7 @@
 
 <body style="padding-top: 72px;" class="grey lighten-5">
 	<nav class="navbar navbar-expand-md bg-blue navbar-dark fixed-top px-md-5 py-3">
-		<?php if ($this->session->userdata("Email")): ?>
+		<?php if ($this->session->userdata("Email") && ($this->session->userdata("Dono") == "0" || $this->session->userdata("Dono") == "1")): ?>
 			<button class="navbar-toggler d-inline" role="button" type="button" id="sidebarToggler">
 				<i class="fas fa-chevron-right fa-fw"></i>
 			</button>
@@ -51,6 +52,11 @@
 		<div class="collapse navbar-collapse text-center justify-content-end" id="navbar">
 			<ul class="navbar-nav">
 				<?php if ($this->session->userdata("Email")) : ?>
+				<li class="nav-item">
+						<a class="nav-link" href="<?php echo base_url("perfil"); ?>">
+							Perfil
+						</a>
+					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="<?php echo base_url("authentication/signoff"); ?>">
 							Logout
@@ -78,6 +84,7 @@
 				<a class="list-group-item bg-transparent rounded-0 border-0 p-3 text-dark text-decoration-none <?php if ($this->uri->segment(1, 0) === "dashboard") : ?>active<?php endif; ?>" href="<?php echo base_url("dashboard"); ?>">
 					<i class="fas fa-chart-area fa-fw"></i> Dashboard
 				</a>
+				<?php if ($this->session->userdata("Dono") == "1"): ?>
 				<a class="list-group-item bg-transparent rounded-0 border-0 p-3 <?php if (strpos($this->uri->segment(1, 0), "Empresa") !== FALSE) : ?>active<?php endif; ?>" role="button" data-toggle="collapse" data-target="#empresa">
 					<i class="fas fa-building fa-fw"></i> Empresa
 					<i class="fas fa-chevron-down float-right fa-fw"></i>
@@ -93,6 +100,7 @@
 				<a class="list-group-item bg-transparent rounded-0 border-0 p-3 text-dark text-decoration-none <?php if ($this->uri->segment(1, 0) === "colaboradores") : ?>active<?php endif; ?>" href="<?php echo base_url("colaboradores"); ?>">
 					<i class="fas fa-users fa-fw"></i> Colaboradores
 				</a>
+				<?php endif; ?>
 				<a class="list-group-item bg-transparent rounded-0 border-0 p-3 text-dark text-decoration-none <?php if ($this->uri->segment(1, 0) === "clientes") : ?>active<?php endif; ?>" href="<?php echo base_url("clientes"); ?>">
 					<i class="fas fa-users fa-fw"></i> Clientes
 				</a>
