@@ -39,7 +39,7 @@ class Authentication_model extends CI_Model
 		
         $this->db->where("Email", $data["Email"]);
         $this->db->set("Password",password_hash($data["Password"], PASSWORD_DEFAULT));
-        return$this->db->update("Empresas");
+        return $this->db->update("Empresas");
     }
 
     public function updatePassword($data)
@@ -47,5 +47,17 @@ class Authentication_model extends CI_Model
 		$this->db->where("Email", $data["Email"]);
 		$this->db->set("Password",password_hash($data["Password"], PASSWORD_DEFAULT));
         return $this->db->update("Empresas");
+    }
+
+    public function verify($md5Email) {
+        $query = $this->db->get("Empresas");
+        $query = $query->result_array();
+        foreach($query as $row) {
+            if (md5($row["Email"]) === $md5Email) {
+                $this->db->where("Email", $row["Email"]);
+                $this->db->set("Ativo",1);
+                return $this->db->update("Empresas");
+            }
+        }
     }
 }

@@ -56,6 +56,9 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['(:any)'] = 'main/view/$1';
 $route['infoCampanha/(:num)'] = 'main/infoCampanha/$1';
+
+$route['verify/(:any)'] = 'authentication/verify/$1';
+
 $route['admin'] = 'main/admin';
 $route['admin/(:any)'] = 'main/admin/$1';
 

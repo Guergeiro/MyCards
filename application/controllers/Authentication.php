@@ -143,21 +143,11 @@ class Authentication extends CI_Controller
 			);
 
 			if($this->Authentication_model->signup($data)) {
-				$email = array(
-					"protocol" => "smtp",
-					"smtp_host" => "mail.dsprojects.pt",
-					"smtp_user" => "pint@dsprojects.pt",
-					"smtp_pass" => "-Pint2019",
-					"smtp_port" => "465",
-					"smtp_crypto" => "ssl",
-					"mailtype" => "text"
-				);
-				$this->load->library("email", $email);
-				$this->email->from("pint@dsprojects.pt", "My Cards");
-				$this->email->to("{$data["email"]}");
-				$this->email->subject("Bem vindo ao MyCards");
-				$this->email->message("Testing the email class.");
-				if($this->email->send()) {
+				if($this->sendEmail(array(
+					"Email" => $data["email"],
+					"Subject" => "Bem vindo ao MyCards",
+					"Message" => "{$data["nome"]},\nObrigado por se registar no MyCards.\nEstamos contentes com a nossa nova parceria.\nAs suas informações:\n - Nome: {$data['nome']}\n - NIF: {$data['nif']}\nPara ativar a sua conta, clique neste link: http://dsprojects.pt/MyCards/verify/".md5($data["email"])."\nRelembramos que, apesar da sua conta estar ativa, a sua empresa ainda precisa de ser aprovada pelos administradores."
+				))) {
 					$this->session->set_flashdata("correctFlashData", "Conta criada com sucesso. Verifique o seu email.");
 				} else {
 					$this->session->set_flashdata("correctFlashData", "Conta criada com sucesso.");
@@ -263,6 +253,12 @@ class Authentication extends CI_Controller
 			}
 		}
 		redirect("updatePassword");
+	}
+
+	public function verify($md5Email) {
+		if($this->Authentication_model->verify($md5Email)) {
+
+		}
 	}
 
 	private function sendEmail($data) {
