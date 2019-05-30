@@ -104,6 +104,9 @@ class Main extends CI_Controller {
 			case "home":
 				$this->load->view("pages/home");
 				break;
+			case "politicaPrivacidade":
+				$this->load->view("pages/politicaPrivacidade");
+				break;
 		}
 	}
 	public function infoCampanha($campanha) {

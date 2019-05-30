@@ -1,15 +1,15 @@
 <main class="container d-flex align-items-center justify-content-center py-4">
   <div class="card">
     <div class="card-header">
-      <h3 class="text-primary text-truncate">Listar Campanha</h3>
-      <small>Esta área serve para listar as campanhas.</small>
+      <h3 class="text-primary text-truncate">Politica de Privacidade</h3>
+      <small>Politica de Privacidade da MyCards</small>
     </div>
     <div class="card-body">
       <h4 class="py-3">1. IDENTIFICAÇÃO DO RESPONSÁVEL PELO TRATAMENTO </h4>
       <p>Identificação da Empresa:</p>
-      <p>NIPC</p>
-      <p>Sede</p>
-      <p>Contacto Encarregado da Proteção de Dados</p>
+      <p>123456789</p>
+      <p>Viseu</p>
+      <p>912345678</p>
 
       <h4 class="py-3">2. INFORMAÇÃO E CONSENTIMENTO</h4>
       <p>A Lei da Proteção de Dados Pessoais (em diante “LPD”) e o Regulamento Geral de
@@ -22,8 +22,8 @@
         dados de pessoas coletivas. </p>
       <p>Mediante a aceitação da presente Política de Privacidade o utilizador presta o seu
         consentimento informado, expresso, livre e inequívoco para que os dados pessoais
-        fornecidos através do site https://xxxxxxxxxxxxxx sejam incluídos num ficheiro da
-        responsabilidade da xxxxxxxx, cujo tratamento nos termos da LPD e do RGPD cumpre as
+        fornecidos através do site http://dsprojects.pt/MyCards sejam incluídos num ficheiro da
+        responsabilidade da MyCards, cujo tratamento nos termos da LPD e do RGPD cumpre as
         medidas de segurança técnicas e organizativas adequadas. </p>
       <p> Os dados presentes nesta base são unicamente os dados prestados pelos próprios na
         altura do seu registo, sendo recolhidos e processados automaticamente, nos termos do
@@ -54,19 +54,19 @@
         <li>(xi) Comunicações de marketing direto (caso tenha consentido no tratamento
           dos seus dados pessoais para esta finalidade); </li>
       </ul>
-      <p>A xxxxxxxxxxx garante a confidencialidade de todos os dados fornecidos pelos seus
-        clientes. Não obstante a xxxxxxxxxx proceder à recolha e ao tratamento de dados de
+      <p>A MyCards garante a confidencialidade de todos os dados fornecidos pelos seus
+        clientes. Não obstante a MyCards proceder à recolha e ao tratamento de dados de
         forma segura e que impede a sua perda ou manipulação, utilizando as técnicas mais
         aperfeiçoadas para o efeito, informamos que a recolha em rede aberta permite a
         circulação dos dados pessoais sem condições de segurança, correndo o risco de ser
         vistos e utilizados por terceiros não autorizados. </p>
       <h4 class="py-3">4. MEDIDAS DE SEGURANÇA</h4>
-      <p>A xxxxxxxxxxxx declara que implementou e continuará a implementar as medidas de
+      <p>A MyCards declara que implementou e continuará a implementar as medidas de
         segurança de natureza técnica e organizativa necessárias para garantir a segurança dos
         dados de carácter pessoal que lhe sejam fornecidos visando evitar a sua alteração,
         perda, tratamento e/ou acesso não autorizado, tendo em conta o estado atual da
         tecnologia, a natureza dos dados armazenados e os riscos a que estão expostos. </p>
-      <p>A xxxxxxxxxxxxxxxxxx garante a confidencialidade de todos os dados fornecidos pelos
+      <p>A MyCards garante a confidencialidade de todos os dados fornecidos pelos
         seus clientes quer no registo, quer no processo de compra/encomenda de produtos ou
         serviços. A recolha e tratamento de dados realiza-se de forma segura e que impede a
         sua perda ou manipulação. Todos os dados serão inseridos num Servidor Seguro que os

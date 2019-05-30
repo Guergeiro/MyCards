@@ -19,7 +19,7 @@
           <ul>
             <li><a href="#">Equipa</a></li>
             <li><a href="#">FAQ</a></li>
-            <li><a href="#">Termos e Condições</a></li>
+            <li><a href="<?php echo base_url("politicaPrivacidade");?>">Politica de Privacidade</a></li>
           </ul>
         </div>
       </div>
