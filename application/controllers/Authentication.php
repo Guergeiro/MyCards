@@ -154,7 +154,7 @@ class Authentication extends CI_Controller
 				);
 				$this->load->library("email", $email);
 				$this->email->from("pint@dsprojects.pt", "My Cards");
-				$this->email->to($data["email"]);
+				$this->email->to("{$data["email"]}");
 				$this->email->subject("Bem vindo ao MyCards");
 				$this->email->message("Testing the email class.");
 				if($this->email->send()) {
