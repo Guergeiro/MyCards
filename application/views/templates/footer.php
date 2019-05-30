@@ -10,7 +10,7 @@
           <h6 class="h6">Começar</h6>
           <ul>
             <li><a href="<?php echo base_url("home");?>">Home</a></li>
-            <li><a href="<?php echo base_url("precos");?>">Preços</a></li>
+            <li><a href="<?php echo base_url("premium");?>">Premium</a></li>
             <li><a href="<?php echo base_url("contactos");?>">Contactos</a></li>
           </ul>
         </div>
