@@ -108,11 +108,8 @@ class Main extends CI_Controller {
 					$this->load->view("pages/perfil");
 				}
 				break;
-			case "home":
-				$this->load->view("pages/home");
-				break;
-			case "politicaPrivacidade":
-				$this->load->view("pages/politicaPrivacidade");
+			default:
+				$this->load->view("pages/{$page}");
 				break;
 		}
 	}

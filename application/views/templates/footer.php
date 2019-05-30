@@ -9,17 +9,18 @@
         <div class="col-md-4 my-2 p-4 py-md-2" id="midFooter">
           <h6 class="h6">Começar</h6>
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Preços</a></li>
-            <li><a href="#">Contactos</a></li>
+            <li><a href="<?php echo base_url("home");?>">Home</a></li>
+            <li><a href="<?php echo base_url("precos");?>">Preços</a></li>
+            <li><a href="<?php echo base_url("contactos");?>">Contactos</a></li>
           </ul>
         </div>
         <div class="col-md-4 my-2 p-2">
           <h6 class="h6">Sobre nós</h6>
           <ul>
-            <li><a href="#">Equipa</a></li>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="<?php echo base_url("politicaPrivacidade");?>">Politica de Privacidade</a></li>
+            <li><a href="<?php echo base_url("equipa");?>">Equipa</a></li>
+            <li><a href="<?php echo base_url("faq");?>">FAQ</a></li>
+            <li><a href="<?php echo base_url("politicaPrivacidade");?>" target="_blank"
+                rel="noopener noreferrer">Politica de Privacidade</a></li>
           </ul>
         </div>
       </div>
