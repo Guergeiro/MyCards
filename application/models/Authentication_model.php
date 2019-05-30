@@ -29,14 +29,9 @@ class Authentication_model extends CI_Model
         return $query->result_array();
     }
 
-    public function signup($data)
-    {
-        $query = $this->db->get_where("Empresas", "Email='{$data['email']}'");
-
-        if ($query->num_rows() == 0) {
-            $data["password"] = password_hash($data["password"], PASSWORD_DEFAULT);
-            $this->db->insert("Empresas", $data);
-        }
+    public function signup($data) {
+        $data["password"] = password_hash($data["password"], PASSWORD_DEFAULT);
+        return $this->db->insert("Empresas", $data);
     }
 
     public function recoverPassword($data)

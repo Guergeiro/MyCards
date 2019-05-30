@@ -1,4 +1,4 @@
-<main class="container my-3 py-3 shadow d-flex align-items-center justify-content-center">
+<main class="container my-3 py-3 d-flex align-items-center justify-content-center">
   <div class="row w-100">
     <div class="card col-12 p-0">
       <div class="card-header">
