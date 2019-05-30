@@ -1,58 +1,117 @@
 <main class="container my-3 py-3 d-flex align-items-center justify-content-center">
-  <div class="card">
-    <div class="card-header">
-      <h1 class="font-weight-bold text-primary">Planos Premium do MyCards</h1>
-      <h5>Nesta página estão apresentados os <strong>Plano Premium do MyCards</strong>.</h5>
-    </div>
-
-    <div class="card-body">
-      <div class="row mt-4">
-        <div class="col-12">
-          <div class="row text-center mb-2">
-            <div class="col-12 col-sm-4">
-              <div class="card border-0 shadow mt-2">
-                <div class="card-body">
-                  <i class="fas fa-rocket fa-10x text-primary"></i>
-                  <h2 class="mt-3 font-weight-bold text-primary">Iniciante</h2>
-                  <h1 class="font-weight-bold mt-4">25.00&euro; /Ano</h1>
-                  <label for="" class="justify-content mt-3">Claritas est etiam processus dynamicus, qui sequitur
-                    mutationem
-                    consuetudium lectorum quarta decima.</label>
-                  <button class="btn btn-primary border-0 rounded mt-4">Comprar</button>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-sm-4 mt-2">
-              <div class="card border-0 shadow">
-                <div class="card-body">
-                  <i class="fas fa-trophy fa-10x text-primary"></i>
-                  <h2 class="mt-3 font-weight-bold text-primary">Intermédio</h2>
-                  <h1 class="font-weight-bold mt-4">50.00&euro; /Ano</h1>
-                  <label for="" class="justify-content mt-3">Claritas est etiam processus dynamicus, qui sequitur
-                    mutationem
-                    consuetudium lectorum quarta decima.</label>
-                  <button class="btn btn-primary border-0 rounded mt-4">Comprar</button>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-sm-4 mt-2">
-              <div class="card border-0 shadow">
-                <div class="card-body">
-                  <i class="fab fa-black-tie fa-10x text-primary"></i>
-                  <h2 class="mt-3 font-weight-bold text-primary">Profissional</h2>
-                  <h1 class="font-weight-bold mt-4">75.00&euro; /Ano</h1>
-                  <label for="" class="justify-content mt-3">Claritas est etiam processus dynamicus, qui sequitur
-                    mutationem
-                    consuetudium lectorum quarta decima.</label>
-                  <button class="btn btn-primary border-0 rounded mt-4">Comprar</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
+	<div class="card">
+		<div class="card-header">
+			<h3 class="text-primary text-truncate">Planos Premium do MyCards</h3>
+			<small>Nesta página estão apresentados os Plano Premium do MyCards</small>
+		</div>
+		<div class="card-body text-center">
+			<div class="card-deck">
+				<div class="col">
+					<div class="card mb-4">
+						<div class="view overlay">
+							<img class="card-img-top"
+								src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg"
+								alt="Card image cap">
+							<a href="#!">
+								<div class="mask rgba-white-slight"></div>
+							</a>
+						</div>
+						<div class="card-header">
+							<small>Desde</small>
+							<h1 class="text-primary">25&euro;</h1>
+							<small>/mês</small>
+						</div>
+						<div class="card-body">
+							<h4 class="card-title">Inclui</h4>
+							<p class="card-text text-success">3 campanhas simultâneas <i
+									class="far fa-check-circle"></i></p>
+							<p class="card-text text-success">Cupões de Desconto Direto <i
+									class="far fa-check-circle"></i></p>
+							<p class="card-text text-success">Cartão de Carimbos <i class="far fa-check-circle"></i></p>
+							<p class="card-text text-danger">Recompensas pontuais <i class="far fa-times-circle"></i>
+							</p>
+							<p class="card-text text-danger">Patamar de pontos <i class="far fa-times-circle"></i></p>
+							<p class="card-text text-success">Estatísticas Gerais <i class="far fa-check-circle"></i>
+							</p>
+							<p class="card-text text-danger">Estatísticas de Clientes <i
+									class="far fa-times-circle"></i></p>
+							<p class="card-text text-danger">Estatísticas por Campanha <i
+									class="far fa-times-circle"></i></p>
+							<a href="#" class="btn btn-primary">Comprar</a>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card mb-4">
+						<div class="view overlay">
+							<img class="card-img-top"
+								src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg"
+								alt="Card image cap">
+							<a href="#!">
+								<div class="mask rgba-white-slight"></div>
+							</a>
+						</div>
+						<div class="card-header">
+							<small>Desde</small>
+							<h1 class="text-primary">50&euro;</h1>
+							<small>/mês</small>
+						</div>
+						<div class="card-body">
+							<h4 class="card-title">Inclui</h4>
+							<p class="card-text text-success">6 campanhas simultâneas <i
+									class="far fa-check-circle"></i></p>
+									<p class="card-text text-success">Cupões de Desconto Direto <i
+									class="far fa-check-circle"></i></p>
+							<p class="card-text text-success">Cartão de Carimbos <i class="far fa-check-circle"></i></p>
+							<p class="card-text text-success">Recompensas pontuais <i class="far fa-check-circle"></i>
+							</p>
+							<p class="card-text text-danger">Patamar de pontos <i class="far fa-times-circle"></i></p>
+							<p class="card-text text-success">Estatísticas Gerais <i class="far fa-check-circle"></i>
+							</p>
+							<p class="card-text text-danger">Estatísticas de Clientes <i
+									class="far fa-times-circle"></i></p>
+							<p class="card-text text-danger">Estatísticas por Campanha <i
+									class="far fa-times-circle"></i></p>
+							<a href="#" class="btn btn-primary">Comprar</a>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card mb-4">
+						<div class="view overlay">
+							<img class="card-img-top"
+								src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg"
+								alt="Card image cap">
+							<a href="#!">
+								<div class="mask rgba-white-slight"></div>
+							</a>
+						</div>
+						<div class="card-header">
+							<small>Desde</small>
+							<h1 class="text-primary">75&euro;</h1>
+							<small>/mês</small>
+						</div>
+						<div class="card-body">
+							<h4 class="card-title">Inclui</h4>
+							<p class="card-text text-success">Campanhas Ilimitadas <i class="far fa-check-circle"></i>
+							</p>
+							<p class="card-text text-success">Cupões de Desconto Direto <i
+									class="far fa-check-circle"></i></p>
+							<p class="card-text text-success">Cartão de Carimbos <i class="far fa-check-circle"></i></p>
+							<p class="card-text text-success">Recompensas pontuais <i class="far fa-check-circle"></i>
+							</p>
+							<p class="card-text text-success">Patamar de pontos <i class="far fa-check-circle"></i></p>
+							<p class="card-text text-success">Estatísticas Gerais <i class="far fa-check-circle"></i>
+							</p>
+							<p class="card-text text-success">Estatísticas de Clientes <i
+									class="far fa-check-circle"></i></p>
+							<p class="card-text text-success">Estatísticas por Campanha <i
+									class="far fa-check-circle"></i></p>
+							<a href="#" class="btn btn-primary">Comprar</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </main>

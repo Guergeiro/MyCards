@@ -30,6 +30,14 @@ nav {
 	min-height: 72px;
 }
 
+#moveUp {
+	transition: all 0.25s;
+	left: initial;
+	right: 0;
+	width: 3rem;
+	height: 3rem;
+}
+
 #ourNavbar {
 	transition: all 0.5s;
 	width: 320px;

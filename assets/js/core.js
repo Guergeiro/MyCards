@@ -1,3 +1,20 @@
+const scrollButton = document.querySelector("#moveUp");
+scrollButton.addEventListener("click", function () {
+	window.scroll({
+		top: 0,
+		behavior: "smooth"
+	});
+});
+window.addEventListener("scroll", function () {
+	if (document.body.scrollTop > window.innerHeight / 3 || document.documentElement.scrollTop > window.innerHeight / 3) {
+		scrollButton.style.opacity = 1;
+		scrollButton.style.pointerEvents = "initial";
+	} else {
+		scrollButton.style.opacity = 0;
+		scrollButton.style.pointerEvents = "none";
+	}
+});
+
 function randomColor() {
 	let result = [];
 	result.push(Math.floor(Math.random() * 255));

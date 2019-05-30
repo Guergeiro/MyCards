@@ -78,6 +78,8 @@
 		</div>
 	</nav>
 
+	<button id="moveUp" type="button" class="btn btn-primary bg-blue rounded-circle p-2 fixed-bottom position-fixed m-4" style="opacity: 0;"><i class="fas fa-chevron-up fa-2x fa-fw"></i></button>
+
 	<?php if ($this->session->userdata("Email")): ?>
 		<div class="h-100 position-fixed text-dark grey lighten-3" id="ourNavbar" style="margin-left: -320px;">
 			<ul class="list-group">

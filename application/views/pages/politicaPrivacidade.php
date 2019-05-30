@@ -4,7 +4,7 @@
       <h3 class="text-primary text-truncate">Politica de Privacidade</h3>
       <small>Politica de Privacidade da MyCards</small>
     </div>
-    <div class="card-body">
+    <div class="card-body text-justify">
       <h4 class="py-3">1. IDENTIFICAÇÃO DO RESPONSÁVEL PELO TRATAMENTO </h4>
       <p>Identificação da Empresa:</p>
       <p>123456789</p>

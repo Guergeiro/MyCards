@@ -18,78 +18,26 @@ class Main extends CI_Controller {
 	private function loadPage($page) {
 		switch ($page) {
 			case "dashboard":
-				if (!$this->session->userdata("Email")) {
-					redirect("signin");
-				} else if (!($this->session->userdata("Dono") == "0" || $this->session->userdata("Dono") == "1")) {
-					redirect("perfil");
-				} else {
-					$this->load->view("pages/dashboard");
-				}
-				break;
 			case "colaboradores":
-				if (!$this->session->userdata("Email")) {
-					redirect("signin");
-				} else if ($this->session->userdata("Dono") != "1") {
-					redirect("perfil");
-				} else {
-					$this->load->view("pages/colaboradores");
-				}
-				break;
 			case "clientes":
-				if (!$this->session->userdata("Email")) {
-					redirect("signin");
-				} else if (!($this->session->userdata("Dono") == "0" || $this->session->userdata("Dono") == "1")) {
-					redirect("perfil");
-				} else {
-					$this->load->view("pages/clientes");
-				}
-				break;
 			case "criarCampanha":
-				if (!$this->session->userdata("Email")) {
-					redirect("signin");
-				} else if (!($this->session->userdata("Dono") == "0" || $this->session->userdata("Dono") == "1")) {
-					redirect("perfil");
-				} else {
-					$this->load->view("pages/criarCampanha");
-				}
-				break;
 			case "listarCampanha":
-				if (!$this->session->userdata("Email")) {
-					redirect("signin");
-				} else if (!($this->session->userdata("Dono") == "0" || $this->session->userdata("Dono") == "1")) {
-					redirect("perfil");
-				} else {
-					$this->load->view("pages/listarCampanha");
-				}
-				break;
 			case "ativarCampanha":
 				if (!$this->session->userdata("Email")) {
 					redirect("signin");
 				} else if (!($this->session->userdata("Dono") == "0" || $this->session->userdata("Dono") == "1")) {
 					redirect("perfil");
-					}else {
-					$this->load->view("pages/ativarCampanha");
+				} else {
+					$this->load->view("pages/{$page}");
 				}
 				break;
 			case "signin":
-				if ($this->session->userdata("Email")) {
-					redirect("dashboard");
-				} else {
-					$this->load->view("pages/signin");
-				}
-				break;
 			case "signup":
-				if ($this->session->userdata("Email")) {
-					redirect("dashboard");
-				} else {
-					$this->load->view("pages/signup");
-				}
-				break;
 			case "recoverPassword":
 				if ($this->session->userdata("Email")) {
 					redirect("dashboard");
 				} else {
-					$this->load->view("pages/recoverPassword");
+					$this->load->view("pages/{$page}");
 				}
 				break;
 			case "updatePassword":
@@ -110,7 +58,6 @@ class Main extends CI_Controller {
 				break;
 			default:
 				$this->load->view("pages/{$page}");
-				break;
 		}
 	}
 	public function infoCampanha($campanha) {
