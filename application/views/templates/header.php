@@ -17,24 +17,26 @@
 	<!-- Titulo -->
 	<title><?php echo ucfirst(preg_replace("/(?<!\A)[A-Z]+/", ' $0', $page)); ?> - MyCards</title>
 
-	<!-- Font Awesome -->
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+	<noscript>
+		<!-- Font Awesome -->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 
-	<!-- Bootstrap core CSS -->
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+		<!-- Bootstrap core CSS -->
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 
-	<!-- Material Design Bootstrap -->
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.0/css/mdb.min.css" rel="stylesheet">
+		<!-- Material Design Bootstrap -->
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.0/css/mdb.min.css" rel="stylesheet">
 
-	<!-- Core CSS -->
-	<link href="<?php echo base_url("assets/css/core.css"); ?>" rel="stylesheet">
+		<!-- Core CSS -->
+		<link href="<?php echo base_url("assets/css/core.css"); ?>" rel="stylesheet">
 
-	<!-- Page CSS -->
-	<link rel="stylesheet" href="<?php echo base_url("assets/css/{$page}.css"); ?>">
+		<!-- Page CSS -->
+		<link rel="stylesheet" href="<?php echo base_url("assets/css/{$page}.css"); ?>">
 
-	<?php if ($this->uri->segment(1, 0) === "listarCampanha") : ?>
-		<link href="<?php echo base_url("assets/css/addons/datatables.min.css"); ?>" rel="stylesheet">
-	<?php endif; ?>
+		<?php if ($this->uri->segment(1, 0) === "listarCampanha") : ?>
+			<link href="<?php echo base_url("assets/css/addons/datatables.min.css"); ?>" rel="stylesheet">
+		<?php endif; ?>
+	</noscript>
 </head>
 
 <body style="padding-top: 72px;" class="grey lighten-5">
@@ -49,10 +51,20 @@
 		<button class="navbar-toggler" role="button" type="button" data-toggle="collapse" data-target="#navbar" id="navbarToggler">
 			<i class="fas fa-bars fa-fw fa-lg"></i>
 		</button>
-		<div class="collapse navbar-collapse text-center justify-content-end" id="navbar">
+		<div class="collapse navbar-collapse text-center" id="navbar">
 			<ul class="navbar-nav">
-				<?php if ($this->session->userdata("Email")) : ?>
 				<li class="nav-item">
+					<a class="nav-link" href="<?php echo base_url("#premium"); ?>">
+						Premium
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="<?php echo base_url("#contato"); ?>">
+						Contato
+					</a>
+				</li>
+				<?php if ($this->session->userdata("Email")) : ?>
+					<li class="nav-item">
 						<a class="nav-link" href="<?php echo base_url("perfil"); ?>">
 							Perfil
 						</a>

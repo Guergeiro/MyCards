@@ -9,9 +9,11 @@
         <div class="col-md-4 my-2 p-4 py-md-2" id="midFooter">
           <h6 class="h6">Começar</h6>
           <ul>
-            <li><a href="<?php echo base_url("home");?>">Home</a></li>
-            <li><a href="<?php echo base_url("premium");?>">Premium</a></li>
-            <li><a href="<?php echo base_url("contactos");?>">Contactos</a></li>
+            <li><a href="<?php echo base_url();?>">Home</a></li>
+            <li><a href="<?php echo base_url("#premium"); ?>">Premium</a></li>
+            <li><a href="<?php echo base_url("#contato"); ?>">Contato</a></li>
+            <li><a href="<?php echo base_url("signin"); ?>">Iniciar Sessão</a></li>
+            <li><a href="<?php echo base_url("signup"); ?>">Criar Conta</a></li>
           </ul>
         </div>
         <div class="col-md-4 my-2 p-2">
@@ -35,6 +37,26 @@
     </div>
   </div>
 </footer>
+
+<script>
+  const head = document.querySelector("head");
+  let array = [
+    "https://use.fontawesome.com/releases/v5.8.1/css/all.css",
+    "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css",
+    "https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.0/css/mdb.min.css",
+    "<?php echo base_url("assets/css/core.css"); ?>",
+    "<?php echo base_url("assets/css/{$page}.css"); ?>"<?php if ($this->uri->segment(1, 0) === "listarCampanha") : ?>,
+    "<?php echo base_url("assets/css/addons/datatables.min.css"); ?>"
+    <?php endif; ?>
+  ];
+  array.forEach(element => {
+    let link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = element;
+    link.type = "text/css";
+    head.appendChild(link);
+  });
+</script>
 
 <!-- Boostrap JavaScript -->
 <!-- JQuery -->

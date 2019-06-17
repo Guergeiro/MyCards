@@ -1,10 +1,28 @@
 const scrollButton = document.querySelector("#moveUp");
-scrollButton.addEventListener("click", function () {
-	window.scroll({
-		top: 0,
-		behavior: "smooth"
+
+$(document).ready(function () {
+	$("#moveUp").click(function () {
+		$("html, body").animate({
+			scrollTop: 0
+		}, 750);
+	});
+	// Smooth scroll
+	$("a[href^=\"#\"]").on("click", function (e) {
+		if (this.hash !== "") {
+			e.preventDefault();
+
+			const hash = this.hash;
+
+			$("html, body")
+				.animate({
+					scrollTop: $(hash).offset().top - 72
+				}, 750);
+		}
 	});
 });
+
+
+
 window.addEventListener("scroll", function () {
 	if (document.body.scrollTop > window.innerHeight / 3 || document.documentElement.scrollTop > window.innerHeight / 3) {
 		scrollButton.style.opacity = 1;
