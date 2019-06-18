@@ -7,12 +7,12 @@
 			<?php echo form_open("authentication/signin", "class=\"form-row\" onsubmit=\"return validation(this);\""); ?>
 			<?php if ($this->session->flashdata("incorrectFlashData")): ?>
 			<div class="col-12 col-md-8 offset-md-2 text-center">
-				<div class="alert alert-danger"><?php $this->session->flashdata("incorrectFlashData") ?> </div>
+				<div class="alert alert-danger"><?php echo $this->session->flashdata("incorrectFlashData") ?> </div>
 			</div>
 			<?php endif; ?>
 			<?php if ($this->session->flashdata("correctFlashData")): ?>
 			<div class="col-12 col-md-8 offset-md-2 text-center">
-				<div class="alert alert-danger"><?php $this->session->flashdata("correctFlashData") ?> </div>
+				<div class="alert alert-danger"><?php echo $this->session->flashdata("correctFlashData") ?> </div>
 			</div>
 			<?php endif; ?>
 			<div class="col-12 col-md-8 offset-md-2">
