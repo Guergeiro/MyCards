@@ -1,3 +1,14 @@
+window.addEventListener("load", function () {
+	this.setTimeout(function () {
+		document.querySelector("#loader").style.opacity = 0;
+		document.querySelector("body").style.opacity = 1;
+		document.querySelector("body").style.overflow = "initial";
+		setTimeout(function () {
+			document.querySelector("#loader").remove();
+		}, 1000);
+	}, 1000);
+});
+
 const scrollButton = document.querySelector("#moveUp");
 
 $(document).ready(function () {

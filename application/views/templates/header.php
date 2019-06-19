@@ -39,7 +39,11 @@
   </noscript>
 </head>
 
-<body style="padding-top: 72px;" class="grey lighten-5">
+<body style="padding-top: 72px;overflow:hidden;" class="grey lighten-5">
+	<div id="loader" style="position:fixed;background-color:#0056b3;overflow:hidden;top:0;left:0;z-index:1080;width:100vw;height:100vh;text-align:center;align-items:center;justify-content:center;display:flex;display:-ms-flexbox;transition: all 1s;opacity:1;">
+		<div style="display: inline-block;width: 2rem;height: 2rem;vertical-align: text-bottom;border: .25em solid currentColor;border-right-color: transparent;border-radius: 50%;-webkit-animation: spinner-border .75s linear infinite;animation: spinner-border .75s linear infinite;color:#e0e0e0;" role="status">
+		</div>
+	</div>
   <nav class="navbar navbar-expand-md bg-blue navbar-dark fixed-top px-md-5 py-3">
     <?php if ($this->session->userdata("Email") && ($this->session->userdata("Dono") == "0" || $this->session->userdata("Dono") == "1")): ?>
     <button class="navbar-toggler d-inline" role="button" type="button" id="sidebarToggler">

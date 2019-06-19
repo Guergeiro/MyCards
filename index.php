@@ -53,7 +53,20 @@
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
-	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
+if (php_sapi_name() === 'cli') {
+    // incase the request is made using the cli, the $_SERVER['HTTP_HOST'] will not be set
+
+    define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
+} else {
+    switch ($_SERVER["SERVER_ADDR"]) {
+        case "https://mycards.dsprojects.pt/":
+		case "http://mycards.dsprojects.pt/":
+            define('ENVIRONMENT', 'production');
+            break;
+        default:
+            define('ENVIRONMENT', 'development');
+    }
+}
 
 /*
  *---------------------------------------------------------------
@@ -63,8 +76,7 @@
  * Different environments will require different levels of error reporting.
  * By default development will show errors but testing and live will hide them.
  */
-switch (ENVIRONMENT)
-{
+switch (ENVIRONMENT) {
 	case 'development':
 		error_reporting(-1);
 		ini_set('display_errors', 1);
@@ -176,7 +188,7 @@ switch (ENVIRONMENT)
  *
  * Un-comment the $assign_to_config array below to use this feature
  */
-	// $assign_to_config['name_of_config_item'] = 'value of config item';
+
 
 
 
@@ -312,4 +324,7 @@ switch (ENVIRONMENT)
  *
  * And away we go...
  */
+
+define('SERVER_CONFIGS', require_once(realpath($_SERVER["DOCUMENT_ROOT"]) .'/MyCards/server_config.php'));
 require_once BASEPATH.'core/CodeIgniter.php';
+
