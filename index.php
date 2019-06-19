@@ -325,6 +325,5 @@ switch (ENVIRONMENT) {
  * And away we go...
  */
 
-define('SERVER_CONFIGS', require_once(realpath($_SERVER["DOCUMENT_ROOT"]) .'/server_config.php'));
+define('SERVER_CONFIGS', require_once(realpath($_SERVER["DOCUMENT_ROOT"]) .'/MyCards/server_config.php'));
 require_once BASEPATH.'core/CodeIgniter.php';
-
