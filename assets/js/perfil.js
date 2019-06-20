@@ -34,6 +34,9 @@ $(document).ready(function() {
         card.appendChild(cardBody);
         div.appendChild(card);
         card.addEventListener("click", function() {
+          setTimeout(() => {
+            document.getElementById("codigoAcesso").focus();
+          }, 500);
           $("#modal").modal("toggle");
           document.querySelector("#modalTitle").innerHTML = dataElement.Nome;
           document.querySelector("#nome").value = dataElement.Nome;
