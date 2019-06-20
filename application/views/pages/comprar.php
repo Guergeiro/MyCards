@@ -6,32 +6,7 @@
     <div class="card-body">
       <div class="row">
         <div class="col-md-6" id="preview">
-          <div class="card my-4 text-center">
-            <div class="card-header">
-              <small>Desde</small>
-              <h1 class="text-primary">25&euro;</h1>
-              <small>/mês</small>
-            </div>
-            <div class="card-body">
-              <h4 class="card-title">Inclui</h4>
-              <p class="card-text text-success">3 campanhas simultâneas <i class="far fa-check-circle"></i>
-              </p>
-              <p class="card-text text-success">Cupões de Desconto Direto <i class="far fa-check-circle"></i>
-              </p>
-              <p class="card-text text-success">Cartão de Carimbos <i class="far fa-check-circle"></i>
-              </p>
-              <p class="card-text text-success">Estatísticas Gerais <i class="far fa-check-circle"></i>
-              </p>
-              <p class="card-text text-danger">Recompensas pontuais <i class="far fa-times-circle"></i>
-              </p>
-              <p class="card-text text-danger">Patamar de pontos <i class="far fa-times-circle"></i>
-              </p>
-              <p class="card-text text-danger">Estatísticas de Clientes <i class="far fa-times-circle"></i>
-              </p>
-              <p class="card-text text-danger">Estatísticas por Campanha <i class="far fa-times-circle"></i>
-              </p>
-            </div>
-          </div>
+
         </div>
         <div class="col-md-6">
           <div class="row">
