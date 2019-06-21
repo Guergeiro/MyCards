@@ -50,7 +50,10 @@
       <i class="fas fa-chevron-right fa-fw"></i>
     </button>
     <?php else : ?>
-    <a href="<?php echo base_url(); ?>" class="navbar-brand">MyCards</a>
+    <a href="<?php echo base_url(); ?>" class="navbar-brand">
+		<img src="<?php echo base_url("assets/imgs/mycards_withoutname.png"); ?>" alt="mycards_withoutname"class="pb-1" style="width: auto; height: 26px;">
+		MyCards
+	</a>
     <?php endif; ?>
     <button class="navbar-toggler" role="button" type="button" data-toggle="collapse" data-target="#navbar"
       id="navbarToggler">
