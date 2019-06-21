@@ -64,6 +64,13 @@ class Empresas_model extends CI_Model {
 		return $this->db->update("InstanciaCampanha");
 	}
 
+	public function alterarEmpresa($idEmpresa, $data) {
+		$this->db->where("Empresas.ID_Empresa = {$idEmpresa}");
+		$this->db->set($data);
+		return $this->db->update("Empresas");
+	}
+
+
 	// Delete
 	public function eliminarColaboradorEmpresa($idEmpresa, $idColaborador) {
 		return $this->db->delete("Colaboradores","Colaboradores.ID_Empresa = {$idEmpresa} AND Colaboradores.Nome = '{$idColaborador}'");

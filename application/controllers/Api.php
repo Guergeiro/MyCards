@@ -83,6 +83,20 @@ class Api extends CI_Controller {
 		redirect("ativarCampanha");
 	}
 
+	public function alterarEmpresa($idEmpresa) {
+			$this->load->model("Empresas_model");
+			$data = $this->input->post(NULL, FALSE);
+			if($data["tipoEmpresa"] < 0 || $data["tipoEmpresa"] > 4) {
+				echo "Error Updating";
+				return;
+			}
+			if ($this->Empresas_model->alterarEmpresa($idEmpresa, $data)) {
+				echo "Update Successful";
+			} else {
+				echo "Error Updating";
+			}
+	}
+	
 	public function novoColaboradorEmpresa($idEmpresa) {
 		$this->load->model("Empresas_model");
 		$data = array(
