@@ -12,7 +12,8 @@
           <div class="row">
             <div class="col-12">
               <div class="md-form mb-0">
-                <input type="text" id="name" name="name" class="form-control">
+                <input type="text" id="name" name="name" class="form-control"
+                  value="<?php echo $this->session->userdata("Nome");?>" disabled>
                 <label for="name" class="">Nome completo</label>
               </div>
             </div>
@@ -21,7 +22,8 @@
           <div class="row">
             <div class="col-12">
               <div class="md-form mb-0">
-                <input type="text" id="email" name="email" class="form-control">
+                <input type="text" id="email" name="email" class="form-control"
+                  value="<?php echo $this->session->userdata("Email");?>" disabled>
                 <label for="email" class="">Email</label>
               </div>
             </div>
@@ -71,4 +73,4 @@
   </div>
 </main>
 
-<div id="success" class="bg-success d-none">Pagamento efetuado com sucesso...</div>
+<div id="success" class="bg-success d-none"></div>

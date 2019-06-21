@@ -41,12 +41,13 @@ class Main extends CI_Controller {
 				}
 				break;
 			case "updatePassword":
+			case "comprar":
 				if (!$this->session->userdata("Email")) {
 					redirect("signin");
 				} else if ($this->session->userdata("Dono") != "1") {
 					redirect("perfil");
 				} else {
-					$this->load->view("pages/updatePassword");
+					$this->load->view("pages/{$page}");
 				}
 				break;
 			case "perfil":
