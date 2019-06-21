@@ -42,6 +42,7 @@ class Main extends CI_Controller {
 				break;
 			case "updatePassword":
 			case "comprar":
+			case "definicoesEmpresa":
 				if (!$this->session->userdata("Email")) {
 					redirect("signin");
 				} else if ($this->session->userdata("Dono") != "1") {
