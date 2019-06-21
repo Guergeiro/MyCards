@@ -113,7 +113,7 @@
               <div class="view overlay">
                 <img class="card-img-top" src="<?php echo base_url("assets/imgs/home/level1.jpg"); ?>"
                   alt="Card image cap">
-                <a href="#!">
+                <a href="<?php echo base_url("comprar/#1");?>">
                   <div class="mask rgba-white-strong d-flex align-items-center justify-content-center">
                     <h3>Básico</h3>
                   </div>
@@ -151,7 +151,7 @@
               <div class="view overlay">
                 <img class="card-img-top" src="<?php echo base_url("assets/imgs/home/level2.jpg"); ?>"
                   alt="Card image cap">
-                <a href="#!">
+                <a href="<?php echo base_url("comprar/#2");?>">
                   <div class="mask rgba-white-strong d-flex align-items-center justify-content-center">
                     <h3>Intermédio</h3>
                   </div>
@@ -189,7 +189,7 @@
               <div class="view overlay">
                 <img class="card-img-top" src="<?php echo base_url("assets/imgs/home/level3.jpg"); ?>"
                   alt="Card image cap">
-                <a href="#!">
+                <a href="<?php echo base_url("comprar/#3");?>">
                   <div class="mask rgba-white-strong d-flex align-items-center justify-content-center">
                     <h3>Profissional</h3>
                   </div>
