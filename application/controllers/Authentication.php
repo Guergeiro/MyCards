@@ -19,7 +19,7 @@ class Authentication extends CI_Controller
 			array(
 				"field" => "email",
 				"label" => "email",
-				"rules" => "required|trim",
+				"rules" => "required|trim|valid_email",
 			),
 			array(
 				"field" => "password",
@@ -45,7 +45,15 @@ class Authentication extends CI_Controller
 				$this->session->set_flashdata("incorrectFlashData", "Email ou Password errados.");
 				redirect("signin");
 			}else if ($result == "ativo") {
-				$this->session->set_flashdata("incorrectFlashData", "Conta não ativa.");
+				if ($this->sendEmail(array(
+					"Email" => $data["email"],
+					"Subject" => "Verificação de conta",
+					"Message" => "No seguimento da sua tentativa de acesso, para ativar a sua conta, clique neste link: ".base_url()."/verify/".md5($data["email"])."\nRelembramos que, apesar da sua conta estar ativa, a sua empresa ainda precisa de ser aprovada pelos administradores."
+				))){
+					$this->session->set_flashdata("incorrectFlashData", "Conta não ativa. Reenviado email de confirmação.");
+				} else {
+					$this->session->set_flashdata("incorrectFlashData", "Conta não ativa. Contate o suporte.");
+				}
 				redirect("signin");
 			} else {
 				unset($result[0]["Password"]);
@@ -53,6 +61,69 @@ class Authentication extends CI_Controller
 				redirect("dashboard");
 			}
 		}
+	}
+
+	public function signin_admin() {
+		$config = array(
+			array(
+				"field" => "username",
+				"label" => "username",
+				"rules" => "required|trim",
+			),
+			array(
+				"field" => "password",
+				"label" => "password",
+				"rules" => "required|trim"
+			)
+		);
+		$this->form_validation->set_rules($config);
+
+		if (!$this->form_validation->run()) {
+			$this->session->set_flashdata("FlashMessage", "<div class=\"col-md-4 offset-md-4 text-center\"><div class=\"alert alert-danger\">Por Favor, preencha todos os campos.</div></div>");
+		} else {
+			$data = array(
+				"username" => $this->input->post("username"),
+				"password" => $this->input->post("password")
+			);
+			$result = $this->Authentication_model->signin_admin($data);
+			if($result) {
+				unset($result[0]["Password"]);
+				$this->session->set_userdata($result[0]);
+			} else {
+				$this->session->set_flashdata("FlashMessage", "<div class=\"col-md-4 offset-md-4 text-center\"><div class=\"alert alert-danger\">Utilizador ou Password errados.</div></div>");
+			}
+		}
+		redirect("admin");
+	}
+
+	public function signup_admin(){
+		$config = array(
+			array(
+				"field" => "username",
+				"label" => "username",
+				"rules" => "required|trim",
+			),
+			array(
+				"field" => "password",
+				"label" => "password",
+				"rules" => "required|trim"
+			)
+		);
+		$this->form_validation->set_rules($config);
+		if (!$this->form_validation->run()) {
+			$this->session->set_flashdata("FlashMessage", "<div class=\"col-12 text-center\"><div class=\"alert alert-danger\">Por Favor, preencha todos os campos.</div></div>");
+		} else {
+			$data = array(
+				"username" => $this->input->post("username"),
+				"password" => $this->input->post("password")
+			);
+			if($this->Authentication_model->signup_admin($data)) {
+				$this->session->set_flashdata("FlashMessage", "<div class=\"col-12 text-center\"><div class=\"alert alert-success\">Admin atualizado.</div></div>");
+			} else {
+				$this->session->set_flashdata("FlashMessage", "<div class=\"col-12 text-center\"><div class=\"alert alert-danger\">Erro ao criar admin.</div></div>");
+			}
+		}
+		redirect("admin");
 	}
 
 	public function colaborador() {
@@ -105,7 +176,7 @@ class Authentication extends CI_Controller
 			array(
 				"field" => "email",
 				"label" => "email",
-				"rules" => "required|trim|is_unique[Empresas.Email]",
+				"rules" => "required|trim|is_unique[Empresas.Email]|valid_email",
 			),
 			array(
 				"field" => "password",
@@ -267,8 +338,8 @@ class Authentication extends CI_Controller
 	private function sendEmail($data) {
 		$email = array(
 			"protocol" => "smtp",
-			"smtp_host" => "mail.dsprojects.pt",
-			"smtp_user" => "pint@dsprojects.pt",
+			"smtp_host" => "mycards.dsprojects.pt",
+			"smtp_user" => "support@mycards.dsprojects.pt",
 			"smtp_pass" => "-Pint2019",
 			"smtp_port" => 465,
 			"smtp_crypto" => "ssl",
@@ -277,7 +348,7 @@ class Authentication extends CI_Controller
 
 		$this->load->library("email", $email);
 
-		$this->email->from("pint@dsprojects.pt", "My Cards");
+		$this->email->from("support@mycards.dsprojects.pt", "My Cards");
 		$this->email->to($data["Email"]);
 
 		$this->email->subject($data["Subject"]);

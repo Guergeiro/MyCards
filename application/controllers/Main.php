@@ -81,14 +81,15 @@ class Main extends CI_Controller {
 		$this->load->view("templates/footer", $data);
 	}
 
-	public function admin($page = "admin") {
-		if (!file_exists(APPPATH."views/pages/{$page}.php")) {
+	public function admin() {
+		if (!file_exists(APPPATH."views/pages/admin.php")) {
 			show_404();
 		}
 		if ($this->session->userdata("Admin") == "1") {
 			redirect();
 		}
-		$this->load->view("pages/{$page}");
+		$data["page"] = "admin";
+		$this->load->view("pages/admin", $data);
 	}
 }
 ?>
