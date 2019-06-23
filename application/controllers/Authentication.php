@@ -48,7 +48,7 @@ class Authentication extends CI_Controller
 				if ($this->sendEmail(array(
 					"Email" => $data["email"],
 					"Subject" => "Verificação de conta",
-					"Message" => "No seguimento da sua tentativa de acesso, para ativar a sua conta, clique neste link: ".base_url()."/verify/".md5($data["email"])."\nRelembramos que, apesar da sua conta estar ativa, a sua empresa ainda precisa de ser aprovada pelos administradores."
+					"Message" => "No seguimento da sua tentativa de acesso, para ativar a sua conta, clique neste link: ".base_url()."verify/".md5($data["email"])."\nRelembramos que, apesar da sua conta estar ativa, a sua empresa ainda precisa de ser aprovada pelos administradores."
 				))){
 					$this->session->set_flashdata("incorrectFlashData", "Conta não ativa. Reenviado email de confirmação.");
 				} else {
@@ -197,6 +197,14 @@ class Authentication extends CI_Controller
 				"field" => "nif",
 				"label" => "nif",
 				"rules" => "required|trim|numeric"
+			),
+			array(
+				"field" => "areainteresse",
+				"rules" => "required|trim"
+			),
+			array(
+				"field" => "localizacao",
+				"rules" => "required|trim"
 			)
 		);
 
@@ -210,14 +218,16 @@ class Authentication extends CI_Controller
 				"email" => $this->input->post("email"),
 				"password" => $this->input->post("password"),
 				"nome" => $this->input->post("nome"),
-				"nif" => $this->input->post("nif")
+				"nif" => $this->input->post("nif"),
+				"areainteresse" => $this->input->post("areainteresse"),
+				"localizacao" => $this->input->post("localizacao")
 			);
 
 			if($this->Authentication_model->signup($data)) {
 				if($this->sendEmail(array(
 					"Email" => $data["email"],
 					"Subject" => "Bem vindo ao MyCards",
-					"Message" => "{$data["nome"]},\nObrigado por se registar no MyCards.\nEstamos contentes com a nossa nova parceria.\nAs suas informações:\n - Nome: {$data['nome']}\n - NIF: {$data['nif']}\nPara ativar a sua conta, clique neste link: ".base_url()."/verify/".md5($data["email"])."\nRelembramos que, apesar da sua conta estar ativa, a sua empresa ainda precisa de ser aprovada pelos administradores."
+					"Message" => "{$data["nome"]},\nObrigado por se registar no MyCards.\nEstamos contentes com a nossa nova parceria.\nAs suas informações:\n - Nome: {$data['nome']}\n - NIF: {$data['nif']}\nPara ativar a sua conta, clique neste link: ".base_url()."verify/".md5($data["email"])."\nRelembramos que, apesar da sua conta estar ativa, a sua empresa ainda precisa de ser aprovada pelos administradores."
 				))) {
 					$this->session->set_flashdata("correctFlashData", "Conta criada com sucesso. Verifique o seu email.");
 				} else {
