@@ -1,4 +1,4 @@
-const idEmpresa = document.querySelector("head").getAttribute("data-session")["ID_Utilizador"];
+const idEmpresa = JSON.parse(document.querySelector("head").getAttribute("data-session"))["ID_Utilizador"];
 
 const distritos = [
 	"Aveiro",
