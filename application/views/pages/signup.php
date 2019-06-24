@@ -58,6 +58,30 @@
 					<div class="form-text invalid-tooltip"></div>
 				</div>
 			</div>
+			<div class="col-12 col-md-8 offset-md-2">
+				<div class="md-form md-outline">
+					<select id="areainteresse" name="areainteresse" class="custom-select">
+						<option disabled selected>Área de Interesse</option>
+						<option value="agricultura">Agricultura</option>
+						<option value="ciencia-tecnologia">Ciência e Tecnologia</option>
+						<option value="desporto">Desporto</option>
+						<option value="educacao">Educação</option>
+						<option value="restauracao">Restauração</option>
+						<option value="saude">Saúde</option>
+						<option value="transportes-mercadorias">Transportes e Mercadorias</option>
+						<option value="turismo">Turismo</option>
+					</select>
+					<div class="form-text invalid-tooltip"></div>
+				</div>
+			</div>
+			<div class="col-12 col-md-8 offset-md-2">
+				<div class="md-form md-outline">
+					<select id="localizacao" name="localizacao" class="custom-select">
+						<option disabled selected>Distrito</option>
+					</select>
+					<div class="form-text invalid-tooltip"></div>
+				</div>
+			</div>
 			<div class="col-12 col-md-8 offset-md-2 text-center my-3">
 				<button type="submit" class="btn btn-outline-primary rounded-pill">Criar Conta</button>
 			</div>
