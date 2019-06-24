@@ -12,7 +12,7 @@
 			<?php endif; ?>
 			<?php if ($this->session->flashdata("correctFlashData")): ?>
 			<div class="col-12 col-md-8 offset-md-2 text-center">
-				<div class="alert alert-danger"><?php echo $this->session->flashdata("correctFlashData") ?> </div>
+				<div class="alert alert-success"><?php echo $this->session->flashdata("correctFlashData") ?> </div>
 			</div>
 			<?php endif; ?>
 			<div class="col-12 col-md-8 offset-md-2">

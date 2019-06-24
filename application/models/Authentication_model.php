@@ -20,6 +20,27 @@ class Authentication_model extends CI_Model
         return $query;
     }
 
+	public function signin_admin($data) {
+		$query = $this->db->get_where("Admin", "Username = '{$data['username']}'");
+		if ($query->num_rows() == 0) {
+			return FALSE;
+		}
+		$query = $query->result_array();
+		if (!password_verify($data["password"], $query[0]["Password"])) {
+			return FALSE;
+		}
+		return $query;
+	}
+
+	public function signup_admin($data) {
+		$query = $this->db->get_where("Admin", "Username = '{$data['username']}'");
+		$data["password"] = password_hash($data["password"], PASSWORD_DEFAULT);
+		if ($query->num_rows() == 0) {
+			return $this->db->insert("Admin", $data);
+		}
+        return $this->db->update("Admin", $data);
+	}
+
     public function colaborador($data) {
         $this->db->select("Colaboradores.Dono");
         $query = $this->db->get_where("Colaboradores", $data);
@@ -44,6 +65,10 @@ class Authentication_model extends CI_Model
 
     public function updatePassword($data)
     {
+		$query = $this->db->get_where("Empresas", "Email = '{$data['Email']}'");
+		if (!password_verify($data["password"], $query[0]["Password"])) {
+            return FALSE;
+        }
 		$this->db->where("Email", $data["Email"]);
 		$this->db->set("Password",password_hash($data["Password"], PASSWORD_DEFAULT));
         return $this->db->update("Empresas");

@@ -2,13 +2,7 @@
 <html>
 
 <head data-session='<?php echo json_encode(array(
-	"ID_Empresa" => $this->session->userdata("ID_Empresa"),
-	"Email" => $this->session->userdata("Email"),
-	"Localizacao" => $this->session->userdata("Localizacao"),
-	"DataRegisto" => $this->session->userdata("DataRegisto"),
-	"Nome" => $this->session->userdata("Nome"),
-	"NIF" => $this->session->userdata("NIF"),
-	"Dono" => $this->session->userdata("Dono")
+	"ID_Empresa" => $this->session->userdata("ID_Empresa")
 )); ?>'>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -50,7 +44,10 @@
       <i class="fas fa-chevron-right fa-fw"></i>
     </button>
     <?php else : ?>
-    <a href="<?php echo base_url(); ?>" class="navbar-brand">MyCards</a>
+    <a href="<?php echo base_url(); ?>" class="navbar-brand">
+		<img src="<?php echo base_url("assets/imgs/mycards_withoutname.png"); ?>" alt="mycards_withoutname"class="pb-1" style="width: auto; height: 26px;">
+		MyCards
+	</a>
     <?php endif; ?>
     <button class="navbar-toggler" role="button" type="button" data-toggle="collapse" data-target="#navbar"
       id="navbarToggler">
