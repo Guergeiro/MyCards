@@ -1,6 +1,4 @@
-document.querySelector("button#redes-sociais").addEventListener("click", () => {
-	$.post();
-});
+const idEmpresa = document.querySelector("head").getAttribute("data-session")["ID_Utilizador"];
 
 const distritos = [
 	"Aveiro",
@@ -22,6 +20,69 @@ const distritos = [
 	"Vila Real",
 	"Viseu"
 ];
+
+const postDadosEmpresa = async (formData) => {
+	const response = await fetch(`./api/empresa/${idEmpresa}`, {
+		method: "POST",
+		body: formData
+	});
+	const data = await response.json();
+	return data[0];
+}
+
+const getDadosEmpresa = async () => {
+	const response = await fetch(`./api/empresa/${idEmpresa}`);
+	const data = await (response.json());
+	return data[0];
+}
+
+const setLocalizacaoEmpresa = async (data) => {
+	document.querySelectorAll("#localizacao option").forEach(option => {
+		if (option.innerHTML == data["Localizacao"]) {
+			option.selected = true;
+		}
+	});
+}
+
+const setAreaEmpresa = async (data) => {
+	document.querySelectorAll("#areainteresse option").forEach(option => {
+		if (option.value == data["AreaInteresse"]) {
+			option.selected = true;
+		}
+	});
+}
+
+const setSocialEmpresa = async (data) => {
+	document.querySelector("input#facebook").value = data["Facebook"] != null ? data["Facebook"] : "";
+	document.querySelector("input#facebook").focus();
+	document.querySelector("input#facebook").blur();
+	document.querySelector("input#twitter").value = data["Twitter"] != null ? data["Twitter"] : "";
+	document.querySelector("input#twitter").focus();
+	document.querySelector("input#twitter").blur();
+	document.querySelector("input#linkedin").value = data["LinkedIn"] != null ? data["LinkedIn"] : "";
+	document.querySelector("input#linkedin").focus();
+	document.querySelector("input#linkedin").blur();
+}
+
+getDadosEmpresa().then(data => {
+	setLocalizacaoEmpresa(data);
+	setAreaEmpresa(data);
+	setSocialEmpresa(data);
+});
+
+document.querySelector("button#area-interesse").addEventListener("click", () => {
+	let select = document.querySelector("select#areainteresse");
+	let formData = new FormData();
+	formData.append("AreaInteresse", select.options[select.selectedIndex].value);
+	postDadosEmpresa(idEmpresa, formData);
+});
+
+document.querySelector("button#localizacao-empresa").addEventListener("click", () => {
+	let select = document.querySelector("select#localizacao");
+	let formData = new FormData();
+	formData.append("Localizacao", select.options[select.selectedIndex].value);
+	postDadosEmpresa(idEmpresa, formData);
+});
 
 distritos.forEach((distrito) => {
 	document.querySelector(

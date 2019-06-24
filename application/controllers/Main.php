@@ -40,7 +40,8 @@ class Main extends CI_Controller {
 					$this->load->view("pages/{$page}");
 				}
 				break;
-			case "updatePassword":
+			case "definicoesEmpresa":
+			case "visualizarEmpresa":
 			case "comprar":
 				if (!$this->session->userdata("Email")) {
 					redirect("signin");

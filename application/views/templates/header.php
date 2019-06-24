@@ -2,13 +2,7 @@
 <html>
 
 <head data-session='<?php echo json_encode(array(
-	"ID_Empresa" => $this->session->userdata("ID_Empresa"),
-	"Email" => $this->session->userdata("Email"),
-	"Localizacao" => $this->session->userdata("Localizacao"),
-	"DataRegisto" => $this->session->userdata("DataRegisto"),
-	"Nome" => $this->session->userdata("Nome"),
-	"NIF" => $this->session->userdata("NIF"),
-	"Dono" => $this->session->userdata("Dono")
+	"ID_Empresa" => $this->session->userdata("ID_Empresa")
 )); ?>'>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">

@@ -4,13 +4,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Empresas_model extends CI_Model {
 	// Select
 	public function informacoesEmpresas() {
-		$this->db->select("Empresas.ID_Empresa, Empresas.Email, Empresas.Localizacao, Empresas.DataRegisto, Empresas.Ativo, Empresas.Nome, Empresas.NIF, Empresas.TipoEmpresa");
+		$this->db->select("Empresas.ID_Empresa, Empresas.Email, Empresas.Localizacao, Empresas.DataRegisto, Empresas.Ativo, Empresas.Nome, Empresas.NIF, Empresas.TipoEmpresa, Empresas.Facebook, Empresas.Twitter, Empresas.LinkedIn, Empresas.AreaInteresse");
 		$query = $this->db->get("Empresas");
 		return $query->result_array();
 	}
 
 	public function informacoesEmpresa($idEmpresa) {
-		$this->db->select("Empresas.ID_Empresa, Empresas.Email, Empresas.Localizacao, Empresas.DataRegisto, Empresas.Ativo, Empresas.Nome, Empresas.NIF, Empresas.TipoEmpresa");
+		$this->db->select("Empresas.ID_Empresa, Empresas.Email, Empresas.Localizacao, Empresas.DataRegisto, Empresas.Ativo, Empresas.Nome, Empresas.NIF, Empresas.TipoEmpresa, Empresas.Facebook, Empresas.Twitter, Empresas.LinkedIn, Empresas.AreaInteresse");
 		$query = $this->db->get_where("Empresas", "Empresas.ID_Empresa = {$idEmpresa}");
 		return $query->result_array();
 	}

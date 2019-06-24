@@ -65,6 +65,10 @@ class Authentication_model extends CI_Model
 
     public function updatePassword($data)
     {
+		$query = $this->db->get_where("Empresas", "Email = '{$data['Email']}'");
+		if (!password_verify($data["password"], $query[0]["Password"])) {
+            return FALSE;
+        }
 		$this->db->where("Email", $data["Email"]);
 		$this->db->set("Password",password_hash($data["Password"], PASSWORD_DEFAULT));
         return $this->db->update("Empresas");
