@@ -74,14 +74,14 @@ document.querySelector("button#area-interesse").addEventListener("click", () => 
 	let select = document.querySelector("select#areainteresse");
 	let formData = new FormData();
 	formData.append("AreaInteresse", select.options[select.selectedIndex].value);
-	postDadosEmpresa(idEmpresa, formData);
+	postDadosEmpresa(formData);
 });
 
 document.querySelector("button#localizacao-empresa").addEventListener("click", () => {
 	let select = document.querySelector("select#localizacao");
 	let formData = new FormData();
 	formData.append("Localizacao", select.options[select.selectedIndex].value);
-	postDadosEmpresa(idEmpresa, formData);
+	postDadosEmpresa(formData);
 });
 
 distritos.forEach((distrito) => {
