@@ -85,9 +85,6 @@ class Main extends CI_Controller {
 		if (!file_exists(APPPATH."views/pages/admin.php")) {
 			show_404();
 		}
-		if ($this->session->userdata("Admin") == "1") {
-			redirect();
-		}
 		$data["page"] = "admin";
 		$this->load->view("pages/admin", $data);
 	}

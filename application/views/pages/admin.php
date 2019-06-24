@@ -39,7 +39,8 @@
 	</div>
 	<nav class="navbar navbar-expand-md bg-blue navbar-dark fixed-top px-md-5 py-3">
 		<a href="<?php echo base_url(); ?>" class="navbar-brand">
-			<img src="<?php echo base_url("assets/imgs/mycards_withoutname.png"); ?>" alt="mycards_withoutname"class="pb-1" style="width: auto; height: 26px;">
+			<img src="<?php echo base_url("assets/imgs/mycards_withoutname.png"); ?>" alt="mycards_withoutname"
+				class="pb-1" style="width: auto; height: 26px;">
 			MyCards
 		</a>
 		<?php if ($this->session->userdata("Username")) : ?>
@@ -59,14 +60,15 @@
 		</div>
 		<?php endif; ?>
 	</nav>
-	<main class="container my-3 py-3 d-flex align-items-center justify-content-center">
+	<main class="container my-3 py-3">
 		<?php if (!$this->session->userdata("Username")) :?>
 		<?php echo form_open("authentication/signin_admin", "class=\"form-row\" onsubmit=\"return validation(this);\""); ?>
 		<?php if ($this->session->flashdata("FlashMessage")): ?>
 		<?php echo $this->session->flashdata("FlashMessage") ?>
 		<?php endif; ?>
 		<div class="col-12 text-center">
-			<img src="<?php echo base_url("assets/imgs/mycards_withname.png"); ?>" class="img-fluid" alt="mycards_withname">
+			<img src="<?php echo base_url("assets/imgs/mycards_withname.png"); ?>" class="img-fluid"
+				alt="mycards_withname">
 		</div>
 		<div class="col-12 text-center">
 			<h3>Admin</h3>
@@ -92,7 +94,7 @@
 		</form>
 		<?php else: ?>
 		<div class="row">
-			<div class="col-md-4">
+			<div class="col-md-6">
 				<?php echo form_open("authentication/signup_admin", "class=\"form-row shadow m-2 p-4\" onsubmit=\"return validation(this);\""); ?>
 				<?php if ($this->session->flashdata("FlashMessage")): ?>
 				<?php echo $this->session->flashdata("FlashMessage") ?>
@@ -115,26 +117,45 @@
 						<label for="password">Password</label>
 					</div>
 				</div>
-				<div class="col-12 text-justify"><small>Nota: Caso o utilizador exista, irá alterá-lo. Caso contrário, irá criá-lo.</small></div>
+				<div class="col-12 text-justify"><small>Nota: Caso o utilizador exista, irá alterá-lo. Caso contrário,
+						irá criá-lo.</small></div>
 				<div class="col-12 text-center">
 					<button type="submit" class="btn btn-primary">Atualizar</button>
 				</div>
 				</form>
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-6">
+				<div class="row shadow m-2 p-4">
+					<div class="col-12 text-center">
+						<h3>Registos</h3>
+					</div>
+					<div class="col-12">
+						<div id="chart_container">
+							<canvas id="myChartEC"></canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-12">
 				<div class="row shadow m-2 p-4">
 					<div class="col-12 text-center">
 						<h3>Novas Empresas</h3>
 					</div>
 					<div class="col-12">
-						
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="row shadow m-2 p-4">
-					<div class="col-12 text-center">
-						<h3>asijdo</h3>
+						<div class="table-responsive text-center">
+							<table class="table table-striped">
+								<thead class="thead-dark">
+									<tr>
+										<th scope="col" class="align-middle">ID</th>
+										<th scope="col" class="align-middle">Nome</th>
+										<th scope="col" class="align-middle">Email</th>
+										<th scope="col" class="align-middle">Actions</th>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -181,6 +202,28 @@
 			</div>
 		</div>
 	</footer>
+	<?php if ($this->session->userdata("Username")) :?>
+	<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="modalTitle"></h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<i class="fas fa-times"></i>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="chart-container">
+						<canvas id="chart"></canvas>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<?php endif; ?>
 
 	<script>
 		const head = document.querySelector("head");
@@ -189,7 +232,7 @@
 			"https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css",
 			"https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.0/css/mdb.min.css",
 			"<?php echo base_url("assets/css/core.css"); ?>",
-			"<?php echo base_url("assets/css/{$page}.css "); ?>"
+			"<?php echo base_url("assets/css/{$page}.css"); ?>"
 		];
 		array.forEach(element => {
 			let link = document.createElement("link");
@@ -218,6 +261,9 @@
 	</script>
 
 	<script text="text/javascript" src="<?php echo base_url("assets/js/{$page}.js"); ?>"></script>
+	<?php if ($this->session->userdata("Username")) :?>
+	<script text="text/javascript" src="<?php echo base_url("assets/js/{$page}_admin.js"); ?>"></script>
+	<?php endif; ?>
 
 </body>
 

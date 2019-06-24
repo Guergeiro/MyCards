@@ -11,10 +11,10 @@ if (url.length > 0) {
 }
 
 setInterval(function () {
-	$.get("./api/empresa/" + JSON.parse(document.querySelector("head").getAttribute("data-session"))["ID_Empresa"] + "/campanha", function (data) {
+	$.get("https://mycards.dsprojects.pt/api/empresa/" + JSON.parse(document.querySelector("head").getAttribute("data-session"))["ID_Empresa"] + "/campanha", function (data) {
 		data = JSON.parse(data);
 		data.forEach(campanha => {
-			$.get("./api/empresa/" + JSON.parse(document.querySelector("head").getAttribute("data-session"))["ID_Empresa"] + "/campanha/" + campanha["ID_Campanha"] + "/instanciascampanha", function (instancias) {
+			$.get("https://mycards.dsprojects.pt/api/empresa/" + JSON.parse(document.querySelector("head").getAttribute("data-session"))["ID_Empresa"] + "/campanha/" + campanha["ID_Campanha"] + "/instanciascampanha", function (instancias) {
 				instancias = JSON.parse(instancias);
 				instancias.forEach(element => {
 					if (!contains(element)) {
@@ -41,7 +41,7 @@ setInterval(function () {
 						$(".toast").toast("show");
 						$(".toast").each(function () {
 							$(this).on("hidden.bs.toast", function () {
-								$.post("api/empresa/" + JSON.parse($("head").attr("data-session"))["ID_Empresa"] + "/campanha/" + $(this).find(".toast-body").attr("data-idcampanha") + "/instanciacampanha/" + $(this).find(".toast-body").attr("data-idcartao"), {
+								$.post("https://mycards.dsprojects.pt/api/empresa/" + JSON.parse($("head").attr("data-session"))["ID_Empresa"] + "/campanha/" + $(this).find(".toast-body").attr("data-idcampanha") + "/instanciacampanha/" + $(this).find(".toast-body").attr("data-idcartao"), {
 									Notificacao: 0
 								}).then(function () {
 									for (let i = 0; i < notificacoes.length; i++) {

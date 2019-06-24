@@ -22,7 +22,7 @@ const distritos = [
 ];
 
 const postDadosEmpresa = async (formData) => {
-	const response = await fetch(`./api/empresa/${idEmpresa}`, {
+	const response = await fetch(`https://mycards.dsprojects.pt/api/empresa/${idEmpresa}`, {
 		method: "POST",
 		body: formData
 	});
@@ -31,7 +31,7 @@ const postDadosEmpresa = async (formData) => {
 }
 
 const getDadosEmpresa = async () => {
-	const response = await fetch(`./api/empresa/${idEmpresa}`);
+	const response = await fetch(`https://mycards.dsprojects.pt/api/empresa/${idEmpresa}`);
 	const data = await (response.json());
 	return data[0];
 }

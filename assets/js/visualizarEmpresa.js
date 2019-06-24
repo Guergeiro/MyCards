@@ -1,10 +1,5 @@
-document.querySelectorAll("input").forEach(input => {
-	input.focus();
-	input.blur();
-});
-
 $(document).ready(function () {
-	$.get("./api/empresa/" + JSON.parse(document.querySelector("head").getAttribute("data-session"))["ID_Empresa"], function (data) {
+	$.get("https://mycards.dsprojects.pt/api/empresa/" + JSON.parse(document.querySelector("head").getAttribute("data-session"))["ID_Empresa"], function (data) {
 		data = JSON.parse(data);
 		data.forEach(da => {
 			/* Nome */
@@ -49,7 +44,7 @@ $(document).ready(function () {
 			document.getElementById("plano").setAttribute("disabled", "disabled");
 		});
 	});
-	$.get("./api/empresa/" + JSON.parse(document.querySelector("head").getAttribute("data-session"))["ID_Empresa"] + "/colaborador", function (data) {
+	$.get("https://mycards.dsprojects.pt/api/empresa/" + JSON.parse(document.querySelector("head").getAttribute("data-session"))["ID_Empresa"] + "/colaborador", function (data) {
 		data = JSON.parse(data);
 		/* Colaboradores */
 		document.getElementById("colaboradores").focus();
@@ -57,7 +52,7 @@ $(document).ready(function () {
 		document.getElementById("colaboradores").setAttribute("disabled", "disabled");
 	});
 
-	$.get("./api/empresa/" + JSON.parse(document.querySelector("head").getAttribute("data-session"))["ID_Empresa"] + "/cartao", function (data) {
+	$.get("https://mycards.dsprojects.pt/api/empresa/" + JSON.parse(document.querySelector("head").getAttribute("data-session"))["ID_Empresa"] + "/cartao", function (data) {
 		data = JSON.parse(data);
 		/* Colaboradores */
 		document.getElementById("cartoes").focus();
