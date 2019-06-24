@@ -14,20 +14,18 @@ const meses = [
 ];
 
 $(document).ready(function () {
-  $.post(
-    "http://127.0.0.1/PINT-Web/api/campanha_empresa", {
-      keyEmpresa: JSON.parse(document.querySelector("head").getAttribute("data-session"))["ID_Utilizador"],
-      keyCampanha: window.location.href.split("/").pop()
-    },
-    function (data) {
-      infoCampanhas = JSON.parse(data);
-      $(".empresa").html(infoCampanhas[0].Designacao);
-      $(".desconto").html(infoCampanhas[0].Valor + "%");
-      $(".tipo").html(infoCampanhas[0].TipoCampanha);
-      $(".fimCampanha").html(infoCampanhas[0].DataFim);
+  $.get("../api/empresa/" + JSON.parse(document.querySelector("head").getAttribute("data-session"))["ID_Empresa"] + "/campanha/" + window.location.href.split("/").pop(), function (data) {
+    campanhas = JSON.parse(data);
+    $(".empresa").html(campanhas[0].Designacao);
+    $(".desconto").html(campanhas[0].Valor + "%");
+    $(".tipo").html(campanhas[0].TipoCampanha);
+    $(".fimCampanha").html(campanhas[0].DataFim);
 
+    $.get("../api/empresa/" + JSON.parse(document.querySelector("head").getAttribute("data-session"))["ID_Empresa"] + "/campanha/" + window.location.href.split("/").pop() + "/instanciascampanha", function (data) {
+      data = JSON.parse(data);
+      console.log(data);
       let newData = [0, 0];
-      infoCampanhas.forEach(info => {
+      data.forEach(info => {
         if (info["Utilizado"] == 0) {
           newData[1] += 1;
         } else {
@@ -55,16 +53,16 @@ $(document).ready(function () {
         },
       });
 
-      let nmeses = getDates(infoCampanhas[0].DataInicio, infoCampanhas[0].DataFim);
+      let nmeses = getDates(campanhas[0].DataInicio, campanhas[0].DataFim);
       let labels = [];
       let obj = {};
       for (i = 0; i < nmeses.length; i++) {
         obj[meses[nmeses[i]]] = 0;
-        labels.push(meses[nmeses[i]]); 
+        labels.push(meses[nmeses[i]]);
       }
 
-      infoCampanhas.forEach(campanhas => {
-      obj[meses[getMonth(campanhas.DataUtilizacao)]] += 1;
+      data.forEach(campanhas => {
+        obj[meses[getMonth(campanhas.DataUtilizacao)]] += 1;
       });
 
       newData = [];
@@ -79,16 +77,15 @@ $(document).ready(function () {
           datasets: [{
             label: "Utilizações por mês",
             data: newData,
-            backgroundColor:'rgba(244, 182, 66, 0.8)',
-            borderColor:'rgba(244, 182, 66, 1)',
+            backgroundColor: 'rgba(244, 182, 66, 0.8)',
+            borderColor: 'rgba(244, 182, 66, 1)',
             borderWidth: 1
           }]
         },
       });
     });
+  });
 });
-
-
 
 function getDates(startDate, endDate) {
   let dates = [];
