@@ -7,6 +7,9 @@
 				</div>
 				<div class="card-body">
 					<?php echo form_open("authentication/updatePassword", "class=\"form-row\" onsubmit=\"return validation(this);\""); ?>
+					<?php if ($this->session->flashdata("segurancaFlashData")): ?>
+					<?php echo $this->session->flashdata("segurancaFlashData"); ?>
+					<?php endif; ?>
 					<div class="col-12">
 						<div class="md-form mb-0">
 							<i class="fas fa-fw fa-lock prefix"></i>
@@ -84,21 +87,21 @@
 						<div class="col-12">
 							<div class="md-form mb-0">
 								<select id="areainteresse" name="areainteresse" class="custom-select">
-									<option value="0" selected>Agricultura</option>
-									<option value="1">Ciência e Tecnologia</option>
-									<option value="2">Desporto</option>
-									<option value="3">Educação</option>
-									<option value="4">Restauração</option>
-									<option value="5">Saúde</option>
-									<option value="6">Transportes e Mercadorias</option>
-									<option value="7">Turismo</option>
+									<option value="agricultura">Agricultura</option>
+									<option value="ciencia-tecnologia">Ciência e Tecnologia</option>
+									<option value="desporto">Desporto</option>
+									<option value="educacao">Educação</option>
+									<option value="restauracao">Restauração</option>
+									<option value="saude">Saúde</option>
+									<option value="transportes-mercadorias">Transportes e Mercadorias</option>
+									<option value="turismo">Turismo</option>
 								</select>
 							</div>
 						</div>
-					</div>
-					<div class="col-12 text-center">
-						<button type="submit" class="btn btn-primary waves-effect waves-light mt-2"
-							id="area-interesse">Guardar</button>
+						<div class="col-12 text-center">
+							<button type="button" class="btn btn-primary waves-effect waves-light mt-2"
+								id="area-interesse">Guardar</button>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -116,10 +119,10 @@
 								</select>
 							</div>
 						</div>
-					</div>
-					<div class="col-12 text-center">
-						<button type="submit" class="btn btn-primary waves-effect waves-light mt-2"
-							id="localizacao-empresa">Guardar</button>
+						<div class="col-12 text-center">
+							<button type="button" class="btn btn-primary waves-effect waves-light mt-2"
+								id="localizacao-empresa">Guardar</button>
+						</div>
 					</div>
 				</div>
 			</div>

@@ -40,7 +40,8 @@ class Main extends CI_Controller {
 					$this->load->view("pages/{$page}");
 				}
 				break;
-			case "updatePassword":
+			case "definicoesEmpresa":
+			case "visualizarEmpresa":
 			case "comprar":
 				if (!$this->session->userdata("Email")) {
 					redirect("signin");
@@ -83,9 +84,6 @@ class Main extends CI_Controller {
 	public function admin() {
 		if (!file_exists(APPPATH."views/pages/admin.php")) {
 			show_404();
-		}
-		if ($this->session->userdata("Admin") == "1") {
-			redirect();
 		}
 		$data["page"] = "admin";
 		$this->load->view("pages/admin", $data);

@@ -297,7 +297,7 @@ class Authentication extends CI_Controller
 	public function updatePassword()
 	{
 		if (!$this->session->userdata("Email")) {
-			// Não está login
+
 			redirect();
 		}
 		$config = array(
@@ -328,12 +328,12 @@ class Authentication extends CI_Controller
 			);
 
 			if ($this->Authentication_model->updatePassword($data)) {
-				$this->session->set_flashdata("correctFlashData", "Password alterada com sucesso.");
+				$this->session->set_flashdata("segurancaFlashData", "<div class=\"col-12\"><div class=\"alert alert-success\">Password alterada com sucesso.</div></div>");
 			} else {
-				$this->session->set_flashdata("incorrectFlashData", "Não foi possível alterar a password.");
+				$this->session->set_flashdata("segurancaFlashData", "<div class=\"col-12\"><div class=\"alert alert-danger\">Não foi possível alterar a password.</div></div>");
 			}
 		}
-		redirect("updatePassword");
+		redirect("definicoesEmpresa");
 	}
 
 	public function verify($md5Email) {
