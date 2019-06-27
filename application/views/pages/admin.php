@@ -60,7 +60,7 @@
 		</div>
 		<?php endif; ?>
 	</nav>
-	<main class="container my-3 py-3">
+<main class="container my-3 py-3 <?php if (!$this->session->userdata("Username")) :?>d-flex align-items-center justify-content-center<?php endif;?>">
 		<?php if (!$this->session->userdata("Username")) :?>
 		<?php echo form_open("authentication/signin_admin", "class=\"form-row\" onsubmit=\"return validation(this);\""); ?>
 		<?php if ($this->session->flashdata("FlashMessage")): ?>
@@ -131,7 +131,7 @@
 					</div>
 					<div class="col-12">
 						<div id="chart_container">
-							<canvas id="myChartEC"></canvas>
+							<canvas id="myChart"></canvas>
 						</div>
 					</div>
 				</div>
