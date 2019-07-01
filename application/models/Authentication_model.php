@@ -55,12 +55,52 @@ class Authentication_model extends CI_Model
         return $this->db->insert("Empresas", $data);
     }
 
+	public function signup_cliente($data) {
+		$data["Password"] = password_hash($data["Password"], PASSWORD_DEFAULT);
+		return $this->db->insert("Clientes", $data);
+	}
+
+	public function signin_cliente($data){
+        $query = $this->db->get_where("Clientes", "Email = '{$data['email']}'");
+
+        if ($query->num_rows() == 0) {
+            return "email";
+        }
+        $query = $query->result_array();
+        if (!password_verify($data["password"], $query[0]["Password"])) {
+            return "email";
+        }
+        if ($query[0]["Ativo"] == 0) {
+            return "ativo";
+        }
+        return $query;
+    }
+
     public function recoverPassword($data)
     {   
 		
         $this->db->where("Email", $data["Email"]);
         $this->db->set("Password",password_hash($data["Password"], PASSWORD_DEFAULT));
         return $this->db->update("Empresas");
+    }
+
+	public function recoverPassword_cliente($data)
+    {   
+		
+        $this->db->where("Email", $data["Email"]);
+        $this->db->set("Password",password_hash($data["Password"], PASSWORD_DEFAULT));
+        return $this->db->update("Clientes");
+    }
+
+	public function updatePassword_cliente($data)
+    {
+		$query = $this->db->get_where("Clientes", "Email = '{$data['Email']}'");
+		if (!password_verify($data["password"], $query[0]["Password"])) {
+            return FALSE;
+        }
+		$this->db->where("Email", $data["Email"]);
+		$this->db->set("Password",password_hash($data["Password"], PASSWORD_DEFAULT));
+        return $this->db->update("Clientes");
     }
 
     public function updatePassword($data)

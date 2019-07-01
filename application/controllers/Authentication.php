@@ -240,10 +240,143 @@ class Authentication extends CI_Controller
 		redirect("signup");
 	}
 
+	public function signup_cliente() {
+		$data = array(
+			"Email" => $this->input->post("email"),
+			"Password" => $this->input->post("password"),
+			"PrimeiroNome" => $this->input->post("primeironome"),
+			"UltimoNome" => $this->input->post("ultimonome"),
+			"DataNascimento" => $this->input->post("datanascimento"),
+			"Localizacao" => $this->input->post("localizacao")
+		);
+
+		if($this->Authentication_model->signup_cliente($data)) {
+			if($this->sendEmail(array(
+				"Email" => $data["email"],
+				"Subject" => "Bem vindo ao MyCards",
+				"Message" => "{$data["nome"]},\nObrigado por se registar no MyCards.\nEstamos contentes com a nossa nova parceria.\nAs suas informações:\n - Nome: {$data['nome']}\nPara ativar a sua conta, clique neste link: ".base_url()."verify/".md5($data["email"])."\nRelembramos que, apesar da sua conta estar ativa, a sua empresa ainda precisa de ser aprovada pelos administradores."
+			))) {
+				$data = array(
+					"status" => "true",
+					"message" => "Conta criada com sucesso. Verifique o seu email."
+				);
+				echo json_encode($data);
+			} else {
+				$data = array(
+					"status" => "true",
+					"message" => "Conta criada com sucesso."
+				);
+				echo json_encode($data);
+			}
+		} else {
+			$data = array(
+				"status" => "false",
+				"message" => "Ocorreu um erro ao criar a conta."
+			);
+			echo json_encode($data);
+		}
+	}
+
+	public function signin_cliente() {
+		$data = array(
+			"Email" => $this->input->post("email"),
+			"Password" => $this->input->post("password")
+		);
+
+		$result = $this->Authentication_model->signin_cliente($data);
+
+		if ($result == "email") {
+			$data = array(
+				"status" => "false",
+				"message" => "Email ou Password errados."
+			);
+			echo json_encode($data);
+		}else if ($result == "ativo") {
+			if ($this->sendEmail(array(
+				"Email" => $data["email"],
+				"Subject" => "Verificação de conta",
+				"Message" => "No seguimento da sua tentativa de acesso, para ativar a sua conta, clique neste link: ".base_url()."verify/".md5($data["email"])
+			))){
+				$data = array(
+				"status" => "false",
+				"message" => "Conta não ativa. Reenviado email de confirmação."
+			);
+			echo json_encode($data);
+			} else {
+				$data = array(
+				"status" => "false",
+				"message" => "Conta não ativa. Contate o suporte."
+			);
+			echo json_encode($data);
+			}
+		} else {
+			unset($result[0]["Password"]);
+			$data = array(
+				"status" => "true",
+				"message" => json_encode($result[0])
+			);
+			echo json_encode($data);
+		}
+	}
+
 	public function signoff()
 	{
 		$this->session->sess_destroy();
 		redirect();
+	}
+
+	public function recoverPassword_cliente() {
+		$alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+		$password = array();
+		$alpha_length = strlen($alphabet) - 1;
+		for ($i = 0; $i < 16; $i++) {
+			$n = mt_rand(0, $alpha_length);
+			$password[] = $alphabet[$n];
+		}
+		$data = array(
+			"Email" => $this->input->post("email"),
+			"Password" => implode($password)
+		);
+		if(!$this->Authentication_model->recoverPassword_cliente($data)) {
+			$data = array(
+				"status" => "false",
+				"message" => "O Email não se encontra na base de dados."
+			);
+			echo json_encode($data);
+		} else {
+			if ($this->sendEmail(array(
+				"Email" => $data["Email"],
+				"Subject" => "Recuperação de password",
+				"Message" => "No seguimento do seu pedido de recuperação de password, foi gerada uma aleatória. Por favor, altere-a assim que possível.\nPassword: {$data['Password']}"
+			))) {
+				$data = array(
+				"status" => "true",
+				"message" => "Uma nova password foi enviada para o seu email"
+			);
+			echo json_encode($data);
+			}
+		}
+	}
+
+	public function updatePassword_cliente() {
+		$data = array(
+			"Email" => $this->session->userdata("Email"),
+			"Password" => $this->input->post("password")
+		);
+
+		if ($this->Authentication_model->updatePassword_cliente($data)) {
+			$data = array(
+				"status" => "true",
+				"message" => "Password alterada com sucesso."
+			);
+			echo json_encode($data);
+		} else {
+			$data = array(
+				"status" => "false",
+				"message" => "Não foi possível alterar a password"
+			);
+			echo json_encode($data);
+		}
 	}
 
 	public function recoverPassword()
