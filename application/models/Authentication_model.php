@@ -67,7 +67,7 @@ class Authentication_model extends CI_Model
             return "email";
         }
         $query = $query->result_array();
-        if (!password_verify($data["password"], $query[0]["Password"])) {
+        if (!password_verify($data["Password"], $query[0]["Password"])) {
             return "email";
         }
         if ($query[0]["Ativo"] == 0) {
