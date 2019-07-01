@@ -46,7 +46,7 @@ class Authentication extends CI_Controller
                 redirect("signin");
             } elseif ($result == "ativo") {
                 if ($this->sendEmail(array(
-                    "Email" => $data["email"],
+                    "Email" => $data["Email"],
                     "Subject" => "Verificação de conta",
                     "Message" => "No seguimento da sua tentativa de acesso, para ativar a sua conta, clique neste link: ".base_url()."verify/".md5($data["Email"])."\nRelembramos que, apesar da sua conta estar ativa, a sua empresa ainda precisa de ser aprovada pelos administradores."
                 ))) {
