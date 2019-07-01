@@ -64,7 +64,7 @@ $route['verify/(:any)'] = 'authentication/verify/$1';
 $route['api/empresa']['get'] = 'api/informacoesEmpresas';
 $route['api/empresa/(:num)']['get'] = 'api/informacoesEmpresa/$1';
 
-$route['api/empresa/(:num)/rating'] = 'api/ratingEmpresa/$1';
+$route['api/empresa/(:num)/rating']['get'] = 'api/ratingEmpresa/$1';
 
 $route['api/empresa/(:num)/campanha']['get'] = 'api/campanhasEmpresa/$1';
 $route['api/empresa/(:num)/campanha/(:num)']['get'] = 'api/campanhaEmpresa/$1/$2';
@@ -80,7 +80,7 @@ $route['api/empresa/(:num)/colaborador/(:any)']['get'] = 'api/colaboradorEmpresa
 $route['api/cliente']['get'] = 'api/informacoesClientes';
 $route['api/cliente/(:num)']['get'] = 'api/informacoesCliente/$1';
 
-$route['api/cliente/(:num)/rating'] = 'api/ratingCliente/$1';
+$route['api/cliente/(:num)/rating']['get'] = 'api/ratingCliente/$1';
 
 $route['api/cliente/(:num)/cartao']['get'] = 'api/cartoesCliente/$1';
 $route['api/cliente/(:num)/cartao/(:num)']['get'] = 'api/cartaoCliente/$1/$2';
@@ -98,3 +98,4 @@ $route['api/empresa/(:num)/colaborador']['post'] = 'api/novoColaboradorEmpresa/$
 /* API DELETE's */
 // Empresas
 $route['api/empresa/(:num)/colaborador/(:any)']['delete'] = 'api/eliminarColaboradorEmpresa/$1/$2';
+$route['api/empresa/(:num)']['delete'] = 'api/eliminarEmpresa/$1';

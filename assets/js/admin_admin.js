@@ -30,6 +30,15 @@ const processMonths = (empresas) => {
 	return months;
 }
 
+const deleteDadosEmpresa = async (formData, idEmpresa) => {
+	const response = await fetch(`https://mycards.dsprojects.pt/api/empresa/${idEmpresa}`, {
+		method: "DELETE",
+		body: formData
+	});
+	const data = await response.json();
+	console.log(data);
+}
+
 const ctx = document.querySelector("#myChart").getContext("2d");
 let empresas = [];
 
@@ -43,7 +52,13 @@ getEmpresas().then(data => {
 			empresas = [...empresas, empresa];
 		}
 	});
-
+	document.querySelectorAll("table tbody .btn-danger").forEach(botao => {
+		botao.addEventListener("click", () => {
+			let formData = new FormData();
+			formData.append("ID_Empresa", botao.getAttribute("data-id"));
+			deleteDadosEmpresa(formData, botao.getAttribute("data-id"));
+		});
+	});
 }).then(() => {
 	new Chart(ctx, {
 		type: "line",
@@ -51,8 +66,7 @@ getEmpresas().then(data => {
 			labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
 			datasets: [{
 				label: "2019",
-				fill: false,
-				data: processMonths(empresas)
+				fill: false
 			}]
 		}
 	});

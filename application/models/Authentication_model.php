@@ -61,7 +61,7 @@ class Authentication_model extends CI_Model
 	}
 
 	public function signin_cliente($data){
-        $query = $this->db->get_where("Clientes", "Email = '{$data['email']}'");
+        $query = $this->db->get_where("Clientes", "Email = '{$data['Email']}'");
 
         if ($query->num_rows() == 0) {
             return "email";

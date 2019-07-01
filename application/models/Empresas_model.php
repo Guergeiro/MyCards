@@ -75,6 +75,10 @@ class Empresas_model extends CI_Model {
 	public function eliminarColaboradorEmpresa($idEmpresa, $idColaborador) {
 		return $this->db->delete("Colaboradores","Colaboradores.ID_Empresa = {$idEmpresa} AND Colaboradores.Nome = '{$idColaborador}'");
 	}
+
+	public function eliminarEmpresa($idEmpresa) {
+		return $this->db->delete("Empresas", "Empresas.ID_Empresa = {$idEmpresa}");
+	}
 }
 
 ?>

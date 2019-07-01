@@ -123,6 +123,15 @@ class Api extends CI_Controller {
 		}
 	}
 
+	public function eliminarEmpresa($idEmpresa) {
+		$this->load->model("Empresas_model");
+		if ($this->Empresas_model->eliminarEmpresa($idEmpresa)) {
+			echo "Delete Successful";
+		} else {
+			echo "Error Deleting";
+		}
+	}
+
 	// Clientes
 	// GET
 	public function informacoesClientes() {
