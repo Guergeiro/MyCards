@@ -30,10 +30,9 @@ const processMonths = (empresas) => {
 	return months;
 }
 
-const deleteDadosEmpresa = async (formData, idEmpresa) => {
+const deleteEmpresa = async (idEmpresa) => {
 	const response = await fetch(`https://mycards.dsprojects.pt/api/empresa/${idEmpresa}`, {
-		method: "DELETE",
-		body: formData
+		method: "DELETE"
 	});
 	const data = await response.json();
 	console.log(data);
@@ -54,9 +53,7 @@ getEmpresas().then(data => {
 	});
 	document.querySelectorAll("table tbody .btn-danger").forEach(botao => {
 		botao.addEventListener("click", () => {
-			let formData = new FormData();
-			formData.append("ID_Empresa", botao.getAttribute("data-id"));
-			deleteDadosEmpresa(formData, botao.getAttribute("data-id"));
+			deleteEmpresa(botao.getAttribute("data-id"));
 		});
 	});
 }).then(() => {
