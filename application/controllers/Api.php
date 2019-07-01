@@ -72,6 +72,16 @@ class Api extends CI_Controller {
 
 	}
 
+	public function novaCampanha($idEmpresa) {
+		$this->load->model("Empresas_model");
+
+		if ($this->Empresas_model->novaCampanha($idEmpresa, $data)) {
+			echo "Insert Successful";
+		} else {
+			echo "Error Inserting";
+		}
+	}
+
 	public function alterarInstanciaCampanhaEmpresa($idEmpresa, $idCampanha, $idCartao) {
 		$this->load->model("Empresas_model");
 		$data = $this->input->post(NULL, FALSE);

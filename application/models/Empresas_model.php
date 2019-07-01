@@ -57,6 +57,19 @@ class Empresas_model extends CI_Model {
 		return $this->db->insert("Colaboradores", $data);
 	}
 
+	public function novaCampanha($idEmpresa, $data) {
+		$query = $this->db->get_where("Cartoes", "Cartoes.ID_Empresa = {$idEmpresa}");
+		$query = $query->result_array();
+		foreach ($query as $cartao) {
+			$info = array(
+				"ID_Cartao" => $cartao["ID_Cartao"],
+				"ID_Campanha" => $data["ID_Campanha"]
+			);
+			$this->db->insert("InstanciaCampanha", $info);
+		}
+		return $this->db->insert("Campanhas", $data);
+	}
+
 	// Update
 	public function alterarInstanciaCampanhaEmpresa($idEmpresa, $idCampanha, $idCartao, $data) {
 		$this->db->where("InstanciaCampanha.ID_Campanha = {$idCampanha} AND InstanciaCampanha.ID_Cartao = {$idCartao}");
