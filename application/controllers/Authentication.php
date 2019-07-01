@@ -479,6 +479,15 @@ class Authentication extends CI_Controller
         redirect("signin");
     }
 
+    public function activate($md5Email)
+    {
+        if ($this->Authentication_model->activate($md5Email)) {
+            echo "Conta ativada com sucesso. Pode fechar este separador.";
+        } else {
+            echo "Ocorreu um erro ao ativar a sua conta.";
+        }
+    }
+
     private function sendEmail($data)
     {
         $email = array(

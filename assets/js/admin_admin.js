@@ -34,8 +34,7 @@ const deleteEmpresa = async (idEmpresa) => {
 	const response = await fetch(`https://mycards.dsprojects.pt/api/empresa/${idEmpresa}`, {
 		method: "DELETE"
 	});
-	const data = await response.json();
-	console.log(data);
+	console.log(response);
 }
 
 const ctx = document.querySelector("#myChart").getContext("2d");
