@@ -6,14 +6,14 @@ class Clientes_model extends CI_Model
     // Select
     public function informacoesClientes()
     {
-        $this->db->select("Clientes.ID_Cliente, Clientes.Email, Clientes.Localizacao, Clientes.DataRegisto, Clientes.Ativo, Clientes.PrimeiroNome, Clientes.UltimoNome, Clientes.DataNascimento");
+        $this->db->select("*");
         $query = $this->db->get("Clientes");
         return $query->result_array();
     }
 
     public function informacoesCliente($idCliente)
     {
-        $this->db->select("Clientes.ID_Cliente, Clientes.Email, Clientes.Localizacao, Clientes.DataRegisto, Clientes.Ativo, Clientes.PrimeiroNome, Clientes.UltimoNome, Clientes.DataNascimento");
+        $this->db->select("*");
         $query = $this->db->get_where("Clientes", "Clientes.ID_Cliente = {$idCliente}");
         return $query->result_array();
     }
