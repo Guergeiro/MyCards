@@ -20,14 +20,13 @@ class Main extends CI_Controller
     {
         switch ($page) {
             case "dashboard":
-            case "colaboradores":
             case "clientes":
             case "criarCampanha":
             case "listarCampanha":
             case "ativarCampanha":
                 if (!$this->session->userdata("Email")) {
                     redirect("signin");
-                } elseif (!($this->session->userdata("Dono") == "0" || $this->session->userdata("Dono") == "1") || ($this->session->userdata("TipoEmpresa") == "0")) {
+                } elseif (!($this->session->userdata("Dono")) || ($this->session->userdata("TipoEmpresa") == "0")) {
                     redirect("perfil");
                 } else {
                     $this->load->view("pages/{$page}");
@@ -43,6 +42,7 @@ class Main extends CI_Controller
                 break;
             case "definicoesEmpresa":
             case "visualizarEmpresa":
+            case "colaboradores":
             case "comprar":
                 if (!$this->session->userdata("Email")) {
                     redirect("signin");
@@ -71,7 +71,7 @@ class Main extends CI_Controller
 
         if (!$this->session->userdata("Email")) {
             redirect("signin");
-        } elseif (!($this->session->userdata("Dono") == "0" || $this->session->userdata("Dono") == "1") || ($this->session->userdata("TipoEmpresa") == "0")) {
+        } elseif (!($this->session->userdata("Dono")) || ($this->session->userdata("TipoEmpresa") == "0")) {
             redirect("perfil");
         }
 
