@@ -15,18 +15,35 @@ class Main extends CI_Controller
         $this->loadPage($page);
         $this->load->view("templates/footer", $data);
     }
+
+    private function checkPermission()
+    {
+        /*
+        return true -> tem permissões
+        return false -> não tem
+        */
+        return (($this->session->userdata("Dono") == "0") || ($this->session->userdata("Dono") == "1") && ($this->session->userdata("TipoEmpresa") != "0"));
+    }
+
+    private function checkPermissionDono()
+    {
+        /*
+        return true -> tem permissoes
+        return fasle -> não tem
+        */
+        return (($this->session->userdata("Dono") == "1") && ($this->session->userdata("TipoEmpresa") != "0"));
+    }
     
     private function loadPage($page)
     {
         switch ($page) {
             case "dashboard":
-            case "clientes":
             case "criarCampanha":
             case "listarCampanha":
             case "ativarCampanha":
                 if (!$this->session->userdata("Email")) {
                     redirect("signin");
-                } elseif (!($this->session->userdata("Dono")) || ($this->session->userdata("TipoEmpresa") == "0")) {
+                } elseif (checkPermission() == false) {
                     redirect("perfil");
                 } else {
                     $this->load->view("pages/{$page}");
@@ -43,10 +60,11 @@ class Main extends CI_Controller
             case "definicoesEmpresa":
             case "visualizarEmpresa":
             case "colaboradores":
+            case "clientes":
             case "comprar":
                 if (!$this->session->userdata("Email")) {
                     redirect("signin");
-                } elseif ($this->session->userdata("Dono") != "1" || ($this->session->userdata("TipoEmpresa") == "0")) {
+                } elseif (checkPermissionDono() == false) {
                     redirect("perfil");
                 } else {
                     $this->load->view("pages/{$page}");
@@ -71,7 +89,7 @@ class Main extends CI_Controller
 
         if (!$this->session->userdata("Email")) {
             redirect("signin");
-        } elseif (!($this->session->userdata("Dono")) || ($this->session->userdata("TipoEmpresa") == "0")) {
+        } elseif (checkPermission() == false) {
             redirect("perfil");
         }
 
