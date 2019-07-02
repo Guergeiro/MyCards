@@ -27,12 +27,13 @@ const postEmpresa = async (formData) => {
         method: "POST",
         body: formData
     });
+    const data = response.json();
+    console.log(data);
 }
 
 const getColaboradores = async () => {
     const response = await fetch(`https://mycards.dsprojects.pt/api/empresa/${idEmpresa}/colaborador`);
     const data = await response.json();
-    console.log(data);
     if (data.length == 0) {
         document.querySelector(".row").innerHTML +=
             '<div class="text-center col-12"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalDono"><i class="fas fa-plus fa-fw"></i></button></div>';
