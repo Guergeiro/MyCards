@@ -43,7 +43,7 @@ class Main extends CI_Controller
             case "ativarCampanha":
                 if (!$this->session->userdata("Email")) {
                     redirect("signin");
-                } elseif (checkPermission() == false) {
+                } elseif ($this->checkPermission() == false) {
                     redirect("perfil");
                 } else {
                     $this->load->view("pages/{$page}");
@@ -64,7 +64,7 @@ class Main extends CI_Controller
             case "comprar":
                 if (!$this->session->userdata("Email")) {
                     redirect("signin");
-                } elseif (checkPermissionDono() == false) {
+                } elseif ($this->checkPermissionDono() == false) {
                     redirect("perfil");
                 } else {
                     $this->load->view("pages/{$page}");
@@ -89,7 +89,7 @@ class Main extends CI_Controller
 
         if (!$this->session->userdata("Email")) {
             redirect("signin");
-        } elseif (checkPermission() == false) {
+        } elseif ($this->checkPermission() == false) {
             redirect("perfil");
         }
 
