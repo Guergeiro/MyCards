@@ -2,7 +2,7 @@
 <html>
 
 <head data-session='<?php echo json_encode(array(
-	"Username" => $this->session->userdata("Username")
+    "Username" => $this->session->userdata("Username")
 )); ?>'>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">

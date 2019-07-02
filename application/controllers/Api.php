@@ -77,15 +77,57 @@ class Api extends CI_Controller
     public function novaEmpresa()
     {
         $this->load->model("Empresas_model");
+    }
 
-        $data = array(
-            "Email" => $this->input->post("email")
+    public function alterarEmpresa($idEmpresa)
+    {
+        $this->load->model("Empresas_model");
+        $data = $this->input->post(null, true);
+        $return = array(
+            "status" => "",
+            "message" => ""
         );
+        if ($data["tipoEmpresa"] < 0 || $data["tipoEmpresa"] > 4) {
+            $return["status"] = "false";
+            $return["message"] = "Error Updating";
+            echo json_encode($return);
+            return;
+        }
+        if ($this->Empresas_model->alterarEmpresa($idEmpresa, $data)) {
+            $return["status"] = "true";
+            $return["message"] = "Update Successful";
+        } else {
+            $return["status"] = "false";
+            $return["message"] = "Error Updating";
+        }
+        echo json_encode($return);
+    }
+
+    public function alterarRatingEmpresa($idEmpresa)
+    {
+        $this->load->model("Empresas_model");
+        $data = array(
+            "ID_Cliente" => $this->input->post("idCliente", true),
+            "Rating" => $this->input->post("rating", true)
+        );
+        $return = array(
+            "status" => "",
+            "message" => ""
+        );
+        if ($this->Empresas_model->alterarRatingEmpresa($idEmpresa, $data)) {
+            $return["status"] = "true";
+            $return["message"] = "Update Successful";
+        } else {
+            $return["status"] = "false";
+            $return["message"] = "Error Updating";
+        }
+        echo json_encode($return);
     }
 
     public function novaCampanha($idEmpresa)
     {
         $this->load->model("Empresas_model");
+        $data = $this->input->post(null, true);
 
         if ($this->Empresas_model->novaCampanha($idEmpresa, $data)) {
             echo "Insert Successful";
@@ -105,29 +147,14 @@ class Api extends CI_Controller
         }
         redirect("ativarCampanha");
     }
-
-    public function alterarEmpresa($idEmpresa)
-    {
-        $this->load->model("Empresas_model");
-        $data = $this->input->post(null, true);
-        if ($data["tipoEmpresa"] < 0 || $data["tipoEmpresa"] > 4) {
-            echo "Error Updating";
-            return;
-        }
-        if ($this->Empresas_model->alterarEmpresa($idEmpresa, $data)) {
-            echo "Update Successful";
-        } else {
-            echo "Error Updating";
-        }
-    }
     
     public function novoColaboradorEmpresa($idEmpresa)
     {
         $this->load->model("Empresas_model");
         $data = array(
-            "Nome" => $this->input->post("nome"),
-            "CodigoAcesso" => $this->input->post("codigoAcesso"),
-            "Dono" => $this->input->post("dono"),
+            "Nome" => $this->input->post("nome", true),
+            "CodigoAcesso" => $this->input->post("codigoAcesso", true),
+            "Dono" => $this->input->post("dono", true),
             "ID_Empresa" => $idEmpresa,
             "URL" => mt_rand(1, 11)
         );
@@ -195,5 +222,99 @@ class Api extends CI_Controller
     {
         $this->load->model("Clientes_model");
         echo json_encode($this->Clientes_model->instanciasCampanhaCartaoCliente($idCartao));
+    }
+
+    // POST
+    public function novoCliente()
+    {
+        $this->load->model("Clientes_model");
+        $data = $this->input->post(null, true);
+        $return = array(
+            "status" => "",
+            "message" => ""
+        );
+        if ($this->Clientes_model->novoCliente($data)) {
+            $return["status"] = "true";
+            $return["message"] = "Update Successful";
+        } else {
+            $return["status"] = "false";
+            $return["message"] = "Error Updating";
+        }
+        echo json_encode($return);
+    }
+
+    public function alterarCliente($idCliente)
+    {
+        $this->load->model("Clientes_model");
+        $data = $this->input->post(null, true);
+        $return = array(
+            "status" => "",
+            "message" => ""
+        );
+        if ($this->Clientes_model->alterarCliente($idCliente, $data)) {
+            $return["status"] = "true";
+            $return["message"] = "Update Successful";
+        } else {
+            $return["status"] = "false";
+            $return["message"] = "Error Updating";
+        }
+        echo json_encode($return);
+    }
+
+    public function novoCartaoCliente($idCliente)
+    {
+        $this->load->model("Clientes_model");
+        $data = $this->input->post(null, true);
+        $return = array(
+            "status" => "",
+            "message" => ""
+        );
+        if ($this->Clientes_model->novoCartaoCliente($idCliente, $data)) {
+            $return["status"] = "true";
+            $return["message"] = "Update Successful";
+        } else {
+            $return["status"] = "false";
+            $return["message"] = "Error Updating";
+        }
+        echo json_encode($return);
+    }
+
+    // DELETE
+    public function apagarCliente($idCliente)
+    {
+        $this->load->model("Clientes_model");
+        $return = array(
+            "status" => "",
+            "message" => ""
+        );
+        if ($this->Clientes_model->apagarCliente($idCliente)) {
+            $return["status"] = "true";
+            $return["message"] = "Update Successful";
+        } else {
+            $return["status"] = "false";
+            $return["message"] = "Error Updating";
+        }
+        echo json_encode($return);
+    }
+
+    public function apagarRatingCliente()
+    {
+    }
+
+    public function apagarCartaoCliente($idCliente, $idCartao)
+    {
+        $this->load->model("Clientes_model");
+        $return = array(
+            "status" => "",
+            "message" => ""
+        );
+        if ($this->Clientes_model->apagarCartaoCliente($idCliente, $data)) {
+            $return["status"] = "true";
+            $return["message"] = "Update Successful";
+        } else {
+            $return["status"] = "false";
+            $return["message"] = "Error Updating";
+        }
+        echo json_encode($return);
     }
 }

@@ -35,8 +35,8 @@ class Authentication extends CI_Controller
             redirect("signin");
         } else {
             $data = array(
-                "Email" => $this->input->post("email"),
-                "Password" => $this->input->post("password")
+                "Email" => $this->input->post("email", true),
+                "Password" => $this->input->post("password", true)
             );
 
             $result = $this->Authentication_model->signin($data);
@@ -83,8 +83,8 @@ class Authentication extends CI_Controller
             $this->session->set_flashdata("FlashMessage", "<div class=\"col-md-4 offset-md-4 text-center\"><div class=\"alert alert-danger\">Por Favor, preencha todos os campos.</div></div>");
         } else {
             $data = array(
-                "Username" => $this->input->post("username"),
-                "Password" => $this->input->post("password")
+                "Username" => $this->input->post("username", true),
+                "Password" => $this->input->post("password", true)
             );
             $result = $this->Authentication_model->signin_admin($data);
             if ($result) {
@@ -116,8 +116,8 @@ class Authentication extends CI_Controller
             $this->session->set_flashdata("FlashMessage", "<div class=\"col-12 text-center\"><div class=\"alert alert-danger\">Por Favor, preencha todos os campos.</div></div>");
         } else {
             $data = array(
-                "Username" => $this->input->post("username"),
-                "Password" => $this->input->post("password")
+                "Username" => $this->input->post("username", true),
+                "Password" => $this->input->post("password", true)
             );
             if ($this->Authentication_model->signup_admin($data)) {
                 $this->session->set_flashdata("FlashMessage", "<div class=\"col-12 text-center\"><div class=\"alert alert-success\">Admin atualizado.</div></div>");
@@ -151,9 +151,9 @@ class Authentication extends CI_Controller
             redirect("perfil");
         } else {
             $data = array(
-                "Nome" => $this->input->post("nome"),
-                "CodigoAcesso" => $this->input->post("codigoAcesso"),
-                "ID_Empresa" => $this->session->userdata("ID_Empresa")
+                "Nome" => $this->input->post("nome", true),
+                "CodigoAcesso" => $this->input->post("codigoAcesso", true),
+                "ID_Empresa" => $this->session->userdata("ID_Empresa", true)
             );
 
             $result = $this->Authentication_model->colaborador($data);
@@ -215,12 +215,12 @@ class Authentication extends CI_Controller
             $this->session->set_flashdata("incorrectFlashData", "O Email desejado não se encontra disponível.");
         } else {
             $data = array(
-                "Email" => $this->input->post("email"),
-                "Password" => $this->input->post("password"),
-                "Nome" => $this->input->post("nome"),
-                "Nif" => $this->input->post("nif"),
-                "AreaInteresse" => $this->input->post("areainteresse"),
-                "Localizacao" => $this->input->post("localizacao")
+                "Email" => $this->input->post("email", true),
+                "Password" => $this->input->post("password", true),
+                "Nome" => $this->input->post("nome", true),
+                "Nif" => $this->input->post("nif", true),
+                "AreaInteresse" => $this->input->post("areainteresse", true),
+                "Localizacao" => $this->input->post("localizacao", true)
             );
 
             if ($this->Authentication_model->signup($data)) {
@@ -243,13 +243,13 @@ class Authentication extends CI_Controller
     public function signup_cliente()
     {
         $data = array(
-            "Email" => $this->input->post("email"),
-            "Password" => $this->input->post("password"),
-            "PrimeiroNome" => $this->input->post("primeironome"),
-            "UltimoNome" => $this->input->post("ultimonome"),
-            "DataNascimento" => $this->input->post("datanascimento"),
-            "Localizacao" => $this->input->post("localizacao"),
-            "Preferencias" => $this->input->post("preferencias")
+            "Email" => $this->input->post("email", true),
+            "Password" => $this->input->post("password", true),
+            "PrimeiroNome" => $this->input->post("primeironome", true),
+            "UltimoNome" => $this->input->post("ultimonome", true),
+            "DataNascimento" => $this->input->post("datanascimento", true),
+            "Localizacao" => $this->input->post("localizacao", true),
+            "Preferencias" => $this->input->post("preferencias", true)
         );
 
         if ($this->Authentication_model->signup_cliente($data)) {
@@ -282,8 +282,8 @@ class Authentication extends CI_Controller
     public function signin_cliente()
     {
         $data = array(
-            "Email" => $this->input->post("email"),
-            "Password" => $this->input->post("password")
+            "Email" => $this->input->post("email", true),
+            "Password" => $this->input->post("password", true)
         );
 
         $result = $this->Authentication_model->signin_cliente($data);
@@ -338,7 +338,7 @@ class Authentication extends CI_Controller
             $password[] = $alphabet[$n];
         }
         $data = array(
-            "Email" => $this->input->post("email"),
+            "Email" => $this->input->post("email", true),
             "Password" => implode($password)
         );
         if (!$this->Authentication_model->recoverPassword_cliente($data)) {
@@ -366,7 +366,7 @@ class Authentication extends CI_Controller
     {
         $data = array(
             "Email" => $this->session->userdata("Email"),
-            "Password" => $this->input->post("password")
+            "Password" => $this->input->post("password", true)
         );
 
         if ($this->Authentication_model->updatePassword_cliente($data)) {
@@ -410,7 +410,7 @@ class Authentication extends CI_Controller
                 $password[] = $alphabet[$n];
             }
             $data = array(
-                "Email" => $this->input->post("email"),
+                "Email" => $this->input->post("email", true),
                 "Password" => implode($password)
             );
             if (!$this->Authentication_model->recoverPassword($data)) {
@@ -458,7 +458,7 @@ class Authentication extends CI_Controller
         } else {
             $data = array(
                 "Email" => $this->session->userdata("Email"),
-                "Password" => $this->input->post("password")
+                "Password" => $this->input->post("password", true)
             );
 
             if ($this->Authentication_model->updatePassword($data)) {

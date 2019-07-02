@@ -93,11 +93,23 @@ $route['api/cliente/(:num)/cartao/(:num)/instanciacampanha/(:num)']['get'] = 'ap
 // Empresas
 $route['api/empresa']['post'] = 'api/novaEmpresa';
 $route['api/empresa/(:num)']['post'] = 'api/alterarEmpresa/$1';
+$route['api/empresa/(:num)/rating']['post'] = 'api/alterarRatingEmpresa/$1';
 $route['api/empresa/(:num)/campanha']['post'] = 'api/novaCampanha/$1';
 $route['api/empresa/(:num)/campanha/(:num)/instanciacampanha/(:num)']['post'] = 'api/alterarInstanciaCampanhaEmpresa/$1/$2/$3';
 $route['api/empresa/(:num)/colaborador']['post'] = 'api/novoColaboradorEmpresa/$1';
+
+// Clientes
+$route['api/cliente']['post'] = 'api/novoCliente';
+$route['api/cliente/(:num)']['post'] = 'api/alterarCliente/$1';
+$route['api/cliente/(:num)/rating']['post'] = 'api/alterarRatingCliente/$1';
+$route['api/cliente/(:num)/cartao']['post'] = 'api/novoCartaoCliente/$1';
 
 /* API DELETE's */
 // Empresas
 $route['api/empresa/(:num)/colaborador/(:any)']['delete'] = 'api/eliminarColaboradorEmpresa/$1/$2';
 $route['api/empresa/(:num)']['delete'] = 'api/eliminarEmpresa/$1';
+
+// Clientes
+$route['api/cliente/(:num)']['delete'] = 'api/apagarCliente/$1';
+$route['api/cliente/(:num)/rating']['delete'] = 'api/apagarRatingCliente/$1';
+$route['api/cliente/(:num)/cartao/(:num)']['delete'] = 'api/apagarCartaoCliente/$1/$2';
