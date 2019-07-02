@@ -23,12 +23,11 @@ const getEmpresa = async () => {
 }
 
 const postEmpresa = async (formData) => {
-    const response = await fetch(`https://mycards.dsprojects.pt/api/empresa/${idEmpresa}`, {
+    const response = await fetch(`https://mycards.dsprojects.pt/api/empresa/${idEmpresa}/colaborador`, {
         method: "POST",
         body: formData
     });
     const data = response.json();
-    console.log(data);
 }
 
 const getColaboradores = async () => {
