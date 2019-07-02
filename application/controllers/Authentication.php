@@ -248,14 +248,15 @@ class Authentication extends CI_Controller
             "PrimeiroNome" => $this->input->post("primeironome"),
             "UltimoNome" => $this->input->post("ultimonome"),
             "DataNascimento" => $this->input->post("datanascimento"),
-            "Localizacao" => $this->input->post("localizacao")
+            "Localizacao" => $this->input->post("localizacao"),
+            "Preferencias" => $this->input->post("preferencias")
         );
 
         if ($this->Authentication_model->signup_cliente($data)) {
             if ($this->sendEmail(array(
                 "Email" => $data["Email"],
                 "Subject" => "Bem vindo ao MyCards",
-                "Message" => "{$data["Nome"]},\nObrigado por se registar no MyCards.\nEstamos contentes com a nossa nova parceria.\nAs suas informações:\n - Nome: {$data['Nome']}\nPara ativar a sua conta, clique neste link: ".base_url()."verify/".md5($data["Email"])
+                "Message" => "{$data["Nome"]},\nObrigado por se registar no MyCards.\nEstamos contentes com a nossa nova parceria.\nAs suas informações:\n - Nome: {$data['Nome']}\nPara ativar a sua conta, clique neste link: ".base_url()."activate/".md5($data["Email"])
             ))) {
                 $data = array(
                     "status" => "true",
@@ -297,7 +298,7 @@ class Authentication extends CI_Controller
             if ($this->sendEmail(array(
                 "Email" => $data["Email"],
                 "Subject" => "Verificação de conta",
-                "Message" => "No seguimento da sua tentativa de acesso, para ativar a sua conta, clique neste link: ".base_url()."verify/".md5($data["Email"])
+                "Message" => "No seguimento da sua tentativa de acesso, para ativar a sua conta, clique neste link: ".base_url()."activate/".md5($data["Email"])
             ))) {
                 $data = array(
                 "status" => "false",

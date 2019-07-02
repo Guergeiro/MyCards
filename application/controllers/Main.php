@@ -25,9 +25,9 @@ class Main extends CI_Controller
             case "criarCampanha":
             case "listarCampanha":
             case "ativarCampanha":
-                if (!$this->session->userdata("Email") || ($this->session->userdata("TipoEmpresa") == 0)) {
+                if (!$this->session->userdata("Email")) {
                     redirect("signin");
-                } elseif (!($this->session->userdata("Dono") == "0" || $this->session->userdata("Dono") == "1")) {
+                } elseif (!($this->session->userdata("Dono") == "0" || $this->session->userdata("Dono") == "1") || ($this->session->userdata("TipoEmpresa") == "0")) {
                     redirect("perfil");
                 } else {
                     $this->load->view("pages/{$page}");
@@ -35,7 +35,6 @@ class Main extends CI_Controller
                 break;
             case "signin":
             case "signup":
-            case "recoverPassword":
                 if ($this->session->userdata("Email")) {
                     redirect("dashboard");
                 } else {
@@ -45,16 +44,16 @@ class Main extends CI_Controller
             case "definicoesEmpresa":
             case "visualizarEmpresa":
             case "comprar":
-                if (!$this->session->userdata("Email") || ($this->session->userdata("TipoEmpresa") == 0)) {
+                if (!$this->session->userdata("Email")) {
                     redirect("signin");
-                } elseif ($this->session->userdata("Dono") != "1") {
+                } elseif ($this->session->userdata("Dono") != "1" || ($this->session->userdata("TipoEmpresa") == "0")) {
                     redirect("perfil");
                 } else {
                     $this->load->view("pages/{$page}");
                 }
                 break;
             case "perfil":
-                if (!$this->session->userdata("Email") || ($this->session->userdata("TipoEmpresa") == 0)) {
+                if (!$this->session->userdata("Email")) {
                     redirect("signin");
                 } else {
                     $this->load->view("pages/perfil");
@@ -70,9 +69,9 @@ class Main extends CI_Controller
             show_404();
         }
 
-        if (!$this->session->userdata("Email") || ($this->session->userdata("TipoEmpresa") == 0)) {
+        if (!$this->session->userdata("Email")) {
             redirect("signin");
-        } elseif (!($this->session->userdata("Dono") == "0" || $this->session->userdata("Dono") == "1")) {
+        } elseif (!($this->session->userdata("Dono") == "0" || $this->session->userdata("Dono") == "1") || ($this->session->userdata("TipoEmpresa") == "0")) {
             redirect("perfil");
         }
 
