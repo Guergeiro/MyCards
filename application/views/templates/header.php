@@ -2,7 +2,7 @@
 <html>
 
 <head data-session='<?php echo json_encode(array(
-	"ID_Empresa" => $this->session->userdata("ID_Empresa")
+    "ID_Empresa" => $this->session->userdata("ID_Empresa")
 )); ?>'>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -105,7 +105,7 @@
         <i class="fas fa-chart-area fa-fw"></i> Dashboard
       </a>
       <?php if ($this->session->userdata("Dono") == "1"): ?>
-      <a class="list-group-item bg-transparent rounded-0 border-0 p-3 <?php if (strpos($this->uri->segment(1, 0), "Empresa") !== FALSE) : ?>active<?php endif; ?>"
+      <a class="list-group-item bg-transparent rounded-0 border-0 p-3 <?php if (strpos($this->uri->segment(1, 0), "Empresa") !== false) : ?>active<?php endif; ?>"
         role="button" data-toggle="collapse" data-target="#empresa">
         <i class="fas fa-building fa-fw"></i> Empresa
         <i class="fas fa-chevron-down float-right fa-fw"></i>
@@ -129,7 +129,7 @@
         href="<?php echo base_url("clientes"); ?>">
         <i class="fas fa-users fa-fw"></i> Clientes
       </a>
-      <a class="list-group-item bg-transparent rounded-0 border-0 p-3 <?php if (strpos($this->uri->segment(1, 0), "Campanha") !== FALSE) : ?>active<?php endif; ?>"
+      <a class="list-group-item bg-transparent rounded-0 border-0 p-3 <?php if (strpos($this->uri->segment(1, 0), "Campanha") !== false) : ?>active<?php endif; ?>"
         role="button" data-toggle="collapse" data-target="#campanhas">
         <i class="fas fa-bullhorn fa-fw"></i> Campanhas
         <i class="fas fa-chevron-down float-right fa-fw"></i>

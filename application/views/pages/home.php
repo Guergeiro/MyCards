@@ -113,7 +113,7 @@
               <div class="view overlay">
                 <img class="card-img-top" src="<?php echo base_url("assets/imgs/home/level1.jpg"); ?>"
                   alt="Card image cap">
-                <a href="<?php echo base_url("comprar/#1");?>">
+                <a href="<?php echo base_url("comprar#1");?>">
                   <div class="mask rgba-white-strong d-flex align-items-center justify-content-center">
                     <h3>Básico</h3>
                   </div>
@@ -121,8 +121,8 @@
               </div>
               <div class="card-header">
                 <small>Desde</small>
-                <h1 class="text-primary">25&euro;</h1>
-                <small>/mês</small>
+                <h1 class="text-primary">Gratuíto</h1>
+                <span>&nbsp;</span>
               </div>
               <div class="card-body">
                 <h4 class="card-title">Inclui</h4>
@@ -142,7 +142,7 @@
                 </p>
                 <p class="card-text text-danger">Estatísticas por Campanha <i class="far fa-times-circle"></i>
                 </p>
-                <a href="<?php echo base_url("comprar/#1");?>" class="btn btn-primary">Comprar</a>
+                <a href="<?php echo base_url("comprar#1");?>" class="btn btn-primary">Comprar</a>
               </div>
             </div>
           </div>
@@ -151,7 +151,7 @@
               <div class="view overlay">
                 <img class="card-img-top" src="<?php echo base_url("assets/imgs/home/level2.jpg"); ?>"
                   alt="Card image cap">
-                <a href="<?php echo base_url("comprar/#2");?>">
+                <a href="<?php echo base_url("comprar#2");?>">
                   <div class="mask rgba-white-strong d-flex align-items-center justify-content-center">
                     <h3>Intermédio</h3>
                   </div>
@@ -180,7 +180,7 @@
                 </p>
                 <p class="card-text text-danger">Estatísticas por Campanha <i class="far fa-times-circle"></i>
                 </p>
-                <a href="<?php echo base_url("comprar/#2");?>" class="btn btn-primary">Comprar</a>
+                <a href="<?php echo base_url("comprar#2");?>" class="btn btn-primary">Comprar</a>
               </div>
             </div>
           </div>
@@ -189,7 +189,7 @@
               <div class="view overlay">
                 <img class="card-img-top" src="<?php echo base_url("assets/imgs/home/level3.jpg"); ?>"
                   alt="Card image cap">
-                <a href="<?php echo base_url("comprar/#3");?>">
+                <a href="<?php echo base_url("comprar#3");?>">
                   <div class="mask rgba-white-strong d-flex align-items-center justify-content-center">
                     <h3>Profissional</h3>
                   </div>
@@ -218,7 +218,7 @@
                 </p>
                 <p class="card-text text-success">Estatísticas por Campanha <i class="far fa-check-circle"></i>
                 </p>
-                <a href="<?php echo base_url("comprar/#3");?>" class="btn btn-primary">Comprar</a>
+                <a href="<?php echo base_url("comprar#3");?>" class="btn btn-primary">Comprar</a>
               </div>
             </div>
           </div>
@@ -260,7 +260,7 @@
         <div class="col-md-12">
           <div class="md-form">
             <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea"></textarea>
-            <label for="message">Escreve aqui a sua mensagem</label>
+            <label for="message">Escreva aqui a sua mensagem</label>
           </div>
         </div>
         <div class="col-12 text-center text-md-left">

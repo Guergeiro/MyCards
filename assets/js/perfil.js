@@ -1,4 +1,4 @@
-const idEmpresa = 1;
+const idEmpresa = JSON.parse(document.querySelector("head").getAttribute("data-session")["ID_Empresa"]);
 
 document.querySelector("#criarDono").addEventListener("click", function () {
     let okay = true;
