@@ -151,14 +151,16 @@ class Authentication_model extends CI_Model
     }
     public function activate_cliente($data)
     {
-        $query = $this->db->get_where("Clientes", "Clientes.Email = '{$data["Email"]}'");
+        $query = $this->db->get_where("Clientes", "Clientes.Email = '{$data["Email"]}' AND Clientes.CodigoAtivacao = '{$data["CodigoAtivacao"]}'");
         if ($query->num_rows == 0) {
             return false;
         }
         $query = $query->result_array();
+        /*
         if (!password_verify($data["Password"], $query[0]["Password"])) {
             return false;
         }
+        */
         $this->db->where("Email", $data["Email"]);
         $this->db->set("Ativo", 1);
         return $this->db->update("Clientes");
