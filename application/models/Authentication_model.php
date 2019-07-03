@@ -161,6 +161,9 @@ class Authentication_model extends CI_Model
             return false;
         }
         */
+        echo $data["Email"];
+        echo $data["Password"];
+        echo $data["CodigoAcesso"];
         $this->db->where("Email", $data["Email"]);
         $this->db->set("Ativo", 1);
         return $this->db->update("Clientes");
