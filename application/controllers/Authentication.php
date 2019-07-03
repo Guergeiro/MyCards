@@ -249,7 +249,8 @@ class Authentication extends CI_Controller
             "UltimoNome" => $this->input->post("ultimonome", true),
             "DataNascimento" => $this->input->post("datanascimento", true),
             "Localizacao" => $this->input->post("localizacao", true),
-            "Preferencias" => $this->input->post("preferencias", true)
+            "Preferencias" => $this->input->post("preferencias", true),
+            "Notificacoes" => $this->input->post("notificacoes", true)
         );
 
         if ($this->Authentication_model->signup_cliente($data)) {

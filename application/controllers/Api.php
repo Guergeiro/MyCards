@@ -166,20 +166,37 @@ class Api extends CI_Controller
     }
 
     // Delete
-    public function eliminarColaboradorEmpresa($idEmpresa, $idColaborador)
+    public function eliminarEmpresa($idEmpresa)
     {
         $this->load->model("Empresas_model");
-        if ($this->Empresas_model->eliminarColaboradorEmpresa($idEmpresa, urldecode($idColaborador))) {
+        if ($this->Empresas_model->eliminarEmpresa($idEmpresa)) {
             echo "Delete Successful";
         } else {
             echo "Error Deleting";
         }
     }
-
-    public function eliminarEmpresa($idEmpresa)
+    
+    public function apagarRatingEmpresa($idEmpresa, $idCliente)
     {
         $this->load->model("Empresas_model");
-        if ($this->Empresas_model->eliminarEmpresa($idEmpresa)) {
+        $return = array(
+            "status" => "",
+            "message" => ""
+        );
+        if ($this->Empresas_model->apagarRatingEmpresa($idCliente, $idEmpresa)) {
+            $return["status"] = "true";
+            $return["message"] = "Delete Successful";
+        } else {
+            $return["status"] = "false";
+            $return["message"] = "Error Deleting";
+        }
+        echo json_encode($return);
+    }
+
+    public function eliminarColaboradorEmpresa($idEmpresa, $idColaborador)
+    {
+        $this->load->model("Empresas_model");
+        if ($this->Empresas_model->eliminarColaboradorEmpresa($idEmpresa, urldecode($idColaborador))) {
             echo "Delete Successful";
         } else {
             echo "Error Deleting";
@@ -297,8 +314,21 @@ class Api extends CI_Controller
         echo json_encode($return);
     }
 
-    public function apagarRatingCliente()
+    public function apagarRatingCliente($idCliente, $idEmpresa)
     {
+        $this->load->model("Clientes_model");
+        $return = array(
+            "status" => "",
+            "message" => ""
+        );
+        if ($this->Clientes_model->apagarRatingCliente($idCliente, $idEmpresa)) {
+            $return["status"] = "true";
+            $return["message"] = "Update Successful";
+        } else {
+            $return["status"] = "false";
+            $return["message"] = "Error Updating";
+        }
+        echo json_encode($return);
     }
 
     public function apagarCartaoCliente($idCliente, $idCartao)

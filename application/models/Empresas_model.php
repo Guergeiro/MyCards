@@ -112,13 +112,18 @@ class Empresas_model extends CI_Model
 
 
     // Delete
-    public function eliminarColaboradorEmpresa($idEmpresa, $idColaborador)
-    {
-        return $this->db->delete("Colaboradores", "Colaboradores.ID_Empresa = {$idEmpresa} AND Colaboradores.Nome = '{$idColaborador}'");
-    }
-
     public function eliminarEmpresa($idEmpresa)
     {
         return $this->db->delete("Empresas", "Empresas.ID_Empresa = {$idEmpresa}");
+    }
+
+    public function apagarRatingEmpresa($idEmpresa, $idCliente)
+    {
+        return $this->db->delete("RatingEmpresa", "RatingEmpresa.ID_Empresa = {$idEmpresa} AND RatingEmpresa.ID_Cliente = {$idCliente}");
+    }
+
+    public function eliminarColaboradorEmpresa($idEmpresa, $idColaborador)
+    {
+        return $this->db->delete("Colaboradores", "Colaboradores.ID_Empresa = {$idEmpresa} AND Colaboradores.Nome = '{$idColaborador}'");
     }
 }

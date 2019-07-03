@@ -82,6 +82,11 @@ class Clientes_model extends CI_Model
         return $this->db->delete("Clientes", "Clientes.ID_Cliente = {$idCliente}");
     }
 
+    public function apagarRatingCliente($idCliente, $idEmpresa)
+    {
+        return $this->db->delete("RatingCliente", "RatingCliente.ID_Cliente = {$idCliente} AND RatingCliente.ID_Empresa = {$idEmpresa}");
+    }
+
     public function apagarCartaoCliente($idCliente, $idCartao)
     {
         return $this->db->delete("Cartoes", "Cartoes.ID_Cliente = {$idCliente} AND Cartoes.ID_Cartao = {$idCartao}");
