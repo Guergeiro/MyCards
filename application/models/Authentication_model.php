@@ -151,7 +151,7 @@ class Authentication_model extends CI_Model
     }
     public function activate_cliente($data)
     {
-        $query = $this->db->get_where("Clientes", "Clientes.Email = '{$data["Email"]}' AND Clientes.CodigoAtivacao = {$data["CodigoAtivacao"]}");
+        $query = $this->db->get_where("Clientes", "Clientes.Email = '{$data["Email"]}' AND Clientes.CodigoAtivacao = '{$data["CodigoAtivacao"]}'");
         if ($query->num_rows == 0) {
             return false;
         }
