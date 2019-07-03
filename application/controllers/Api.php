@@ -139,7 +139,10 @@ class Api extends CI_Controller
     public function alterarInstanciaCampanhaEmpresa($idEmpresa, $idCampanha, $idCartao)
     {
         $this->load->model("Empresas_model");
-        $data = $this->input->post(null, true);
+        $data = array(
+            "Notificacao" => 0,
+            "Utilizado" => $this->input->post("utilizado", true)
+        );
         if ($this->Empresas_model->alterarInstanciaCampanhaEmpresa($idEmpresa, $idCampanha, $idCartao, $data)) {
             echo "Update Successful";
         } else {
