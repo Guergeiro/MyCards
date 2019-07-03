@@ -53,15 +53,23 @@
 			<div class="col-12 col-md-8 offset-md-2">
 				<div class="md-form md-outline">
 					<i class="far fa-fw fa-closed-captioning prefix"></i>
-					<input type="number" id="nif" name="nif" class="form-control">
+					<input type="number" id="nif" name="nif" class="form-control" min="100000000" max="999999999">
 					<label for="nif">NIF</label>
+					<div class="form-text invalid-tooltip"></div>
+				</div>
+			</div>
+            <div class="col-12 col-md-8 offset-md-2">
+				<div class="md-form md-outline">
+					<i class="fas fa-palette prefix fa-fw"></i>
+					<input type="text" id="cor" name="cor" class="form-control">
+					<label for="cor">Cor</label>
 					<div class="form-text invalid-tooltip"></div>
 				</div>
 			</div>
 			<div class="col-12 col-md-8 offset-md-2">
 				<div class="md-form md-outline">
 					<select id="areainteresse" name="areainteresse" class="custom-select">
-						<option disabled selected>Área de Interesse</option>
+						<option value="null" disabled selected>Área de Interesse</option>
 						<option value="agricultura">Agricultura</option>
 						<option value="ciencia-tecnologia">Ciência e Tecnologia</option>
 						<option value="desporto">Desporto</option>
@@ -77,7 +85,7 @@
 			<div class="col-12 col-md-8 offset-md-2">
 				<div class="md-form md-outline">
 					<select id="localizacao" name="localizacao" class="custom-select">
-						<option disabled selected>Distrito</option>
+						<option value="null" disabled selected>Distrito</option>
 					</select>
 					<div class="form-text invalid-tooltip"></div>
 				</div>

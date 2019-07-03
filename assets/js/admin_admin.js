@@ -3,7 +3,9 @@ const getEmpresas = async () => {
     return await response.json();
 }
 
-const checkYear;
+const checkYear = (year, datasets) => {
+
+}
 
 const processMonths = (year) => {
     let months = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
