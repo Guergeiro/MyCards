@@ -250,14 +250,15 @@ class Authentication extends CI_Controller
             "DataNascimento" => $this->input->post("datanascimento", true),
             "Localizacao" => $this->input->post("localizacao", true),
             "Preferencias" => $this->input->post("preferencias", true),
-            "Notificacoes" => $this->input->post("notificacoes", true)
+            "Notificacoes" => $this->input->post("notificacoes", true),
+            "CodigoAtivacao" => $this->generateRandomChars(5)
         );
 
         if ($this->Authentication_model->signup_cliente($data)) {
             if ($this->sendEmail(array(
                 "Email" => $data["Email"],
                 "Subject" => "Bem vindo ao MyCards",
-                "Message" => "{$data["PrimeiroNome"]} {$data["UltimoNome"]},\nObrigado por se registar no MyCards.\nEstamos contentes com a nossa nova parceria.\nAs suas informações:\n - Nome: {$data['PrimeiroNome']} {$data["UltimoNome"]}\nPara ativar a sua conta, clique neste link: ".base_url()."activate/".md5($data["Email"])
+                "Message" => "{$data["PrimeiroNome"]} {$data["UltimoNome"]},\nObrigado por se registar no MyCards.\nEstamos contentes com a nossa nova parceria.\nAs suas informações:\n - Nome: {$data['PrimeiroNome']} {$data["UltimoNome"]}\nPara ativar a sua conta, utilize este código: {$data["CodigoAtivacao"]}"
             ))) {
                 $data = array(
                     "status" => "true",
@@ -282,12 +283,12 @@ class Authentication extends CI_Controller
 
     public function signin_cliente()
     {
-        $data = array(
+        $info = array(
             "Email" => $this->input->post("email", true),
             "Password" => $this->input->post("password", true)
         );
 
-        $result = $this->Authentication_model->signin_cliente($data);
+        $result = $this->Authentication_model->signin_cliente($info);
 
         if ($result == "email") {
             $data = array(
@@ -296,11 +297,13 @@ class Authentication extends CI_Controller
             );
             echo json_encode($data);
         } elseif ($result == "ativo") {
+            $info["CodigoAtivacao"] = $this->generateRandomChars(5);
             if ($this->sendEmail(array(
                 "Email" => $data["Email"],
                 "Subject" => "Verificação de conta",
-                "Message" => "No seguimento da sua tentativa de acesso, para ativar a sua conta, clique neste link: ".base_url()."activate/".md5($data["Email"])
+                "Message" => "No seguimento da sua tentativa de acesso, para ativar a sua conta, utilize este código: {$info["CodigoAtivacao"]}"
             ))) {
+                $this->Authentication_model->codigoCliente($data);
                 $data = array(
                 "status" => "false",
                 "message" => "Conta não ativa. Reenviado email de confirmação."
@@ -331,16 +334,9 @@ class Authentication extends CI_Controller
 
     public function recoverPassword_cliente()
     {
-        $alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-        $password = array();
-        $alpha_length = strlen($alphabet) - 1;
-        for ($i = 0; $i < 16; $i++) {
-            $n = mt_rand(0, $alpha_length);
-            $password[] = $alphabet[$n];
-        }
         $data = array(
             "Email" => $this->input->post("email", true),
-            "Password" => implode($password)
+            "Password" => $this->generateRandomChars(16)
         );
         if (!$this->Authentication_model->recoverPassword_cliente($data)) {
             $data = array(
@@ -403,16 +399,9 @@ class Authentication extends CI_Controller
         if (!($this->form_validation->run())) {
             $this->session->set_flashdata("incorrectFlashData", "O Email não se encontra na base de dados.");
         } else {
-            $alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-            $password = array();
-            $alpha_length = strlen($alphabet) - 1;
-            for ($i = 0; $i < 16; $i++) {
-                $n = mt_rand(0, $alpha_length);
-                $password[] = $alphabet[$n];
-            }
             $data = array(
                 "Email" => $this->input->post("email", true),
-                "Password" => implode($password)
+                "Password" => $this->generateRandomChars(16)
             );
             if (!$this->Authentication_model->recoverPassword($data)) {
                 $this->session->set_flashdata("incorrectFlashData", "O Email não se encontra na base de dados.");
@@ -481,13 +470,37 @@ class Authentication extends CI_Controller
         redirect("signin");
     }
 
-    public function activate($md5Email)
+    public function activate_cliente()
     {
-        if ($this->Authentication_model->activate($md5Email)) {
-            echo "Conta ativada com sucesso. Pode fechar este separador.";
+        $data = array(
+            "Email" => $this->input->post("email", true),
+            "Password" => $this->input->post("password", true),
+            "CodigoAcesso" => $this->input->post("codigoacesso", true)
+        );
+        $return = array(
+            "status" => "",
+            "message" => ""
+        );
+        if ($this->Authentication_model->activate_cliente($data)) {
+            $return["status"] = "true";
+            $return["message"] = "Conta ativada com sucesso.";
         } else {
-            echo "Ocorreu um erro ao ativar a sua conta.";
+            $return["status"] = "false";
+            $return["message"] = "Ocorreu um erro ao ativar a sua conta";
         }
+        echo json_encode($return);
+    }
+
+    private function generateRandomChars($tamanho)
+    {
+        $alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        $password = array();
+        $alpha_length = strlen($alphabet) - 1;
+        for ($i = 0; $i < $tamanho; $i++) {
+            $n = mt_rand(0, $alpha_length);
+            $password[] = $alphabet[$n];
+        }
+        return implode($password);
     }
 
     private function sendEmail($data)
