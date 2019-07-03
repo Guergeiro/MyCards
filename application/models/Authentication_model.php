@@ -61,6 +61,10 @@ class Authentication_model extends CI_Model
 
     public function signup_cliente($data)
     {
+        $query = $this->db->get_where("Clientes", "Email = '{$data['Email']}'");
+        if ($query->num_rows() != 0) {
+            return false;
+        }
         $data["Password"] = password_hash($data["Password"], PASSWORD_DEFAULT);
         return $this->db->insert("Clientes", $data);
     }
