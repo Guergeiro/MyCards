@@ -57,7 +57,6 @@ $route['admin'] = 'main/admin';
 $route['(:any)'] = 'main/view/$1';
 $route['infoCampanha/(:num)'] = 'main/infoCampanha/$1';
 
-$route['activate/(:any)'] = 'authentication/activate/$1';
 $route['verify/(:any)'] = 'authentication/verify/$1';
 
 /* API GET's */
