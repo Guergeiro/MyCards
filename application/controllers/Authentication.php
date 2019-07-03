@@ -257,7 +257,7 @@ class Authentication extends CI_Controller
             if ($this->sendEmail(array(
                 "Email" => $data["Email"],
                 "Subject" => "Bem vindo ao MyCards",
-                "Message" => "{$data["Nome"]},\nObrigado por se registar no MyCards.\nEstamos contentes com a nossa nova parceria.\nAs suas informações:\n - Nome: {$data['Nome']}\nPara ativar a sua conta, clique neste link: ".base_url()."activate/".md5($data["Email"])
+                "Message" => "{$data["PrimeiroNome"]} {$data["UltimoNome"]},\nObrigado por se registar no MyCards.\nEstamos contentes com a nossa nova parceria.\nAs suas informações:\n - Nome: {$data['PrimeiroNome']} {$data["UltimoNome"]}\nPara ativar a sua conta, clique neste link: ".base_url()."activate/".md5($data["Email"])
             ))) {
                 $data = array(
                     "status" => "true",
