@@ -97,7 +97,7 @@ class Authentication_model extends CI_Model
             return false;
         }
         $this->db->where("Email", $data["Email"]);
-        $this->db->set("CodigoAcesso", $data["CodigoAcesso"]);
+        $this->db->set("CodigoAtivacao", $data["CodigoAtivacao"]);
         return $this->db->update("Clientes");
     }
 
@@ -151,7 +151,7 @@ class Authentication_model extends CI_Model
     }
     public function activate_cliente($data)
     {
-        $query = $this->db->get_where("Clientes", "Clientes.Email = '{$data["Email"]}' AND Clientes.CodigoAcesso = {$data["CodigoAcesso"]}");
+        $query = $this->db->get_where("Clientes", "Clientes.Email = '{$data["Email"]}' AND Clientes.CodigoAtivacao = {$data["CodigoAtivacao"]}");
         if ($query->num_rows == 0) {
             return false;
         }

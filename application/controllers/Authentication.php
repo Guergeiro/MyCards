@@ -475,7 +475,7 @@ class Authentication extends CI_Controller
         $data = array(
             "Email" => $this->input->post("email", true),
             "Password" => $this->input->post("password", true),
-            "CodigoAcesso" => $this->input->post("codigoacesso", true)
+            "CodigoAtivacao" => $this->input->post("codigoativacao", true)
         );
         $return = array(
             "status" => "",
