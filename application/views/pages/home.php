@@ -102,7 +102,7 @@
     </div>
   </section>
 
-  <section class="bg-primary" id="premium">
+  <section class="bg-white" id="premium">
     <div class="container p-4">
       <h3 class="h3 text-center text-light">Premium</h3>
       <p></p>
