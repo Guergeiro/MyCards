@@ -209,7 +209,10 @@ class Empresas_model extends CI_Model
             ));
             break;
         }
-        return $this->db->update("InstanciaCampanha");
+        if ($this->db->update("InstanciaCampanha")) {
+            return "true";
+        }
+        return "false";
     }
 
     public function alterarEmpresa($idEmpresa, $data)

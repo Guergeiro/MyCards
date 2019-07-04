@@ -170,7 +170,7 @@ class Api extends CI_Controller
             $return["status"] = "false";
             $return["message"] = "Ocorreu um erro. Tente mais tarde.";
             break;
-            default:
+            case "true":
             $return["status"] = "true";
             $return["message"] = "Campanha utilizada com sucesso.";
         }
@@ -310,7 +310,9 @@ class Api extends CI_Controller
     public function novoCartaoCliente($idCliente)
     {
         $this->load->model("Clientes_model");
-        $data = $this->input->post(null, true);
+        $data = array(
+            "ID_Empresa" => $this->input->post("idempresa", true)
+        );
         $return = array(
             "status" => "",
             "message" => ""
