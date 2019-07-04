@@ -15,7 +15,7 @@ $(document).ready(function() {
                     data.forEach(da => {
                         document.querySelector("table tbody").innerHTML +=
                             '<tr data-url="' +
-                            da["ID_Cliente"] +
+                            cartao["ID_Cartao"] +
                             '"><th scope="row">' +
                             da["ID_Cliente"] +
                             "</th><td>" +
