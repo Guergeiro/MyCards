@@ -7,7 +7,7 @@ class Empresas_model extends CI_Model
     public function informacoesEmpresas()
     {
         $this->db->select("*");
-        $query = $this->db->get("Empresas");
+        $query = $this->db->get("Empresas", "Empresas.Ativo = 1 AND Empresas.TipoEmpresa != 0");
         return $query->result_array();
     }
 
