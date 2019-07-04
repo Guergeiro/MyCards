@@ -17,7 +17,7 @@ $(document).ready(function() {
                             '<tr data-url="' +
                             cartao["ID_Cartao"] +
                             '"><th scope="row">' +
-                            da["ID_Cliente"] +
+                            cartao["ID_Cartao"] +
                             "</th><td>" +
                             da["PrimeiroNome"] +
                             "</td><td>" +
