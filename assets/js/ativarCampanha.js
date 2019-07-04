@@ -76,22 +76,42 @@ setInterval(function () {
     });
 }, 5000);
 */
-function contains(element) {
-    let estado = false;
+const criarElemento = (notificacao) => {
+    let elementParent = document.querySelector(".card-body .row");
 
-    if (element["Notificacao"] == 0) {
-        estado = true;
-    }
+    let oldinnerHtml = document.querySelector(".card-body .row").innerHTML;
 
-    if (notificacoes.length > 0) {
-        notificacoes.forEach(objElement => {
-            if (objElement["ID_Cartao"] == element["ID_Cartao"] && objElement["ID_Campanha"] == element["ID_Campanha"]) {
-                estado = true;
-            }
+    elementParent.innerHTML = `<div class="col-sm-6 col-md-4"><div class="toast mx-auto my-1" role="alert" aria-live="assertive" aria-atomic="true" data-delay="60000"><div class="toast-header"><strong class="mr-auto">Campanha: ${notificacao["ID_Campanha"]}</strong><button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close"><span aria-hidden="true"><i class="fas fa-times"></i></span></button></div><div class="toast-body text-center" data-idcampanha="${notificacao["ID_Campanha"]}" data-idcartao="${notificacao["ID_Cartao"]}"><span class="id-cliente">Cartão: ${notificacao["ID_Cartao"]}</span><span>Número de utilizações: ${notificacao["Utilizado"]}</span><hr>Clique para utilizar campanha</span></div></div></div>`;
+    elementParent.querySelector(".toast-body").addEventListener("click", () => {
+        document.querySelector("#codigocartao").value = this.getAttribute("data-idcartao");
+    });
+    $(".toast").toast("show");
+    $(".toast").each(function () {
+        $(this).on("hidden.bs.toast", function () {
+            postNotificacao($(this).find(".toast-body").attr("data-idcampanha"), $(this).find(".toast-body").attr("data-idcartao")).then(data => {
+                console.log(data);
+            });
+            $(this).parent().remove();
         });
-    }
+    });
+    elementParent.innerHTML += oldinnerHtml;
+}
 
-    return estado;
+const novaNotificacao = (notificacao) => {
+    let nova = true;
+    notificacoes.forEach(element => {
+        if (element["ID_Campanha"] == notificacao["ID_Campanha"] && element["ID_Cartao"] == notificacao["ID_Cartao"]) {
+            nova = false;
+        }
+    });
+    return nova;
+}
+
+const apagarNotificacao = (notificacao) => {
+    let index = notificacoes.indexOf(notificacao);
+    if (index > -1) {
+        notificacoes.splice(index, 1);
+    }
 }
 
 const getCampanhas = async () => {
@@ -105,20 +125,22 @@ const getInstanciasCampanha = async (idCampanha) => {
     const data = await response.json();
     return data;
 }
-
-getCampanhas().then(campanhas => {
-    for (const campanha of campanhas) {
-        getInstanciasCampanha(campanha["ID_Campanha"]).then(instancias => {
-            for (const instancia of instancias) {
-                if (instancia["Notificacao"] == 1) {
-                    notificacoes.push(instancia);
+setInterval(() => {
+    getCampanhas().then(campanhas => {
+        for (const campanha of campanhas) {
+            getInstanciasCampanha(campanha["ID_Campanha"]).then(instancias => {
+                for (const instancia of instancias) {
+                    if (instancia["Notificacao"] == 1 && novaNotificacao(instancia)) {
+                        notificacoes.push(instancia);
+                        criarElemento(instancia);
+                    }
                 }
-            }
-        });
-    }
-});
+            });
+        }
+    });
+}, 5000);
 
-const apagarNotificacao = async (codigocampanha, codigocartao) => {
+const postNotificacao = async (codigocampanha, codigocartao) => {
     let formData = new FormData();
     formData.append("notificacao", 0);
     const response = await fetch(`https://mycards.dsprojects.pt/api/empresa/${idEmpresa}/campanha/${codigocampanha}/instanciacampanha/${codigocartao}`, {

@@ -148,11 +148,11 @@ class Api extends CI_Controller
         switch ($result) {
             case "notificacao_criada":
             $return["status"] = "true";
-            $return["status"] = "Notificação criada.";
+            $return["message"] = "Notificação criada.";
             break;
             case "notificacao_apagada":
             $return["status"] = "true";
-            $return["status"] = "Notificação apagada.";
+            $return["message"] = "Notificação apagada.";
             break;
             case "data":
             $return["status"] = "false";
