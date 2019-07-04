@@ -21,10 +21,13 @@ $(document).ready(function() {
         switch (campanhas[0].TipoCampanha) {
             case "0":
                 $(".tipo").html("Cupão");
+                break;
             case "1":
                 $(".tipo").html("Carimbos");
+                break;
             case "2":
                 $(".tipo").html("Pontos");
+                break;
         }
         $(".fimCampanha").html(campanhas[0].DataFim);
 
