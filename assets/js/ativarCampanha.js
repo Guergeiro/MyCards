@@ -133,10 +133,8 @@ document.querySelector("#ativar").addEventListener("click", (e) => {
                     break;
             }
             alert.innerHTML += `<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"><i class="fas fa-times"></i></span></button>`;
-            setTimeout((alert) => {
-                if (alert) {
-                    alert.parentNode.removeChild(alert);
-                }
+            setTimeout(() => {
+                document.querySelector(".alert").remove();
             }, 5000);
             cardBody.insertBefore(alert, cardBody.childNodes[0]);
         });
