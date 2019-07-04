@@ -31,7 +31,7 @@ $(document).ready(function() {
         }
         $(".fimCampanha").html(campanhas[0].DataFim);
 
-        $.get("https://mycards.dsprojects.pt/api/empresa/" + JSON.parse(document.querySelector("head").getAttribute("data-session"))["ID_Empresa"] + "/campanha/" + window.location.href.split("/").pop() + "/instanciascampanha", function(data) {
+        $.get("https://mycards.dsprojects.pt/api/empresa/" + JSON.parse(document.querySelector("head").getAttribute("data-session"))["ID_Empresa"] + "/campanha/" + window.location.href.split("/").pop() + "/instanciacampanha", function(data) {
             data = JSON.parse(data);
             let newData = [0, 0];
             data.forEach(info => {
