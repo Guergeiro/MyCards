@@ -139,16 +139,42 @@ class Api extends CI_Controller
     public function alterarInstanciaCampanhaEmpresa($idEmpresa, $idCampanha, $idCartao)
     {
         $this->load->model("Empresas_model");
-        $data = array(
-            "Notificacao" => 0,
-            "Utilizado" => $this->input->post("utilizado", true)
+        $data = $this->input->post(null, true);
+        $result = $this->Empresas_model->alterarInstanciaCampanhaEmpresa($idEmpresa, $idCampanha, $idCartao, $data);
+        $return = array(
+            "status" => "",
+            "message" => ""
         );
-        if ($this->Empresas_model->alterarInstanciaCampanhaEmpresa($idEmpresa, $idCampanha, $idCartao, $data)) {
-            echo "Update Successful";
-        } else {
-            echo "Error Updating";
+        switch ($result) {
+            case "notificacao_criada":
+            $return["status"] = "true";
+            $return["status"] = "Notificação criada.";
+            break;
+            case "notificacao_apagada":
+            $return["status"] = "true";
+            $return["status"] = "Notificação apagada.";
+            break;
+            case "data":
+            $return["status"] = "false";
+            $return["message"] = "A data da campanha já passou.";
+            break;
+            case "limite":
+            $return["status"] = "false";
+            $return["message"] = "Este cartão já não pode usufruir desta campanha.";
+            break;
+            case "pontos":
+            $return["status"] = "false";
+            $return["message"] = "Este cartão não possui pontos suficientes.";
+            break;
+            case false:
+            $return["status"] = "false";
+            $return["message"] = "Ocorreu um erro. Tente mais tarde.";
+            break;
+            default:
+            $return["status"] = "true";
+            $return["message"] = "Campanha utilizada com sucesso.";
         }
-        redirect("ativarCampanha");
+        echo json_encode($return);
     }
     
     public function novoColaboradorEmpresa($idEmpresa)

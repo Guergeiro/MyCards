@@ -1,4 +1,8 @@
-const notificacoes = new Array();
+let notificacoes = new Array();
+
+//const idEmpresa = JSON.parse(document.querySelector("head").getAttribute("data-session"))["ID_Empresa"];
+
+const idEmpresa = 2;
 
 let url = window.location.hash.substr(1);
 if (url.length > 0) {
@@ -9,12 +13,12 @@ if (url.length > 0) {
     document.querySelector("#codigocampanha").focus();
     document.querySelector("#valor").focus();
 }
-
-setInterval(function() {
-    $.get("https://mycards.dsprojects.pt/api/empresa/" + JSON.parse(document.querySelector("head").getAttribute("data-session"))["ID_Empresa"] + "/campanha", function(data) {
+/*
+setInterval(function () {
+    $.get("https://mycards.dsprojects.pt/api/empresa/" + JSON.parse(document.querySelector("head").getAttribute("data-session"))["ID_Empresa"] + "/campanha", function (data) {
         data = JSON.parse(data);
         data.forEach(campanha => {
-            $.get("https://mycards.dsprojects.pt/api/empresa/" + JSON.parse(document.querySelector("head").getAttribute("data-session"))["ID_Empresa"] + "/campanha/" + campanha["ID_Campanha"] + "/instanciacampanha", function(instancias) {
+            $.get("https://mycards.dsprojects.pt/api/empresa/" + JSON.parse(document.querySelector("head").getAttribute("data-session"))["ID_Empresa"] + "/campanha/" + campanha["ID_Campanha"] + "/instanciascampanha", function (instancias) {
                 instancias = JSON.parse(instancias);
                 instancias.forEach(element => {
                     if (!contains(element)) {
@@ -39,11 +43,11 @@ setInterval(function() {
                             oldinnerHtml;
 
                         $(".toast").toast("show");
-                        $(".toast").each(function() {
-                            $(this).on("hidden.bs.toast", function() {
+                        $(".toast").each(function () {
+                            $(this).on("hidden.bs.toast", function () {
                                 $.post("https://mycards.dsprojects.pt/api/empresa/" + JSON.parse($("head").attr("data-session"))["ID_Empresa"] + "/campanha/" + $(this).find(".toast-body").attr("data-idcampanha") + "/instanciacampanha/" + $(this).find(".toast-body").attr("data-idcartao"), {
                                     Notificacao: 0
-                                }).then(function() {
+                                }).then(function () {
                                     for (let i = 0; i < notificacoes.length; i++) {
                                         if (notificacoes[i]["ID_Cartao"] == $(this).find(".toast-body").attr("data-idcartao") && notificacoes[i]["ID_Campanha"] == $(this).find(".toast-body").attr("data-idcampanha")) {
                                             notificacoes.splice(i, 1);
@@ -57,7 +61,7 @@ setInterval(function() {
                         });
 
                         document.querySelectorAll(".toast-body").forEach(toast => {
-                            toast.addEventListener("click", function() {
+                            toast.addEventListener("click", function () {
                                 document.querySelector("#codigocartao").value = toast.getAttribute("data-idcartao");
                                 document.querySelector("#codigocartao").focus();
                                 document.querySelector("#codigocampanha").value = toast.getAttribute("data-idcampanha");
@@ -71,7 +75,7 @@ setInterval(function() {
         });
     });
 }, 5000);
-
+*/
 function contains(element) {
     let estado = false;
 
@@ -90,16 +94,64 @@ function contains(element) {
     return estado;
 }
 
-function validation(form) {
-    let estado = true;
+const getCampanhas = async () => {
+    const response = await fetch(`https://mycards.dsprojects.pt/api/empresa/${idEmpresa}/campanha/`);
+    const data = await response.json();
+    return data;
+}
+
+const getInstanciasCampanha = async (idCampanha) => {
+    const response = await fetch(`https://mycards.dsprojects.pt/api/empresa/${idEmpresa}/campanha/${idCampanha}/instanciacampanha`);
+    const data = await response.json();
+    return data;
+}
+
+getCampanhas().then(campanhas => {
+    for (const campanha of campanhas) {
+        getInstanciasCampanha(campanha["ID_Campanha"]).then(instancias => {
+            for (const instancia of instancias) {
+                if (instancia["Notificacao"] == 1) {
+                    notificacoes.push(instancia);
+                }
+            }
+        });
+    }
+});
+
+const apagarNotificacao = async (codigocampanha, codigocartao) => {
+    let formData = new FormData();
+    formData.append("notificacao", 0);
+    const response = await fetch(`https://mycards.dsprojects.pt/api/empresa/${idEmpresa}/campanha/${codigocampanha}/instanciacampanha/${codigocartao}`, {
+        method: "POST",
+        body: formData
+    });
+    return await response.json();
+}
+
+const ativarCampanha = async (codigocampanha, codigocartao) => {
+    let formData = new FormData();
+    formData.append("valor", document.querySelector("form input#valor").value);
+    const response = await fetch(`https://mycards.dsprojects.pt/api/empresa/${idEmpresa}/campanha/${codigocampanha}/instanciascampanha/${codigocartao}`, {
+        method: "POST",
+        body: formData
+    });
+    return await response.json();
+}
+
+document.querySelector("form #ativar").addEventListener("click", () => {
+    let estado = true,
+        form = document.querySelector("form");
     form.querySelectorAll("input").forEach(input => {
         if (input.value.trim().length == 0) {
             estado = false;
         }
     });
-
     if (estado) {
-        form.action += "/campanha/" + document.querySelector("#codigocampanha").value + "/instanciacampanha/" + document.querySelector("#codigocartao").value;
+        ativarCampanha(document.querySelector("#codigocampanha").value, document.querySelector("#codigocartao").value).then(data => {
+            switch (data["status"]) {
+                case "true":
+
+            }
+        });
     }
-    return estado;
-}
+});
