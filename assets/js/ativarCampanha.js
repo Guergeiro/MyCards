@@ -104,7 +104,7 @@ const postNotificacao = async (codigocampanha, codigocartao) => {
 const ativarCampanha = async (codigocampanha, codigocartao) => {
     let formData = new FormData();
     formData.append("valor", document.querySelector("input#valor").value);
-    const response = await fetch(`https://mycards.dsprojects.pt/api/empresa/${idEmpresa}/campanha/${codigocampanha}/instanciascampanha/${codigocartao}`, {
+    const response = await fetch(`https://mycards.dsprojects.pt/api/empresa/${idEmpresa}/campanha/${codigocampanha}/instanciacampanha/${codigocartao}`, {
         method: "POST",
         body: formData
     });
