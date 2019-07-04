@@ -98,6 +98,21 @@ class Empresas_model extends CI_Model
     // Update
     public function alterarInstanciaCampanhaEmpresa($idEmpresa, $idCampanha, $idCartao, $data)
     {
+        $query = $this->db->get_where("InstanciaCampanha", "InstanciaCampanha.ID_Campanha = {$idCampanha} AND InstanciaCampanha.ID_Cartao = {$idCartao}");
+        $query = $query->result_array();
+        $data["Utilizado"] = $query[0]["Utilizado"] + $data["Utilizado"];
+
+        $query = $this->db->get_where("Cartoes", "Cartoes.ID_Cartao = {$idCartao}");
+        $query = $query->result_array();
+        $info = array(
+            "Pontos" => $query[0]["Pontos"] + $data["Utilizado"]
+        );
+
+        $this->db->where("Cartoes.ID_Cartao = {$idCartao}");
+        $this->db->set($info);
+        $this->db->update("Cartoes");
+
+
         $this->db->where("InstanciaCampanha.ID_Campanha = {$idCampanha} AND InstanciaCampanha.ID_Cartao = {$idCartao}");
         $this->db->set($data);
         return $this->db->update("InstanciaCampanha");

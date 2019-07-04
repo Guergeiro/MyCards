@@ -94,7 +94,7 @@
 		</form>
 		<?php else: ?>
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-12">
 				<?php echo form_open("authentication/signup_admin", "class=\"form-row shadow m-2 p-4\" onsubmit=\"return validation(this);\""); ?>
 				<?php if ($this->session->flashdata("FlashMessage")): ?>
 				<?php echo $this->session->flashdata("FlashMessage") ?>
@@ -127,11 +127,23 @@
 			<div class="col-md-6">
 				<div class="row shadow m-2 p-4">
 					<div class="col-12 text-center">
-						<h3>Registos</h3>
+						<h3>Empresas</h3>
 					</div>
 					<div class="col-12">
 						<div id="chart_container">
-							<canvas id="myChart"></canvas>
+							<canvas id="myChartEmpresas"></canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+            <div class="col-md-6">
+				<div class="row shadow m-2 p-4">
+					<div class="col-12 text-center">
+						<h3>Clientes</h3>
+					</div>
+					<div class="col-12">
+						<div id="chart_container">
+							<canvas id="myChartClientes"></canvas>
 						</div>
 					</div>
 				</div>
