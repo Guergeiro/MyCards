@@ -9,7 +9,7 @@
         <thead>
           <tr id="head">
             <th scope="col">
-              #
+              ID Cartão
             </th>
             <th scope="col">
               Nome
@@ -23,6 +23,7 @@
             <th scope="col">
               Data Fidelização
             </th>
+            <th scope="col">Pontos</th>
           </tr>
         </thead>
         <tbody>
