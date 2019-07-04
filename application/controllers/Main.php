@@ -41,9 +41,9 @@ class Main extends CI_Controller
             case "criarCampanha":
             case "listarCampanha":
             case "ativarCampanha":
-                if ($this->session->userdata("Email")) {
+                if (!$this->session->userdata("Email")) {
                     redirect("signin");
-                } elseif ($this->checkPermission() != false) {
+                } elseif ($this->checkPermission() == false) {
                     redirect("perfil");
                 } else {
                     $this->load->view("pages/{$page}");
