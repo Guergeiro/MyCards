@@ -112,8 +112,6 @@ const ativarCampanha = async (codigocampanha, codigocartao) => {
 }
 
 document.querySelector("#ativar").addEventListener("click", (e) => {
-
-    console.log(e.target);
     let estado = true,
         form = e.target.parentElement.parentElement;
     form.querySelectorAll("input").forEach(input => {

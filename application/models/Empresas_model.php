@@ -151,7 +151,7 @@ class Empresas_model extends CI_Model
             $cartao = $cartao->result_array();
             $this->db->where("Cartoes.ID_Cartao = {$idCartao}");
             $this->db->set(array(
-                "Pontos" => $cartao[0]["Pontos"]+$data["Valor"]
+                "Pontos" => $cartao[0]["Pontos"]+$data["valor"]
             ));
             $this->db->update("Cartoes");
 
@@ -174,7 +174,7 @@ class Empresas_model extends CI_Model
             $cartao = $cartao->result_array();
             $this->db->where("Cartoes.ID_Cartao = {$idCartao}");
             $this->db->set(array(
-                "Pontos" => $cartao[0]["Pontos"]+$data["Valor"]
+                "Pontos" => $cartao[0]["Pontos"]+$data["valor"]
             ));
             $this->db->update("Cartoes");
 
@@ -188,16 +188,16 @@ class Empresas_model extends CI_Model
 
             break;
             case "2":
-            // Utilizar apenas se NPontos > Valor
+            // Utilizar apenas se NPontos > valor
             $cartao = $this->db->get_where("Cartoes", "Cartoes.ID_Cartao = {$idCartao}");
             $cartao = $cartao->result_array();
-            if ($cartao[0]["Pontos"] < $data["Valor"]) {
+            if ($cartao[0]["Pontos"] < $data["valor"]) {
                 // Não tem pontos
                 return "pontos";
             }
             $this->db->where("Cartoes.ID_Cartao = {$idCartao}");
             $this->db->set(array(
-                "Pontos" => $cartao[0]["Pontos"]-$data["Valor"]
+                "Pontos" => $cartao[0]["Pontos"]-$data["valor"]
             ));
             $this->db->update("Cartoes");
 
