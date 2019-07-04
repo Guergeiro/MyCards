@@ -102,9 +102,9 @@
     </div>
   </section>
 
-  <section class="bg-white" id="premium">
+  <section class="bg-light" id="premium">
     <div class="container p-4">
-      <h3 class="h3 text-center text-light">Premium</h3>
+      <h3 class="h3 text-center text-primary">Premium</h3>
       <p></p>
       <div class="row">
         <div class="card-deck text-center">
