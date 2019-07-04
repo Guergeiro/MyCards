@@ -8,8 +8,7 @@
 			<div class="row">
 			
 			</div>
-			<?php echo form_open("api/empresa/".$this->session->userdata("ID_Empresa"), "class=\"form-row\" onsubmit=\"return validation(this);\""); ?>
-
+			<form class="form-row">
 			<div class="col-md-4">
 				<div class="md-form form-lg mx-auto">
 					<input type="number" name="id_cartao" id="codigocartao" class="form-control form-control-lg">
@@ -24,12 +23,12 @@
 			</div>
 			<div class="col-md-4">
 				<div class="md-form form-lg mx-auto">
-					<input type="number" name="utilizado" id="valor" class="form-control form-control-lg">
+					<input type="number" name="valor" id="valor" class="form-control form-control-lg">
 					<label for="valor">Valor da Compra</label>
 				</div>
 			</div>
 			<div class="col-12 text-center">
-				<button type="submit" class="btn btn-primary">Ativar Campanha</button>
+				<button type="button" class="btn btn-primary" id="ativar">Ativar Campanha</button>
 			</div>
 			</form>
 		</div>
