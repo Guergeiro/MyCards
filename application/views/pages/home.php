@@ -6,8 +6,7 @@
       <li data-target="#carousel" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner h-100">
-      <video src="<?php echo base_url("assets/videos/home/animation-intro.mp4"); ?>" class="position-absolute" autoplay
-        loop muted type="video/mp4">
+      <video src="<?php echo base_url("assets/videos/home/animation-intro.mp4"); ?>" class="position-absolute" autoplay loop muted type="video/mp4">
       </video>
       <div class="carousel-item h-100 active">
         <div class="carousel-caption d-block text-md-left">
@@ -46,8 +45,7 @@
   <section class="container">
     <div class="row py-5" id="row-1">
       <div class="col-md-6">
-        <img src="<?php echo base_url("assets/imgs/home/empty-wallet.jpg"); ?>" alt="empty-wallet"
-          class="d-block w-100 shadow">
+        <img src="<?php echo base_url("assets/imgs/home/empty-wallet.jpg"); ?>" alt="empty-wallet" class="d-block w-100 shadow">
       </div>
       <div class="col-md-6">
         <h3 class="h3 mt-3">Simplifique a vida dos seus clientes</h3>
@@ -85,8 +83,7 @@
     <hr class="my-2">
     <div class="row py-5" id="row-3">
       <div class="col-md-6">
-        <img src="<?php echo base_url("assets/imgs/home/company-growth.jpg"); ?>" alt="company-growth"
-          class="d-block w-100 shadow">
+        <img src="<?php echo base_url("assets/imgs/home/company-growth.jpg"); ?>" alt="company-growth" class="d-block w-100 shadow">
       </div>
       <div class="col-md-6">
         <h3 class="h3 mt-3">Acompanhe o crescimento da sua empresa</h3>
@@ -102,18 +99,17 @@
     </div>
   </section>
 
-  <section class="" id="premium">
+  <section class="bg-primary" id="premium">
     <div class="container p-4">
-      <h3 class="h3 text-center text-primary">Premium</h3>
+      <h3 class="display-4 text-center text-white font-weight-bold">Premium</h3>
       <p></p>
       <div class="row">
         <div class="card-deck text-center">
           <div class="col-lg-4 col-md-6">
             <div class="card my-4">
               <div class="view overlay">
-                <img class="card-img-top" src="<?php echo base_url("assets/imgs/home/level1.jpg"); ?>"
-                  alt="Card image cap">
-                <a href="<?php echo base_url("comprar#1");?>">
+                <img class="card-img-top" src="<?php echo base_url("assets/imgs/home/level1.jpg"); ?>" alt="Card image cap">
+                <a href="<?php echo base_url("comprar#1"); ?>">
                   <div class="mask rgba-white-strong d-flex align-items-center justify-content-center">
                     <h3>Básico</h3>
                   </div>
@@ -130,28 +126,23 @@
                 </p>
                 <p class="card-text text-success">Cupões de Desconto Direto <i class="far fa-check-circle"></i>
                 </p>
-                <p class="card-text text-success">Cartão de Carimbos <i class="far fa-check-circle"></i>
-                </p>
                 <p class="card-text text-success">Estatísticas Gerais <i class="far fa-check-circle"></i>
-                </p>
-                <p class="card-text text-danger">Recompensas pontuais <i class="far fa-times-circle"></i>
                 </p>
                 <p class="card-text text-danger">Patamar de pontos <i class="far fa-times-circle"></i>
                 </p>
-                <p class="card-text text-danger">Estatísticas de Clientes <i class="far fa-times-circle"></i>
-                </p>
                 <p class="card-text text-danger">Estatísticas por Campanha <i class="far fa-times-circle"></i>
                 </p>
-                <a href="<?php echo base_url("comprar#1");?>" class="btn btn-primary">Comprar</a>
+                <p class="card-text text-danger">Cartão de Carimbos <i class="far fa-times-circle"></i>
+                </p>
+                <a href="<?php echo base_url("comprar#1"); ?>" class="btn btn-primary rounded-pill">Comprar</a>
               </div>
             </div>
           </div>
           <div class="col-lg-4 col-md-6">
             <div class="card my-4">
               <div class="view overlay">
-                <img class="card-img-top" src="<?php echo base_url("assets/imgs/home/level2.jpg"); ?>"
-                  alt="Card image cap">
-                <a href="<?php echo base_url("comprar#2");?>">
+                <img class="card-img-top" src="<?php echo base_url("assets/imgs/home/level2.jpg"); ?>" alt="Card image cap">
+                <a href="<?php echo base_url("comprar#2"); ?>">
                   <div class="mask rgba-white-strong d-flex align-items-center justify-content-center">
                     <h3>Intermédio</h3>
                   </div>
@@ -168,28 +159,23 @@
                 </p>
                 <p class="card-text text-success">Cupões de Desconto Direto <i class="far fa-check-circle"></i>
                 </p>
-                <p class="card-text text-success">Cartão de Carimbos <i class="far fa-check-circle"></i>
-                </p>
                 <p class="card-text text-success">Estatísticas Gerais <i class="far fa-check-circle"></i>
                 </p>
-                <p class="card-text text-success">Recompensas pontuais <i class="far fa-check-circle"></i>
+                <p class="card-text text-success">Cartão de Carimbos <i class="far fa-check-circle"></i>
                 </p>
-                <p class="card-text text-danger">Patamar de pontos <i class="far fa-times-circle"></i>
-                </p>
-                <p class="card-text text-danger">Estatísticas de Clientes <i class="far fa-times-circle"></i>
+                <p class="card-text text-success">Patamar de pontos <i class="far fa-check-circle"></i>
                 </p>
                 <p class="card-text text-danger">Estatísticas por Campanha <i class="far fa-times-circle"></i>
                 </p>
-                <a href="<?php echo base_url("comprar#2");?>" class="btn btn-primary">Comprar</a>
+                <a href="<?php echo base_url("comprar#2"); ?>" class="btn btn-primary rounded-pill">Comprar</a>
               </div>
             </div>
           </div>
           <div class="col-lg-4 col-md-12">
             <div class="card my-4">
               <div class="view overlay">
-                <img class="card-img-top" src="<?php echo base_url("assets/imgs/home/level3.jpg"); ?>"
-                  alt="Card image cap">
-                <a href="<?php echo base_url("comprar#3");?>">
+                <img class="card-img-top" src="<?php echo base_url("assets/imgs/home/level3.jpg"); ?>" alt="Card image cap">
+                <a href="<?php echo base_url("comprar#3"); ?>">
                   <div class="mask rgba-white-strong d-flex align-items-center justify-content-center">
                     <h3>Profissional</h3>
                   </div>
@@ -206,19 +192,15 @@
                 </p>
                 <p class="card-text text-success">Cupões de Desconto Direto <i class="far fa-check-circle"></i>
                 </p>
-                <p class="card-text text-success">Cartão de Carimbos <i class="far fa-check-circle"></i>
-                  <p class="card-text text-success">Estatísticas Gerais <i class="far fa-check-circle"></i>
-                  </p>
+                <p class="card-text text-success">Estatísticas Gerais <i class="far fa-check-circle"></i>
                 </p>
-                <p class="card-text text-success">Recompensas pontuais <i class="far fa-check-circle"></i>
+                <p class="card-text text-success">Cartão de Carimbos <i class="far fa-check-circle"></i>
                 </p>
                 <p class="card-text text-success">Patamar de pontos <i class="far fa-check-circle"></i>
                 </p>
-                <p class="card-text text-success">Estatísticas de Clientes <i class="far fa-check-circle"></i>
-                </p>
                 <p class="card-text text-success">Estatísticas por Campanha <i class="far fa-check-circle"></i>
                 </p>
-                <a href="<?php echo base_url("comprar#3");?>" class="btn btn-primary">Comprar</a>
+                <a href="<?php echo base_url("comprar#3"); ?>" class="btn btn-primary rounded-pill">Comprar</a>
               </div>
             </div>
           </div>
