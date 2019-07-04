@@ -19,18 +19,17 @@ $(document).ready(function() {
         $(".empresa").html(campanhas[0].Designacao);
         $(".desconto").html(campanhas[0].Valor + "%");
         switch (campanhas[0].TipoCampanha) {
-            case 0:
+            case "0":
                 $(".tipo").html("Cupão");
-            case 1:
+            case "1":
                 $(".tipo").html("Carimbos");
-            case 2:
+            case "2":
                 $(".tipo").html("Pontos");
         }
         $(".fimCampanha").html(campanhas[0].DataFim);
 
         $.get("https://mycards.dsprojects.pt/api/empresa/" + JSON.parse(document.querySelector("head").getAttribute("data-session"))["ID_Empresa"] + "/campanha/" + window.location.href.split("/").pop() + "/instanciascampanha", function(data) {
             data = JSON.parse(data);
-            console.log(data);
             let newData = [0, 0];
             data.forEach(info => {
                 if (info["Utilizado"] == 0) {
