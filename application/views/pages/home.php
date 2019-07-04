@@ -130,9 +130,9 @@
                 </p>
                 <p class="card-text text-danger">Patamar de pontos <i class="far fa-times-circle"></i>
                 </p>
-                <p class="card-text text-danger">Estatísticas por Campanha <i class="far fa-times-circle"></i>
-                </p>
                 <p class="card-text text-danger">Cartão de Carimbos <i class="far fa-times-circle"></i>
+                </p>
+                <p class="card-text text-danger">Estatísticas por Campanha <i class="far fa-times-circle"></i>
                 </p>
                 <a href="<?php echo base_url("comprar#1"); ?>" class="btn btn-primary rounded-pill">Comprar</a>
               </div>
