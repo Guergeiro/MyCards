@@ -26,7 +26,7 @@ $(document).ready(function() {
                             da["DataNascimento"] +
                             "</td><td>" +
                             cartao["DataFidelizacao"] +
-                            "</td></tr>" +
+                            "</td><td>" +
                             cartao["Pontos"] +
                             "</td></tr>";
                     });
