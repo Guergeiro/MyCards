@@ -125,11 +125,11 @@ document.querySelector("#ativar").addEventListener("click", (e) => {
             switch (data["status"]) {
                 case "true":
                     alert.classList.add("alert-success");
-                    alert.innerHTML = "Campanha ativada!";
+                    alert.innerHTML = data["message"];
                     break;
                 case "false":
                     alert.classList.add("alert-danger");
-                    alert.innerHTML = "Erro ao ativar campanha!";
+                    alert.innerHTML = data["message"];
                     break;
             }
             alert.innerHTML += `<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"><i class="fas fa-times"></i></span></button>`;
