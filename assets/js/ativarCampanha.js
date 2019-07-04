@@ -13,88 +13,34 @@ if (url.length > 0) {
     document.querySelector("#codigocampanha").focus();
     document.querySelector("#valor").focus();
 }
-/*
-setInterval(function () {
-    $.get("https://mycards.dsprojects.pt/api/empresa/" + JSON.parse(document.querySelector("head").getAttribute("data-session"))["ID_Empresa"] + "/campanha", function (data) {
-        data = JSON.parse(data);
-        data.forEach(campanha => {
-            $.get("https://mycards.dsprojects.pt/api/empresa/" + JSON.parse(document.querySelector("head").getAttribute("data-session"))["ID_Empresa"] + "/campanha/" + campanha["ID_Campanha"] + "/instanciascampanha", function (instancias) {
-                instancias = JSON.parse(instancias);
-                instancias.forEach(element => {
-                    if (!contains(element)) {
-                        notificacoes.push(element);
 
-                        let elementParent = document.querySelector(".card-body .row");
-
-                        let oldinnerHtml = document.querySelector(".card-body .row").innerHTML;
-
-                        elementParent.innerHTML =
-                            '<div class="col-sm-6 col-md-4"><div class="toast mx-auto my-1" role="alert" aria-live="assertive" aria-atomic="true" data-delay="60000"><div class="toast-header"><strong class="mr-auto">Campanha: ' +
-                            element.ID_Campanha +
-                            '</strong><button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close"><span aria-hidden="true"><i class="fas fa-times"></i></span></button></div><div class="toast-body text-center" data-idcampanha="' +
-                            element.ID_Campanha +
-                            '" data-idcartao="' +
-                            element.ID_Cartao +
-                            '"><span class="id-cliente">Cartão: ' +
-                            element.ID_Cartao +
-                            "</span><span>Número de utilizações: " +
-                            element.Utilizado +
-                            "</span><hr>Clique para utilizar campanha</span></div></div></div>" +
-                            oldinnerHtml;
-
-                        $(".toast").toast("show");
-                        $(".toast").each(function () {
-                            $(this).on("hidden.bs.toast", function () {
-                                $.post("https://mycards.dsprojects.pt/api/empresa/" + JSON.parse($("head").attr("data-session"))["ID_Empresa"] + "/campanha/" + $(this).find(".toast-body").attr("data-idcampanha") + "/instanciacampanha/" + $(this).find(".toast-body").attr("data-idcartao"), {
-                                    Notificacao: 0
-                                }).then(function () {
-                                    for (let i = 0; i < notificacoes.length; i++) {
-                                        if (notificacoes[i]["ID_Cartao"] == $(this).find(".toast-body").attr("data-idcartao") && notificacoes[i]["ID_Campanha"] == $(this).find(".toast-body").attr("data-idcampanha")) {
-                                            notificacoes.splice(i, 1);
-                                            break;
-                                        }
-                                    }
-                                });
-
-                                $(this).parent().remove();
-                            });
-                        });
-
-                        document.querySelectorAll(".toast-body").forEach(toast => {
-                            toast.addEventListener("click", function () {
-                                document.querySelector("#codigocartao").value = toast.getAttribute("data-idcartao");
-                                document.querySelector("#codigocartao").focus();
-                                document.querySelector("#codigocampanha").value = toast.getAttribute("data-idcampanha");
-                                document.querySelector("#codigocampanha").focus();
-                                document.querySelector("#valor").focus();
-                            });
-                        });
-                    }
-                });
-            });
-        });
-    });
-}, 5000);
-*/
 const criarElemento = (notificacao) => {
-    let elementParent = document.querySelector(".card-body .row");
+    let elementParent = document.querySelectorAll(".card-body .row")[1];
 
-    let oldinnerHtml = document.querySelector(".card-body .row").innerHTML;
+    let oldinnerHtml = document.querySelectorAll(".card-body .row")[1].innerHTML;
 
-    elementParent.innerHTML = `<div class="col-sm-6 col-md-4"><div class="toast mx-auto my-1" role="alert" aria-live="assertive" aria-atomic="true" data-delay="60000"><div class="toast-header"><strong class="mr-auto">Campanha: ${notificacao["ID_Campanha"]}</strong><button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close"><span aria-hidden="true"><i class="fas fa-times"></i></span></button></div><div class="toast-body text-center" data-idcampanha="${notificacao["ID_Campanha"]}" data-idcartao="${notificacao["ID_Cartao"]}"><span class="id-cliente">Cartão: ${notificacao["ID_Cartao"]}</span><span>Número de utilizações: ${notificacao["Utilizado"]}</span><hr>Clique para utilizar campanha</span></div></div></div>`;
-    elementParent.querySelector(".toast-body").addEventListener("click", () => {
-        document.querySelector("#codigocartao").value = this.getAttribute("data-idcartao");
-    });
+    elementParent.innerHTML = `<div class="col-sm-6 col-md-4"><div class="toast mx-auto my-1" role="alert" aria-live="assertive" aria-atomic="true" data-delay="60000"><div class="toast-header"><strong class="mr-auto">Campanha: ${notificacao["ID_Campanha"]}</strong><button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close"><span aria-hidden="true"><i class="fas fa-times"></i></span></button></div><div class="toast-body text-center"><span class="id-cliente">Cartão: ${notificacao["ID_Cartao"]}</span><span>Número de utilizações: ${notificacao["Utilizado"]}</span><hr><button data-idcampanha="${notificacao["ID_Campanha"]}" data-idcartao="${notificacao["ID_Cartao"]}" class="btn btn-info" type="button">Utilizar Campanha</button></div></div></div>`;
+
+    elementParent.innerHTML += oldinnerHtml;
+
     $(".toast").toast("show");
     $(".toast").each(function () {
         $(this).on("hidden.bs.toast", function () {
-            postNotificacao($(this).find(".toast-body").attr("data-idcampanha"), $(this).find(".toast-body").attr("data-idcartao")).then(data => {
-                console.log(data);
-            });
+            postNotificacao($(this).find(".toast-body").find("button").attr("data-idcampanha"), $(this).find(".toast-body").find("button").attr("data-idcartao"));
+            apagarNotificacao($(this).find(".toast-body").find("button").attr("data-idcampanha"), $(this).find(".toast-body").find("button").attr("data-idcartao"));
             $(this).parent().remove();
         });
     });
-    elementParent.innerHTML += oldinnerHtml;
+
+    document.querySelectorAll(".toast-body button").forEach(button => {
+        button.addEventListener("click", () => {
+            document.querySelector("#codigocartao").value = button.getAttribute("data-idcartao");
+            document.querySelector("#codigocartao").focus();
+            document.querySelector("#codigocampanha").value = button.getAttribute("data-idcampanha");
+            document.querySelector("#codigocampanha").focus();
+            document.querySelector("#valor").focus();
+        });
+    });
 }
 
 const novaNotificacao = (notificacao) => {
@@ -107,10 +53,15 @@ const novaNotificacao = (notificacao) => {
     return nova;
 }
 
-const apagarNotificacao = (notificacao) => {
-    let index = notificacoes.indexOf(notificacao);
-    if (index > -1) {
-        notificacoes.splice(index, 1);
+const apagarNotificacao = (idCampanha, idCartao) => {
+    let i = -1;
+    notificacoes.forEach((notificacao, index) => {
+        if (notificacao["ID_Campanha"] == idCampanha && notificacao["ID_Cartao"] == idCartao) {
+            i = index;
+        }
+    });
+    if (i > -1) {
+        notificacoes.splice(i, 1);
     }
 }
 
@@ -152,7 +103,7 @@ const postNotificacao = async (codigocampanha, codigocartao) => {
 
 const ativarCampanha = async (codigocampanha, codigocartao) => {
     let formData = new FormData();
-    formData.append("valor", document.querySelector("form input#valor").value);
+    formData.append("valor", document.querySelector("input#valor").value);
     const response = await fetch(`https://mycards.dsprojects.pt/api/empresa/${idEmpresa}/campanha/${codigocampanha}/instanciascampanha/${codigocartao}`, {
         method: "POST",
         body: formData
@@ -160,9 +111,11 @@ const ativarCampanha = async (codigocampanha, codigocartao) => {
     return await response.json();
 }
 
-document.querySelector("form #ativar").addEventListener("click", () => {
+document.querySelector("#ativar").addEventListener("click", (e) => {
+
+    console.log(e.target);
     let estado = true,
-        form = document.querySelector("form");
+        form = e.target.parentElement.parentElement;
     form.querySelectorAll("input").forEach(input => {
         if (input.value.trim().length == 0) {
             estado = false;
@@ -170,10 +123,21 @@ document.querySelector("form #ativar").addEventListener("click", () => {
     });
     if (estado) {
         ativarCampanha(document.querySelector("#codigocampanha").value, document.querySelector("#codigocartao").value).then(data => {
+            let cardBody = document.querySelector(".card-body");
+            let alert = document.createElement("div");
+            alert.classList.add("alert", "alert-dismissible", "fade", "show");
             switch (data["status"]) {
                 case "true":
-
+                    alert.classList.add("alert-success");
+                    alert.innerHTML = "Campanha ativada!";
+                    break;
+                case "false":
+                    alert.classList.add("alert-danger");
+                    alert.innerHTML = "Erro ao ativar campanha!";
+                    break;
             }
+            alert.innerHTML += `<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"><i class="fas fa-times"></i></span></button>`;
+            cardBody.insertBefore(alert, cardBody.childNodes[0]);
         });
     }
 });

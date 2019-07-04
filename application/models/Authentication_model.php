@@ -118,7 +118,7 @@ class Authentication_model extends CI_Model
     public function updatePassword_cliente($data)
     {
         $query = $this->db->get_where("Clientes", "Email = '{$data['Email']}'");
-        if (!password_verify($data["Password"], $query[0]["Password"])) {
+        if (!password_verify($data["Prepassword"], $query[0]["Password"])) {
             return false;
         }
         $this->db->where("Email", $data["Email"]);
@@ -129,7 +129,7 @@ class Authentication_model extends CI_Model
     public function updatePassword($data)
     {
         $query = $this->db->get_where("Empresas", "Email = '{$data['Email']}'");
-        if (!password_verify($data["Password"], $query[0]["Password"])) {
+        if (!password_verify($data["Prepassword"], $query[0]["Password"])) {
             return false;
         }
         $this->db->where("Email", $data["Email"]);

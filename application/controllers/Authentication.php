@@ -367,7 +367,8 @@ class Authentication extends CI_Controller
     public function updatePassword_cliente()
     {
         $data = array(
-            "Email" => $this->session->userdata("Email"),
+            "Email" => $this->input->post("email"),
+            "Prepassword" => $this->input->post("prepassword", true),
             "Password" => $this->input->post("password", true)
         );
 
@@ -453,6 +454,7 @@ class Authentication extends CI_Controller
         } else {
             $data = array(
                 "Email" => $this->session->userdata("Email"),
+                "Prepassword" => $this->input->post("prepassword", true),
                 "Password" => $this->input->post("password", true)
             );
 
