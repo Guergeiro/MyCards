@@ -166,7 +166,7 @@ class Api extends CI_Controller
             $return["status"] = "false";
             $return["message"] = "Este cartão não possui pontos suficientes.";
             break;
-            case false:
+            case "false":
             $return["status"] = "false";
             $return["message"] = "Ocorreu um erro. Tente mais tarde.";
             break;
