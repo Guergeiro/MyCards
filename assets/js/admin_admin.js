@@ -3,25 +3,35 @@ const getEmpresas = async () => {
     return await response.json();
 }
 
-const checkYear = (year, datasets) => {
-
-}
-
-const processMonths = (year) => {
+const processMonthsEmpresa = (year) => {
     let months = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     empresas.forEach(empresa => {
-        if (year = parseInt(empresa["DataRegisto"].split(" ")[0].split("-")[0])) {
-            months[parseInt(empresa["DataRegisto"].split(" ")[0].split("-")[1]) - 1] += 1;
+        if (year == parseInt(empresa["DataRegisto"].split(" ")[0].split("-")[0])) {
+            months[parseInt(empresa["DataRegisto"].split(" ")[0].split("-")[1].split("-")[0]) - 1] += 1;
         }
     });
-    return months;
 }
 
 const processEmpresas = () => {
-    let datasets = [];
+    let years = [];
     empresas.forEach(empresa => {
-
+        let year = empresa["DataRegisto"].split(" ")[0].split("-")[0];
+        if (!years.includes(year)) {
+            years = [...years, year];
+        }
     });
+    let datasets = [];
+    years.forEach(year => {
+        let pool = arrayColors(1);
+        datasets.push({
+            label: year,
+            fill: false,
+            backgroundColor: `rgb(${pool[0][0]},${pool[0][1]},${pool[0][2]},1)`,
+            borderColor: `rgb(${pool[0][0]},${pool[0][1]},${pool[0][2]},0.5)`,
+            data: processMonthsEmpresa(year)
+        });
+    });
+
     return datasets;
 }
 
@@ -42,7 +52,7 @@ const deleteEmpresa = async (idEmpresa) => {
     location.reload();
 }
 
-const ctx = document.querySelector("#myChart").getContext("2d");
+const ctxEmpresas = document.querySelector("#myChartEmpresas").getContext("2d");
 let empresas = [];
 
 getEmpresas().then(data => {
@@ -65,20 +75,70 @@ getEmpresas().then(data => {
         });
     });
 }).then(() => {
-    new Chart(ctx, {
+    new Chart(ctxEmpresas, {
         type: "line",
         data: {
             labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
-            datasets: [{
-                label: "2019",
-                fill: false,
-                data: processMonths(2019)
-            }]
+            datasets: processEmpresas()
         }
     });
 });
 
+const getClientes = async () => {
+    const response = await fetch(`https://mycards.dsprojects.pt/api/cliente`);
+    return await response.json();
+}
 
+const ctxClientes = document.querySelector("#myChartClientes").getContext("2d");
+let clientes = [];
+
+const processMonthsCliente = (year) => {
+    let months = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    clientes.forEach(cliente => {
+        if (year == parseInt(cliente["DataRegisto"].split(" ")[0].split("-")[0])) {
+            months[parseInt(cliente["DataRegisto"].split(" ")[0].split("-")[1].split("-")[0]) - 1] += 1;
+        }
+    });
+    return months;
+}
+
+const processClientes = () => {
+    let years = [];
+    clientes.forEach(cliente => {
+        let year = cliente["DataRegisto"].split(" ")[0].split("-")[0];
+        if (!years.includes(year)) {
+            years = [...years, year];
+        }
+    });
+    let datasets = [];
+    years.forEach(year => {
+        let pool = arrayColors(1);
+        datasets.push({
+            label: year,
+            fill: false,
+            backgroundColor: `rgb(${pool[0][0]},${pool[0][1]},${pool[0][2]},1)`,
+            borderColor: `rgb(${pool[0][0]},${pool[0][1]},${pool[0][2]},0.5)`,
+            data: processMonthsCliente(year)
+        });
+    });
+
+    return datasets;
+}
+
+getClientes().then(data => {
+    data.forEach(cliente => {
+        if (cliente["Ativo"] == 1) {
+            clientes = [...clientes, cliente];
+        }
+    });
+    new Chart(ctxClientes, {
+        type: "line",
+        data: {
+            labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
+            datasets: processClientes()
+        }
+    });
+});
 
 
 $(document).ready(function () {

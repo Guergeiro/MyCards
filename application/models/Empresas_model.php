@@ -98,8 +98,117 @@ class Empresas_model extends CI_Model
     // Update
     public function alterarInstanciaCampanhaEmpresa($idEmpresa, $idCampanha, $idCartao, $data)
     {
-        $this->db->where("InstanciaCampanha.ID_Campanha = {$idCampanha} AND InstanciaCampanha.ID_Cartao = {$idCartao}");
-        $this->db->set($data);
+        $campanha = $this->db->get_where("Campanhas", "Campanhas.ID_Campanha = {$idCampanha}");
+        if ($campanha->num_rows() == 0) {
+            // Não existem campanhas com esse id
+            return false;
+        }
+        if (array_key_exists("notificacao", $data)) {
+            // Queremos apagar/criar notificacao
+            switch ($data["notificacao"]) {
+                case "0":
+                $this->db->where("InstanciaCampanha.ID_Campanha = {$idCampanha} AND InstanciaCampanha.ID_Cartao = {$idCartao}");
+                $this->db->set(array(
+                    "Notificacao" => 0
+                ));
+                return $this->db->update("InstanciaCampanha") == true ? "notificacao_apagada" : "false";
+                break;
+                case "1":
+                $this->db->where("InstanciaCampanha.ID_Campanha = {$idCampanha} AND InstanciaCampanha.ID_Cartao = {$idCartao}");
+                $this->db->set(array(
+                    "Notificacao" => 1
+                ));
+                return $this->db->update("InstanciaCampanha") == true ? "notificacao_criada" : "false";
+                break;
+            }
+        }
+        $campanha = $campanha->result_array();
+        $dataCampanha = split("-", $campanha[0]["DataFim"]);
+        if (date("Y") > $dataCampanha[0]) {
+            // Ano já foi
+            return "data";
+        }
+        if (date("m") > $dataCampanha[1]) {
+            // Mes já foi
+            return "data";
+        }
+        if (date("d") > $dataCampanha[2]) {
+            // Dia já foi
+            return "data";
+        }
+        
+        $query = $this->db->get_where("InstanciaCampanha", "InstanciaCampanha.ID_Campanha = {$idCampanha} AND InstanciaCampanha.ID_Cartao = {$idCartao}");
+        $query = $query->result_array();
+        switch ($campanha[0]["TipoCampanha"]) {
+            case "0":
+            // Cupoes == 1 utilização
+            if ($query[0]["Utilizado"] != 0) {
+                // Campanha já utilizada
+                return "limite";
+            }
+            // Adicionar Pontos ao Cartao
+            $cartao = $this->db->get_where("Cartoes", "Cartoes.ID_Cartao = {$idCartao}");
+            $cartao = $cartao->result_array();
+            $this->db->where("Cartoes.ID_Cartao = {$idCartao}");
+            $this->db->set(array(
+                "Pontos" => $cartao[0]["Pontos"]+$data["Valor"]
+            ));
+            $this->db->update("Cartoes");
+
+            // Utilizar Campanha
+            $this->db->where("InstanciaCampanha.ID_Campanha = {$idCampanha} AND InstanciaCampanha.ID_Cartao = {$idCartao}");
+            $this->db->set(array(
+                "Utilizado" => 1,
+                "Notificacao" => 0,
+                "DataUtilizacao" => date("Y-m-d H:i:s")
+            ));
+
+            break;
+            case "1":
+            // Carimbos == 10 utilizações
+            if ($query[0]["Utilizado"] > 9) {
+                return "limite";
+            }
+            // Adicionar Pontos ao Cartao
+            $cartao = $this->db->get_where("Cartoes", "Cartoes.ID_Cartao = {$idCartao}");
+            $cartao = $cartao->result_array();
+            $this->db->where("Cartoes.ID_Cartao = {$idCartao}");
+            $this->db->set(array(
+                "Pontos" => $cartao[0]["Pontos"]+$data["Valor"]
+            ));
+            $this->db->update("Cartoes");
+
+            // Utilizar Campanha
+            $this->db->where("InstanciaCampanha.ID_Campanha = {$idCampanha} AND InstanciaCampanha.ID_Cartao = {$idCartao}");
+            $this->db->set(array(
+                "Utilizado" => $query[0]["Utilizado"]+1,
+                "Notificacao" => 0,
+                "DataUtilizacao" => date("Y-m-d H:i:s")
+            ));
+
+            break;
+            case "2":
+            // Utilizar apenas se NPontos > Valor
+            $cartao = $this->db->get_where("Cartoes", "Cartoes.ID_Cartao = {$idCartao}");
+            $cartao = $cartao->result_array();
+            if ($cartao[0]["Pontos"] < $data["Valor"]) {
+                // Não tem pontos
+                return "pontos";
+            }
+            $this->db->where("Cartoes.ID_Cartao = {$idCartao}");
+            $this->db->set(array(
+                "Pontos" => $cartao[0]["Pontos"]-$data["Valor"]
+            ));
+            $this->db->update("Cartoes");
+
+            $this->db->where("InstanciaCampanha.ID_Campanha = {$idCampanha} AND InstanciaCampanha.ID_Cartao = {$idCartao}");
+            $this->db->set(array(
+                "Utilizado" => $query[0]["Utilizado"]+1,
+                "Notificacao" => 0,
+                "DataUtilizacao" => date("Y-m-d H:i:s")
+            ));
+            break;
+        }
         return $this->db->update("InstanciaCampanha");
     }
 

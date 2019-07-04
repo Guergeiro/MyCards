@@ -140,12 +140,41 @@ class Api extends CI_Controller
     {
         $this->load->model("Empresas_model");
         $data = $this->input->post(null, true);
-        if ($this->Empresas_model->alterarInstanciaCampanhaEmpresa($idEmpresa, $idCampanha, $idCartao, $data)) {
-            echo "Update Successful";
-        } else {
-            echo "Error Updating";
+        $result = $this->Empresas_model->alterarInstanciaCampanhaEmpresa($idEmpresa, $idCampanha, $idCartao, $data);
+        $return = array(
+            "status" => "",
+            "message" => ""
+        );
+        switch ($result) {
+            case "notificacao_criada":
+            $return["status"] = "true";
+            $return["message"] = "Notificação criada.";
+            break;
+            case "notificacao_apagada":
+            $return["status"] = "true";
+            $return["message"] = "Notificação apagada.";
+            break;
+            case "data":
+            $return["status"] = "false";
+            $return["message"] = "A data da campanha já passou.";
+            break;
+            case "limite":
+            $return["status"] = "false";
+            $return["message"] = "Este cartão já não pode usufruir desta campanha.";
+            break;
+            case "pontos":
+            $return["status"] = "false";
+            $return["message"] = "Este cartão não possui pontos suficientes.";
+            break;
+            case false:
+            $return["status"] = "false";
+            $return["message"] = "Ocorreu um erro. Tente mais tarde.";
+            break;
+            default:
+            $return["status"] = "true";
+            $return["message"] = "Campanha utilizada com sucesso.";
         }
-        redirect("ativarCampanha");
+        echo json_encode($return);
     }
     
     public function novoColaboradorEmpresa($idEmpresa)

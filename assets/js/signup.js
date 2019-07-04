@@ -22,7 +22,7 @@ const distritos = [
 distritos.forEach((distrito) => {
     document.querySelector(
         "#localizacao"
-    ).innerHTML += `<option value=${distrito}>${distrito}</option>`;
+    ).innerHTML += `<option value="${distrito}">${distrito}</option>`;
 });
 
 function validation(form) {
