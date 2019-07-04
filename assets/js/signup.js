@@ -58,12 +58,37 @@ function validation(form) {
         });
     }
 
-    if (form.querySelector("#nif").value.length != 9) {
+    if (form.querySelector("#nif").value.length != 9 || form.querySelector("#nif").value < 100000000 || form.querySelector("#nif").value > 999999999) {
         form.querySelector("#nif").parentElement.lastElementChild.classList.add("d-block");
         form.querySelector("#nif").parentElement.lastElementChild.innerHTML = "O NIF deve conter 9 números."
         return false;
     } else {
         form.querySelector("#nif").parentElement.lastElementChild.classList.remove("d-block");
+    }
+
+    let color = /^#(?:[0-9a-f]{3}){1,2}$/i;
+    if (!color.test(form.querySelector("input#cor").value)) {
+        form.querySelector("input#cor").parentElement.lastElementChild.classList.add("d-block");
+        form.querySelector("input#cor").parentElement.lastElementChild.innerHTML = "Cor inválida."
+        return false;
+    } else {
+        form.querySelector("input#cor").parentElement.lastElementChild.classList.remove("d-block");
+    }
+
+    if (form.querySelector("select#areainteresse").value == "null") {
+        form.querySelector("select#areainteresse").parentElement.lastElementChild.classList.add("d-block");
+        form.querySelector("select#areainteresse").parentElement.lastElementChild.innerHTML = "Escolha uma área.";
+        return false;
+    } else {
+        form.querySelector("select#areainteresse").parentElement.lastElementChild.classList.remove("d-block");
+    }
+
+    if (form.querySelector("select#localizacao").value == "null") {
+        form.querySelector("select#localizacao").parentElement.lastElementChild.classList.add("d-block");
+        form.querySelector("select#localizacao").parentElement.lastElementChild.innerHTML = "Escolha uma localização.";
+        return false;
+    } else {
+        form.querySelector("select#localizacao").parentElement.lastElementChild.classList.remove("d-block");
     }
 
     return true;

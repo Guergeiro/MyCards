@@ -56,7 +56,6 @@ const ctxEmpresas = document.querySelector("#myChartEmpresas").getContext("2d");
 let empresas = [];
 
 getEmpresas().then(data => {
-    empresas = data;
     data.forEach(empresa => {
         if (empresa["Ativo"] == 1 && empresa["TipoEmpresa"] == 0) {
             document.querySelector("table tbody").innerHTML += `<tr><th scope="row" class="align-middle">${empresa["ID_Empresa"]}</th><td class="align-middle">${empresa["Nome"]}</td><td class="align-middle">${empresa["Email"]}</td><td class="align-middle"><div class="btn-group" role="group"><button class="btn py-2 px-2 btn-success" data-id="${empresa["ID_Empresa"]}">Aceitar</button><button class="btn py-2 px-2 btn-warning" data-toggle="modal" data-target="#modal" data-id="${empresa["ID_Empresa"]}">Ver Mais</button><button class="btn py-2 px-2 btn-danger" data-id="${empresa["ID_Empresa"]}">Recusar</button></div></td></tr>`;

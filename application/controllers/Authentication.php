@@ -206,6 +206,10 @@ class Authentication extends CI_Controller
             array(
                 "field" => "localizacao",
                 "rules" => "required|trim"
+            ),
+            array(
+                "field" => "cor",
+                "rules" => "required|trim"
             )
         );
 
@@ -220,7 +224,8 @@ class Authentication extends CI_Controller
                 "Nome" => $this->input->post("nome", true),
                 "Nif" => $this->input->post("nif", true),
                 "AreaInteresse" => $this->input->post("areainteresse", true),
-                "Localizacao" => $this->input->post("localizacao", true)
+                "Localizacao" => $this->input->post("localizacao", true),
+                "Cor" => $this->input->post("cor", true)
             );
 
             if ($this->Authentication_model->signup($data)) {
