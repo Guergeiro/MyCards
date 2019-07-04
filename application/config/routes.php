@@ -70,7 +70,7 @@ $route['api/empresa/(:num)/rating']['get'] = 'api/ratingEmpresa/$1';
 $route['api/empresa/(:num)/campanha']['get'] = 'api/campanhasEmpresa/$1';
 $route['api/empresa/(:num)/campanha/(:num)']['get'] = 'api/campanhaEmpresa/$1/$2';
 
-$route['api/empresa/(:num)/campanha/(:num)/instanciascampanha']['get'] = 'api/instanciasCampanhaEmpresa/$1/$2';
+$route['api/empresa/(:num)/campanha/(:num)/instanciacampanha']['get'] = 'api/instanciasCampanhaEmpresa/$1/$2';
 
 $route['api/empresa/(:num)/cartao']['get'] = 'api/cartoesEmpresa/$1';
 
