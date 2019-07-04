@@ -123,7 +123,7 @@ class Empresas_model extends CI_Model
             }
         }
         $campanha = $campanha->result_array();
-        $dataCampanha = split("-", $campanha[0]["DataFim"]);
+        $dataCampanha = explode("-", $campanha[0]["DataFim"]);
         if (date("Y") > $dataCampanha[0]) {
             // Ano já foi
             return "data";

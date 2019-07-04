@@ -1,8 +1,6 @@
 let notificacoes = new Array();
 
-//const idEmpresa = JSON.parse(document.querySelector("head").getAttribute("data-session"))["ID_Empresa"];
-
-const idEmpresa = 2;
+const idEmpresa = JSON.parse(document.querySelector("head").getAttribute("data-session"))["ID_Empresa"];
 
 let url = window.location.hash.substr(1);
 if (url.length > 0) {
