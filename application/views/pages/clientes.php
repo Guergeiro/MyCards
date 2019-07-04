@@ -23,6 +23,7 @@
             <th scope="col">
               Data Fidelização
             </th>
+            <th scope="col">Pontos</th>
           </tr>
         </thead>
         <tbody>
