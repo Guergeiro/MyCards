@@ -142,9 +142,7 @@ getClientes().then(data => {
 const key = "b3c7dc7d8f72f52ae14527a8da25979e";
 
 const getInfoEmpresa = async (nif) => {
-    const response = await fetch(`https://www.nif.pt/?json=1&q=${nif}&key=${key}`, {
-        credentials: "include"
-    });
+    const response = await fetch(`https://www.nif.pt/?json=1&q=${nif}&key=${key}`);
     const data = await response.json();
     return data;
 }
@@ -152,7 +150,7 @@ const getInfoEmpresa = async (nif) => {
 const getEmpresaById = async (id) => {
     const response = await fetch(`https://mycards.dsprojects.pt/api/empresa/${id}`)
     const data = await response.json();
-    return data;
+    return data[0];
 }
 
 $(document).ready(function () {
@@ -163,8 +161,8 @@ $(document).ready(function () {
         // Update the modal"s content. We"ll use jQuery here, but you could use a data binding library or other methods instead.
         const modal = document.querySelector("#modal");
         modal.querySelector("#modalTitle").innerHTML = recipient;
-        console.log(modal.querySelector(".modal-body .container-fluid .row"))
         getEmpresaById(recipient).then(empresa => {
+            console.log(empresa)
             getInfoEmpresa(empresa["NIF"]).then(data => {
                 if (data["result"] == "error") {
                     // Não existe nif ou nif é pessoal
