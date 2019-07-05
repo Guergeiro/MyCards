@@ -10,6 +10,7 @@ const processMonthsEmpresa = (year) => {
             months[parseInt(empresa["DataRegisto"].split(" ")[0].split("-")[1].split("-")[0]) - 1] += 1;
         }
     });
+    return months;
 }
 
 const processEmpresas = () => {
@@ -26,12 +27,11 @@ const processEmpresas = () => {
         datasets.push({
             label: year,
             fill: false,
-            backgroundColor: `rgb(${pool[0][0]},${pool[0][1]},${pool[0][2]},1)`,
-            borderColor: `rgb(${pool[0][0]},${pool[0][1]},${pool[0][2]},0.5)`,
+            backgroundColor: `rgba(${pool[0][0]},${pool[0][1]},${pool[0][2]},1)`,
+            borderColor: `rgba(${pool[0][0]},${pool[0][1]},${pool[0][2]},0.5)`,
             data: processMonthsEmpresa(year)
         });
     });
-
     return datasets;
 }
 
@@ -115,8 +115,8 @@ const processClientes = () => {
         datasets.push({
             label: year,
             fill: false,
-            backgroundColor: `rgb(${pool[0][0]},${pool[0][1]},${pool[0][2]},1)`,
-            borderColor: `rgb(${pool[0][0]},${pool[0][1]},${pool[0][2]},0.5)`,
+            backgroundColor: `rgba(${pool[0][0]},${pool[0][1]},${pool[0][2]},1)`,
+            borderColor: `rgba(${pool[0][0]},${pool[0][1]},${pool[0][2]},0.5)`,
             data: processMonthsCliente(year)
         });
     });
@@ -139,10 +139,11 @@ getClientes().then(data => {
     });
 });
 
-const key = "b3c7dc7d8f72f52ae14527a8da25979e";
+const keys = ["bf72592bb669dad60ae0cdb33166b7f6", "0466fd5c8a20cfa8c623debbc0ad68e3", "b3c7dc7d8f72f52ae14527a8da25979e", "087f4ab695524354a98889be74c6f16b"];
 
-const getInfoEmpresa = async (nif) => {
-    const response = await fetch(`https://www.nif.pt/?json=1&q=${nif}&key=${key}`);
+const getInfoEmpresa = async (nif, key) => {
+    const encodedURI = encodeURIComponent(`https://www.nif.pt/?json=1&q=${nif}&key=${key}`);
+    const response = await fetch(`https://bypasscors.herokuapp.com/api/?url=${encodedURI}`);
     const data = await response.json();
     return data;
 }
@@ -151,6 +152,15 @@ const getEmpresaById = async (id) => {
     const response = await fetch(`https://mycards.dsprojects.pt/api/empresa/${id}`)
     const data = await response.json();
     return data[0];
+}
+
+const displayEmpresa = (empresa) => {
+    console.log(empresa)
+    document.querySelector("#modal .modal-body .container-fluid .row").innerHTML = `<div class="col-12">Nome: ${empresa["title"]}</div><div class="col-md-6">NIF: ${empresa["nif"]}</div><div class="col-md-6">Cidade: ${empresa["city"]}</div><div class="col-md-6">Email: ${empresa["contacts"]["email"]}</div><div class="col-md-6">Telefone: ${empresa["contacts"]["phone"]}</div>`;
+}
+
+const displayError = (err) => {
+    document.querySelector("#modal .modal-body .container-fluid .row").innerHTML = `<div class="col-12 alert alert-danger text-center" role="alert">${err}</div>`;
 }
 
 $(document).ready(function () {
@@ -162,17 +172,19 @@ $(document).ready(function () {
         const modal = document.querySelector("#modal");
         modal.querySelector("#modalTitle").innerHTML = recipient;
         getEmpresaById(recipient).then(empresa => {
-            console.log(empresa)
-            getInfoEmpresa(empresa["NIF"]).then(data => {
-                if (data["result"] == "error") {
-                    // Não existe nif ou nif é pessoal
-                    modal.querySelector(".modal-body .container-fluid .row").innerHTML = `<div class="col-12 alert alert-warning text-center" role="alert">O NIF indicado é válido mas não conseguimos determinar a entidade associada.</div>`;
-                } else {
+            let key = 1;
+            let nif = empresa["NIF"];
+            getInfoEmpresa(empresa["NIF"], keys[key]).then(data => {
+                if (data["result"] == "success" && data["nif_validation"] == true) {
                     // Tudo ok
-                    modal.querySelectorAll(".modal-body .container-fluid .row").innerHTML = `<div class="col-md-12>Nome: ${data["records"][nif]["title"]}</div><div class="col-md-6">NIF: ${nif}</div><div class="col-md-6">Cidade: ${data["records"][nif]["city"]}</div><div class="col-md-6">Email: ${data["records"][nif]["contacts"]["email"]}</div><div class="col-md-6">Telefone: ${data["records"][nif]["contacts"]["phone"]}</div>`;
+                    console.log(data["records"][nif])
+                    displayEmpresa(data["records"][nif]);
+                } else {
+                    displayError("Serviço indisponível. Tente mais tarde.");
                 }
             }).catch(err => {
-                modal.querySelector(".modal-body .container-fluid .row").innerHTML = `<div class="col-12 alert alert-danger text-center" role="alert">Ocorreu um erro a ir buscar a informação. Tente mais tarde.</div>`;
+                console.log(err)
+                displayError("Ocorreu um erro a ir buscar a informação. Tente mais tarde.");
             });
         });
     });

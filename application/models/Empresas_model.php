@@ -70,6 +70,7 @@ class Empresas_model extends CI_Model
 
     public function novaCampanha($idEmpresa, $data)
     {
+        // Inserir a campanha em todos os cartoes
         $query = $this->db->get_where("Cartoes", "Cartoes.ID_Empresa = {$idEmpresa}");
         $query = $query->result_array();
         foreach ($query as $cartao) {

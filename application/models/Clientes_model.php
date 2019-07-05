@@ -68,6 +68,17 @@ class Clientes_model extends CI_Model
         if ($query->num_rows() != 0) {
             return false;
         }
+        // Inserir todas as campanhas existentes no cartao
+        $query = $this->db->get_where("Campanhas", "Campanhas.ID_Empresa = {$idEmpresa}");
+        $query = $query->result_array();
+        foreach ($query as $campanha) {
+            $info = array(
+                "ID_Cartao" => $cartao["ID_Cartao"],
+                "ID_Campanha" => $data["ID_Campanha"]
+            );
+            $this->db->insert("InstanciaCampanha", $info);
+        }
+
         $data["ID_Cliente"] = $idCliente;
         return $this->db->insert("Cartoes", $data);
     }
