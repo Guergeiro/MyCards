@@ -153,7 +153,7 @@ class Authentication_model extends CI_Model
 
     public function verify($codigoAtivacao)
     {
-        $query = $this->db->get_where("Empresas", "Empresas.CodigoAtivacao = {$codigoAtivacao}");
+        $query = $this->db->get_where("Empresas", "Empresas.CodigoAtivacao = '{$codigoAtivacao}'");
         if ($query->num_rows() == 0) {
             return false;
         }
