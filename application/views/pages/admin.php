@@ -225,11 +225,12 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					<div class="chart-container">
-						<canvas id="chart"></canvas>
-					</div>
+                    <div class="container-fluid">
+                        <div class="row"></div>
+                    </div>
 				</div>
 				<div class="modal-footer">
+                    <button type="button" class="btn btn-outline-success" data-dismiss="modal">Aceitar</button>
 					<button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
 				</div>
 			</div>

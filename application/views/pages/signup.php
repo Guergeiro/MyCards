@@ -70,14 +70,14 @@
 				<div class="md-form md-outline">
 					<select id="areainteresse" name="areainteresse" class="custom-select">
 						<option value="null" disabled selected>Área de Interesse</option>
-						<option value="agricultura">Agricultura</option>
-						<option value="ciencia-tecnologia">Ciência e Tecnologia</option>
-						<option value="desporto">Desporto</option>
-						<option value="educacao">Educação</option>
-						<option value="restauracao">Restauração</option>
-						<option value="saude">Saúde</option>
-						<option value="transportes-mercadorias">Transportes e Mercadorias</option>
-						<option value="turismo">Turismo</option>
+						<option value="Agricultura">Agricultura</option>
+                        <option value="Ciência e Tecnologia">Ciência e Tecnologia</option>
+                        <option value="Desporto">Desporto</option>
+                        <option value="Educação">Educação</option>
+                        <option value="Restauração">Restauração</option>
+                        <option value="Saúde">Saúde</option>
+                        <option value="Transportes e Mercadorias">Transportes e Mercadorias</option>
+                        <option value="Turismo">Turismo</option>
 					</select>
 					<div class="form-text invalid-tooltip"></div>
 				</div>

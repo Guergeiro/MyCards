@@ -64,6 +64,10 @@ class Clientes_model extends CI_Model
 
     public function novoCartaoCliente($idCliente, $data)
     {
+        $query = $this->db->get_where("Cartoes", "Cartoes.ID_Cliente = {$idCliente} AND Cartoes.ID_Empresa = {$data["ID_Empresa"]}");
+        if ($query->num_rows() != 0) {
+            return false;
+        }
         $data["ID_Cliente"] = $idCliente;
         return $this->db->insert("Cartoes", $data);
     }
