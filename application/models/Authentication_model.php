@@ -132,6 +132,10 @@ class Authentication_model extends CI_Model
     public function updatePassword_cliente($data)
     {
         $query = $this->db->get_where("Clientes", "Email = '{$data['Email']}'");
+        if ($query->num_rows() == 0) {
+            return false;
+        }
+        $query = $query->result_array();
         if (!password_verify($data["Prepassword"], $query[0]["Password"])) {
             return false;
         }

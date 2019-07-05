@@ -10,16 +10,14 @@
                     <a class="nav-link active" id="cupoes-tab" data-toggle="tab" href="#cupoes" role="tab"
                         aria-controls="cupoes" aria-selected="true">Cupões</a>
                 </li>
-                <?php if ($this->session->userdata("TipoEmpresa") > 1): ?>
                 <li class="nav-item">
-                    <a class="nav-link" id="carimbos-tab" data-toggle="tab" href="#carimbos" role="tab"
+                    <a class="nav-link <?php if ($this->session->userdata("TipoEmpresa") < 2): ?>disabled" tabindex="-1" aria-disabled="true" data-toggle="tooltip" data-placement="top" title="Apenas para premium 2."<?php endif; ?> id="carimbos-tab" data-toggle="tab" href="#carimbos" role="tab"
                         aria-controls="carimbos" aria-selected="false">Carimbos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="pontos-tab" data-toggle="tab" href="#pontos" role="tab"
+                    <a class="nav-link <?php if ($this->session->userdata("TipoEmpresa") < 2): ?>disabled" tabindex="-1" aria-disabled="true" data-toggle="tooltip" data-placement="top" title="Apenas para premium 2."<?php endif; ?> id="pontos-tab" data-toggle="tab" href="#pontos" role="tab"
                         aria-controls="pontos" aria-selected="false">Pontos</a>
                 </li>
-                <?php endif; ?>
             </ul>
 
             <div class="tab-content mt-2">
