@@ -142,7 +142,11 @@ getClientes().then(data => {
 const key = "b3c7dc7d8f72f52ae14527a8da25979e";
 
 const getInfoEmpresa = async (nif) => {
-    const response = await fetch(`https://www.nif.pt/?json=1&q=${nif}&key=${key}`);
+    const response = await fetch(`https://www.nif.pt/?json=1&q=${nif}&key=${key}`, {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
     const data = await response.json();
     return data;
 }
