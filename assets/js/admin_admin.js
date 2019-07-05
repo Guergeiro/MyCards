@@ -147,12 +147,10 @@ const getInfoEmpresa = async (nif) => {
     return data;
 }
 
-const getEmpresaById = (id) => {
-    for (const empresa of empresas) {
-        if (empresa["ID_Empresa"] == id) {
-            return empresa;
-        }
-    }
+const getEmpresaById = async (id) => {
+    const response = await fetch(`https://mycards.dsprojects.pt/api/empresa/${id}`)
+    const data = await response.json();
+    return data;
 }
 
 $(document).ready(function () {
@@ -163,15 +161,16 @@ $(document).ready(function () {
         // Update the modal"s content. We"ll use jQuery here, but you could use a data binding library or other methods instead.
         const modal = document.querySelector("#modal");
         modal.querySelector("#modalTitle").innerHTML = recipient;
-        const nif = getEmpresaById(recipient)["NIF"];
-        getInfoEmpresa(nif).then(data => {
-            if (data["result"] == "error") {
-                // Não existe nif ou nif é pessoal
-                modal.querySelector(".modal-body container-fluid row").innerHTML = `<div class="col-12">O NIF indicado é válido mas não conseguimos determinar a entidade associada.</div>`;
-            } else {
-                // Tudo ok
-                modal.querySelectorAll(".modal-body container-fluid row").innerHTML = `<div class="col-md-12>Nome: ${data["records"][nif]["title"]}</div><div class="col-md-6">NIF: ${nif}</div><div class="col-md-6">Cidade: ${data["records"][nif]["city"]}</div><div class="col-md-6">Email: ${data["records"][nif]["contacts"]["email"]}</div><div class="col-md-6">Telefone: ${data["records"][nif]["contacts"]["phone"]}</div>`;
-            }
+        getEmpresaById(recipient).then(empresa => {
+            getInfoEmpresa(empresa["NIF"]).then(data => {
+                if (data["result"] == "error") {
+                    // Não existe nif ou nif é pessoal
+                    modal.querySelector(".modal-body container-fluid row").innerHTML = `<div class="col-12">O NIF indicado é válido mas não conseguimos determinar a entidade associada.</div>`;
+                } else {
+                    // Tudo ok
+                    modal.querySelectorAll(".modal-body container-fluid row").innerHTML = `<div class="col-md-12>Nome: ${data["records"][nif]["title"]}</div><div class="col-md-6">NIF: ${nif}</div><div class="col-md-6">Cidade: ${data["records"][nif]["city"]}</div><div class="col-md-6">Email: ${data["records"][nif]["contacts"]["email"]}</div><div class="col-md-6">Telefone: ${data["records"][nif]["contacts"]["phone"]}</div>`;
+                }
+            });
         });
     });
 });
