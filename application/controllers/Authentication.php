@@ -45,11 +45,13 @@ class Authentication extends CI_Controller
                 $this->session->set_flashdata("incorrectFlashData", "Email ou Password errados.");
                 redirect("signin");
             } elseif ($result == "ativo") {
+                $data["CodigoAtivacao"] = $this->generateRandomChars(256);
                 if ($this->sendEmail(array(
                     "Email" => $data["Email"],
                     "Subject" => "Verificação de conta",
-                    "Message" => "No seguimento da sua tentativa de acesso, para ativar a sua conta, clique neste link: ".base_url()."verify/".md5($data["Email"])."\nRelembramos que, apesar da sua conta estar ativa, a sua empresa ainda precisa de ser aprovada pelos administradores."
+                    "Message" => "No seguimento da sua tentativa de acesso, para ativar a sua conta, clique neste link: ".base_url()."verify/{$data["CodigoAtivacao"]}\nRelembramos que, apesar da sua conta estar ativa, a sua empresa ainda precisa de ser aprovada pelos administradores."
                 ))) {
+                    $this->Authentication_model->codigoCliente($data);
                     $this->session->set_flashdata("incorrectFlashData", "Conta não ativa. Reenviado email de confirmação.");
                 } else {
                     $this->session->set_flashdata("incorrectFlashData", "Conta não ativa. Contate o suporte.");
@@ -206,10 +208,6 @@ class Authentication extends CI_Controller
             array(
                 "field" => "localizacao",
                 "rules" => "required|trim"
-            ),
-            array(
-                "field" => "cor",
-                "rules" => "required|trim"
             )
         );
 
@@ -225,14 +223,14 @@ class Authentication extends CI_Controller
                 "Nif" => $this->input->post("nif", true),
                 "AreaInteresse" => $this->input->post("areainteresse", true),
                 "Localizacao" => $this->input->post("localizacao", true),
-                "Cor" => $this->input->post("cor", true)
+                "CodigoAtivacao" => $this->generateRandomChars(256)
             );
 
             if ($this->Authentication_model->signup($data)) {
                 if ($this->sendEmail(array(
                     "Email" => $data["Email"],
                     "Subject" => "Bem vindo ao MyCards",
-                    "Message" => "{$data["Nome"]},\nObrigado por se registar no MyCards.\nEstamos contentes com a nossa nova parceria.\nAs suas informações:\n - Nome: {$data['Nome']}\n - NIF: {$data['Nif']}\nPara ativar a sua conta, clique neste link: ".base_url()."verify/".md5($data["Email"])."\nRelembramos que, apesar da sua conta estar ativa, a sua empresa ainda precisa de ser aprovada pelos administradores."
+                    "Message" => "{$data["Nome"]},\nObrigado por se registar no MyCards.\nEstamos contentes com a nossa nova parceria.\nAs suas informações:\n - Nome: {$data['Nome']}\n - NIF: {$data['Nif']}\nPara ativar a sua conta, clique neste link: ".base_url()."verify/{$data["CodigoAtivacao"]}\nRelembramos que, apesar da sua conta estar ativa, a sua empresa ainda precisa de ser aprovada pelos administradores."
                 ))) {
                     $this->session->set_flashdata("correctFlashData", "Conta criada com sucesso. Verifique o seu email.");
                 } else {
@@ -304,11 +302,11 @@ class Authentication extends CI_Controller
         } elseif ($result == "ativo") {
             $info["CodigoAtivacao"] = $this->generateRandomChars(5);
             if ($this->sendEmail(array(
-                "Email" => $data["Email"],
+                "Email" => $info["Email"],
                 "Subject" => "Verificação de conta",
                 "Message" => "No seguimento da sua tentativa de acesso, para ativar a sua conta, utilize este código: {$info["CodigoAtivacao"]}"
             ))) {
-                $this->Authentication_model->codigoCliente($data);
+                $this->Authentication_model->codigoCliente($info);
                 $data = array(
                 "status" => "false",
                 "message" => "Conta não ativa. Reenviado email de confirmação."
@@ -367,7 +365,7 @@ class Authentication extends CI_Controller
     public function updatePassword_cliente()
     {
         $data = array(
-            "Email" => $this->input->post("email"),
+            "Email" => $this->input->post("email", true),
             "Prepassword" => $this->input->post("prepassword", true),
             "Password" => $this->input->post("password", true)
         );
@@ -467,9 +465,9 @@ class Authentication extends CI_Controller
         redirect("definicoesEmpresa");
     }
 
-    public function verify($md5Email)
+    public function verify($codigoAtivacao)
     {
-        if ($this->Authentication_model->verify($md5Email)) {
+        if ($this->Authentication_model->verify($codigoAtivacao)) {
             $this->session->set_flashdata("correctFlashData", "Conta ativada com sucesso.");
         } else {
             $this->session->set_flashdata("incorrectFlashData", "Ocorreu um erro ao ativar a sua conta.");

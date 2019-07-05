@@ -85,6 +85,20 @@ class Authentication_model extends CI_Model
         }
         return $query;
     }
+    public function codigoEmpresa($data)
+    {
+        $query = $this->db->get_where("Empresas", "Email = '{$data['Email']}'");
+        if ($query->num_rows() == 0) {
+            return false;
+        }
+        $query = $query->result_array();
+        if (!password_verify($data["Password"], $query[0]["Password"])) {
+            return false;
+        }
+        $this->db->where("Email", $data["Email"]);
+        $this->db->set("CodigoAtivacao", $data["CodigoAtivacao"]);
+        return $this->db->update("Empresas");
+    }
 
     public function codigoCliente($data)
     {
@@ -137,17 +151,16 @@ class Authentication_model extends CI_Model
         return $this->db->update("Empresas");
     }
 
-    public function verify($md5Email)
+    public function verify($codigoAtivacao)
     {
-        $query = $this->db->get("Empresas");
-        $query = $query->result_array();
-        foreach ($query as $row) {
-            if (md5($row["Email"]) === $md5Email) {
-                $this->db->where("Email", $row["Email"]);
-                $this->db->set("Ativo", 1);
-                return $this->db->update("Empresas");
-            }
+        $query = $this->db->get_where("Empresas", "Empresas.CodigoAtivacao = {$codigoAtivacao}");
+        if ($query->num_rows() == 0) {
+            return false;
         }
+        $query = $query->result_array();
+        $this->db->where("Email", $query[0]["Email"]);
+        $this->db->set("Ativo", 1);
+        return $this->db->update("Empresas");
     }
     public function activate_cliente($data)
     {
