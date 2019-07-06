@@ -40,6 +40,7 @@ class Main extends CI_Controller
             case "dashboard":
             case "listarCampanha":
             case "ativarCampanha":
+            case "criarCampanha":
                 if (!$this->session->userdata("Email")) {
                     redirect("signin");
                 } elseif ($this->checkPermission() == false) {
