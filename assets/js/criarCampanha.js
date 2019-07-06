@@ -18,6 +18,16 @@ const formatDate = (date) => {
     return (`${year}-${month}-${day}`);
 }
 
+const novaCampanha = async (formData) => {
+    const response = await fetch(`https://mycards.dsprojects.pt/api/empresa/${idEmpresa}/campanha`, {
+        method: "POST",
+        body: formData
+    });
+
+    const data = await response.json();
+    return data;
+}
+
 const novaCampanhaCupao = async () => {
     let formData = new FormData();
     let dataInicio = new Date(document.querySelector("input#dataInicioCupao").value);
@@ -26,15 +36,10 @@ const novaCampanhaCupao = async () => {
     formData.append("Descricao", document.querySelector("input#descricaoCupao").value);
     formData.append("DataInicio", formatDate(dataInicio));
     formData.append("DataFim", formatDate(dataFim));
+    formData.append("Valor", document.querySelector("input#valorCupao").value);
     formData.append("TipoCampanha", 0);
-
-    const response = await fetch(`https://mycards.dsprojects.pt/api/empresa/${idEmpresa}/campanha`, {
-        method: "POST",
-        body: formData
-    });
-
-    const data = await response.json();
-    return data;
+    let result = await novaCampanha(formData);
+    console.log(result);
 }
 
 document.querySelector("button#buttonCupao").addEventListener("click", (e) => {
@@ -99,7 +104,5 @@ document.querySelector("button#buttonCupao").addEventListener("click", (e) => {
     if (!returnValue) {
         return;
     }
-    novaCampanhaCupao().then(data => {
-        console.log(data);
-    });
+    novaCampanhaCupao();
 });
