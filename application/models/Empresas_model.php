@@ -79,13 +79,18 @@ class Empresas_model extends CI_Model
         $data["ID_Empresa"] = $idEmpresa;
         $result = $this->db->insert("Campanhas", $data);
         if ($result) {
+            // Ir buscar ultima campanha da empresa
+            $idCampanha = $this->db->get_where("Campanhas", "Campanhas.ID_Empresa = {$idEmpresa}");
+            $idCampanha = $idCampanha->result_array();
+            $idCampanha = $idCampanha[sizeof($idCampanha) - 1]["ID_Campanha"];
+
             // Inserir a campanha em todos os cartoes
             $query = $this->db->get_where("Cartoes", "Cartoes.ID_Empresa = {$idEmpresa}");
             $query = $query->result_array();
             foreach ($query as $cartao) {
                 $info = array(
                 "ID_Cartao" => $cartao["ID_Cartao"],
-                "ID_Campanha" => $data["ID_Campanha"]
+                "ID_Campanha" => $idCampanha
             );
                 $this->db->insert("InstanciaCampanha", $info);
             }
