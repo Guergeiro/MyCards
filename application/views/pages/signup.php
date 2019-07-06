@@ -58,14 +58,6 @@
 					<div class="form-text invalid-tooltip"></div>
 				</div>
 			</div>
-            <div class="col-12 col-md-8 offset-md-2">
-				<div class="md-form md-outline">
-					<i class="fas fa-palette prefix fa-fw"></i>
-					<input type="text" id="cor" name="cor" class="form-control">
-					<label for="cor">Cor</label>
-					<div class="form-text invalid-tooltip"></div>
-				</div>
-			</div>
 			<div class="col-12 col-md-8 offset-md-2">
 				<div class="md-form md-outline">
 					<select id="areainteresse" name="areainteresse" class="custom-select">

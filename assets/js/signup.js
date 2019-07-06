@@ -66,15 +66,6 @@ function validation(form) {
         form.querySelector("#nif").parentElement.lastElementChild.classList.remove("d-block");
     }
 
-    let color = /^#(?:[0-9a-f]{3}){1,2}$/i;
-    if (!color.test(form.querySelector("input#cor").value)) {
-        form.querySelector("input#cor").parentElement.lastElementChild.classList.add("d-block");
-        form.querySelector("input#cor").parentElement.lastElementChild.innerHTML = "Cor inválida."
-        return false;
-    } else {
-        form.querySelector("input#cor").parentElement.lastElementChild.classList.remove("d-block");
-    }
-
     if (form.querySelector("select#areainteresse").value == "null") {
         form.querySelector("select#areainteresse").parentElement.lastElementChild.classList.add("d-block");
         form.querySelector("select#areainteresse").parentElement.lastElementChild.innerHTML = "Escolha uma área.";

@@ -155,7 +155,6 @@ const getEmpresaById = async (id) => {
 }
 
 const displayEmpresa = (empresa) => {
-    console.log(empresa)
     document.querySelector("#modal .modal-body .container-fluid .row").innerHTML = `<div class="col-12">Nome: ${empresa["title"]}</div><div class="col-md-6">NIF: ${empresa["nif"]}</div><div class="col-md-6">Cidade: ${empresa["city"]}</div><div class="col-md-6">Email: ${empresa["contacts"]["email"]}</div><div class="col-md-6">Telefone: ${empresa["contacts"]["phone"]}</div>`;
 }
 
@@ -177,13 +176,11 @@ $(document).ready(function () {
             getInfoEmpresa(empresa["NIF"], keys[key]).then(data => {
                 if (data["result"] == "success" && data["nif_validation"] == true) {
                     // Tudo ok
-                    console.log(data["records"][nif])
                     displayEmpresa(data["records"][nif]);
                 } else {
                     displayError("Serviço indisponível. Tente mais tarde.");
                 }
             }).catch(err => {
-                console.log(err)
                 displayError("Ocorreu um erro a ir buscar a informação. Tente mais tarde.");
             });
         });

@@ -4,7 +4,7 @@
             <h3 class="text-primary text-truncate">Criar Campanha</h3>
             <small>Esta área serve para criação de campanhas.</small>
         </div>
-        <div class="card-body">
+        <div id="body" class="card-body">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active" id="cupoes-tab" data-toggle="tab" href="#cupoes" role="tab"
@@ -82,7 +82,7 @@
                                                     class="form-control">
                                                 <label class="ml-3" for="dataInicioCupao">Data de inicio da
                                                     campanha</label>
-                                                    <div class="form-text"></div>
+                                                <div class="form-text"></div>
                                             </div>
                                             <div class="col-6 md-form">
                                                 <input type="date" name="dataFim" id="dataFimCupao"
@@ -108,7 +108,8 @@
                                         </div>
                                     </div>
                                     <div class="col-12 text-center">
-                                        <button type="button" class="btn btn-primary" id="buttonCupao">Criar campanha</button>
+                                        <button type="button" class="btn btn-primary" id="buttonCupao">Criar
+                                            campanha</button>
                                     </div>
                                 </div>
                             </div>
@@ -182,7 +183,8 @@
                                         </div>
                                     </div>
                                     <div class="col-12 text-center">
-                                        <button type="button" class="btn btn-primary" id="buttonCarimbo">Criar campanha</button>
+                                        <button type="button" class="btn btn-primary" id="buttonCarimbo">Criar
+                                            campanha</button>
                                     </div>
                                 </div>
                             </div>
@@ -275,7 +277,8 @@
                                     </div>
                                 </div>
                                 <div class="col-12 text-center">
-                                    <button type="button" class="btn btn-primary" id="buttonPonto">Criar campanha</button>
+                                    <button type="button" class="btn btn-primary" id="buttonPonto">Criar
+                                        campanha</button>
                                 </div>
                             </div>
                         </div>

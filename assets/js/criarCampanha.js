@@ -11,6 +11,10 @@ const checkCorrectDate = (firstDate, secondDate) => {
     return (date1 < date2);
 }
 
+const createAlert = (element) => {
+    document.querySelector("#body").innerHTML += element;
+}
+
 const formatDate = (date) => {
     let day = date.getDate();
     let month = date.getMonth();
@@ -28,7 +32,7 @@ const novaCampanha = async (formData) => {
     return data;
 }
 
-const novaCampanhaCupao = async () => {
+const novaCampanhaCupao = () => {
     let formData = new FormData();
     let dataInicio = new Date(document.querySelector("input#dataInicioCupao").value);
     let dataFim = new Date(document.querySelector("input#dataFimCupao").value);
@@ -38,8 +42,16 @@ const novaCampanhaCupao = async () => {
     formData.append("DataFim", formatDate(dataFim));
     formData.append("Valor", document.querySelector("input#valorCupao").value);
     formData.append("TipoCampanha", 0);
-    let result = await novaCampanha(formData);
-    console.log(result);
+    let element = "";
+    novaCampanha(formData).catch(err => {
+        element = `<div class="alert alert-warning alert-dismissible fade show" role="alert">Ocorreu um erro ao criar campanha.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"><i class="fas fa-times"></i></span></button></div>`;
+    }).then(data => {
+        if (data["status"] == "true") {
+            element = `<div class="alert alert-success alert-dismissible fade show" role="alert">Campanha criada com sucesso.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"><i class="fas fa-times"></i></span></button></div>`;
+        } else {
+            element = `<div class="alert alert-warning alert-dismissible fade show" role="alert">Ocorreu um erro ao criar campanha.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"><i class="fas fa-times"></i></span></button></div>`;
+        }
+    })
 }
 
 document.querySelector("button#buttonCupao").addEventListener("click", (e) => {
