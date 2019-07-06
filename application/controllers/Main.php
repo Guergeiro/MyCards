@@ -38,7 +38,6 @@ class Main extends CI_Controller
     {
         switch ($page) {
             case "dashboard":
-            case "criarCampanha":
             case "listarCampanha":
             case "ativarCampanha":
                 if (!$this->session->userdata("Email")) {

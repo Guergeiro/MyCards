@@ -11,12 +11,30 @@
                         aria-controls="cupoes" aria-selected="true">Cupões</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?php if ($this->session->userdata("TipoEmpresa") < 2): ?>disabled" tabindex="-1" aria-disabled="true" data-toggle="tooltip" data-placement="top" title="Apenas para premium 2."<?php endif; ?> id="carimbos-tab" data-toggle="tab" href="#carimbos" role="tab"
+                    <?php if ($this->session->userdata("TipoEmpresa") < 2): ?>
+                    <span class="d-inline-block" tabindex="0" data-toggle="tooltip"
+                        title="Apenas para premium nivel 2 ou superior.">
+                        <a class="nav-link disabled" id="carimbos-tab" tabindex="-1" aria-disabled="true"
+                            data-toggle="tab" href="#carimbos" role="tab" aria-controls="carimbos"
+                            aria-selected="false">Carimbos</a>
+                    </span>
+                    <?php else: ?>
+                    <a class="nav-link" id="carimbos-tab" data-toggle="tab" href="#carimbos" role="tab"
                         aria-controls="carimbos" aria-selected="false">Carimbos</a>
+                    <?php endif; ?>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?php if ($this->session->userdata("TipoEmpresa") < 2): ?>disabled" tabindex="-1" aria-disabled="true" data-toggle="tooltip" data-placement="top" title="Apenas para premium 2."<?php endif; ?> id="pontos-tab" data-toggle="tab" href="#pontos" role="tab"
+                    <?php if ($this->session->userdata("TipoEmpresa") < 2): ?>
+                    <span class="d-inline-block" tabindex="0" data-toggle="tooltip"
+                        title="Apenas para premium nivel 2 ou superior.">
+                        <a class="nav-link disabled" id="pontos-tab" tabindex="-1" aria-disabled="true"
+                            data-toggle="tab" href="#pontos" role="tab" aria-controls="pontos"
+                            aria-selected="false">Pontos</a>
+                    </span>
+                    <?php else: ?>
+                    <a class="nav-link" id="pontos-tab" data-toggle="tab" href="#pontos" role="tab"
                         aria-controls="pontos" aria-selected="false">Pontos</a>
+                    <?php endif; ?>
                 </li>
             </ul>
 
@@ -45,27 +63,32 @@
                                                 <input type="text" name="designacao" id="designacaoCupao"
                                                     class="form-control">
                                                 <label class="ml-3" for="designacaoCupao">Designação da campanha</label>
+                                                <div class="form-text"></div>
                                             </div>
                                             <div class="col-12 md-form">
                                                 <input type="text" name="descricao" id="descricaoCupao"
                                                     class="form-control">
                                                 <label class="ml-3" for="descricaoCupao">Descrição da campanha</label>
+                                                <div class="form-text"></div>
                                             </div>
                                             <div class="col-12 md-form">
                                                 <input type="number" name="valor" id="valorCupao" class="form-control"
                                                     min="0">
                                                 <label class="ml-3" for="valorCupao">Valor da campanha</label>
+                                                <div class="form-text"></div>
                                             </div>
                                             <div class="col-6 md-form">
                                                 <input type="date" name="dataInicio" id="dataInicioCupao"
                                                     class="form-control">
                                                 <label class="ml-3" for="dataInicioCupao">Data de inicio da
                                                     campanha</label>
+                                                    <div class="form-text"></div>
                                             </div>
                                             <div class="col-6 md-form">
                                                 <input type="date" name="dataFim" id="dataFimCupao"
                                                     class="form-control">
                                                 <label class="ml-3" for="dataFimCupao">Data de fim da campanha</label>
+                                                <div class="form-text"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -85,7 +108,7 @@
                                         </div>
                                     </div>
                                     <div class="col-12 text-center">
-                                        <button type="button" class="btn btn-primary" disabled>Criar campanha</button>
+                                        <button type="button" class="btn btn-primary" id="buttonCupao">Criar campanha</button>
                                     </div>
                                 </div>
                             </div>
@@ -159,7 +182,7 @@
                                         </div>
                                     </div>
                                     <div class="col-12 text-center">
-                                        <button type="button" class="btn btn-primary" disabled>Criar campanha</button>
+                                        <button type="button" class="btn btn-primary" id="buttonCarimbo">Criar campanha</button>
                                     </div>
                                 </div>
                             </div>
@@ -252,7 +275,7 @@
                                     </div>
                                 </div>
                                 <div class="col-12 text-center">
-                                    <button type="button" class="btn btn-primary" disabled>Criar campanha</button>
+                                    <button type="button" class="btn btn-primary" id="buttonPonto">Criar campanha</button>
                                 </div>
                             </div>
                         </div>
