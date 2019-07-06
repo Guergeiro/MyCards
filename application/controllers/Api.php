@@ -146,12 +146,18 @@ class Api extends CI_Controller
     {
         $this->load->model("Empresas_model");
         $data = $this->input->post(null, true);
-
+        $return = array(
+            "status" => "",
+            "message" => ""
+        );
         if ($this->Empresas_model->novaCampanha($idEmpresa, $data)) {
-            echo "Insert Successful";
+            $return["status"] = "true";
+            $return["message"] = "Insert Successful";
         } else {
-            echo "Error Inserting";
+            $return["status"] = "false";
+            $return["message"] = "Error Inserting";
         }
+        echo json_encode($return);
     }
 
     public function alterarInstanciaCampanhaEmpresa($idEmpresa, $idCampanha, $idCartao)

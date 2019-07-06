@@ -2,11 +2,39 @@ $(function () {
     $('[data-toggle="tooltip"]').tooltip()
 })
 
+const idEmpresa = JSON.parse(document.querySelector("head").getAttribute("data-session"))["ID_Empresa"];
+
 const checkCorrectDate = (firstDate, secondDate) => {
     let date1 = new Date(firstDate);
     let date2 = new Date(secondDate);
 
     return (date1 < date2);
+}
+
+const formatDate = (date) => {
+    let day = date.getDate();
+    let month = date.getMonth();
+    let year = date.getFullYear();
+    return (`${year}-${month}-${day}`);
+}
+
+const novaCampanhaCupao = async () => {
+    let formData = new FormData();
+    let dataInicio = new Date(document.querySelector("input#dataInicioCupao").value);
+    let dataFim = new Date(document.querySelector("input#dataFimCupao").value);
+    formData.append("Designacao", document.querySelector("input#designacaoCupao").value);
+    formData.append("Descricao", document.querySelector("input#descricaoCupao").value);
+    formData.append("DataInicio", formatDate(dataInicio));
+    formData.append("DataFim", formatDate(dataFim));
+    formData.append("TipoCampanha", 0);
+
+    const response = await fetch(`https://mycards.dsprojects.pt/api/empresa/${idEmpresa}/campanha`, {
+        method: "POST",
+        body: formData
+    });
+
+    const data = await response.json();
+    return data;
 }
 
 document.querySelector("button#buttonCupao").addEventListener("click", (e) => {
@@ -50,8 +78,7 @@ document.querySelector("button#buttonCupao").addEventListener("click", (e) => {
         return;
     }
     let today = new Date();
-    console.log(today.toDateString());
-    returnValue = checkCorrectDate(data1.value, today.toDateString());
+    returnValue = checkCorrectDate(today.toDateString(), data1.value);
     if (returnValue) {
         data1.parentElement.lastElementChild.innerHTML = "Datas Corretas.";
         data1.parentElement.lastElementChild.classList.remove("invalid-tooltip");
@@ -69,8 +96,10 @@ document.querySelector("button#buttonCupao").addEventListener("click", (e) => {
         data2.parentElement.lastElementChild.classList.remove("valid-tooltip");
         data2.parentElement.lastElementChild.classList.add("d-block", "invalid-tooltip");
     }
-    console.log(returnValue);
     if (!returnValue) {
         return;
     }
+    novaCampanhaCupao().then(data => {
+        console.log(data);
+    });
 });

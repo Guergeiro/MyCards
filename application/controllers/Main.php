@@ -39,7 +39,6 @@ class Main extends CI_Controller
         switch ($page) {
             case "dashboard":
             case "listarCampanha":
-            case "criarCampanha":
             case "ativarCampanha":
                 if (!$this->session->userdata("Email")) {
                     redirect("signin");

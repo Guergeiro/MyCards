@@ -76,22 +76,27 @@ class Empresas_model extends CI_Model
 
     public function novaCampanha($idEmpresa, $data)
     {
-        // Inserir a campanha em todos os cartoes
-        $query = $this->db->get_where("Cartoes", "Cartoes.ID_Empresa = {$idEmpresa}");
-        $query = $query->result_array();
-        foreach ($query as $cartao) {
-            $info = array(
+        $data["ID_Empresa"] = $idEmpresa;
+        $result = $this->db->insert("Campanhas", $data);
+        if ($result) {
+            // Inserir a campanha em todos os cartoes
+            $query = $this->db->get_where("Cartoes", "Cartoes.ID_Empresa = {$idEmpresa}");
+            $query = $query->result_array();
+            foreach ($query as $cartao) {
+                $info = array(
                 "ID_Cartao" => $cartao["ID_Cartao"],
                 "ID_Campanha" => $data["ID_Campanha"]
             );
-            $this->db->insert("InstanciaCampanha", $info);
+                $this->db->insert("InstanciaCampanha", $info);
+            }
         }
-        return $this->db->insert("Campanhas", $data);
+        return $result;
     }
 
     // Insert + Update
     public function alterarRatingEmpresa($idEmpresa, $data)
     {
+        $data["ID_Empresa"] = $idEmpresa;
         $query = $this->db->get_where("RatingEmpresa", "RatingEmpresa.ID_Empresa = {$idEmpresa} AND RatingEmpresa.ID_Cliente = {$data["ID_Cliente"]}");
         if ($query->num_rows() == 0) {
             return $this->db->insert("RatingEmpresa", $data);
