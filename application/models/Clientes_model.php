@@ -24,6 +24,12 @@ class Clientes_model extends CI_Model
         return $query->result_array();
     }
 
+    public function ratingClienteEmpresa($idCliente, $idEmpresa)
+    {
+        $query = $this->db->get_where("RatingCliente", "RatingCliente.ID_Cliente = {$idCliente} AND RatingCliente.ID_Empresa = {$idEmpresa}");
+        return $query->result_array();
+    }
+
     public function cartoesCliente($idCliente)
     {
         $query = $this->db->get_where("Cartoes", "Cartoes.ID_Cliente = {$idCliente}");
@@ -64,8 +70,19 @@ class Clientes_model extends CI_Model
 
     public function novoCartaoCliente($idCliente, $data)
     {
+        $query = $this->db->get_where("Empresas", "Empresas.ID_Empresa = {$data["ID_Empresa"]}");
+        // Não existe empresa
+        if ($query->num_rows() == 0) {
+            return false;
+        }
+        $query = $query->result_array();
+        if ($query[0]["Ativo"] == 0 || $query[0]["TipoEmpresa"] == 0) {
+            // Empresa não ativa
+            return false;
+        }
         $query = $this->db->get_where("Cartoes", "Cartoes.ID_Cliente = {$idCliente} AND Cartoes.ID_Empresa = {$data["ID_Empresa"]}");
         if ($query->num_rows() != 0) {
+            // Já está fidelizado
             return false;
         }
         // Inserir todas as campanhas existentes no cartao

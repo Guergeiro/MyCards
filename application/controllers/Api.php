@@ -37,6 +37,24 @@ class Api extends CI_Controller
         echo json_encode($this->Empresas_model->ratingEmpresa($idEmpresa));
     }
 
+    public function ratingEmpresaCliente($idEmpresa, $idCliente)
+    {
+        $this->load->model("Empresas_model");
+        $return = array(
+            "status" => "",
+            "message" => ""
+        );
+        $data = $this->Empresas_model->ratingEmpresaCliente($idEmpresa, $idCliente);
+        if (sizeof($data) != 0) {
+            $return["status"] = "true";
+            $return["message"] = $data;
+        } else {
+            $return["status"] = "false";
+            $return["message"] = "Error Getting Rating";
+        }
+        echo json_encode($return);
+    }
+
     public function campanhasEmpresa($idEmpresa)
     {
         $this->load->model("Empresas_model");
@@ -250,6 +268,24 @@ class Api extends CI_Controller
     {
         $this->load->model("Clientes_model");
         echo json_encode($this->Clientes_model->ratingCliente($idCliente));
+    }
+
+    public function ratingClienteEmpresa($idCliente, $idEmpresa)
+    {
+        $this->load->model("Clientes_model");
+        $return = array(
+            "status" => "",
+            "message" => ""
+        );
+        $data = $this->Clientes_model->ratingClienteEmpresa($idCliente, $idEmpresa);
+        if (sizeof($data) != 0) {
+            $return["status"] = "true";
+            $return["message"] = $data;
+        } else {
+            $return["status"] = "false";
+            $return["message"] = "Error Getting Rating";
+        }
+        echo json_encode($return);
     }
 
     public function cartoesCliente($idCliente)

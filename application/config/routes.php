@@ -65,6 +65,7 @@ $route['api/empresa']['get'] = 'api/informacoesEmpresas';
 $route['api/empresa/(:num)']['get'] = 'api/informacoesEmpresa/$1';
 
 $route['api/empresa/(:num)/rating']['get'] = 'api/ratingEmpresa/$1';
+$route['api/cliente/(:num)/rating/(:num)']['get'] = 'api/ratingEmpresaCliente/$1/$2';
 
 $route['api/empresa/(:num)/campanha']['get'] = 'api/campanhasEmpresa/$1';
 $route['api/empresa/(:num)/campanha/(:num)']['get'] = 'api/campanhaEmpresa/$1/$2';
@@ -81,6 +82,7 @@ $route['api/cliente']['get'] = 'api/informacoesClientes';
 $route['api/cliente/(:num)']['get'] = 'api/informacoesCliente/$1';
 
 $route['api/cliente/(:num)/rating']['get'] = 'api/ratingCliente/$1';
+$route['api/cliente/(:num)/rating/(:num)']['get'] = 'api/ratingClienteEmpresa/$1/$2';
 
 $route['api/cliente/(:num)/cartao']['get'] = 'api/cartoesCliente/$1';
 $route['api/cliente/(:num)/cartao/(:num)']['get'] = 'api/cartaoCliente/$1/$2';
