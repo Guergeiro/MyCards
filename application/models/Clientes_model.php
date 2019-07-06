@@ -96,7 +96,7 @@ class Clientes_model extends CI_Model
         }
 
         // Ir buscar cartao inserido
-        $cartao = $this->db->get_where("Cartao", "Cartao.ID_Empresa = {$data["ID_Empresa"]} AND Cartao.ID_Cliente = {$data["ID_Cliente"]}");
+        $cartao = $this->db->get_where("Cartoes", "Cartoes.ID_Empresa = {$data["ID_Empresa"]} AND Cartoes.ID_Cliente = {$data["ID_Cliente"]}");
         $cartao = $query->result_array();
 
         // Inserir todas as campanhas existentes no cartao
