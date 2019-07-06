@@ -65,7 +65,7 @@ $route['api/empresa']['get'] = 'api/informacoesEmpresas';
 $route['api/empresa/(:num)']['get'] = 'api/informacoesEmpresa/$1';
 
 $route['api/empresa/(:num)/rating']['get'] = 'api/ratingEmpresa/$1';
-$route['api/cliente/(:num)/rating/(:num)']['get'] = 'api/ratingEmpresaCliente/$1/$2';
+$route['api/empresa/(:num)/rating/(:num)']['get'] = 'api/ratingEmpresaCliente/$1/$2';
 
 $route['api/empresa/(:num)/campanha']['get'] = 'api/campanhasEmpresa/$1';
 $route['api/empresa/(:num)/campanha/(:num)']['get'] = 'api/campanhaEmpresa/$1/$2';
