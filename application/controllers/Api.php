@@ -411,7 +411,7 @@ class Api extends CI_Controller
             "status" => "",
             "message" => ""
         );
-        if ($this->Clientes_model->apagarCartaoCliente($idCliente, $data)) {
+        if ($this->Clientes_model->apagarCartaoCliente($idCliente, $idCartao)) {
             $return["status"] = "true";
             $return["message"] = "Update Successful";
         } else {
