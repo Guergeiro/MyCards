@@ -341,25 +341,26 @@ class Authentication extends CI_Controller
             "Email" => $this->input->post("email", true),
             "Password" => $this->generateRandomChars(16)
         );
+
+        $return = array(
+            "status" => "",
+            "message" => ""
+        );
+
         if (!$this->Authentication_model->recoverPassword_cliente($data)) {
-            $data = array(
-                "status" => "false",
-                "message" => "O Email não se encontra na base de dados."
-            );
-            echo json_encode($data);
+            $return["status"] = "false";
+            $return["message"] = "O Email não se encontra na base de dados.";
         } else {
             if ($this->sendEmail(array(
                 "Email" => $data["Email"],
                 "Subject" => "Recuperação de password",
                 "Message" => "No seguimento do seu pedido de recuperação de password, foi gerada uma aleatória. Por favor, altere-a assim que possível.\nPassword: {$data['Password']}"
             ))) {
-                $data = array(
-                "status" => "true",
-                "message" => "Uma nova password foi enviada para o seu email"
-            );
-                echo json_encode($data);
+                $return["status"] = "true";
+                $return["message"] = "Uma nova password foi enviada para o seu email.";
             }
         }
+        echo json_encode($return);
     }
 
     public function updatePassword_cliente()
@@ -369,20 +370,18 @@ class Authentication extends CI_Controller
             "Prepassword" => $this->input->post("prepassword", true),
             "Password" => $this->input->post("password", true)
         );
-
+        $return = array(
+            "status" => "",
+            "message" => ""
+        );
         if ($this->Authentication_model->updatePassword_cliente($data)) {
-            $data = array(
-                "status" => "true",
-                "message" => "Password alterada com sucesso."
-            );
-            echo json_encode($data);
+            $return["status"] = "true";
+            $return["message"] = "Password alterada com sucesso.";
         } else {
-            $data = array(
-                "status" => "false",
-                "message" => "Não foi possível alterar a password"
-            );
-            echo json_encode($data);
+            $return["status"] = "false";
+            $return["message"] = "Não foi possível alterar a password.";
         }
+        echo json_encode($return);
     }
 
     public function recoverPassword()
