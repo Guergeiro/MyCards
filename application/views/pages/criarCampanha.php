@@ -1,10 +1,16 @@
+<?php
+    $array = array(
+        "TipoEmpresa" => 2
+    );
+    $this->session->set_userdata($array);
+?>
 <main class="container my-3 py-3 d-flex align-items-center justify-content-center">
     <div class="card">
         <div class="card-header">
             <h3 class="text-primary text-truncate">Criar Campanha</h3>
             <small>Esta área serve para criação de campanhas.</small>
         </div>
-        <div id="body" class="card-body">
+        <div class="card-body">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active" id="cupoes-tab" data-toggle="tab" href="#cupoes" role="tab"
@@ -49,15 +55,15 @@
                                     </div>
                                     <div class="col-md-10">
                                         <h4 class="text-primary">Cupões</h4>
-                                        <small>Ideal para a atribuição de desconto imediato sobre um ou mais
-                                            produtos.</small>
+                                        <p>Ideal para a atribuição de desconto imediato sobre um ou mais
+                                            produtos.</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-body">
                                 <h5 class="col-12 my-3">Dados Campanha</h5>
                                 <div class="row">
-                                    <div class="col-md-8">
+                                    <div class="col-12">
                                         <div class="row">
                                             <div class="col-12 md-form">
                                                 <input type="text" name="designacao" id="designacaoCupao"
@@ -73,7 +79,7 @@
                                             </div>
                                             <div class="col-12 md-form">
                                                 <input type="number" name="valor" id="valorCupao" class="form-control"
-                                                    min="0">
+                                                    min="1" max="100">
                                                 <label class="ml-3" for="valorCupao">Valor da campanha</label>
                                                 <div class="form-text"></div>
                                             </div>
@@ -89,21 +95,6 @@
                                                     class="form-control">
                                                 <label class="ml-3" for="dataFimCupao">Data de fim da campanha</label>
                                                 <div class="form-text"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <h6>Pré-visualização</h6>
-                                            </div>
-                                            <div id="preVisualizacaoCupao"
-                                                class="col m-3 p-3 shadow text-primary text-center text-break">
-                                                <h5 data-name="designacao"></h5>
-                                                <h4 data-name="valor"></h4>
-                                                <h5 data-name="descricao"></h5>
-                                                <h6 data-name="dataInicio"></h6>
-                                                <h6 data-name="dataFim"></h6>
                                             </div>
                                         </div>
                                     </div>
@@ -127,7 +118,7 @@
                                             style="transform: rotate(180deg);"></i>
                                     </div>
                                     <div class="col-md-10">
-                                        <h4 class="text-primary">Carimbo</h4>
+                                        <h4 class="text-primary">Carimbos</h4>
                                         <p>Ideal para atribuição de um prémio ao completar um certo número de compras.
                                         </p>
                                     </div>
@@ -136,49 +127,33 @@
                             <div class="card-body">
                                 <h5 class="col-12 my-3">Dados Campanha</h5>
                                 <div class="row">
-                                    <div class="col-md-8">
+                                    <div class="col-12">
                                         <div class="row">
                                             <div class="col-12 md-form">
                                                 <input type="text" name="designacao" id="designacaoCarimbo"
                                                     class="form-control">
                                                 <label class="ml-3" for="designacaoCarimbo">Designação da
                                                     campanha</label>
+                                                <div class="form-text"></div>
                                             </div>
                                             <div class="col-12 md-form">
                                                 <input type="text" name="descricao" id="descricaoCarimbo"
                                                     class="form-control">
                                                 <label class="ml-3" for="descricaoCarimbo">Prémio da campanha</label>
-                                            </div>
-                                            <div class="col-12 md-form">
-                                                <input type="number" name="valor" id="valorCarimbo" class="form-control"
-                                                    min="0">
-                                                <label class="ml-3" for="valorCarimbo">Valor da campanha</label>
+                                                <div class="form-text"></div>
                                             </div>
                                             <div class="col-6 md-form">
                                                 <input type="date" name="dataInicio" id="dataInicioCarimbo"
                                                     class="form-control">
                                                 <label class="ml-3" for="dataInicioCarimbo">Data de inicio da
                                                     campanha</label>
+                                                <div class="form-text"></div>
                                             </div>
                                             <div class="col-6 md-form">
                                                 <input type="date" name="dataFim" id="dataFimCarimbo"
                                                     class="form-control">
                                                 <label class="ml-3" for="dataFimCarimbo">Data de fim da campanha</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <h6>Pré-visualização</h6>
-                                            </div>
-                                            <div id="preVisualizacaoCarimbo"
-                                                class="col m-3 p-3 shadow text-primary text-center text-break">
-                                                <h5 data-name="designacao"></h5>
-                                                <h4 data-name="valor"></h4>
-                                                <h5 data-name="Prémio"></h5>
-                                                <h6 data-name="dataInicio"></h6>
-                                                <h6 data-name="dataFim"></h6>
+                                                <div class="form-text"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -210,74 +185,44 @@
                             <div class="card-body">
                                 <h5 class="col-12 my-3">Dados Campanha</h5>
                                 <div class="row">
-                                    <div class="col-lg-8">
+                                    <div class="col-12">
                                         <div class="row">
                                             <div class="col-12 md-form">
-                                                <input type="text" name="designacao" id="designacaoPontos"
+                                                <input type="text" name="designacao" id="designacaoPonto"
                                                     class="form-control">
-                                                <label class="ml-3" for="designacaoPontos">Designação da
+                                                <label class="ml-3" for="designacaoPonto">Designação da
                                                     campanha</label>
+                                                <div class="form-text"></div>
                                             </div>
                                             <div class="col-4 md-form">
-                                                <input type="number" name="patamar1" id="patamar1" class="form-control"
+                                                <input type="number" name="patamar" id="patamar" class="form-control"
                                                     min="0">
-                                                <label class="ml-3" for="patamar1">Pontos do Patamar</label>
+                                                <label class="ml-3" for="patamar">Pontos do Patamar</label>
+                                                <div class="form-text"></div>
                                             </div>
                                             <div class="col-8 md-form">
-                                                <input type="text" name="premioPatamar1" id="premioPatamar1"
+                                                <input type="text" name="premioPatamar" id="premioPatamar"
                                                     class="form-control">
-                                                <label class="ml-3" for="premioPatamar1">Prémio do Patamar</label>
+                                                <label class="ml-3" for="premioPatamar">Prémio do Patamar</label>
+                                                <div class="form-text"></div>
                                             </div>
-                                            <div class="col-4 md-form">
-                                                <input type="number" name="patamar2" id="patamar2" class="form-control"
-                                                    min="0">
-                                                <label class="ml-3" for="patamar2">Pontos o Patamar</label>
-                                            </div>
-                                            <div class="col-8 md-form">
-                                                <input type="text" name="premioPatamar2" id="premioPatamar2"
-                                                    class="form-control">
-                                                <label class="ml-3" for="premioPatamar2">Prémio do Patamar</label>
-                                            </div>
-                                            <div class="col-4 md-form">
-                                                <input type="number" name="patamar3" id="patamar3" class="form-control"
-                                                    min="0">
-                                                <label class="ml-3" for="patamar3">Pontos do Patamar</label>
-                                            </div>
-                                            <div class="col-8 md-form">
-                                                <input type="text" name="premioPatamar3" id="premioPatamar3"
-                                                    class="form-control">
-                                                <label class="ml-3" for="premioPatamar3">Prémio do Patamar</label>
-                                            </div>
-
                                             <div class="col-6 md-form">
-                                                <input type="date" name="dataInicio" id="dataInicio"
+                                                <input type="date" name="dataInicio" id="dataInicioPonto"
                                                     class="form-control">
                                                 <label class="ml-3" for="dataInicio">Data de inicio da campanha</label>
+                                                <div class="form-text"></div>
                                             </div>
                                             <div class="col-6 md-form">
-                                                <input type="date" name="dataFim" id="dataFim" class="form-control">
+                                                <input type="date" name="dataFim" id="dataFimPonto"
+                                                    class="form-control">
                                                 <label class="ml-3" for="dataFim">Data de fim da campanha</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <h6>Pré-visualização</h6>
-                                            </div>
-                                            <div id="preVisualizacaoPontos"
-                                                class="col m-3 p-3 shadow text-primary text-center text-break">
-                                                <h5 data-name="designacao"></h5>
-                                                <h4 data-name="valor"></h4>
-                                                <h5 data-name="descricao"></h5>
-                                                <h6 data-name="dataInicio"></h6>
-                                                <h6 data-name="dataFim"></h6>
+                                                <div class="form-text"></div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-12 text-center">
-                                    <button type="button" class="btn btn-primary" id="buttonPonto">Criar
+                                    <button type="button" class="btn btn-primary" id="buttonPontos">Criar
                                         campanha</button>
                                 </div>
                             </div>

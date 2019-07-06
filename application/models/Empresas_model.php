@@ -208,13 +208,13 @@ class Empresas_model extends CI_Model
             // Utilizar apenas se NPontos > valor
             $cartao = $this->db->get_where("Cartoes", "Cartoes.ID_Cartao = {$idCartao}");
             $cartao = $cartao->result_array();
-            if ($cartao[0]["Pontos"] < $data["valor"]) {
+            if ($cartao[0]["Pontos"] < $campanha["Valor"]) {
                 // Não tem pontos
                 return "pontos";
             }
             $this->db->where("Cartoes.ID_Cartao = {$idCartao}");
             $this->db->set(array(
-                "Pontos" => $cartao[0]["Pontos"]-$data["valor"]
+                "Pontos" => $cartao[0]["Pontos"]-$campanha["Valor"]
             ));
             $this->db->update("Cartoes");
 

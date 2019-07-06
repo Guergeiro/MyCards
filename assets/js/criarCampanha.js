@@ -11,10 +11,6 @@ const checkCorrectDate = (firstDate, secondDate) => {
     return (date1 < date2);
 }
 
-const createAlert = (element) => {
-    document.querySelector("#body").innerHTML += element;
-}
-
 const formatDate = (date) => {
     let day = date.getDate();
     let month = date.getMonth();
@@ -42,21 +38,38 @@ const novaCampanhaCupao = () => {
     formData.append("DataFim", formatDate(dataFim));
     formData.append("Valor", document.querySelector("input#valorCupao").value);
     formData.append("TipoCampanha", 0);
-    let element = "";
-    novaCampanha(formData).catch(err => {
-        element = `<div class="alert alert-warning alert-dismissible fade show" role="alert">Ocorreu um erro ao criar campanha.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"><i class="fas fa-times"></i></span></button></div>`;
-    }).then(data => {
-        if (data["status"] == "true") {
-            element = `<div class="alert alert-success alert-dismissible fade show" role="alert">Campanha criada com sucesso.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"><i class="fas fa-times"></i></span></button></div>`;
-        } else {
-            element = `<div class="alert alert-warning alert-dismissible fade show" role="alert">Ocorreu um erro ao criar campanha.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"><i class="fas fa-times"></i></span></button></div>`;
-        }
-    })
+    novaCampanha(formData).then(location.reload);
 }
 
-document.querySelector("button#buttonCupao").addEventListener("click", (e) => {
+const novaCampanhaCarimbo = () => {
+    let formData = new FormData();
+    let dataInicio = new Date(document.querySelector("input#dataInicioCarimbo").value);
+    let dataFim = new Date(document.querySelector("input#dataFimCarimbo").value);
+    formData.append("Designacao", document.querySelector("input#designacaoCarimbo").value);
+    formData.append("Descricao", document.querySelector("input#descricaoCarimbo").value);
+    formData.append("DataInicio", formatDate(dataInicio));
+    formData.append("DataFim", formatDate(dataFim));
+    formData.append("TipoCampanha", 1);
+    novaCampanha(formData).then(location.reload);
+}
+
+const novaCampanhaPonto = () => {
+    let formData = new FormData();
+    let dataInicio = new Date(document.querySelector("input#dataInicioPonto").value);
+    let dataFim = new Date(document.querySelector("input#dataFimPonto").value);
+    formData.append("Designacao", document.querySelector("input#designacaoPonto").value);
+    formData.append("Descricao", document.querySelector("input#premioPatamar").value);
+    formData.append("DataInicio", formatDate(dataInicio));
+    formData.append("DataFim", formatDate(dataFim));
+    formData.append("Valor", document.querySelector("input#patamar").value);
+    formData.append("TipoCampanha", 2);
+    novaCampanha(formData).then(location.reload);
+}
+
+const validateForm = (element) => {
     let returnValue = true;
-    e.target.parentElement.parentElement.querySelectorAll("input").forEach(input => {
+    let parentElement = element.parentElement.parentElement;
+    parentElement.querySelectorAll("input").forEach(input => {
         if (input.value.trim().length == 0) {
             returnValue = false;
             input.parentElement.lastElementChild.innerHTML = "Preencha os campos."
@@ -69,10 +82,11 @@ document.querySelector("button#buttonCupao").addEventListener("click", (e) => {
         }
     });
     if (!returnValue) {
-        return;
+        return false;
     }
-    let data1 = document.querySelector("input#dataInicioCupao");
-    let data2 = document.querySelector("input#dataFimCupao");
+    let dates = parentElement.querySelectorAll("input[type=date]");
+    let data1 = dates[0];
+    let data2 = dates[1];
     returnValue = checkCorrectDate(data1.value, data2.value);
     if (returnValue) {
         data1.parentElement.lastElementChild.innerHTML = "Datas Corretas.";
@@ -92,7 +106,7 @@ document.querySelector("button#buttonCupao").addEventListener("click", (e) => {
         data2.parentElement.lastElementChild.classList.add("d-block", "invalid-tooltip");
     }
     if (!returnValue) {
-        return;
+        return false;
     }
     let today = new Date();
     returnValue = checkCorrectDate(today.toDateString(), data1.value);
@@ -113,8 +127,23 @@ document.querySelector("button#buttonCupao").addEventListener("click", (e) => {
         data2.parentElement.lastElementChild.classList.remove("valid-tooltip");
         data2.parentElement.lastElementChild.classList.add("d-block", "invalid-tooltip");
     }
-    if (!returnValue) {
-        return;
-    }
-    novaCampanhaCupao();
+    return returnValue;
+}
+
+document.querySelectorAll("main button").forEach(button => {
+    button.addEventListener("click", () => {
+        if (validateForm(button)) {
+            switch (button.getAttribute("id")) {
+                case "buttonCupao":
+                    novaCampanhaCupao();
+                    break;
+                case "buttonCarimbo":
+                    novaCampanhaCarimbo();
+                    break;
+                case "buttonPontos":
+                    novaCampanhaPonto();
+                    break;
+            }
+        }
+    });
 });
