@@ -92,7 +92,7 @@ class Clientes_model extends CI_Model
         foreach ($query as $campanha) {
             $info = array(
                 "ID_Cartao" => $cartao["ID_Cartao"],
-                "ID_Campanha" => $data["ID_Campanha"]
+                "ID_Campanha" => $campanha["ID_Campanha"]
             );
             $this->db->insert("InstanciaCampanha", $info);
         }
