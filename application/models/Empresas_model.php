@@ -102,7 +102,7 @@ class Empresas_model extends CI_Model
             return $this->db->insert("RatingEmpresa", $data);
         }
         $data["DataRating"] = date("Y-m-d H:i:s");
-        $this->db->where("RatingEmpresa.ID_Empresa = {$idEmpresa}");
+        $this->db->where("RatingEmpresa.ID_Empresa = {$idEmpresa} AND RatingEmpresa.ID_Cliente = {$data["ID_Cliente"]}");
         $this->db->set($data);
         return $this->db->update("RatingEmpresa", $data);
     }

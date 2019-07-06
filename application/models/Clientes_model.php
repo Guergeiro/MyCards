@@ -51,12 +51,13 @@ class Clientes_model extends CI_Model
     // Insert + Update
     public function alterarRatingCliente($idCliente, $data)
     {
+        $data["ID_Cliente"] = $idCliente;
         $query = $this->db->get_where("RatingCliente", "RatingCliente.ID_Cliente = {$idCliente} AND RatingCliente.ID_Empresa = {$data["ID_Empresa"]}");
         if ($query->num_rows() == 0) {
             return $this->db->insert("RatingCliente", $data);
         }
         $data["DataRating"] = date("Y-m-d H:i:s");
-        $this->db->where("RatingCliente.ID_Cliente = {$idCliente}");
+        $this->db->where("RatingCliente.ID_Cliente = {$idCliente} AND RatingCliente.ID_Empresa = {$data["ID_Empresa"]}");
         $this->db->set($data);
         return $this->db->update("RatingCliente", $data);
     }
