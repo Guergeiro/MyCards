@@ -9,7 +9,7 @@
         <thead>
           <tr id="head">
             <th scope="col">
-              #
+              ID Campanha
             </th>
             <th scope="col">
               Tipo Campanha

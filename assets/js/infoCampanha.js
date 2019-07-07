@@ -13,25 +13,27 @@ const meses = [
     "Dezembro"
 ];
 
-$(document).ready(function() {
-    $.get("https://mycards.dsprojects.pt/api/empresa/" + JSON.parse(document.querySelector("head").getAttribute("data-session"))["ID_Empresa"] + "/campanha/" + window.location.href.split("/").pop(), function(data) {
+$(document).ready(function () {
+    $.get("https://mycards.dsprojects.pt/api/empresa/" + JSON.parse(document.querySelector("head").getAttribute("data-session"))["ID_Empresa"] + "/campanha/" + window.location.href.split("/").pop(), function (data) {
         campanhas = JSON.parse(data);
         $(".empresa").html(campanhas[0].Designacao);
-        $(".desconto").html(campanhas[0].Valor + "%");
         switch (campanhas[0].TipoCampanha) {
             case "0":
                 $(".tipo").html("Cupão");
+                $(".desconto").html(campanhas[0].Valor + "%");
                 break;
             case "1":
                 $(".tipo").html("Carimbos");
+                document.querySelector("#desconto").remove();
                 break;
             case "2":
                 $(".tipo").html("Pontos");
+                $(".desconto").html(campanhas[0].Valor);
                 break;
         }
         $(".fimCampanha").html(campanhas[0].DataFim);
 
-        $.get("https://mycards.dsprojects.pt/api/empresa/" + JSON.parse(document.querySelector("head").getAttribute("data-session"))["ID_Empresa"] + "/campanha/" + window.location.href.split("/").pop() + "/instanciacampanha", function(data) {
+        $.get("https://mycards.dsprojects.pt/api/empresa/" + JSON.parse(document.querySelector("head").getAttribute("data-session"))["ID_Empresa"] + "/campanha/" + window.location.href.split("/").pop() + "/instanciacampanha", function (data) {
             data = JSON.parse(data);
             let newData = [0, 0];
             data.forEach(info => {
@@ -75,7 +77,7 @@ $(document).ready(function() {
             });
 
             newData = [];
-            Object.keys(obj).forEach(function(key) {
+            Object.keys(obj).forEach(function (key) {
                 newData.push(obj[key]);
             });
 

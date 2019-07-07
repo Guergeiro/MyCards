@@ -1,11 +1,12 @@
 let instanciaCampanhas = [];
 let campanhas = [];
+
+const idEmpresa = JSON.parse(document.querySelector("head").getAttribute("data-session"))["ID_Empresa"];
+
 $(document).ready(function () {
     $.get(
         "https://mycards.dsprojects.pt/api/empresa/" +
-        JSON.parse(document.querySelector("head").getAttribute("data-session"))[
-            "ID_Empresa"
-        ] +
+        idEmpresa +
         "/campanha",
         function (data) {
             campanhas = JSON.parse(data);
@@ -13,9 +14,7 @@ $(document).ready(function () {
             campanhas.forEach(campanha => {
                 $.get(
                     "https://mycards.dsprojects.pt/api/empresa/" +
-                    JSON.parse(
-                        document.querySelector("head").getAttribute("data-session")
-                    )["ID_Empresa"] +
+                    idEmpresa +
                     "/campanha/" +
                     campanha["ID_Campanha"] +
                     "/instanciacampanha",
@@ -26,13 +25,25 @@ $(document).ready(function () {
                         });
                     }
                 );
+                let tipoCampanha;
+                switch (campanha["TipoCampanha"]) {
+                    case "0":
+                        tipoCampanha = "Cupão";
+                        break;
+                    case "1":
+                        tipoCampanha = "Carimbo";
+                        break;
+                    case "2":
+                        tipoCampanha = "Pontos";
+                        break;
+                }
                 document.querySelector("table tbody").innerHTML +=
                     '<tr data-url="' +
                     campanha["ID_Campanha"] +
                     '"><th scope="row">' +
                     campanha["ID_Campanha"] +
                     "</th><td>" +
-                    campanha["TipoCampanha"] +
+                    tipoCampanha +
                     "</td><td>" +
                     campanha["DataInicio"] +
                     "</td><td>" +

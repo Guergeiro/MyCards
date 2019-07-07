@@ -1,9 +1,3 @@
-<?php
-    $array = array(
-        "TipoEmpresa" => 2
-    );
-    $this->session->set_userdata($array);
-?>
 <main class="container my-3 py-3 d-flex align-items-center justify-content-center">
     <div class="card">
         <div class="card-header">

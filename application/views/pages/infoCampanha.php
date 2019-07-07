@@ -12,7 +12,7 @@
             <h4 class="empresa"></h4>
           </div>
 
-          <div class="col-md-3 p-3 border-right">
+          <div class="col-md-3 p-3 border-right" id="desconto">
             <small>Desconto</small>
             <h4 class="desconto"></h4>
           </div>
