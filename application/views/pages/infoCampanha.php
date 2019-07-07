@@ -7,22 +7,22 @@
       </div>
       <div class="card-body">
         <div class="row text-center">
-          <div class="col-md-3 p-3 border-right">
+          <div class="col p-3 border-right">
             <small>Empresa</small>
             <h4 class="empresa"></h4>
           </div>
 
-          <div class="col-md-3 p-3 border-right" id="desconto">
+          <div class="col p-3 border-right" id="desconto">
             <small>Desconto</small>
             <h4 class="desconto"></h4>
           </div>
 
-          <div class="col-md-3 p-3 border-right">
+          <div class="col p-3 border-right">
             <small>Tipo de Campanha</small>
             <h4 class="tipo"></h4>
           </div>
 
-          <div class="col-md-3 p-3">
+          <div class="col p-3">
             <small>Fim de campanha</small>
             <h4 class="fimCampanha"></h4>
           </div>

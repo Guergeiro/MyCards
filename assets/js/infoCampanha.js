@@ -28,6 +28,7 @@ $(document).ready(function () {
                 break;
             case "2":
                 $(".tipo").html("Pontos");
+                document.querySelector("#desconto small").innerHTML = "Patamar";
                 $(".desconto").html(campanhas[0].Valor);
                 break;
         }
