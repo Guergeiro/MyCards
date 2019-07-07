@@ -91,6 +91,8 @@ class Main extends CI_Controller
             redirect("signin");
         } elseif ($this->checkPermission() == false) {
             redirect("perfil");
+        } elseif ($this->session->userdata("TipoEmpresa") != 3) {
+            redirect("listarCampanha");
         }
 
 
