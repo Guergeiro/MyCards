@@ -4,7 +4,8 @@ const idEmpresa = JSON.parse(document.querySelector("head").getAttribute("data-s
 
 const atualizarRatingCliente = async (idCliente) => {
     let formData = new FormData();
-    formData.append("Rating", document.querySelector("input#rating").value);
+    formData.append("idEmpresa", idEmpresa);
+    formData.append("rating", document.querySelector("input#rating").value);
     const response = await fetch(`https://mycards.dsprojects.pt/api/cliente/${idCliente}/rating/`, {
         method: "POST",
         body: formData
