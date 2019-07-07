@@ -153,6 +153,21 @@ class Empresas_model extends CI_Model
             // Dia já foi
             return "data";
         }
+
+        $dataCampanha = explode("-", $campanha[0]["DataInicio"]);
+        if (date("Y") < $dataCampanha[0]) {
+            // Ano ainda já foi
+            return "data";
+        }
+        if (date("m") < $dataCampanha[1]) {
+            // Mes ainda já foi
+            return "data";
+        }
+        if (date("d") < $dataCampanha[2]) {
+            // Dia ainda já foi
+            return "data";
+        }
+
         
         $query = $this->db->get_where("InstanciaCampanha", "InstanciaCampanha.ID_Campanha = {$idCampanha} AND InstanciaCampanha.ID_Cartao = {$idCartao}");
         $query = $query->result_array();

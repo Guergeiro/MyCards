@@ -38,7 +38,7 @@ const novaCampanhaCupao = () => {
     formData.append("DataFim", formatDate(dataFim));
     formData.append("Valor", document.querySelector("input#valorCupao").value);
     formData.append("TipoCampanha", 0);
-    novaCampanha(formData).then(location.reload);
+    novaCampanha(formData).then(window.location = "https://mycards.dsprojects.pt/listarCampanha");
 }
 
 const novaCampanhaCarimbo = () => {
@@ -50,7 +50,7 @@ const novaCampanhaCarimbo = () => {
     formData.append("DataInicio", formatDate(dataInicio));
     formData.append("DataFim", formatDate(dataFim));
     formData.append("TipoCampanha", 1);
-    novaCampanha(formData).then(location.reload);
+    novaCampanha(formData).then(window.location = "https://mycards.dsprojects.pt/listarCampanha");
 }
 
 const novaCampanhaPonto = () => {
@@ -63,7 +63,7 @@ const novaCampanhaPonto = () => {
     formData.append("DataFim", formatDate(dataFim));
     formData.append("Valor", document.querySelector("input#patamar").value);
     formData.append("TipoCampanha", 2);
-    novaCampanha(formData).then(location.reload);
+    novaCampanha(formData).then(window.location = "https://mycards.dsprojects.pt/listarCampanha");
 }
 
 const validateForm = (element) => {

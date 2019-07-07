@@ -72,7 +72,7 @@
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.0/js/mdb.min.js"></script>
 
-<?php if ($this->uri->segment(1,0) === "listarCampanha"): ?>
+<?php if (($this->uri->segment(1, 0) === "listarCampanha") || ($this->uri->segment(1, 0) === "clientes")): ?>
 <!-- MDBootstrap Datatables  -->
 <script type="text/javascript" src="<?php echo base_url("assets/js/addons/datatables.min.js"); ?>"></script>
 <?php endif; ?>

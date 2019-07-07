@@ -1,13 +1,13 @@
 let instanciaCampanhas = [];
 let campanhas = [];
-$(document).ready(function() {
+$(document).ready(function () {
     $.get(
         "https://mycards.dsprojects.pt/api/empresa/" +
         JSON.parse(document.querySelector("head").getAttribute("data-session"))[
             "ID_Empresa"
         ] +
         "/campanha",
-        function(data) {
+        function (data) {
             campanhas = JSON.parse(data);
 
             campanhas.forEach(campanha => {
@@ -19,7 +19,7 @@ $(document).ready(function() {
                     "/campanha/" +
                     campanha["ID_Campanha"] +
                     "/instanciacampanha",
-                    function(data) {
+                    function (data) {
                         data = JSON.parse(data);
                         data.forEach(da => {
                             instanciaCampanhas.push(da);
@@ -77,7 +77,7 @@ $(document).ready(function() {
                 }),
                 $(".dataTables_length").addClass("bs-select");
             document.querySelectorAll("tr:not(#head)").forEach(row => {
-                row.addEventListener("click", function() {
+                row.addEventListener("click", function () {
                     document
                         .querySelector("#modal")
                         .setAttribute("data-url", this.getAttribute("data-url"));
@@ -94,7 +94,7 @@ $(document).ready(function() {
         }
     );
 });
-$("#modal").on("show.bs.modal", function() {
+$("#modal").on("show.bs.modal", function () {
     let array = arrayColors(2),
         backgroundColor = [],
         borderColor = [];

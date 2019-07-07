@@ -27,7 +27,7 @@
     <!-- Page CSS -->
     <link rel="stylesheet" href="<?php echo base_url("assets/css/{$page}.css"); ?>">
 
-    <?php if ($this->uri->segment(1, 0) === "listarCampanha") : ?>
+    <?php if (($this->uri->segment(1, 0) === "listarCampanha") || ($this->uri->segment(1, 0) === "clientes")): ?>
     <link href="<?php echo base_url("assets/css/addons/datatables.min.css"); ?>" rel="stylesheet">
     <?php endif; ?>
   </noscript>
