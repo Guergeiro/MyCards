@@ -4,6 +4,7 @@ const getAllDadosEmpresa = async () => {
     const response1 = await fetch(`https://mycards.dsprojects.pt/api/empresa/${idEmpresa}`);
     const response2 = await fetch(`https://mycards.dsprojects.pt/api/empresa/${idEmpresa}/colaborador`);
     const response3 = await fetch(`https://mycards.dsprojects.pt/api/empresa/${idEmpresa}/cartao`);
+    const response4 = await fetch(`https://mycards.dsprojects.pt/api/empresa/${idEmpresa}/rating`);
 
     return Promise.all([response1.json(), response2.json(), response3.json()]);
 }
@@ -39,6 +40,13 @@ getAllDadosEmpresa().then(data => {
 
     /* Colaboradores */
     document.querySelector("input#cartoes").value = data[2].length;
+
+    /* Rating */
+    let sum = 0;
+    data[3].forEach(rating => {
+        sum += parseInt(rating["Rating"]);
+    });
+    document.querySelector("input#rating").value = sum / data[3].length;
 
     document.querySelectorAll("input").forEach(input => {
         input.focus();

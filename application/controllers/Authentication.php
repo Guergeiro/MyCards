@@ -199,7 +199,7 @@ class Authentication extends CI_Controller
             array(
                 "field" => "nif",
                 "label" => "nif",
-                "rules" => "required|trim|numeric"
+                "rules" => "required|trim|numeric|is_unique[Empresas.NIF]"
             ),
             array(
                 "field" => "areainteresse",
