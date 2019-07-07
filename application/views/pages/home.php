@@ -122,8 +122,6 @@
               </div>
               <div class="card-body">
                 <h4 class="card-title">Inclui</h4>
-                <p class="card-text text-success">3 campanhas simultâneas <i class="far fa-check-circle"></i>
-                </p>
                 <p class="card-text text-success">Cupões de Desconto Direto <i class="far fa-check-circle"></i>
                 </p>
                 <p class="card-text text-success">Estatísticas Gerais <i class="far fa-check-circle"></i>
@@ -134,7 +132,6 @@
                 </p>
                 <p class="card-text text-danger">Estatísticas por Campanha <i class="far fa-times-circle"></i>
                 </p>
-                <a href="<?php echo base_url("comprar#1"); ?>" class="btn btn-primary rounded-pill">Comprar</a>
               </div>
             </div>
           </div>
@@ -155,8 +152,6 @@
               </div>
               <div class="card-body">
                 <h4 class="card-title">Inclui</h4>
-                <p class="card-text text-success">6 campanhas simultâneas <i class="far fa-check-circle"></i>
-                </p>
                 <p class="card-text text-success">Cupões de Desconto Direto <i class="far fa-check-circle"></i>
                 </p>
                 <p class="card-text text-success">Estatísticas Gerais <i class="far fa-check-circle"></i>
@@ -188,8 +183,6 @@
               </div>
               <div class="card-body">
                 <h4 class="card-title">Inclui</h4>
-                <p class="card-text text-success">Campanhas Ilimitadas <i class="far fa-check-circle"></i>
-                </p>
                 <p class="card-text text-success">Cupões de Desconto Direto <i class="far fa-check-circle"></i>
                 </p>
                 <p class="card-text text-success">Estatísticas Gerais <i class="far fa-check-circle"></i>
