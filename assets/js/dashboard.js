@@ -13,6 +13,8 @@ const meses = [
     "Dezembro"
 ];
 
+const idEmpresa = JSON.parse(document.querySelector("head").getAttribute("data-session"))["ID_Empresa"];
+
 const ageGroups = ["<18", "18-24", "25-50", "51>"];
 
 /* Criar Chart Estatisticas Gerais */
@@ -39,7 +41,7 @@ let chartIdadeFidelizados = new Chart($("#myChartIF"), {
 });
 
 document.querySelectorAll(".teste").forEach(div => {
-    div.addEventListener("click", function() {
+    div.addEventListener("click", function () {
         if (div.classList.contains("text-muted")) {
             div.classList.remove("text-muted");
             div.classList.add("text-primary");
@@ -68,10 +70,6 @@ function addDataBar(chart, labels, label, data) {
                 newData[getMonth(cartao["DataFidelizacao"])] += 1;
             });
             break;
-        case "Crescimento da Empresa":
-            // code block
-            break;
-
         case "Crescimento de Rating":
             // Podemos testar com media de rating em vez de numero de rates
             for (i = 0; i < rating.length; i++) {
@@ -99,7 +97,7 @@ function addDataBar(chart, labels, label, data) {
             });
 
             newData = [];
-            Object.keys(obj).forEach(function(key) {
+            Object.keys(obj).forEach(function (key) {
                 newData.push(obj[key]);
             });
     }
@@ -145,7 +143,7 @@ function removeData(chart, label) {
 }
 
 /* Funcao para criar cores dinamicas */
-var dynamicColors = function() {
+var dynamicColors = function () {
     var r = Math.floor(Math.random() * 255);
     var g = Math.floor(Math.random() * 255);
     var b = Math.floor(Math.random() * 255);
@@ -157,7 +155,7 @@ let instanciascampanha = [];
 let dbInfo = {};
 let clientes = [];
 
-$("#carouselExampleControls").on("slid.bs.carousel", function(event) {
+$("#carouselExampleControls").on("slid.bs.carousel", function (event) {
     chartEstatisticasCampanhas.data.datasets.pop();
     let nlabels = chartEstatisticasCampanhas.data.labels.length;
     for (i = 0; i < nlabels; i++) {
@@ -246,14 +244,12 @@ function getMonth(data) {
 }
 
 let rating = [];
-$(document).ready(function() {
+$(document).ready(function () {
     $.get(
         "https://mycards.dsprojects.pt/api/empresa/" +
-        JSON.parse(document.querySelector("head").getAttribute("data-session"))[
-            "ID_Empresa"
-        ] +
+        idEmpresa +
         "/cartao",
-        function(data) {
+        function (data) {
             data = JSON.parse(data);
             data.forEach(cartao => {
                 cartoes.push(cartao);
@@ -261,7 +257,7 @@ $(document).ready(function() {
                     url: "https://mycards.dsprojects.pt/api/cliente/" + cartao["ID_Cliente"],
                     type: "GET",
                     async: false,
-                    success: function(cliente) {
+                    success: function (cliente) {
                         cliente = JSON.parse(cliente);
                         cliente.forEach(split => {
                             clientes.push(split);
@@ -270,11 +266,11 @@ $(document).ready(function() {
                 });
             });
         }
-    ).done(function() {
+    ).done(function () {
         addDataBar(chartEstatisticasGerais, meses, "Clientes Fidelizados");
         let localizacao = getLocalizaoClientes(clientes);
         let labels = [];
-        Object.keys(localizacao).forEach(function(key) {
+        Object.keys(localizacao).forEach(function (key) {
             labels.push(key);
             chartLocalizacaoFidelizados.data.labels.push(key);
         });
@@ -283,7 +279,7 @@ $(document).ready(function() {
         labels = [];
         let idades = getIdadesClientes(clientes);
 
-        Object.keys(idades).forEach(function(key) {
+        Object.keys(idades).forEach(function (key) {
             labels.push(key);
             chartIdadeFidelizados.data.labels.push(key);
         });
@@ -292,31 +288,27 @@ $(document).ready(function() {
     });
     $.get(
         "https://mycards.dsprojects.pt/api/empresa/" +
-        JSON.parse(document.querySelector("head").getAttribute("data-session"))[
-            "ID_Empresa"
-        ] +
+        idEmpresa +
         "/campanha",
-        function(data) {
+        function (data) {
             data = JSON.parse(data);
             data.forEach(campanha => {
                 campanhas.push(campanha);
                 $.ajax({
                     url: "https://mycards.dsprojects.pt/api/empresa/" +
-                        JSON.parse(
-                            document.querySelector("head").getAttribute("data-session")
-                        )["ID_Empresa"] +
+                        idEmpresa +
                         "/campanha/" +
                         campanha["ID_Campanha"] +
                         "/instanciacampanha",
                     type: "GET",
                     async: false,
-                    success: function(instancias) {
+                    success: function (instancias) {
                         campanha["instancias"] = JSON.parse(instancias);
                     }
                 });
             });
         }
-    ).done(function() {
+    ).done(function () {
         addDataBar(
             chartEstatisticasCampanhas,
             getLabels(campanhas[0]),
@@ -340,11 +332,9 @@ $(document).ready(function() {
     });
     $.get(
         "https://mycards.dsprojects.pt/api/empresa/" +
-        JSON.parse(document.querySelector("head").getAttribute("data-session"))[
-            "ID_Empresa"
-        ] +
+        idEmpresa +
         "/rating",
-        function(data) {
+        function (data) {
             rating = JSON.parse(data);
         }
     );
