@@ -74,14 +74,24 @@ document.querySelector("button#area-interesse").addEventListener("click", () => 
     let select = document.querySelector("select#areainteresse");
     let formData = new FormData();
     formData.append("AreaInteresse", select.options[select.selectedIndex].value);
-    postDadosEmpresa(formData);
+    postDadosEmpresa(formData).then(location.reload());
 });
 
 document.querySelector("button#localizacao-empresa").addEventListener("click", () => {
     let select = document.querySelector("select#localizacao");
     let formData = new FormData();
     formData.append("Localizacao", select.options[select.selectedIndex].value);
-    postDadosEmpresa(formData);
+    postDadosEmpresa(formData).then(location.reload());
+});
+
+document.querySelector("button#redes-sociais").addEventListener("click", (e) => {
+    let formData = new FormData();
+    e.target.parentElement.parentElement.querySelectorAll("input").forEach(input => {
+        if (input.value.trim().length != 0) {
+            formData.append(input.getAttribute("id"), input.value);
+        }
+    });
+    postDadosEmpresa(formData).then(location.reload());
 });
 
 distritos.forEach((distrito) => {
