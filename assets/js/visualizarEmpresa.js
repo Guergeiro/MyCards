@@ -6,7 +6,7 @@ const getAllDadosEmpresa = async () => {
     const response3 = await fetch(`https://mycards.dsprojects.pt/api/empresa/${idEmpresa}/cartao`);
     const response4 = await fetch(`https://mycards.dsprojects.pt/api/empresa/${idEmpresa}/rating`);
 
-    return Promise.all([response1.json(), response2.json(), response3.json()]);
+    return Promise.all([response1.json(), response2.json(), response3.json(), response4.json()]);
 }
 
 getAllDadosEmpresa().then(data => {
