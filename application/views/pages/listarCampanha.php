@@ -48,10 +48,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <?php if ($this->session->userdata("TipoEmpresa") == 3): ?>
-                <a href="<?php echo base_url("infoCampanha")?>" class="btn btn-outline-primary" id="btnMaisInfo">Mais
+                <a href="<?php echo base_url("infoCampanha")?>" class="btn btn-outline-primary<?php if ($this->session->userdata("TipoEmpresa") == 3): ?> disabled<?php endif;?>" id="btnMaisInfo">Mais
                     informação</a>
-                <?php endif; ?>
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
             </div>
         </div>
