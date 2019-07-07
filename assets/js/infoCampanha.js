@@ -23,13 +23,13 @@ $(document).ready(function () {
                 $(".desconto").html(campanhas[0].Valor + "%");
                 break;
             case "1":
-                $(".tipo").html("Carimbos");
+                $(".tipo").html("Carimbo");
                 document.querySelector("#desconto").remove();
                 break;
             case "2":
                 $(".tipo").html("Pontos");
                 document.querySelector("#desconto small").innerHTML = "Patamar";
-                $(".desconto").html(campanhas[0].Valor);
+                $(".desconto").html(campanhas[0].Valor + "pontos");
                 break;
         }
         $(".fimCampanha").html(campanhas[0].DataFim);
