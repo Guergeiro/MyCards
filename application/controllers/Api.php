@@ -373,7 +373,7 @@ class Api extends CI_Controller
     {
         $this->load->model("Clientes_model");
         $data = array(
-            "ID_Cliente" => $this->input->post("idEmpresa", true),
+            "ID_Empresa" => $this->input->post("idEmpresa", true),
             "Rating" => $this->input->post("rating", true)
         );
         $return = array(
