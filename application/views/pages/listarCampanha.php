@@ -48,7 +48,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <a href="<?php echo base_url("infoCampanha")?>" class="btn btn-outline-primary<?php if ($this->session->userdata("TipoEmpresa") == 3): ?> disabled<?php endif;?>" id="btnMaisInfo">Mais
+                <button type="button" class="btn btn-danger ml-0 mr-auto" id="delete"><i class="fas fa-trash-alt"></i></button>
+                <a href="<?php echo base_url("infoCampanha")?>" class="btn btn-outline-primary<?php if ($this->session->userdata("TipoEmpresa") != 3): ?> disabled<?php endif;?>" id="btnMaisInfo">Mais
                     informação</a>
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
             </div>

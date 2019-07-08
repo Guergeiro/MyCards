@@ -17,7 +17,7 @@ const criarElemento = (notificacao) => {
 
     let oldinnerHtml = document.querySelectorAll(".card-body .row")[1].innerHTML;
 
-    elementParent.innerHTML = `<div class="col-sm-6 col-md-4"><div class="toast mx-auto my-1" role="alert" aria-live="assertive" aria-atomic="true" data-delay="60000"><div class="toast-header"><strong class="mr-auto">Campanha: ${notificacao["ID_Campanha"]}</strong><button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close"><span aria-hidden="true"><i class="fas fa-times"></i></span></button></div><div class="toast-body text-center"><span class="id-cliente">Cartão: ${notificacao["ID_Cartao"]}</span><span>Número de utilizações: ${notificacao["Utilizado"]}</span><hr><button data-idcampanha="${notificacao["ID_Campanha"]}" data-idcartao="${notificacao["ID_Cartao"]}" class="btn btn-info" type="button">Utilizar Campanha</button></div></div></div>`;
+    elementParent.innerHTML = `<div class="col-sm-6 col-md-4"><div class="toast mx-auto my-1" role="alert" aria-live="assertive" aria-atomic="true" data-delay="60000"><div class="toast-header"><strong class="mr-auto">Campanha: ${notificacao["ID_Campanha"]}</strong><button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close"><span aria-hidden="true"><i class="fas fa-times"></i></span></button></div><div class="toast-body text-center"><span class="id-cliente">Cartão: ${notificacao["ID_Cartao"]}</span><br><span>Número de utilizações: ${notificacao["Utilizado"]}</span><hr><button data-idcampanha="${notificacao["ID_Campanha"]}" data-idcartao="${notificacao["ID_Cartao"]}" class="btn btn-info" type="button">Utilizar Campanha</button></div></div></div>`;
 
     elementParent.innerHTML += oldinnerHtml;
 

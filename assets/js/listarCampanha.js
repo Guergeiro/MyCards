@@ -145,3 +145,16 @@ $("#modal").on("show.bs.modal", function () {
         }
     });
 });
+
+const deleteCampanha = async (idCampanha) => {
+    const response = await fetch(`https://mycards.dsprojects.pt/api/empresa/${idEmpresa}/campanha/${idCampanha}`, {
+        method: "DELETE"
+    });
+    const data = await response.json();
+    return data;
+}
+
+document.querySelector("button#delete").addEventListener("click", (e) => {
+    const id = e.target.parentElement.parentElement.parentElement.parentElement.getAttribute("data-url");
+    deleteCampanha(id).then(location.reload());
+});

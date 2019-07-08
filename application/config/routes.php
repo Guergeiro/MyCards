@@ -111,6 +111,7 @@ $route['api/cliente/(:num)/cartao/(:num)/instanciacampanha/(:num)']['post'] = 'a
 $route['api/empresa/(:num)']['delete'] = 'api/eliminarEmpresa/$1';
 $route['api/empresa/(:num)/rating/(:num)']['delete'] = 'api/apagarRatingEmpresa/$1/$2';
 $route['api/empresa/(:num)/colaborador/(:any)']['delete'] = 'api/eliminarColaboradorEmpresa/$1/$2';
+$route['api/empresa/(:num)/campanha/(:num)']['delete'] = 'api/eliminarCampanha/$1/$2';
 
 // Clientes
 $route['api/cliente/(:num)']['delete'] = 'api/apagarCliente/$1';

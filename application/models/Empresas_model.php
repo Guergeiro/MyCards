@@ -161,15 +161,15 @@ class Empresas_model extends CI_Model
 
         $dataCampanha = explode("-", $campanha[0]["DataInicio"]);
         if (date("Y") < $dataCampanha[0]) {
-            // Ano ainda já foi
+            // Ano ainda não já foi
             return "data";
         }
         if (date("m") < $dataCampanha[1]) {
-            // Mes ainda já foi
+            // Mes ainda não já foi
             return "data";
         }
         if (date("d") < $dataCampanha[2]) {
-            // Dia ainda já foi
+            // Dia ainda não já foi
             return "data";
         }
 
@@ -264,6 +264,11 @@ class Empresas_model extends CI_Model
     public function eliminarEmpresa($idEmpresa)
     {
         return $this->db->delete("Empresas", "Empresas.ID_Empresa = {$idEmpresa}");
+    }
+
+    public function eliminarCampanha($idEmpresa, $idCampanha)
+    {
+        return $this->db->delete("Campanhas", "Campanhas.ID_Empresa = {$idEmpresa} AND Campanhas.ID_Campanha = {$idCampanha}");
     }
 
     public function apagarRatingEmpresa($idEmpresa, $idCliente)

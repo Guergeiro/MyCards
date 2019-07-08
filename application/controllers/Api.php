@@ -228,6 +228,22 @@ class Api extends CI_Controller
             echo "Error Deleting";
         }
     }
+
+    public function eliminarCampanha($idEmpresa, $idCampanha)
+    {
+        $this->load->model("Empresas_model");
+        $result = array(
+            "status" => "",
+            "message" => ""
+        );
+        if ($this->Empresas_model->eliminarCampanha($idEmpresa, $idCampanha)) {
+            $result["status"] = "true";
+            $result["message"] = "Delete Successful";
+        } else {
+            $result["status"] = "false";
+            $result["message"] = "Error Deleting";
+        }
+    }
     
     public function apagarRatingEmpresa($idEmpresa, $idCliente)
     {
