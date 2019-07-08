@@ -104,6 +104,7 @@ $route['api/cliente']['post'] = 'api/novoCliente';
 $route['api/cliente/(:num)']['post'] = 'api/alterarCliente/$1';
 $route['api/cliente/(:num)/rating']['post'] = 'api/alterarRatingCliente/$1';
 $route['api/cliente/(:num)/cartao']['post'] = 'api/novoCartaoCliente/$1';
+$route['api/cliente/(:num)/cartao/(:num)/instanciacampanha/(:num)']['post'] = 'api/alterarInstanciaCampanhaCliente/$1/$2/$3';
 
 /* API DELETE's */
 // Empresas

@@ -115,6 +115,11 @@ class Empresas_model extends CI_Model
     // Update
     public function alterarInstanciaCampanhaEmpresa($idEmpresa, $idCampanha, $idCartao, $data)
     {
+        $cartao = $this->db->get_where("Cartoes", "Cartoes.ID_Empresa = {$idEmpresa} AND Cartoes.ID_Cartao = {$idCartao}");
+        if ($cartao->num_rows() == 0) {
+            // Não existe cartao
+            return false;
+        }
         $campanha = $this->db->get_where("Campanhas", "Campanhas.ID_Campanha = {$idCampanha}");
         if ($campanha->num_rows() == 0) {
             // Não existem campanhas com esse id

@@ -120,6 +120,18 @@ class Clientes_model extends CI_Model
         return $this->db->update("Clientes");
     }
 
+    public function alterarInstanciaCampanhaCliente($idCliente, $idCartao, $idCampanha, $data)
+    {
+        $cartao = $this->db->get_where("Cartoes", "Cartoes.ID_Cliente = {$idCliente} AND Cartoes.ID_Cartao = {$idCartao}");
+        if ($cartao->num_rows() == 0) {
+            // Não existe cliente com esse cartao
+            return false;
+        }
+        $this->db->where("InstanciaCampanha.ID_Campanha = {$idCampanha} AND InstanciaCampanha.ID_Cartao = {$idCartao}");
+        $this->db->set($data);
+        return $this->db->update("InstanciaCampanha");
+    }
+
     // Delete
     public function apagarCliente($idCliente)
     {

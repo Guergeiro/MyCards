@@ -390,6 +390,24 @@ class Api extends CI_Controller
         echo json_encode($return);
     }
 
+    public function alterarInstanciaCampanhaCliente($idCliente, $idCartao, $idCampanha)
+    {
+        $this->load->model("Clientes_model");
+        $data = $this->input->post(null, true);
+        $return = array(
+            "status" => "",
+            "message" => ""
+        );
+        if ($this->Clientes_model->alterarInstanciaCampanhaCliente($idCliente, $idCartao, $idCampanha, $data)) {
+            $return["status"] = "true";
+            $return["message"] = "Update Successful";
+        } else {
+            $return["status"] = "false";
+            $return["message"] = "Error Updating";
+        }
+        echo json_encode($return);
+    }
+
     // DELETE
     public function apagarCliente($idCliente)
     {
