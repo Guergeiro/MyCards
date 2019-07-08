@@ -145,34 +145,34 @@ class Empresas_model extends CI_Model
             }
         }
         $campanha = $campanha->result_array();
-        $dataCampanha = explode("-", $campanha[0]["DataFim"]);
-        if (date("Y") > $dataCampanha[0]) {
-            // Ano já foi
-            return "data";
-        }
-        if (date("m") > $dataCampanha[1]) {
-            // Mes já foi
-            return "data";
-        }
-        if (date("d") > $dataCampanha[2]) {
-            // Dia já foi
-            return "data";
-        }
 
         $dataCampanha = explode("-", $campanha[0]["DataInicio"]);
         if (date("Y") < $dataCampanha[0]) {
             // Ano ainda não já foi
-            return "data";
+            return "dataInicio";
         }
         if (date("m") < $dataCampanha[1]) {
             // Mes ainda não já foi
-            return "data";
+            return "dataInicio";
         }
         if (date("d") < $dataCampanha[2]) {
             // Dia ainda não já foi
-            return "data";
+            return "dataInicio";
         }
 
+        $dataCampanha = explode("-", $campanha[0]["DataFim"]);
+        if (date("Y") > $dataCampanha[0]) {
+            // Ano já foi
+            return "dataFim";
+        }
+        if (date("m") > $dataCampanha[1]) {
+            // Mes já foi
+            return "dataFim";
+        }
+        if (date("d") > $dataCampanha[2]) {
+            // Dia já foi
+            return "dataFim";
+        }
         
         $query = $this->db->get_where("InstanciaCampanha", "InstanciaCampanha.ID_Campanha = {$idCampanha} AND InstanciaCampanha.ID_Cartao = {$idCartao}");
         $query = $query->result_array();

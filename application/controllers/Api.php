@@ -178,7 +178,11 @@ class Api extends CI_Controller
             $return["status"] = "true";
             $return["message"] = "Notificação apagada.";
             break;
-            case "data":
+            case "dataInicio":
+            $return["status"] = "false";
+            $return["message"] = "A campanha ainda não começou.";
+            break;
+            case "dataFim":
             $return["status"] = "false";
             $return["message"] = "A data da campanha já passou.";
             break;
