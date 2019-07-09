@@ -247,6 +247,7 @@ class Api extends CI_Controller
             $result["status"] = "false";
             $result["message"] = "Error Deleting";
         }
+        echo json_encode($return);
     }
     
     public function apagarRatingEmpresa($idEmpresa, $idCliente)

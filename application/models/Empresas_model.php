@@ -103,7 +103,7 @@ class Empresas_model extends CI_Model
                     "Titulo" => $titulo,
                     "Texto" => $texto
                 );
-                $this->db->insert("Notificacoes", true);
+                $this->db->insert("Notificacoes", $notificacao);
             }
         }
         return $result;
