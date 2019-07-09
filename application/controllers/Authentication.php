@@ -214,7 +214,7 @@ class Authentication extends CI_Controller
         $this->form_validation->set_rules($config);
 
         if (!($this->form_validation->run())) {
-            $this->session->set_flashdata("incorrectFlashData", "O Email desejado não se encontra disponível.");
+            $this->session->set_flashdata("incorrectFlashData", "O Email ou NIF desejado não se encontra disponível.");
         } else {
             $data = array(
                 "Email" => $this->input->post("email", true),
