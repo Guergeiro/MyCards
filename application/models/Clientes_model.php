@@ -32,7 +32,7 @@ class Clientes_model extends CI_Model
 
     public function cartoesCliente($idCliente)
     {
-        $query = $this->db->get_where("Cartoes", "Cartoes.ID_Cliente = {$idCliente}");
+        $query = $this->db->get_where("Cartoes", "Cartoes.ID_Cliente = {$idCliente} AND Cartoes.Ativo = 1");
         return $query->result_array();
     }
 
@@ -82,15 +82,20 @@ class Clientes_model extends CI_Model
             return false;
         }
         $query = $this->db->get_where("Cartoes", "Cartoes.ID_Cliente = {$idCliente} AND Cartoes.ID_Empresa = {$data["ID_Empresa"]}");
+        $result = false;
         if ($query->num_rows() != 0) {
-            // Já está fidelizado
-            return false;
+            // Já tem cartão, não está ativo
+            $this->db->where("Cartoes", "Cartoes.ID_Cliente = {$idCliente} AND Cartoes.ID_Empresa = {$idEmpresa}");
+            $this->db->set(array(
+                "Ativo", 1
+            ));
+            $result = $this->db->update("Cartoes");
+        } else {
+            $data["ID_Cliente"] = $idCliente;
+            $data["ID_Cartao"] = $idCliente.$idEmpresa;
+            $result = $this->db->insert("Cartoes", $data);
         }
-
-
-        $data["ID_Cliente"] = $idCliente;
-        $result = $this->db->insert("Cartoes", $data);
-
+     
         if (!$result) {
             return false;
         }
@@ -145,6 +150,10 @@ class Clientes_model extends CI_Model
 
     public function apagarCartaoCliente($idCliente, $idCartao)
     {
-        return $this->db->delete("Cartoes", "Cartoes.ID_Cliente = {$idCliente} AND Cartoes.ID_Cartao = {$idCartao}");
+        $this->db->where("Cartoes", "Cartoes.ID_Cliente = {$idCliente} AND Cartoes.ID_Cartao = {$idCartao}");
+        $this->db->set(array(
+            "Ativo", 0
+        ));
+        return $this->db->update("Cartoes");
     }
 }
