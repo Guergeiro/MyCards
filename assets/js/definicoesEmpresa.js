@@ -53,15 +53,15 @@ const setAreaEmpresa = async (data) => {
 }
 
 const setSocialEmpresa = async (data) => {
-    document.querySelector("input#facebook").value = data["Facebook"] != null ? data["Facebook"] : "";
-    document.querySelector("input#facebook").focus();
-    document.querySelector("input#facebook").blur();
-    document.querySelector("input#twitter").value = data["Twitter"] != null ? data["Twitter"] : "";
-    document.querySelector("input#twitter").focus();
-    document.querySelector("input#twitter").blur();
-    document.querySelector("input#linkedin").value = data["LinkedIn"] != null ? data["LinkedIn"] : "";
-    document.querySelector("input#linkedin").focus();
-    document.querySelector("input#linkedin").blur();
+    document.querySelector("input#Facebook").value = data["Facebook"] != null ? data["Facebook"] : "";
+    document.querySelector("input#Facebook").focus();
+    document.querySelector("input#Facebook").blur();
+    document.querySelector("input#Twitter").value = data["Twitter"] != null ? data["Twitter"] : "";
+    document.querySelector("input#Twitter").focus();
+    document.querySelector("input#Twitter").blur();
+    document.querySelector("input#Linkedin").value = data["LinkedIn"] != null ? data["LinkedIn"] : "";
+    document.querySelector("input#Linkedin").focus();
+    document.querySelector("input#Linkedin").blur();
 }
 
 getDadosEmpresa().then(data => {
@@ -86,6 +86,7 @@ document.querySelector("button#localizacao-empresa").addEventListener("click", (
 
 document.querySelector("button#redes-sociais").addEventListener("click", (e) => {
     let formData = new FormData();
+    let returnValue = true;
     e.target.parentElement.parentElement.querySelectorAll("input").forEach(input => {
         if (input.value.trim().length != 0) {
             switch (input.getAttribute("id")) {
@@ -94,7 +95,7 @@ document.querySelector("button#redes-sociais").addEventListener("click", (e) => 
                     if (!regex.test(document.querySelector("input#Facebook").value)) {
                         document.querySelector("input#Facebook").parentElement.lastElementChild.classList.add("d-block");
                         document.querySelector("input#Facebook").parentElement.lastElementChild.innerHTML = "URL inválido."
-                        return false;
+                        returnValue = false;
                     } else {
                         document.querySelector("input#Facebook").parentElement.lastElementChild.classList.remove("d-block");
                         formData.append(input.getAttribute("id"), input.value);
@@ -105,16 +106,29 @@ document.querySelector("button#redes-sociais").addEventListener("click", (e) => 
                     if (!regex.test(document.querySelector("input#Twitter").value)) {
                         document.querySelector("input#Twitter").parentElement.lastElementChild.classList.add("d-block");
                         document.querySelector("input#Twitter").parentElement.lastElementChild.innerHTML = "URL inválido."
-                        return false;
+                        returnValue = false;
                     } else {
                         document.querySelector("input#Twitter").parentElement.lastElementChild.classList.remove("d-block");
+                        formData.append(input.getAttribute("id"), input.value);
+                    }
+                    break;
+                case "Linkedin":
+                    let regex = /^(?:https?:\/\/)?(?:www\.)?twitter\.com\/company\/([\w\-\.]{2,})$/i;
+                    if (!regex.test(document.querySelector("input#Linkedin").value)) {
+                        document.querySelector("input#Linkedin").parentElement.lastElementChild.classList.add("d-block");
+                        document.querySelector("input#Linkedin").parentElement.lastElementChild.innerHTML = "URL inválido."
+                        returnValue = false;
+                    } else {
+                        document.querySelector("input#Linkedin").parentElement.lastElementChild.classList.remove("d-block");
                         formData.append(input.getAttribute("id"), input.value);
                     }
                     break;
             }
         }
     });
-    postDadosEmpresa(formData).then(location.reload());
+    if (returnValue) {
+        postDadosEmpresa(formData).then(location.reload());
+    }
 });
 
 distritos.forEach((distrito) => {

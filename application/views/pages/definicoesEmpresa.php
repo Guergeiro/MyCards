@@ -51,7 +51,7 @@
 						<div class="col-12">
 							<div class="md-form mb-0">
 								<i class="fab fa-fw fa-facebook-f prefix"></i>
-								<input type="text" id="facebook" name="facebook" class="form-control">
+								<input type="text" id="Facebook" name="facebook" class="form-control">
 								<label for="facebook">Facebook</label>
 								<div class="form-text invalid-tooltip"></div>
 							</div>
@@ -59,7 +59,7 @@
 						<div class="col-12">
 							<div class="md-form mb-0">
 								<i class="fab fa-fw fa-twitter prefix"></i>
-								<input type="text" id="twitter" name="twitter" class="form-control">
+								<input type="text" id="Twitter" name="twitter" class="form-control">
 								<label for="twitter">Twitter</label>
 								<div class="form-text invalid-tooltip"></div>
 							</div>
@@ -67,7 +67,7 @@
 						<div class="col-12">
 							<div class="md-form mb-0">
 								<i class="fab fa-fw fa-linkedin-in prefix"></i>
-								<input type="text" id="linkedin" name="linkedin" class="form-control">
+								<input type="text" id="Linkedin" name="linkedin" class="form-control">
 								<label for="linkedin">LinkedIn</label>
 								<div class="form-text invalid-tooltip"></div>
 							</div>
