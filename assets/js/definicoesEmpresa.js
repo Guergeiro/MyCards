@@ -88,7 +88,30 @@ document.querySelector("button#redes-sociais").addEventListener("click", (e) => 
     let formData = new FormData();
     e.target.parentElement.parentElement.querySelectorAll("input").forEach(input => {
         if (input.value.trim().length != 0) {
-            formData.append(input.getAttribute("id"), input.value);
+            switch (input.getAttribute("id")) {
+                case "Facebook":
+                    let regex = /^(?:https?:\/\/)?(?:www\.)?facebook\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w\-]*\/)*?(\/)?([\w\-\.]{5,})$/i;
+                    if (!regex.test(document.querySelector("input#Facebook").value)) {
+                        document.querySelector("input#Facebook").parentElement.lastElementChild.classList.add("d-block");
+                        document.querySelector("input#Facebook").parentElement.lastElementChild.innerHTML = "URL inválido."
+                        return false;
+                    } else {
+                        document.querySelector("input#Facebook").parentElement.lastElementChild.classList.remove("d-block");
+                        formData.append(input.getAttribute("id"), input.value);
+                    }
+                    break;
+                case "Twitter":
+                    let regex = /^(?:https?:\/\/)?(?:www\.)?twitter\.com\/([\w\-\.]{2,})$/i;
+                    if (!regex.test(document.querySelector("input#Twitter").value)) {
+                        document.querySelector("input#Twitter").parentElement.lastElementChild.classList.add("d-block");
+                        document.querySelector("input#Twitter").parentElement.lastElementChild.innerHTML = "URL inválido."
+                        return false;
+                    } else {
+                        document.querySelector("input#Twitter").parentElement.lastElementChild.classList.remove("d-block");
+                        formData.append(input.getAttribute("id"), input.value);
+                    }
+                    break;
+            }
         }
     });
     postDadosEmpresa(formData).then(location.reload());
