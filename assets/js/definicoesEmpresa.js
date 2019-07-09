@@ -127,9 +127,7 @@ document.querySelector("button#redes-sociais").addEventListener("click", (e) => 
             }
         }
     });
-    if (returnValue) {
-        postDadosEmpresa(formData).then(location.reload());
-    }
+    postDadosEmpresa(formData).then(location.reload());
 });
 
 distritos.forEach((distrito) => {
