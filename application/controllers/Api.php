@@ -290,6 +290,23 @@ class Api extends CI_Controller
         echo json_encode($this->Clientes_model->informacoesCliente($idCliente));
     }
 
+    public function todasNotificacoesCliente($idCliente) {
+        $this->load->model("Clientes_model");
+        $return = array(
+            "status" => "",
+            "message" => ""
+        );
+        $data = $this->Clientes_model->todasNotificacoesCliente($idCliente);
+        if (sizeof($data)!=0) {
+            $return["status"] = "true";
+            $return["message"] = $data;
+        } else {
+            $return["status"] = "false";
+            $return["message"] = "Error Getting";
+        }
+        echo json_encode($return);
+    }
+
     public function ratingCliente($idCliente)
     {
         $this->load->model("Clientes_model");

@@ -18,6 +18,13 @@ class Clientes_model extends CI_Model
         return $query->result_array();
     }
 
+    public function todasNotificacoesCliente($idCliente) {
+        $query = $this->db->get_where("Notificacoes", "Notificacoes.ID_Cliente = {$idCliente}");
+        $query = $query->result_array();
+        $this->db->delete("Notificacoes", "Notificacoes.ID_Cliente = {$idCliente}");
+        return $query;
+    }
+
     public function ratingCliente($idCliente)
     {
         $query = $this->db->get_where("RatingCliente", "RatingCliente.ID_Cliente = {$idCliente}");

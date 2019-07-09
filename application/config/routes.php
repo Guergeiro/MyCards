@@ -81,6 +81,8 @@ $route['api/empresa/(:num)/colaborador/(:any)']['get'] = 'api/colaboradorEmpresa
 $route['api/cliente']['get'] = 'api/informacoesClientes';
 $route['api/cliente/(:num)']['get'] = 'api/informacoesCliente/$1';
 
+$route['api/cliente/(:num)/notificacao']['get'] = 'api/todasNotificacoesCliente/$1';
+
 $route['api/cliente/(:num)/rating']['get'] = 'api/ratingCliente/$1';
 $route['api/cliente/(:num)/rating/(:num)']['get'] = 'api/ratingClienteEmpresa/$1/$2';
 

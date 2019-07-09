@@ -82,6 +82,10 @@ class Empresas_model extends CI_Model
             // Ir buscar ultima campanha da empresa
             $idCampanha = $this->db->get_where("Campanhas", "Campanhas.ID_Empresa = {$idEmpresa}");
             $idCampanha = $idCampanha->result_array();
+            $titulo = $this->db->get_where("Empresas", "Empresas.ID_Empresa = {$idEmpresa}");
+            $titulo = $titulo->result_array();
+            $titulo = $titulo[0]["Nome"];
+            $texto = $idCampanha[sizeof($idCampanha) - 1]["Designacao"];
             $idCampanha = $idCampanha[sizeof($idCampanha) - 1]["ID_Campanha"];
 
             // Inserir a campanha em todos os cartoes
@@ -89,10 +93,17 @@ class Empresas_model extends CI_Model
             $query = $query->result_array();
             foreach ($query as $cartao) {
                 $info = array(
-                "ID_Cartao" => $cartao["ID_Cartao"],
-                "ID_Campanha" => $idCampanha
-            );
+                    "ID_Cartao" => $cartao["ID_Cartao"],
+                    "ID_Campanha" => $idCampanha
+                );
                 $this->db->insert("InstanciaCampanha", $info);
+                $notificacao = array(
+                    "ID_Empresa" => $idEmpresa,
+                    "ID_Cliente" => $cartao["ID_Cliente"],
+                    "Titulo" => $titulo,
+                    "Texto" => $texto
+                );
+                $this->db->insert("Notificacoes", true);
             }
         }
         return $result;
