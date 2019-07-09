@@ -94,27 +94,27 @@ class Clientes_model extends CI_Model
             $data["ID_Cliente"] = $idCliente;
             $data["ID_Cartao"] = $idCliente.$data["ID_Empresa"];
             $result = $this->db->insert("Cartoes", $data);
+            if (!$result) {
+                return false;
+            }
+    
+            // Ir buscar cartao inserido
+            $cartao = $this->db->get_where("Cartoes", "Cartoes.ID_Empresa = {$data["ID_Empresa"]} AND Cartoes.ID_Cliente = {$idCliente}");
+            $cartao = $cartao->result_array();
+    
+            // Inserir todas as campanhas existentes no cartao
+            $query = $this->db->get_where("Campanhas", "Campanhas.ID_Empresa = {$data["ID_Empresa"]}");
+            $query = $query->result_array();
+            foreach ($query as $campanha) {
+                $info = array(
+                    "ID_Cartao" => $cartao[0]["ID_Cartao"],
+                    "ID_Campanha" => $campanha["ID_Campanha"]
+                );
+                $this->db->insert("InstanciaCampanha", $info);
+            }
         }
-     
-        if (!$result) {
-            return false;
-        }
-
-        // Ir buscar cartao inserido
-        $cartao = $this->db->get_where("Cartoes", "Cartoes.ID_Empresa = {$data["ID_Empresa"]} AND Cartoes.ID_Cliente = {$idCliente}");
-        $cartao = $cartao->result_array();
-
-        // Inserir todas as campanhas existentes no cartao
-        $query = $this->db->get_where("Campanhas", "Campanhas.ID_Empresa = {$data["ID_Empresa"]}");
-        $query = $query->result_array();
-        foreach ($query as $campanha) {
-            $info = array(
-                "ID_Cartao" => $cartao[0]["ID_Cartao"],
-                "ID_Campanha" => $campanha["ID_Campanha"]
-            );
-            $this->db->insert("InstanciaCampanha", $info);
-        }
-        return true;
+    
+        return $result;
     }
 
     // Update
