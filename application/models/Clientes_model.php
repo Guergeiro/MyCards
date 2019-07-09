@@ -85,14 +85,14 @@ class Clientes_model extends CI_Model
         $result = false;
         if ($query->num_rows() != 0) {
             // Já tem cartão, não está ativo
-            $this->db->where("Cartoes", "Cartoes.ID_Cliente = {$idCliente} AND Cartoes.ID_Empresa = {$idEmpresa}");
+            $this->db->where("Cartoes", "Cartoes.ID_Cliente = {$idCliente} AND Cartoes.ID_Empresa = {$data["ID_Empresa"]}");
             $this->db->set(array(
                 "Ativo", 1
             ));
             $result = $this->db->update("Cartoes");
         } else {
             $data["ID_Cliente"] = $idCliente;
-            $data["ID_Cartao"] = $idCliente.$idEmpresa;
+            $data["ID_Cartao"] = $idCliente.$data["ID_Empresa"];
             $result = $this->db->insert("Cartoes", $data);
         }
      
