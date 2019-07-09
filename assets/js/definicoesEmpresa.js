@@ -89,9 +89,10 @@ document.querySelector("button#redes-sociais").addEventListener("click", (e) => 
     let returnValue = true;
     e.target.parentElement.parentElement.querySelectorAll("input").forEach(input => {
         if (input.value.trim().length != 0) {
+            let regex = null;
             switch (input.getAttribute("id")) {
                 case "Facebook":
-                    let regex = /^(?:https?:\/\/)?(?:www\.)?facebook\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w\-]*\/)*?(\/)?([\w\-\.]{5,})$/i;
+                    regex = /^(?:https?:\/\/)?(?:www\.)?facebook\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w\-]*\/)*?(\/)?([\w\-\.]{5,})$/i;
                     if (!regex.test(document.querySelector("input#Facebook").value)) {
                         document.querySelector("input#Facebook").parentElement.lastElementChild.classList.add("d-block");
                         document.querySelector("input#Facebook").parentElement.lastElementChild.innerHTML = "URL inválido."
@@ -102,7 +103,7 @@ document.querySelector("button#redes-sociais").addEventListener("click", (e) => 
                     }
                     break;
                 case "Twitter":
-                    let regex = /^(?:https?:\/\/)?(?:www\.)?twitter\.com\/([\w\-\.]{2,})$/i;
+                    regex = /^(?:https?:\/\/)?(?:www\.)?twitter\.com\/([\w\-\.]{2,})$/i;
                     if (!regex.test(document.querySelector("input#Twitter").value)) {
                         document.querySelector("input#Twitter").parentElement.lastElementChild.classList.add("d-block");
                         document.querySelector("input#Twitter").parentElement.lastElementChild.innerHTML = "URL inválido."
@@ -113,7 +114,7 @@ document.querySelector("button#redes-sociais").addEventListener("click", (e) => 
                     }
                     break;
                 case "Linkedin":
-                    let regex = /^(?:https?:\/\/)?(?:www\.)?twitter\.com\/company\/([\w\-\.]{2,})$/i;
+                    regex = /^(?:https?:\/\/)?(?:www\.)?twitter\.com\/company\/([\w\-\.]{2,})$/i;
                     if (!regex.test(document.querySelector("input#Linkedin").value)) {
                         document.querySelector("input#Linkedin").parentElement.lastElementChild.classList.add("d-block");
                         document.querySelector("input#Linkedin").parentElement.lastElementChild.innerHTML = "URL inválido."
