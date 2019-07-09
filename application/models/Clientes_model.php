@@ -85,7 +85,7 @@ class Clientes_model extends CI_Model
         $result = false;
         if ($query->num_rows() != 0) {
             // Já tem cartão, não está ativo
-            $this->db->where("Cartoes", "Cartoes.ID_Cliente = {$idCliente} AND Cartoes.ID_Empresa = {$data["ID_Empresa"]}");
+            $this->db->where("Cartoes.ID_Cliente = {$idCliente} AND Cartoes.ID_Empresa = {$data["ID_Empresa"]}");
             $this->db->set(array(
                 "Ativo"=> 1
             ));
@@ -150,7 +150,7 @@ class Clientes_model extends CI_Model
 
     public function apagarCartaoCliente($idCliente, $idCartao)
     {
-        $this->db->where("Cartoes", "Cartoes.ID_Cliente = {$idCliente} AND Cartoes.ID_Cartao = {$idCartao}");
+        $this->db->where("Cartoes.ID_Cliente = {$idCliente} AND Cartoes.ID_Cartao = {$idCartao}");
         $this->db->set(array(
             "Ativo"=> 0
         ));
