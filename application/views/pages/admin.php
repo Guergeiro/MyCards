@@ -255,12 +255,8 @@
 			"https://use.fontawesome.com/releases/v5.8.1/css/all.css",
 			"https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css",
 			"https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.0/css/mdb.min.css",
-			"<?php echo base_url("
-			assets / css / core.css "); ?>",
-			"<?php echo base_url("
-			assets / css / {
-				$page
-			}.css "); ?>"
+			"<?php echo base_url("assets/css/core.css"); ?>",
+			"<?php echo base_url("assets/css/{$page}.css"); ?>"
 		];
 		array.forEach(element => {
 			let link = document.createElement("link");

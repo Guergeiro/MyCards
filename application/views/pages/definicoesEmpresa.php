@@ -67,7 +67,7 @@
 						<div class="col-12">
 							<div class="md-form mb-0">
 								<i class="fab fa-fw fa-linkedin-in prefix"></i>
-								<input type="text" id="Linkedin" name="linkedin" class="form-control">
+								<input type="text" id="LinkedIn" name="linkedin" class="form-control">
 								<label for="linkedin">LinkedIn</label>
 								<div class="form-text invalid-tooltip"></div>
 							</div>

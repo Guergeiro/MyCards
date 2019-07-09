@@ -59,9 +59,9 @@ const setSocialEmpresa = async (data) => {
     document.querySelector("input#Twitter").value = data["Twitter"] != null ? data["Twitter"] : "";
     document.querySelector("input#Twitter").focus();
     document.querySelector("input#Twitter").blur();
-    document.querySelector("input#Linkedin").value = data["LinkedIn"] != null ? data["LinkedIn"] : "";
-    document.querySelector("input#Linkedin").focus();
-    document.querySelector("input#Linkedin").blur();
+    document.querySelector("input#LinkedIn").value = data["LinkedIn"] != null ? data["LinkedIn"] : "";
+    document.querySelector("input#LinkedIn").focus();
+    document.querySelector("input#LinkedIn").blur();
 }
 
 getDadosEmpresa().then(data => {
@@ -115,12 +115,12 @@ document.querySelector("button#redes-sociais").addEventListener("click", (e) => 
                     break;
                 case "Linkedin":
                     regex = /^(?:https?:\/\/)?(?:www\.)?twitter\.com\/company\/([\w\-\.]{2,})$/i;
-                    if (!regex.test(document.querySelector("input#Linkedin").value)) {
-                        document.querySelector("input#Linkedin").parentElement.lastElementChild.classList.add("d-block");
-                        document.querySelector("input#Linkedin").parentElement.lastElementChild.innerHTML = "URL inválido."
+                    if (!regex.test(document.querySelector("input#LinkedIn").value)) {
+                        document.querySelector("input#LinkedIn").parentElement.lastElementChild.classList.add("d-block");
+                        document.querySelector("input#LinkedIn").parentElement.lastElementChild.innerHTML = "URL inválido."
                         returnValue = false;
                     } else {
-                        document.querySelector("input#Linkedin").parentElement.lastElementChild.classList.remove("d-block");
+                        document.querySelector("input#LinkedIn").parentElement.lastElementChild.classList.remove("d-block");
                         formData.append(input.getAttribute("id"), input.value);
                     }
                     break;
