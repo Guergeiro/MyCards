@@ -247,6 +247,7 @@ class Api extends CI_Controller
             $result["status"] = "false";
             $result["message"] = "Error Deleting";
         }
+        echo json_encode($return);
     }
     
     public function apagarRatingEmpresa($idEmpresa, $idCliente)
@@ -288,6 +289,23 @@ class Api extends CI_Controller
     {
         $this->load->model("Clientes_model");
         echo json_encode($this->Clientes_model->informacoesCliente($idCliente));
+    }
+
+    public function todasNotificacoesCliente($idCliente) {
+        $this->load->model("Clientes_model");
+        $return = array(
+            "status" => "",
+            "message" => ""
+        );
+        $data = $this->Clientes_model->todasNotificacoesCliente($idCliente);
+        if (sizeof($data)!=0) {
+            $return["status"] = "true";
+            $return["message"] = $data;
+        } else {
+            $return["status"] = "false";
+            $return["message"] = "Error Getting";
+        }
+        echo json_encode($return);
     }
 
     public function ratingCliente($idCliente)
