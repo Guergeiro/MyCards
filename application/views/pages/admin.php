@@ -153,6 +153,14 @@
 					<div class="col-12 text-center">
 						<h3>Novas Empresas</h3>
 					</div>
+					<div class="col-12 text-center">
+						<select id="key">
+							<option value="0">Key 1</option>
+							<option value="1">Key 2</option>
+							<option value="2">Key 3</option>
+							<option value="3">Key 4</option>
+						</select>
+					</div>
 					<div class="col-12">
 						<div class="table-responsive text-center">
 							<table class="table table-striped">

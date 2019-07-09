@@ -164,6 +164,7 @@ const displayError = (err) => {
 
 $(document).ready(function () {
     $("#modal").on("show.bs.modal", function (event) {
+        const select = document.querySelector("select#input");
         var button = $(event.relatedTarget); // Button that triggered the modal
         var recipient = button.data("id"); // Extract info from data-* attributes
         // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
@@ -171,7 +172,7 @@ $(document).ready(function () {
         const modal = document.querySelector("#modal");
         modal.querySelector("#modalTitle").innerHTML = recipient;
         getEmpresaById(recipient).then(empresa => {
-            let key = 1;
+            let key = select.selectedIndex;
             let nif = empresa["NIF"];
             getInfoEmpresa(empresa["NIF"], keys[key]).then(data => {
                 if (data["result"] == "success" && data["nif_validation"] == true) {
