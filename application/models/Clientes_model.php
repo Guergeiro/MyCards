@@ -87,7 +87,7 @@ class Clientes_model extends CI_Model
             // Já tem cartão, não está ativo
             $this->db->where("Cartoes", "Cartoes.ID_Cliente = {$idCliente} AND Cartoes.ID_Empresa = {$data["ID_Empresa"]}");
             $this->db->set(array(
-                "Ativo", 1
+                "Ativo"=> 1
             ));
             $result = $this->db->update("Cartoes");
         } else {
@@ -152,7 +152,7 @@ class Clientes_model extends CI_Model
     {
         $this->db->where("Cartoes", "Cartoes.ID_Cliente = {$idCliente} AND Cartoes.ID_Cartao = {$idCartao}");
         $this->db->set(array(
-            "Ativo", 0
+            "Ativo"=> 0
         ));
         return $this->db->update("Cartoes");
     }
