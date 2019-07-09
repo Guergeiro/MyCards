@@ -60,7 +60,8 @@
 		</div>
 		<?php endif; ?>
 	</nav>
-<main class="container my-3 py-3 <?php if (!$this->session->userdata("Username")) :?>d-flex align-items-center justify-content-center<?php endif;?>">
+	<main
+		class="container my-3 py-3 <?php if (!$this->session->userdata("Username")) :?>d-flex align-items-center justify-content-center<?php endif;?>">
 		<?php if (!$this->session->userdata("Username")) :?>
 		<?php echo form_open("authentication/signin_admin", "class=\"form-row\" onsubmit=\"return validation(this);\""); ?>
 		<?php if ($this->session->flashdata("FlashMessage")): ?>
@@ -136,7 +137,7 @@
 					</div>
 				</div>
 			</div>
-            <div class="col-md-6">
+			<div class="col-md-6">
 				<div class="row shadow m-2 p-4">
 					<div class="col-12 text-center">
 						<h3>Clientes</h3>
@@ -154,12 +155,14 @@
 						<h3>Novas Empresas</h3>
 					</div>
 					<div class="col-12 text-center">
-						<select id="key">
-							<option value="0">Key 1</option>
-							<option value="1">Key 2</option>
-							<option value="2">Key 3</option>
-							<option value="3">Key 4</option>
-						</select>
+						<div class="md-form">
+							<select id="key" class="custom-select">
+								<option value="0">Key 1</option>
+								<option value="1">Key 2</option>
+								<option value="2">Key 3</option>
+								<option value="3">Key 4</option>
+							</select>
+						</div>
 					</div>
 					<div class="col-12">
 						<div class="table-responsive text-center">
@@ -233,12 +236,12 @@
 					</button>
 				</div>
 				<div class="modal-body">
-                    <div class="container-fluid">
-                        <div class="row"></div>
-                    </div>
+					<div class="container-fluid">
+						<div class="row"></div>
+					</div>
 				</div>
 				<div class="modal-footer">
-                    <button type="button" class="btn btn-outline-success" data-dismiss="modal">Aceitar</button>
+					<button type="button" class="btn btn-outline-success" data-dismiss="modal">Aceitar</button>
 					<button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
 				</div>
 			</div>
@@ -252,8 +255,12 @@
 			"https://use.fontawesome.com/releases/v5.8.1/css/all.css",
 			"https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css",
 			"https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.0/css/mdb.min.css",
-			"<?php echo base_url("assets/css/core.css"); ?>",
-			"<?php echo base_url("assets/css/{$page}.css"); ?>"
+			"<?php echo base_url("
+			assets / css / core.css "); ?>",
+			"<?php echo base_url("
+			assets / css / {
+				$page
+			}.css "); ?>"
 		];
 		array.forEach(element => {
 			let link = document.createElement("link");
