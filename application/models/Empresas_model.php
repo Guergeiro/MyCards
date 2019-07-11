@@ -157,31 +157,16 @@ class Empresas_model extends CI_Model
         }
         $campanha = $campanha->result_array();
 
-        $dataCampanha = explode("-", $campanha[0]["DataInicio"]);
-        if (date("Y") < $dataCampanha[0]) {
-            // Ano ainda não já foi
-            return "dataInicio";
-        }
-        if (date("m") < $dataCampanha[1]) {
-            // Mes ainda não já foi
-            return "dataInicio";
-        }
-        if (date("d") < $dataCampanha[2]) {
-            // Dia ainda não já foi
+        $dataInicioCampanha = date($campanha[0]["DataInicio"]);
+        $dataAtual = date("Y-m-d");
+        if ($dataAtual<$dataInicioCampanha) {
+            // Ainda não começou
             return "dataInicio";
         }
 
-        $dataCampanha = explode("-", $campanha[0]["DataFim"]);
-        if (date("Y") > $dataCampanha[0]) {
-            // Ano já foi
-            return "dataFim";
-        }
-        if (date("m") > $dataCampanha[1]) {
-            // Mes já foi
-            return "dataFim";
-        }
-        if (date("d") > $dataCampanha[2]) {
-            // Dia já foi
+        $dataFimCampanha = date($campanha[0]["DataFim"]);
+        if ($dataAtual>$dataFimCampanha) {
+            // Já acabou
             return "dataFim";
         }
         
