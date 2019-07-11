@@ -10,6 +10,7 @@
                     <div class="md-form form-lg mx-auto">
                         <input type="number" name="id_cartao" id="codigocartao" class="form-control form-control-lg">
                         <label for="codigocartao">Código Cartão</label>
+                        <div class="form-text"></div>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -17,13 +18,19 @@
                         <input type="number" name="id_campanha" id="codigocampanha"
                             class="form-control form-control-lg">
                         <label for="codigocampanha">Código Campanha</label>
+                        <div class="form-text"></div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="md-form form-lg mx-auto">
                         <input type="number" name="valor" id="valor" class="form-control form-control-lg">
                         <label for="valor">Valor da Compra</label>
+                        <div class="form-text"></div>
                     </div>
+                </div>
+                <div class="col-12">
+                    <small>Nota 1: O valor de compra é sempre em euros (&euro;). O valor da compra é transformado (1:1) em pontos de cartão.</small>
+                    <small>Nota 2: Quando o tipo de campanha é "Pontos", o valor de compra, apesar de obrigatório, é ignorado.</small>
                 </div>
                 <div class="col-12 text-center">
                     <button type="button" class="btn btn-primary" id="ativar">Ativar Campanha</button>
