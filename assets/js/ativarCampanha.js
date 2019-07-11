@@ -115,11 +115,11 @@ document.querySelector("#ativar").addEventListener("click", (e) => {
     form.querySelectorAll("input").forEach(input => {
         if (input.value.trim().length == 0) {
             estado = false;
-            input.parentElement.lastElementChild.classList.remove("valid-tooltip")
+            input.parentElement.lastElementChild.classList.remove("valid-tooltip");
             input.parentElement.lastElementChild.classList.add("d-block", "invalid-tooltip");
             input.parentElement.lastElementChild.innerHTML = "Campo obrigatório.";
         } else {
-            input.parentElement.lastElementChild.classList.remove("invalid-tooltip")
+            input.parentElement.lastElementChild.classList.remove("invalid-tooltip");
             input.parentElement.lastElementChild.classList.add("d-block", "valid-tooltip");
             input.parentElement.lastElementChild.innerHTML = "Correto!";
         }
@@ -143,6 +143,7 @@ document.querySelector("#ativar").addEventListener("click", (e) => {
             document.querySelector("#codigocampanha").value = "";
             document.querySelector("#valor").value = "";
             document.querySelectorAll("input").forEach(input => {
+                input.parentElement.lastElementChild.classList.remove("d-block");
                 input.focus();
                 input.blur();
             });

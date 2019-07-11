@@ -6,7 +6,8 @@
       <li data-target="#carousel" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner h-100">
-      <video src="<?php echo base_url("assets/videos/home/animation-intro.mp4"); ?>" class="position-absolute" autoplay loop muted type="video/mp4">
+      <video srcset="<?php echo base_url("assets/videos/home/animation-intro.mp4"); ?>" class="position-absolute" autoplay
+        loop muted type="video/mp4">
       </video>
       <div class="carousel-item h-100 active">
         <div class="carousel-caption d-block text-md-left">
@@ -45,7 +46,8 @@
   <section class="container">
     <div class="row py-5" id="row-1">
       <div class="col-md-6">
-        <img src="<?php echo base_url("assets/imgs/home/empty-wallet.jpg"); ?>" alt="empty-wallet" class="d-block w-100 shadow">
+        <img srcset="<?php echo base_url("assets/imgs/home/empty-wallet.jpg"); ?>" alt="empty-wallet"
+          class="d-block w-100 shadow">
       </div>
       <div class="col-md-6">
         <h3 class="h3 mt-3">Simplifique a vida dos seus clientes</h3>
@@ -62,7 +64,7 @@
     <hr class="my-2">
     <div class="row py-5" id="row-2">
       <div class="col-md-6 order-md-last">
-        <img src="<?php echo base_url("assets/imgs/home/discount.jpg"); ?>" alt="discount" class="d-block w-100 shadow">
+        <img srcset="<?php echo base_url("assets/imgs/home/smartmockups_jxyscrtd.jpg"); ?>" alt="discount" class="d-block w-100 shadow">
       </div>
       <div class="col-md-6">
         <h3 class="h3 mt-3">Crie campanhas para os seus clientes</h3>
@@ -83,7 +85,8 @@
     <hr class="my-2">
     <div class="row py-5" id="row-3">
       <div class="col-md-6">
-        <img src="<?php echo base_url("assets/imgs/home/company-growth.jpg"); ?>" alt="company-growth" class="d-block w-100 shadow">
+        <img srcset="<?php echo base_url("assets/imgs/home/smartmockups_jxys61od.jpg"); ?>" alt="company-growth"
+          class="d-block w-100 shadow">
       </div>
       <div class="col-md-6">
         <h3 class="h3 mt-3">Acompanhe o crescimento da sua empresa</h3>
@@ -99,6 +102,12 @@
     </div>
   </section>
 
+<section>
+  <div class="container">
+    
+  </div>
+</section>
+
   <section class="bg-primary" id="premium">
     <div class="container p-4">
       <h3 class="display-4 text-center text-white font-weight-bold">Premium</h3>
@@ -108,7 +117,8 @@
           <div class="col-lg-4 col-md-6">
             <div class="card my-4">
               <div class="view overlay">
-                <img class="card-img-top" src="<?php echo base_url("assets/imgs/home/level1.jpg"); ?>" alt="Card image cap">
+                <img class="card-img-top" srcset="<?php echo base_url("assets/imgs/home/level1.jpg"); ?>"
+                  alt="Card image cap">
                 <a href="<?php echo base_url("comprar#1"); ?>">
                   <div class="mask rgba-white-strong d-flex align-items-center justify-content-center">
                     <h3>Básico</h3>
@@ -138,7 +148,8 @@
           <div class="col-lg-4 col-md-6">
             <div class="card my-4">
               <div class="view overlay">
-                <img class="card-img-top" src="<?php echo base_url("assets/imgs/home/level2.jpg"); ?>" alt="Card image cap">
+                <img class="card-img-top" srcset="<?php echo base_url("assets/imgs/home/level2.jpg"); ?>"
+                  alt="Card image cap">
                 <a href="<?php echo base_url("comprar#2"); ?>">
                   <div class="mask rgba-white-strong d-flex align-items-center justify-content-center">
                     <h3>Intermédio</h3>
@@ -169,7 +180,8 @@
           <div class="col-lg-4 col-md-12">
             <div class="card my-4">
               <div class="view overlay">
-                <img class="card-img-top" src="<?php echo base_url("assets/imgs/home/level3.jpg"); ?>" alt="Card image cap">
+                <img class="card-img-top" srcset="<?php echo base_url("assets/imgs/home/level3.jpg"); ?>"
+                  alt="Card image cap">
                 <a href="<?php echo base_url("comprar#3"); ?>">
                   <div class="mask rgba-white-strong d-flex align-items-center justify-content-center">
                     <h3>Profissional</h3>
