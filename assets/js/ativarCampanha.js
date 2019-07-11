@@ -139,6 +139,13 @@ document.querySelector("#ativar").addEventListener("click", (e) => {
                     alert.innerHTML = data["message"];
                     break;
             }
+            document.querySelector("#codigocartao").value = "";
+            document.querySelector("#codigocampanha").value = "";
+            document.querySelector("#valor").value = "";
+            document.querySelectorAll("input").forEach(input => {
+                input.focus();
+                input.blur();
+            });
             alert.innerHTML += `<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"><i class="fas fa-times"></i></span></button>`;
             setTimeout(() => {
                 $(".alert").alert("close");

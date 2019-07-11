@@ -29,8 +29,8 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <small>Nota 1: O valor de compra é sempre em euros (&euro;). O valor da compra é transformado (1:1) em pontos de cartão.</small>
-                    <small>Nota 2: Quando o tipo de campanha é "Pontos", o valor de compra, apesar de obrigatório, é ignorado.</small>
+                    <p class="text-muted"><small>Nota 1: O valor de compra é sempre em euros (&euro;). O valor da compra é transformado (1:1) em pontos de cartão.</small></p>
+                    <p class="text-muted"><small>Nota 2: Quando o tipo de campanha é "Pontos", o valor de compra, apesar de obrigatório, é ignorado.</small></p>
                 </div>
                 <div class="col-12 text-center">
                     <button type="button" class="btn btn-primary" id="ativar">Ativar Campanha</button>
