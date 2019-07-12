@@ -51,6 +51,21 @@ function arrayColors(number) {
 
 document
     .querySelector("nav")
+    .querySelector("#navbarToggler")
+    .addEventListener("click", function () {
+        if (!this.nextElementSibling.classList.contains("collapsing")) {
+            if (this.nextElementSibling.classList.contains("show")) {
+                this.querySelector("i").classList.add("fa-bars");
+                this.querySelector("i").classList.remove("fa-times");
+            } else {
+                this.querySelector("i").classList.remove("fa-bars");
+                this.querySelector("i").classList.add("fa-times");
+            }
+        }
+    });
+
+document
+    .querySelector("nav")
     .querySelector("#sidebarToggler")
     .addEventListener("click", function () {
         if (document.querySelector("#ourNavbar").style.marginLeft == "0px") {
@@ -89,19 +104,4 @@ document
                 }
             }
         });
-    });
-
-document
-    .querySelector("nav")
-    .querySelector("#navbarToggler")
-    .addEventListener("click", function () {
-        if (!this.nextElementSibling.classList.contains("collapsing")) {
-            if (this.nextElementSibling.classList.contains("show")) {
-                this.querySelector("i").classList.add("fa-bars");
-                this.querySelector("i").classList.remove("fa-times");
-            } else {
-                this.querySelector("i").classList.remove("fa-bars");
-                this.querySelector("i").classList.add("fa-times");
-            }
-        }
     });

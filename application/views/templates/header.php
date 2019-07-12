@@ -23,8 +23,10 @@
   <!-- Core CSS -->
   <link href="<?php echo base_url("assets/css/core.css"); ?>" rel="stylesheet">
 
+  <?php if (file_exists(getcwd()."/assets/css/{$page}.css")): ?>
   <!-- Page CSS -->
   <link rel="stylesheet" href="<?php echo base_url("assets/css/{$page}.css"); ?>">
+  <?php endif; ?>
 
   <?php if (($this->uri->segment(1, 0) === "listarCampanha") || ($this->uri->segment(1, 0) === "clientes")): ?>
   <link href="<?php echo base_url("assets/css/addons/datatables.min.css"); ?>" rel="stylesheet">

@@ -57,10 +57,13 @@
 <script type="text/javascript" src="<?php echo base_url("assets/js/addons/datatables.min.js"); ?>"></script>
 <?php endif; ?>
 
+<!-- Core Script -->
 <script text="text/javascript" src="<?php echo base_url("assets/js/core.js"); ?>"></script>
 
+<?php if(file_exists(getcwd()."/assets/js/{$page}.js")): ?>
+<!-- Page Script -->
 <script text="text/javascript" src="<?php echo base_url("assets/js/{$page}.js"); ?>"></script>
-
+<?php endif; ?>
 </body>
 
 </html>
