@@ -41,6 +41,7 @@ class Main extends CI_Controller
             case "listarCampanha":
             case "ativarCampanha":
             case "criarCampanha":
+            case "clientes":
                 if (!$this->session->userdata("Email")) {
                     redirect("signin");
                 } elseif ($this->checkPermission() == false) {
@@ -60,7 +61,6 @@ class Main extends CI_Controller
             case "definicoesEmpresa":
             case "visualizarEmpresa":
             case "colaboradores":
-            case "clientes":
             case "comprar":
                 if (!$this->session->userdata("Email")) {
                     redirect("signin");
