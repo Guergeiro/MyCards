@@ -108,7 +108,7 @@
       <h3>Faça download da nossa app!</h3>
       <div class="row">
         <div class="col-12 my-4">
-          <a href="<?php echo base_url("android/mycards.apk"); ?>" class="btn btn-success" target="_blank" rel="noopener noreferrer"><div><i class="fab fa-android fa-fw fa-10x"></i></div><div><span>Download for</span><br><h2>Android</h2></div></a>
+          <a href="<?php echo base_url("android/mycards.zip"); ?>" class="btn btn-success" target="_blank" rel="noopener noreferrer"><div><i class="fab fa-android fa-fw fa-10x"></i></div><div><span>Download for</span><br><h2>Android</h2></div></a>
         </div>
       </div>
     </div>
