@@ -6,7 +6,7 @@
       <li data-target="#carousel" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner h-100">
-      <video srcset="<?php echo base_url("assets/videos/home/animation-intro.mp4"); ?>" class="position-absolute" autoplay
+      <video src="<?php echo base_url("assets/videos/home/animation-intro.mp4"); ?>" class="position-absolute" autoplay
         loop muted type="video/mp4">
       </video>
       <div class="carousel-item h-100 active">
@@ -32,7 +32,6 @@
       </div>
     </div>
 
-
     <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="sr-only">Anterior</span>
@@ -43,7 +42,7 @@
     </a>
   </section>
 
-  <section class="container">
+  <section class="container py-4">
     <div class="row py-5" id="row-1">
       <div class="col-md-6">
         <img srcset="<?php echo base_url("assets/imgs/home/empty-wallet.jpg"); ?>" alt="empty-wallet"
@@ -64,7 +63,8 @@
     <hr class="my-2">
     <div class="row py-5" id="row-2">
       <div class="col-md-6 order-md-last">
-        <img srcset="<?php echo base_url("assets/imgs/home/smartmockups_jxyscrtd.jpg"); ?>" alt="discount" class="d-block w-100 shadow">
+        <img srcset="<?php echo base_url("assets/imgs/home/smartmockups_jxyscrtd.jpg"); ?>" alt="discount"
+          class="d-block w-100 shadow">
       </div>
       <div class="col-md-6">
         <h3 class="h3 mt-3">Crie campanhas para os seus clientes</h3>
@@ -102,15 +102,59 @@
     </div>
   </section>
 
-<section>
-  <div class="container">
-    
-  </div>
-</section>
+  <section class="text-white text-center py-4" id="app">
+    <div class="container">
+      <h1 class="font-weight-bold">Cliente?</h1>
+      <h3>Faça download da nossa app!</h3>
+      <div class="row">
+        <div class="col-12 my-4">
+          <a href="<?php echo base_url("android/mycards.apk"); ?>" class="btn btn-success" target="_blank" rel="noopener noreferrer"><div><i class="fab fa-android fa-fw fa-10x"></i></div><div><span>Download for</span><br><h2>Android</h2></div></a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <section class="bg-primary" id="premium">
-    <div class="container p-4">
-      <h3 class="display-4 text-center text-white font-weight-bold">Premium</h3>
+  <section class="bg-primary text-white text-center py-4">
+    <div class="container">
+      <h3 class="font-weight-bold my-4">Conheça um Sistema de Fidelização sem Limites</h3>
+      <div class="row">
+        <div class="col-md-6 col-lg-3 my-4">
+          <i class="far fa-credit-card fa-fw fa-4x"></i>
+          <p class="m-2">Crie um cartão para os seus clientes em apenas 10 minutos.</p>
+        </div>
+        <div class="col-md-6 col-lg-3 my-4">
+          <i class="fas fa-mobile-alt fa-fw fa-4x"></i>
+          <p class="m-2">Uma carteira digital com todos os seus descontos.</p>
+        </div>
+        <div class="col-md-6 col-lg-3 my-4">
+          <i class="fas fa-chart-line fa-fw fa-4x"></i>
+          <p class="m-2">Estatísticas detalhadas de todas as suas campanhas.</p>
+        </div>
+        <div class="col-md-6 col-lg-3 my-4">
+          <i class="fas fa-infinity fa-fw fa-4x"></i>
+          <p class="m-2">O número de clientes que se podem fidelizar à sua empresa é ilimitado.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 my-4">
+          <i class="fas fa-wallet fa-fw fa-4x"></i>
+          <p class="m-2">Livre-se do compromisso da sua carteira e dos seus clientes.</p>
+        </div>
+        <div class="col-md-4 my-4">
+          <i class="far fa-eye fa-fw fa-4x"></i>
+          <p class="m-2">Aproveite-se do facto de o ser humano olhar para o telémovel, em média, 4 horas por dia.</p>
+        </div>
+        <div class="col-md-4 my-4">
+          <i class="fas fa-store-alt fa-fw fa-4x"></i>
+          <p class="m-2">Dê a conhecer o seu negócio a clientes fora da sua área.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="text-center py-4" id="premium">
+    <div class="container">
+      <h1 class="text-white font-weight-bold">Premium</h1>
       <p></p>
       <div class="row">
         <div class="card-deck text-center">
@@ -142,6 +186,9 @@
                 </p>
                 <p class="card-text text-danger">Estatísticas por Campanha <i class="far fa-times-circle"></i>
                 </p>
+                <?php if (!($this->session->userdata("Email"))): ?>
+                <a href="<?php echo base_url("comprar#1"); ?>" class="btn btn-primary rounded-pill">Comprar</a>
+                <?php endif;?>
               </div>
             </div>
           </div>
@@ -173,7 +220,9 @@
                 </p>
                 <p class="card-text text-danger">Estatísticas por Campanha <i class="far fa-times-circle"></i>
                 </p>
+                <?php if (!($this->session->userdata("Email"))): ?>
                 <a href="<?php echo base_url("comprar#2"); ?>" class="btn btn-primary rounded-pill">Comprar</a>
+                <?php endif; ?>
               </div>
             </div>
           </div>
@@ -205,7 +254,9 @@
                 </p>
                 <p class="card-text text-success">Estatísticas por Campanha <i class="far fa-check-circle"></i>
                 </p>
+                <?php if (!($this->session->userdata("Email"))): ?>
                 <a href="<?php echo base_url("comprar#3"); ?>" class="btn btn-primary rounded-pill">Comprar</a>
+                <?php endif; ?>
               </div>
             </div>
           </div>
@@ -220,20 +271,22 @@
     <div class="row">
       <!--Grid column-->
       <div class="col-md-9 mb-md-0 mb-5">
-        <?php echo form_open("email", "class=\"form-row\""); ?>
+        <?php echo form_open("", "class=\"form-row\" onsubmit=\"return validation(this);\""); ?>
         <!--Grid column-->
         <div class="col-md-6">
           <div class="md-form mb-0">
             <input type="text" id="name" name="name" class="form-control">
             <label for="name" class="">Nome</label>
+            <div class="form-text"></div>
           </div>
         </div>
         <!--Grid column-->
         <!--Grid column-->
         <div class="col-md-6">
           <div class="md-form mb-0">
-            <input type="text" id="email" name="email" class="form-control">
+            <input type="email" id="email" name="email" class="form-control">
             <label for="email" class="">Email</label>
+            <div class="form-text"></div>
           </div>
         </div>
         <!--Grid column-->
@@ -241,6 +294,7 @@
           <div class="md-form mb-0">
             <input type="text" id="subject" name="subject" class="form-control">
             <label for="subject" class="">Assunto</label>
+            <div class="form-text"></div>
           </div>
         </div>
         <!--Grid column-->
@@ -248,6 +302,7 @@
           <div class="md-form">
             <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea"></textarea>
             <label for="message">Escreva aqui a sua mensagem</label>
+            <div class="form-text"></div>
           </div>
         </div>
         <div class="col-12 text-center text-md-left">
@@ -266,7 +321,7 @@
             <p>+351 9123456789</p>
           </li>
           <li><i class="fas fa-envelope mt-4 fa-2x"></i>
-            <p>pint@dsprojects.pt</p>
+            <p>support@mycards.dsprojects.pt</p>
           </li>
         </ul>
       </div>

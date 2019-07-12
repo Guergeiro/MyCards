@@ -5,9 +5,9 @@
         <img src="<?php echo base_url("assets/imgs/team/breno.jpg")?>" alt="Breno Salles">
         <div class="container">
           <h2>Breno S.</h2>
-          <p class="title">Software/Web Developer</p>
+          <p class="title">Software Engineer</p>
           <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-          <p>breno-salles@hotmail.com</p>
+          <p>business@brenosalles.com</p>
           <p><a href="https://github.com/guergeiro/" target="_blank" role="button" class="btn btn-primary p-3"><i
                 class="fab fa-fw fa-2x fa-github" aria-hidden="true"></i></a><a
               href="https://www.linkedin.com/in/sallesbreno/" target="_blank" role="button"
@@ -24,7 +24,7 @@
           <h2>Diogo C.</h2>
           <p class="title">Software/Web Developer</p>
           <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-          <p>diogofalken0@gmail.com</p>
+          <p>business@diogomarques.tk</p>
           <p><a href="https://github.com/diogofalken/" target="_blank" role="button" class="btn btn-primary p-3"><i
                 class="fab fa-fw fa-2x fa-github" aria-hidden="true"></i></a><a
               href="https://www.linkedin.com/in/diogocosta99/" target="_blank" role="button"
@@ -40,7 +40,7 @@
           <h2>Diogo O.</h2>
           <p class="title">DataBase Admin</p>
           <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-          <p>oliveiragamerptxxx@hi5.com</p>
+          <p>diogoxd97@hotmail.com</p>
           <p><a href="https://github.com/EdwinOliveira/" target="_blank" role="button" class="btn btn-primary p-3"><i
                 class="fab fa-fw fa-2x fa-github" aria-hidden="true"></i></a><a
               href="https://www.linkedin.com/in/diogo-oliveira-881047181/" target="_blank" role="button"
@@ -58,9 +58,7 @@
           <p>Some text that describes me lorem ipsum ipsum lorem.</p>
           <p>filiperibeiroslb97@gmail.com</p>
           <p><a href="https://github.com/filiperibeiro1904/" target="_blank" role="button"
-              class="btn btn-primary p-3"><i class="fab fa-fw fa-2x fa-github" aria-hidden="true"></i></a><a href="#"
-              target="_blank" role="button" class="btn btn-primary p-3"><i class="fab fa-fw fa-2x fa-linkedin-in"
-                aria-hidden="true"></i></a></p>
+              class="btn btn-primary p-3"><i class="fab fa-fw fa-2x fa-github" aria-hidden="true"></i></a></p>
         </div>
       </div>
     </div>

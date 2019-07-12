@@ -2,6 +2,26 @@ section#carousel {
     height: calc(100vh - 72px);
 }
 
+section#app {
+    background-image: url("../imgs/home/smartmockups_jxyruw59.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    min-height: 50vh;
+}
+
+section#premium {
+    background-image: url("../imgs/home/smartmockups_jxyryuw8.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+section#app h1,
+section#premium h1 {
+    text-shadow: 2px 2px 4px #000;
+}
+
 *::-webkit-media-controls-start-playback-button {
     display: none !important;
     -webkit-appearance: none;
