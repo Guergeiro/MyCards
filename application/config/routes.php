@@ -53,6 +53,7 @@ $route['default_controller'] = 'main/view';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = false;
 
+$route['api'] = 'main/api';
 $route['admin'] = 'main/admin';
 $route['(:any)'] = 'main/view/$1';
 $route['infoCampanha/(:num)'] = 'main/infoCampanha/$1';

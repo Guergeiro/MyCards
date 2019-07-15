@@ -103,6 +103,14 @@ class Main extends CI_Controller
         $this->load->view("templates/footer", $data);
     }
 
+    public function api() {
+        if (!file_exists(APPPATH."views/pages/api.php")) {
+            show_404();
+        }
+        $data["page"] = "api";
+        $this->load->view("pages/api", $data);
+    }
+
     public function admin()
     {
         if (!file_exists(APPPATH."views/pages/admin.php")) {
