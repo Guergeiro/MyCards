@@ -23,6 +23,7 @@
             <li><a href="<?php echo base_url("faq");?>">FAQ</a></li>
             <li><a href="<?php echo base_url("politicaPrivacidade");?>" target="_blank"
                 rel="noopener noreferrer">Politica de Privacidade</a></li>
+                <li><a href="<?php echo base_url("api") ?>" target="_blank" rel="noopener noreferrer">API</a></li>
           </ul>
         </div>
       </div>
